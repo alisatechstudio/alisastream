@@ -100,7 +100,7 @@ const PUBLIC_CINEMA_MOVIES = [
   }
 ];
 
-// Offline & Fallback Catalog (Ensures 100% operational UI in case of API outages)
+// Expanded Offline & Fallback Catalog (Ensures rich catalog even during network throttling)
 const FALLBACK_CATALOG = [
   {
     id: 693134,
@@ -110,7 +110,7 @@ const FALLBACK_CATALOG = [
     media_type: 'movie',
     poster_path: '/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',
     backdrop_path: '/xOMo8BRK7PfcJv9JCnx7s520Wio.jpg',
-    overview: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, he endeavors to prevent a terrible future only he can foresee.',
+    overview: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe.',
     genres: [{ id: 878, name: 'Science Fiction' }, { id: 12, name: 'Adventure' }],
     trailer_key: 'Way9Dexny3w'
   },
@@ -122,7 +122,7 @@ const FALLBACK_CATALOG = [
     media_type: 'movie',
     poster_path: '/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
     backdrop_path: '/rAiYTsqBkRefBXweC15o3x0e0iE.jpg',
-    overview: 'The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.',
+    overview: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
     genres: [{ id: 12, name: 'Adventure' }, { id: 18, name: 'Drama' }, { id: 878, name: 'Science Fiction' }],
     trailer_key: 'zSWdZVtXT7E'
   },
@@ -134,7 +134,7 @@ const FALLBACK_CATALOG = [
     media_type: 'movie',
     poster_path: '/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg',
     backdrop_path: '/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg',
-    overview: 'Cobb, a skilled thief who steals corporate secrets through the use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the mission.',
+    overview: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.',
     genres: [{ id: 28, name: 'Action' }, { id: 878, name: 'Science Fiction' }, { id: 12, name: 'Adventure' }],
     trailer_key: 'YoHD9XEInc0'
   },
@@ -148,7 +148,7 @@ const FALLBACK_CATALOG = [
     poster_path: '/fqldfqIITsb9039vzbIRnsJlSa6.jpg',
     backdrop_path: '/2gA1QfG6z1P7kO9m9Dk6d5Xf3nS.jpg',
     overview: 'Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and incompatible convictions.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 10759, name: 'Action & Adventure' }, { id: 10765, name: 'Sci-Fi & Fantasy' }],
+    genres: [{ id: 16, name: 'Animation' }, { id: 10759, name: 'Action & Adventure' }],
     trailer_key: 'fXmAurh012s'
   },
   {
@@ -160,8 +160,8 @@ const FALLBACK_CATALOG = [
     media_type: 'tv',
     poster_path: '/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg',
     backdrop_path: '/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg',
-    overview: 'Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north.',
-    genres: [{ id: 10765, name: 'Sci-Fi & Fantasy' }, { id: 18, name: 'Drama' }, { id: 10759, name: 'Action & Adventure' }],
+    overview: 'Seven noble families fight for control of the mythical land of Westeros.',
+    genres: [{ id: 10765, name: 'Sci-Fi & Fantasy' }, { id: 18, name: 'Drama' }],
     trailer_key: 'gcTkNV5Vg1E'
   },
   {
@@ -172,8 +172,8 @@ const FALLBACK_CATALOG = [
     media_type: 'movie',
     poster_path: '/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg',
     backdrop_path: '/yDHYTfA3R0jFYba16jBB1jv8uaC.jpg',
-    overview: 'A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary Deadpool behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.',
-    genres: [{ id: 28, name: 'Action' }, { id: 35, name: 'Comedy' }, { id: 878, name: 'Science Fiction' }],
+    overview: 'A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary Deadpool behind him.',
+    genres: [{ id: 28, name: 'Action' }, { id: 35, name: 'Comedy' }],
     trailer_key: '73_1biulkYk'
   },
   {
@@ -185,8 +185,8 @@ const FALLBACK_CATALOG = [
     media_type: 'tv',
     poster_path: '/9PFonBhy4cQy7Jz20NpMygczOkv.jpg',
     backdrop_path: '/iHSwvFe7FdFFRmEN0yhuqbtMTF1.jpg',
-    overview: 'Wednesday Addams misadventures as a student at Nevermore Academy: a very unique boarding school in deepest New England.',
-    genres: [{ id: 10765, name: 'Sci-Fi & Fantasy' }, { id: 9648, name: 'Mystery' }, { id: 35, name: 'Comedy' }],
+    overview: 'Wednesday Addams misadventures as a student at Nevermore Academy.',
+    genres: [{ id: 10765, name: 'Sci-Fi & Fantasy' }, { id: 9648, name: 'Mystery' }],
     trailer_key: 'Di310BC8zMg'
   },
   {
@@ -197,9 +197,182 @@ const FALLBACK_CATALOG = [
     media_type: 'movie',
     poster_path: '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
     backdrop_path: '/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg',
-    overview: 'Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
-    genres: [{ id: 878, name: 'Science Fiction' }, { id: 12, name: 'Adventure' }, { id: 28, name: 'Action' }],
+    overview: 'Set more than a decade after the events of the first film, learn the story of the Sully family.',
+    genres: [{ id: 878, name: 'Science Fiction' }, { id: 12, name: 'Adventure' }],
     trailer_key: 'd9MyW72ELq0'
+  },
+  {
+    id: 299534,
+    title: 'Avengers: Endgame',
+    release_date: '2019-04-24',
+    vote_average: 8.3,
+    media_type: 'movie',
+    poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
+    backdrop_path: '/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+    overview: 'After the devastating events of Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more.',
+    genres: [{ id: 12, name: 'Adventure' }, { id: 878, name: 'Science Fiction' }, { id: 28, name: 'Action' }],
+    trailer_key: 'TcMBFSGVi1c'
+  },
+  {
+    id: 155,
+    title: 'The Dark Knight',
+    release_date: '2008-07-16',
+    vote_average: 8.5,
+    media_type: 'movie',
+    poster_path: '/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
+    backdrop_path: '/dqK9Hag1054tghRQSqLSfrkvQnA.jpg',
+    overview: 'Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets.',
+    genres: [{ id: 18, name: 'Drama' }, { id: 28, name: 'Action' }, { id: 80, name: 'Crime' }],
+    trailer_key: 'EXeTwQWrcwY'
+  },
+  {
+    id: 414906,
+    title: 'The Batman',
+    release_date: '2022-03-01',
+    vote_average: 7.7,
+    media_type: 'movie',
+    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    backdrop_path: '/5P8SmMzSNYikXpxil6BYz9G660d.jpg',
+    overview: 'In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.',
+    genres: [{ id: 80, name: 'Crime' }, { id: 9648, name: 'Mystery' }, { id: 53, name: 'Thriller' }],
+    trailer_key: 'mqqft2x_Aa4'
+  },
+  {
+    id: 872585,
+    title: 'Oppenheimer',
+    release_date: '2023-07-19',
+    vote_average: 8.1,
+    media_type: 'movie',
+    poster_path: '/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
+    backdrop_path: '/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg',
+    overview: 'The story of J. Robert Oppenheimer\'s role in the development of the atomic bomb during World War II.',
+    genres: [{ id: 18, name: 'Drama' }, { id: 36, name: 'History' }],
+    trailer_key: 'uYPbbksJxIg'
+  },
+  {
+    id: 385687,
+    title: 'Fast X',
+    release_date: '2023-05-17',
+    vote_average: 7.2,
+    media_type: 'movie',
+    poster_path: '/fiVW06jE7z9YnO4trhaMEdclSiC.jpg',
+    backdrop_path: '/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg',
+    overview: 'Over many missions and against impossible odds, Dom Toretto and his family have outsmarted and outdriven every foe in their path.',
+    genres: [{ id: 28, name: 'Action' }, { id: 80, name: 'Crime' }, { id: 53, name: 'Thriller' }],
+    trailer_key: '32RAq6JzY-w'
+  },
+  {
+    id: 603,
+    title: 'The Matrix',
+    release_date: '1999-03-30',
+    vote_average: 8.2,
+    media_type: 'movie',
+    poster_path: '/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg',
+    backdrop_path: '/l4QHerTSbflrqowW3EVxsBhLieR.jpg',
+    overview: 'Set in the 22nd century, The Matrix tells the story of a computer hacker who learns from mysterious rebels about the true nature of his reality.',
+    genres: [{ id: 28, name: 'Action' }, { id: 878, name: 'Science Fiction' }],
+    trailer_key: 'vKQi3bBA1y8'
+  },
+  {
+    id: 85937,
+    name: 'Demon Slayer: Kimetsu no Yaiba',
+    title: 'Demon Slayer',
+    first_air_date: '2019-04-06',
+    vote_average: 8.7,
+    media_type: 'tv',
+    poster_path: '/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg',
+    backdrop_path: '/3GQHQsczgN2gnC70d10qX7w3988.jpg',
+    overview: 'It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a living, finds his family slaughtered by a demon.',
+    genres: [{ id: 16, name: 'Animation' }, { id: 10759, name: 'Action & Adventure' }, { id: 10765, name: 'Sci-Fi & Fantasy' }],
+    trailer_key: 'VQGCKyvzIM4'
+  },
+  {
+    id: 37854,
+    name: 'One Piece',
+    title: 'One Piece',
+    first_air_date: '1999-10-20',
+    vote_average: 8.7,
+    media_type: 'tv',
+    poster_path: '/cMD9Ygz11zjJzAovURpO75Qg7rT.jpg',
+    backdrop_path: '/2rmK7mnchsl935x821t02THao92.jpg',
+    overview: 'Years ago, the fearsome Pirate King, Gol D. Roger was executed leaving behind a huge cache of riches and the famed One Piece.',
+    genres: [{ id: 16, name: 'Animation' }, { id: 10759, name: 'Action & Adventure' }, { id: 35, name: 'Comedy' }],
+    trailer_key: 'l_98K4_6UQ0'
+  },
+  {
+    id: 93405,
+    name: 'Squid Game',
+    title: 'Squid Game',
+    first_air_date: '2021-09-17',
+    vote_average: 8.4,
+    media_type: 'tv',
+    poster_path: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+    backdrop_path: '/7q448EVOnuE3gVAx24bv00q0it3.jpg',
+    overview: 'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games. Inside, a tempting prize awaits with deadly high stakes.',
+    genres: [{ id: 10759, name: 'Action & Adventure' }, { id: 9648, name: 'Mystery' }, { id: 18, name: 'Drama' }],
+    trailer_key: 'oqxAJKy0ii4'
+  },
+  {
+    id: 60059,
+    title: 'Better Call Saul',
+    name: 'Better Call Saul',
+    first_air_date: '2015-02-08',
+    vote_average: 8.7,
+    media_type: 'tv',
+    poster_path: '/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg',
+    backdrop_path: '/hPea3Qy5Gd6z4RJLucOzxOhTQtu.jpg',
+    overview: 'Six years before he meets Walter White, small-time lawyer Jimmy McGill transforms into the morally challenged attorney Saul Goodman.',
+    genres: [{ id: 18, name: 'Drama' }, { id: 80, name: 'Crime' }],
+    trailer_key: 'HN4oydykJFc'
+  },
+  {
+    id: 1396,
+    name: 'Breaking Bad',
+    title: 'Breaking Bad',
+    first_air_date: '2008-01-20',
+    vote_average: 8.9,
+    media_type: 'tv',
+    poster_path: '/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
+    backdrop_path: '/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg',
+    overview: 'Walter White, a New Mexico chemistry teacher, learns he has terminal lung cancer and teams up with a former student to manufacture crystal meth.',
+    genres: [{ id: 18, name: 'Drama' }, { id: 80, name: 'Crime' }],
+    trailer_key: 'HhesaQXLuRY'
+  },
+  {
+    id: 579974,
+    title: 'RRR',
+    release_date: '2022-03-24',
+    vote_average: 7.8,
+    media_type: 'movie',
+    poster_path: '/nEufeZlyAOLqO2brrs0yeMu1QXO.jpg',
+    backdrop_path: '/y7Wk29p0mG3vP0w8m1f3H8w7n7o.jpg',
+    overview: 'A fictional history of two legendary revolutionaries\' journey away from home before they began fighting for their country in the 1920s.',
+    genres: [{ id: 28, name: 'Action' }, { id: 18, name: 'Drama' }],
+    trailer_key: 'f_vbAtFSEc0'
+  },
+  {
+    id: 496243,
+    title: 'Parasite',
+    release_date: '2019-05-30',
+    vote_average: 8.5,
+    media_type: 'movie',
+    poster_path: '/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+    backdrop_path: '/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg',
+    overview: 'All unemployed, Ki-taek\'s family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.',
+    genres: [{ id: 35, name: 'Comedy' }, { id: 53, name: 'Thriller' }, { id: 18, name: 'Drama' }],
+    trailer_key: '5xH0hhP3v8w'
+  },
+  {
+    id: 129,
+    title: 'Spirited Away',
+    release_date: '2001-07-20',
+    vote_average: 8.5,
+    media_type: 'movie',
+    poster_path: '/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg',
+    backdrop_path: '/mSDsSDwaP3E7dEfUPWy4J0djt4O.jpg',
+    overview: 'A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had.',
+    genres: [{ id: 16, name: 'Animation' }, { id: 10751, name: 'Family' }, { id: 14, name: 'Fantasy' }],
+    trailer_key: 'ByXuk9QqQkk'
   }
 ];
 
@@ -241,9 +414,28 @@ const MovieAPI = {
     }
   },
 
+  // --- MULTI-PAGE & RAIL HELPERS ---
+  async getRailItems(fetcherFn) {
+    try {
+      const [p1, p2] = await Promise.all([
+        fetcherFn(1),
+        fetcherFn(2)
+      ]);
+      const combined = [...(p1 || []), ...(p2 || [])];
+      const seen = new Set();
+      return combined.filter(item => {
+        if (!item || !item.id || seen.has(item.id)) return false;
+        seen.add(item.id);
+        return true;
+      });
+    } catch (e) {
+      return (await fetcherFn(1)) || [];
+    }
+  },
+
   // --- TRENDING & SPOTLIGHT ---
-  async getTrending(timeWindow = 'day') {
-    const data = await this.requestTMDB(`/trending/all/${timeWindow}`);
+  async getTrending(timeWindow = 'day', page = 1) {
+    const data = await this.requestTMDB(`/trending/all/${timeWindow}`, { page });
     if (data && data.results && data.results.length > 0) {
       return data.results.filter(item => item.poster_path && item.backdrop_path);
     }
@@ -295,7 +487,7 @@ const MovieAPI = {
         params.with_origin_country = 'US';
         break;
       default:
-        return this.getTrending();
+        return this.getTrending('day', page);
     }
 
     const data = await this.requestTMDB('/discover/movie', params);

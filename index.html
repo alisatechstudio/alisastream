@@ -196,6 +196,14 @@
         </div>
 
         <div class="media-grid" id="dynamicMediaGrid"></div>
+
+        <!-- Dynamic Load More Pagination -->
+        <div class="load-more-wrapper" id="dynamicLoadMoreWrapper" style="text-align: center; margin: 3rem 0 2rem 0; display: none;">
+          <button type="button" class="btn btn-primary" id="dynamicLoadMoreBtn" style="padding: 0.9rem 2.8rem; font-size: 1.05rem; border-radius: 9999px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45); transition: all 0.2s ease;">
+            <span id="loadMoreBtnText">Load More Movies 🍿</span>
+          </button>
+          <div id="dynamicLoadMoreStatus" style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);"></div>
+        </div>
       </section>
 
       <!-- Standard Home Rails Container -->
@@ -261,6 +269,28 @@
           </div>
         </section>
 
+        <!-- Top Rated Masterpieces Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">CRITICS' CHOICE</span>
+              <h2 class="section-title">Top Rated Masterpieces</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="top_rated">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="topRatedRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="topRatedRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="topRatedRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
         <!-- Google AdSense In-Feed Native Ad Unit -->
         <div class="ad-slot-wrapper" style="margin: 1.5rem auto 2.5rem auto;" aria-label="Sponsored In-Feed Content">
           <div class="ad-slot-box" style="min-height: 100px;">
@@ -276,6 +306,50 @@
             </script>
           </div>
         </div>
+
+        <!-- Action & Adventure Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">ADRENALINE RUSH</span>
+              <h2 class="section-title">Action & Adventure Blockbusters</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="action">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="actionRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="actionRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="actionRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Sci-Fi & Cyberpunk Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">FUTURE VISIONS</span>
+              <h2 class="section-title">Sci-Fi & Cyberpunk</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="scifi">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="scifiRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="scifiRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="scifiRail" aria-label="Next">▶</button>
+          </div>
+        </section>
 
         <!-- Popular TV Series Rail -->
         <section class="section-block">
@@ -296,6 +370,116 @@
               <div class="skeleton-card"></div>
             </div>
             <button type="button" class="rail-nav-btn next" data-target="popularTVRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Anime & Animation Hits Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">JAPANESE ANIMATION</span>
+              <h2 class="section-title">Anime & Animation Hits</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="anime">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="animeRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="animeRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="animeRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Bollywood & South Asian Cinema Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">DESI BLOCKBUSTERS</span>
+              <h2 class="section-title">Bollywood & South Asian Cinema</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="bollywood">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="bollywoodRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="bollywoodRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="bollywoodRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- K-Drama & Asian Wave Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">HALLYU WAVE</span>
+              <h2 class="section-title">K-Drama & Asian Wave</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="kdrama">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="kdramaRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="kdramaRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="kdramaRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Horror & Thriller Night Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">DARK & CHILLING</span>
+              <h2 class="section-title">Horror & Thriller Night</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="horror">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="horrorRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="horrorRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="horrorRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Comedy & Feel-Good Hits Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">LAUGH OUT LOUD</span>
+              <h2 class="section-title">Comedy & Feel-Good Hits</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="comedy">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="comedyRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="comedyRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="comedyRail" aria-label="Next">▶</button>
           </div>
         </section>
 
