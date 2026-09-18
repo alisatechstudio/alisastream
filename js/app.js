@@ -20,6 +20,7 @@ const App = {
     this.setupRailNavigation();
     this.setupSettingsModal();
     this.setupGlobalShortcuts();
+    this.setupCookieConsent();
 
     // Initialize Player module
     if (window.Player) {
@@ -111,6 +112,32 @@ const App = {
         if (container) container.innerHTML = '';
       });
     }
+  },
+
+  // --- GDPR / GOOGLE CONSENT MODE COOKIE BANNER ---
+  setupCookieConsent() {
+    const banner = document.getElementById('cookieConsentBanner');
+    const acceptBtn = document.getElementById('cookieAcceptBtn');
+    const declineBtn = document.getElementById('cookieDeclineBtn');
+    if (!banner || !acceptBtn || !declineBtn) return;
+
+    const consent = localStorage.getItem('alisa_cookie_consent');
+    if (!consent) {
+      // Display banner after short smooth delay
+      setTimeout(() => {
+        banner.style.display = 'flex';
+      }, 1000);
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('alisa_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+    });
+
+    declineBtn.addEventListener('click', () => {
+      localStorage.setItem('alisa_cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
   },
 
   // --- GLOBAL KEYBOARD SHORTCUTS ---

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-accent="cyan">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact the Alisa Movies team for feedback, DMCA inquiries, or support.">
+  <title>Contact Us — Alisa Movies</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal-container {
+      max-width: 800px;
+      margin: 2.5rem auto 5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .legal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .legal-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .legal-updated {
+      font-size: 0.85rem;
+      color: var(--accent-primary);
+      margin-bottom: 2rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .form-input, .form-textarea {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--border-active);
+    }
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .contact-info-block {
+      background: rgba(0, 242, 254, 0.06);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link">
+        <div class="brand-icon">🍿</div>
+        <span class="brand-text">ALISA</span>
+        <span class="brand-badge">STREAM</span>
+      </a>
+      <a href="index.html" class="nav-item">← Return to Movies</a>
+    </div>
+  </header>
+
+  <main class="legal-container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <article class="legal-card">
+      <h1 class="legal-title">Contact Us</h1>
+      <p class="legal-updated">We're here to help and answer any question</p>
+
+      <div class="contact-info-block">
+        <h3 style="color: #fff; margin-bottom: 0.4rem; font-size: 1.05rem;">Direct Inquiries</h3>
+        <p style="color: #cbd5e1; font-size: 0.92rem; margin-bottom: 0.25rem;">
+          <strong>Email:</strong> <a href="mailto:alisatechstudio@gmail.com" style="color: var(--accent-primary);">alisatechstudio@gmail.com</a>
+        </p>
+        <p style="color: #cbd5e1; font-size: 0.92rem; margin-bottom: 0;">
+          <strong>Response Time:</strong> Typically within 24 to 48 hours for general and DMCA copyright inquiries.
+        </p>
+      </div>
+
+      <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); document.getElementById('formSuccessMsg').style.display = 'block'; this.reset();">
+        <div class="form-group">
+          <label for="contactName" class="form-label">Your Name</label>
+          <input type="text" id="contactName" class="form-input" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactEmail" class="form-label">Email Address</label>
+          <input type="email" id="contactEmail" class="form-input" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactSubject" class="form-label">Subject</label>
+          <input type="text" id="contactSubject" class="form-input" placeholder="General Inquiry, DMCA, or Feedback" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactMessage" class="form-label">Message</label>
+          <textarea id="contactMessage" class="form-textarea" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">
+          <span>Send Message ✉️</span>
+        </button>
+
+        <div id="formSuccessMsg" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #10b981; padding: 1rem; border-radius: var(--radius-sm); margin-top: 0.5rem;">
+          Thank you! Your message has been received. Our team will get back to you shortly.
+        </div>
+      </form>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="border: none;">
+      <p>© 2026 Alisa Movies. All rights reserved.</p>
+      <div style="display: flex; gap: 1rem;">
+        <a href="privacy.html" style="color: var(--text-muted);">Privacy Policy</a>
+        <a href="terms.html" style="color: var(--text-muted);">Terms of Service</a>
+        <a href="dmca.html" style="color: var(--text-muted);">DMCA</a>
+        <a href="about.html" style="color: var(--text-muted);">About Us</a>
+        <a href="contact.html" style="color: var(--accent-primary);">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

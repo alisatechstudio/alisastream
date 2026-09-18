@@ -15,6 +15,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google AdSense Verification Tag Placeholder (Replace ca-pub-0000000000000000 with your AdSense ID) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
 </head>
 <body>
 
@@ -146,6 +149,23 @@
       </div>
     </section>
 
+    <!-- Google AdSense Compliant Banner Slot (Top Leaderboard) -->
+    <div class="ad-slot-wrapper" aria-label="Sponsored Advertisement">
+      <div class="ad-slot-box">
+        <span class="ad-label">Advertisement</span>
+        <!-- Google AdSense Responsive Ad Unit (Uncomment and replace with your data-ad-client and data-ad-slot):
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-0000000000000000"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
+        <span class="ad-placeholder-hint">Responsive Ad Banner Space (728x90 / 970x90 Leaderboard)</span>
+      </div>
+    </div>
+
     <!-- Content Sections Wrapper -->
     <div class="content-wrapper">
 
@@ -223,6 +243,23 @@
             <button type="button" class="rail-nav-btn next" data-target="popularMoviesRail" aria-label="Next">▶</button>
           </div>
         </section>
+
+        <!-- Google AdSense In-Feed Native Ad Unit -->
+        <div class="ad-slot-wrapper" style="margin: 1.5rem auto 2.5rem auto;" aria-label="Sponsored In-Feed Content">
+          <div class="ad-slot-box" style="min-height: 100px;">
+            <span class="ad-label">Sponsored Recommendation</span>
+            <!-- Google AdSense In-Feed Native Unit:
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="fluid"
+                 data-ad-layout-key="-fb+5w+4e-db+86"
+                 data-ad-client="ca-pub-0000000000000000"
+                 data-ad-slot="1234567890"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+            <span class="ad-placeholder-hint">In-Feed Native Ad Banner Slot</span>
+          </div>
+        </div>
 
         <!-- Popular TV Series Rail -->
         <section class="section-block">
@@ -447,6 +484,16 @@
         </ul>
       </div>
       <div>
+        <h3 class="footer-col-title">Legal & Policies</h3>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="dmca.html">DMCA & Copyright</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
         <h3 class="footer-col-title">Open APIs Used</h3>
         <ul class="footer-links">
           <li><a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB API (Worldwide)</a></li>
@@ -457,10 +504,26 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Alisa Movies. All media metadata provided by free worldwide community databases. Designed for GitHub Pages.</p>
-      <p>Zero ad tracking • Free worldwide cinema</p>
+      <p>© 2026 Alisa Movies. All media metadata provided by free worldwide community databases. AdSense & GDPR compliant.</p>
+      <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
+        <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy</a>
+        <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms</a>
+        <a href="dmca.html" style="color: var(--text-secondary); text-decoration: none;">DMCA</a>
+        <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+      </div>
     </div>
   </footer>
+
+  <!-- GDPR & Google Consent Mode Cookie Banner -->
+  <aside class="cookie-consent-banner" id="cookieConsentBanner" style="display: none;" aria-label="Cookie and Privacy Consent">
+    <div class="cookie-consent-text">
+      We and our third-party advertising partners (including <strong>Google AdSense</strong>) use cookies to personalize content, analyze traffic, and display relevant advertisements. By clicking "Accept All", you consent to the use of these cookies. Read our <a href="privacy.html">Privacy Policy</a> to learn more.
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" class="cookie-btn-decline" id="cookieDeclineBtn">Decline Non-Essential</button>
+      <button type="button" class="cookie-btn-accept" id="cookieAcceptBtn">Accept All</button>
+    </div>
+  </aside>
 
   <!-- Scripts -->
   <script src="js/storage.js"></script>

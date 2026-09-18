@@ -1683,6 +1683,155 @@ dialog#trailerModal {
 }
 
 /* ==========================================================================
+   GOOGLE ADSENSE COMPLIANT AD SLOTS & COOKIE CONSENT BANNER
+   ========================================================================== */
+
+/* Ad Containers (AdSense Policy Compliant) */
+.ad-slot-wrapper {
+  max-width: 1600px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.ad-slot-box {
+  width: 100%;
+  max-width: 970px;
+  min-height: 90px;
+  background: rgba(14, 17, 26, 0.6);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.ad-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.ad-placeholder-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* GDPR / Google Consent Mode Cookie Banner */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 780px;
+  background: rgba(14, 17, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-glow);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  animation: slideUpConsent 0.4s ease forwards;
+}
+
+@keyframes slideUpConsent {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.cookie-consent-text {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.cookie-consent-text a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn-accept {
+  background: var(--accent-gradient);
+  color: #07080d;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--accent-glow);
+  transition: transform 0.2s ease;
+}
+
+.cookie-btn-accept:hover {
+  transform: scale(1.04);
+}
+
+.cookie-btn-decline {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cookie-btn-decline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+@media (max-width: 680px) {
+  .cookie-consent-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    bottom: 1rem;
+    padding: 1.2rem;
+  }
+
+  .cookie-consent-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -1690,6 +1839,7 @@ dialog#trailerModal {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 
 @media (max-width: 768px) {
   .main-nav {

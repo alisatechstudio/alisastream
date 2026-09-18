@@ -110,17 +110,51 @@ Open `http://localhost:8080` in your web browser.
 
 ```
 Alisa Movies/
-├── index.html             # Semantic HTML5 markup, accessible dialogs & header
+├── index.html             # Main web app with AdSense slots, modals, and rails
+├── privacy.html           # Google AdSense, GDPR & CCPA compliant Privacy Policy
+├── terms.html             # Terms of Service & acceptable use agreement
+├── dmca.html              # DMCA Copyright Policy & designated agent contact
+├── about.html             # About Us transparency & educational mission page
+├── contact.html           # Contact Us page with direct support form
+├── ads.txt                # Authorized Digital Sellers file for AdSense
 ├── .nojekyll              # Disables Jekyll processing on GitHub Pages
-├── README.md              # Project documentation & deployment guide
+├── README.md              # Project documentation & monetization guide
 ├── css/
-│   └── style.css          # Cinema dark design system, glassmorphism, responsive styles
+│   └── style.css          # Cinema dark design system, ad slots & cookie banner
 └── js/
     ├── storage.js         # LocalStorage manager (Watchlist, History, Preferences)
     ├── api.js             # Worldwide API integration (TMDB, TVMaze, Open Cinema)
     ├── player.js          # Multi-server streaming player, episode switcher & HTML5 player
-    └── app.js             # UI controller, carousel, live search, filters, and routing
+    └── app.js             # UI controller, carousel, live search, and cookie consent
 ```
+
+---
+
+## 💰 Google AdSense Setup & Monetization Guide
+
+Alisa Movies is fully equipped with everything required for **Google AdSense Approval & Policy Compliance**:
+
+1. **Mandatory Policy Pages Included**:
+   - `privacy.html`: Discloses cookie usage, Google DoubleClick DART cookies, third-party ad networks, GDPR rights, and CCPA clauses.
+   - `terms.html`: Transparent terms of service and acceptable use disclaimer.
+   - `dmca.html`: Clear DMCA statement detailing that media is sourced via open public APIs (TMDB, TVMaze) with an official contact email for rights holders.
+   - `about.html` & `contact.html`: Company transparency and direct visitor contact form.
+
+2. **GDPR & Google Consent Mode Cookie Banner**:
+   - Includes a built-in banner on `index.html` allowing visitors to Accept or Decline non-essential advertising cookies, saved locally in accordance with Google's EU User Consent Policy.
+
+3. **AdSense Script Activation**:
+   - Open `index.html` and uncomment the script tag in `<head>`:
+     ```html
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+     ```
+   - Replace `ca-pub-XXXXXXXXXXXXXXXX` with your personal AdSense Publisher ID.
+
+4. **`ads.txt` File**:
+   - Open `ads.txt` in the root folder and replace `pub-0000000000000000` with your authorized AdSense Publisher ID.
+
+5. **Ad Unit Slots**:
+   - Two policy-compliant ad containers are pre-placed in `index.html` (Top Leaderboard & In-Feed Native Unit), styled with non-deceptive `ADVERTISEMENT` labels to prevent accidental clicks.
 
 ---
 
@@ -129,3 +163,4 @@ Alisa Movies/
 - Movie and TV metadata is powered by community databases: [The Movie Database (TMDB)](https://www.themoviedb.org/) and [TVMaze API](https://www.tvmaze.com/api).
 - Open movies are distributed under Creative Commons licenses by the [Blender Foundation](https://cloud.blender.org/open-projects/) and the [Internet Archive](https://archive.org/).
 - This project is an open-source demonstration designed for personal educational and portfolio use.
+
