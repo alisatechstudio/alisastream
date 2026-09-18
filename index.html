@@ -11,22 +11,29 @@
     gtag('config', 'G-LGSRVM1B60');
   </script>
 
+  <title>Alisa Stream — Open Cinema & Public Domain Streams Only</title>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alisa Movies - Watch movies, TV shows, anime, and classic cinema worldwide for free. Multi-server streaming player with server switcher, TV episode selector, and zero ad interruptions.">
-  <meta name="keywords" content="movies, streaming, tv shows, anime, watch free, cinema, open movies, public domain, alisa movies">
-  <meta name="author" content="Alisa Movies">
+  <meta name="description" content="Alisa Stream - Watch 100% legal open cinema, Creative Commons masterpieces, and public domain classics with zero third-party popups, zero redirects, and crystal-clear 4K/HD streaming.">
+  <meta name="keywords" content="open cinema, public domain movies, classic cinema, blender movies, free movies, no ads, legal streams, alisa stream">
+  <meta name="author" content="Alisa Stream">
   <meta name="theme-color" content="#07080d">
-  
-  <title>Alisa Movies — Free Worldwide Movie & TV Streaming</title>
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Modern Typography (Outfit & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Core Design System & Components -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-  <!-- Google AdSense Verification & Auto-Ads Script -->
+  <!-- Google AdSense Official Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2862340185854650" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -38,10 +45,10 @@
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <!-- Brand Logo -->
-      <a href="#" class="brand-link" id="brandHomeBtn" aria-label="Alisa Movies Home">
+      <a href="#" class="brand-link" id="brandHomeBtn" aria-label="Alisa Stream Home">
         <div class="brand-icon">🍿</div>
         <span class="brand-text">ALISA</span>
-        <span class="brand-badge">STREAM</span>
+        <span class="brand-badge">OPEN CINEMA</span>
       </a>
 
       <!-- Primary Navigation Links -->
@@ -50,16 +57,13 @@
           <span>Home</span>
         </button>
         <button type="button" class="nav-item" data-tab="movies" id="navMovies">
-          <span>Movies</span>
+          <span>Cinema</span>
         </button>
         <button type="button" class="nav-item" data-tab="tv" id="navTV">
-          <span>TV Shows</span>
-        </button>
-        <button type="button" class="nav-item" data-tab="worldwide" id="navWorldwide">
-          <span>Worldwide</span>
+          <span>Open Shorts</span>
         </button>
         <button type="button" class="nav-item" data-tab="public" id="navPublic">
-          <span>Open Cinema</span>
+          <span>Public Domain</span>
           <span class="nav-badge">100% Free</span>
         </button>
         <button type="button" class="nav-item" data-tab="watchlist" id="navWatchlist">
@@ -78,9 +82,9 @@
               type="text" 
               id="globalSearchInput" 
               class="search-input" 
-              placeholder="Search movies, TV shows, anime..." 
+              placeholder="Search open cinema & public domain..." 
               autocomplete="off"
-              aria-label="Search movies and series"
+              aria-label="Search open cinema and public domain films"
             >
             <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">✕</button>
             <kbd class="search-kbd">/</kbd>
@@ -113,17 +117,18 @@
           <div class="hero-backdrop-gradient"></div>
           <div class="hero-content">
             <div class="hero-badges">
-              <span class="spotlight-pill">FEATURED SPOTLIGHT</span>
-              <span class="quality-pill">4K ULTRA HD</span>
+              <span class="spotlight-pill">OPEN CINEMA MASTERPIECES</span>
+              <span class="quality-pill">100% LEGAL & PUBLIC DOMAIN</span>
+              <span class="quality-pill">4K & DIRECT STREAM</span>
             </div>
-            <h1 class="hero-title">Discover Unlimited Cinema Worldwide</h1>
+            <h1 class="hero-title">Watch Timeless Classics & Open Cinema Free</h1>
             <div class="hero-meta">
               <span class="hero-rating">★ 9.4</span>
-              <span>2024</span>
-              <span>Global Free Catalog</span>
+              <span>100% Ad-Free Playback</span>
+              <span>Zero Popups • Zero Redirects</span>
             </div>
             <p class="hero-overview">
-              Stream blockbuster films, critically acclaimed series, and open cinema from around the globe. Fast multi-server playback with zero subscription fees.
+              Experience legendary public domain cinema masterpieces and cutting-edge 4K open-source films. 100% free, legal, and uninterrupted with zero popup redirects.
             </p>
             <div class="hero-actions">
               <button type="button" class="btn-primary" id="heroWatchNowBtn">
@@ -133,7 +138,7 @@
                 <span>🎬 Trailer</span>
               </button>
               <button type="button" class="btn-secondary" id="heroExploreAllBtn">
-                <span>🌐 Fetch All Movies</span>
+                <span>🌐 Explore Catalog</span>
               </button>
             </div>
           </div>
@@ -146,21 +151,15 @@
     <!-- Quick Worldwide & Genre Filter Bar -->
     <section class="filter-bar-section" aria-label="Quick Category & Region Filters">
       <div class="filter-bar-inner" id="filterChipsBar">
-        <button type="button" class="filter-chip active" data-filter="all">🌐 All Worldwide</button>
-        <button type="button" class="filter-chip" data-filter="trending">🔥 Trending</button>
-        <button type="button" class="filter-chip" data-filter="top_rated">⭐ Top Rated</button>
-        <button type="button" class="filter-chip" data-filter="now_playing">🎬 In Theaters</button>
-        <button type="button" class="filter-chip" data-filter="upcoming">🚀 Upcoming</button>
-        <button type="button" class="filter-chip" data-filter="hollywood">🎬 Hollywood</button>
-        <button type="button" class="filter-chip" data-filter="bollywood">🇮🇳 Bollywood</button>
-        <button type="button" class="filter-chip" data-filter="anime">🎌 Anime</button>
-        <button type="button" class="filter-chip" data-filter="kdrama">🇰🇷 K-Drama</button>
-        <button type="button" class="filter-chip" data-filter="action" data-genre="28">💥 Action</button>
+        <button type="button" class="filter-chip active" data-filter="all">🌐 All Open Cinema</button>
+        <button type="button" class="filter-chip" data-filter="trending">🔥 Trending Classics</button>
+        <button type="button" class="filter-chip" data-filter="top_rated">⭐ Masterpieces</button>
+        <button type="button" class="filter-chip" data-filter="anime" data-genre="16">✨ 4K Animation</button>
         <button type="button" class="filter-chip" data-filter="scifi" data-genre="878">🚀 Sci-Fi</button>
-        <button type="button" class="filter-chip" data-filter="horror" data-genre="27">👻 Horror</button>
-        <button type="button" class="filter-chip" data-filter="comedy" data-genre="35">😂 Comedy</button>
-        <button type="button" class="filter-chip" data-filter="romance" data-genre="10749">💖 Romance</button>
-        <button type="button" class="filter-chip" data-filter="public">🎥 Open Cinema</button>
+        <button type="button" class="filter-chip" data-filter="horror" data-genre="27">👻 Cult Horror</button>
+        <button type="button" class="filter-chip" data-filter="comedy" data-genre="35">😂 Vintage Comedy</button>
+        <button type="button" class="filter-chip" data-filter="romance" data-genre="10749">💖 Romance & Drama</button>
+        <button type="button" class="filter-chip" data-filter="hollywood">🎬 Golden Age</button>
       </div>
     </section>
 
@@ -313,12 +312,12 @@
           </div>
         </section>
 
-        <!-- Trending Now Worldwide Rail -->
+        <!-- Open Cinema & 4K Animation Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">GLOBAL CHARTS</span>
-              <h2 class="section-title">Trending Now Worldwide</h2>
+              <span class="section-subtitle">FEATURED OPEN CINEMA</span>
+              <h2 class="section-title">Open Cinema & 4K Animation</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="trending">See All ▶</button>
           </div>
@@ -335,12 +334,12 @@
           </div>
         </section>
 
-        <!-- Now Playing in Theaters Rail -->
+        <!-- Golden Age Hollywood Public Domain Classics Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">CINEMA RELEASES</span>
-              <h2 class="section-title">Now Playing in Theaters</h2>
+              <span class="section-subtitle">GOLDEN AGE HOLLYWOOD</span>
+              <h2 class="section-title">Public Domain Classics</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="now_playing">See All ▶</button>
           </div>
@@ -357,12 +356,12 @@
           </div>
         </section>
 
-        <!-- Popular Blockbuster Movies Rail -->
+        <!-- Timeless Masterpieces Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">FEATURED FILMS</span>
-              <h2 class="section-title">Popular Movies Worldwide</h2>
+              <span class="section-subtitle">ALL-TIME ICONS</span>
+              <h2 class="section-title">Timeless Masterpieces</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="movies">See All ▶</button>
           </div>
@@ -379,12 +378,12 @@
           </div>
         </section>
 
-        <!-- Top Rated Masterpieces Rail -->
+        <!-- Cult Horror & Mystery Legends Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">ALL-TIME CRITICS PICKS</span>
-              <h2 class="section-title">Top Rated Masterpieces</h2>
+              <span class="section-subtitle">LEGENDARY CHILLS</span>
+              <h2 class="section-title">Cult Horror & Mystery Legends</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="top_rated">See All ▶</button>
           </div>
@@ -401,12 +400,12 @@
           </div>
         </section>
 
-        <!-- Upcoming Releases Rail -->
+        <!-- Vintage Sci-Fi & Film Noir Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">COMING SOON</span>
-              <h2 class="section-title">Upcoming Blockbusters</h2>
+              <span class="section-subtitle">VINTAGE ARCHIVE</span>
+              <h2 class="section-title">Sci-Fi & Film Noir Legends</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="upcoming">See All ▶</button>
           </div>
@@ -440,12 +439,12 @@
           </div>
         </div>
 
-        <!-- Popular TV Series Rail -->
+        <!-- Open Series & Short Films Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">BINGE WORTHY</span>
-              <h2 class="section-title">Top TV Series & Web Shows</h2>
+              <span class="section-subtitle">CREATIVE COMMONS</span>
+              <h2 class="section-title">Open Series & Short Films</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="tv">See All ▶</button>
           </div>
@@ -467,7 +466,7 @@
           <div class="section-header">
             <div class="section-title-group">
               <span class="section-subtitle">GUARANTEED STREAMING</span>
-              <h2 class="section-title">Public Cinema & Open-Source Films</h2>
+              <h2 class="section-title">Direct HTML5 Video Streams</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="public">Explore All ▶</button>
           </div>

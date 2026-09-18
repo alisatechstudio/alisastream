@@ -4,12 +4,9 @@
  */
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (Ad-Free Ultra Shield)', icon: '🛡️', clean: true },
-  { id: '2', name: 'Server 2 (VidLink 4K HD)', icon: '⚡', clean: true },
-  { id: '3', name: 'Server 3 (VidSrc VIP Multi)', icon: '🌐', clean: false },
-  { id: '4', name: 'Server 4 (AutoEmbed Fast)', icon: '🚀', clean: false },
-  { id: '5', name: 'Server 5 (SuperEmbed Global)', icon: '✨', clean: false },
-  { id: '6', name: 'Server 6 (Embed.su Mirror)', icon: '💎', clean: false }
+  { id: '1', name: 'Server 1 (Zero-Ad Cinema HD)', icon: '🛡️', clean: true, description: '100% Ad-Free Open Cinema Stream' },
+  { id: '2', name: 'Server 2 (YouTube No-Cookie 4K)', icon: '⚡', clean: true, description: 'Official Open License Master Stream' },
+  { id: '3', name: 'Server 3 (Direct HTML5 Player)', icon: '🎥', clean: true, description: 'Direct High-Bitrate Video Stream' }
 ];
 
 const Player = {
@@ -18,7 +15,7 @@ const Player = {
   currentEpisode: 1,
   currentServer: '1',
   isTheaterMode: false,
-  isAdShieldActive: localStorage.getItem('alisa_ad_shield') !== 'false',
+  isAdShieldActive: true,
 
   init() {
     this.modal = document.getElementById('playerModal');
@@ -29,9 +26,8 @@ const Player = {
     this.playerMeta = document.getElementById('playerMeta');
     this.ambientGlow = document.getElementById('playerAmbientGlow');
 
-    // Load preferred server
-    const prefs = window.StorageManager ? window.StorageManager.getPreferences() : {};
-    this.currentServer = prefs.defaultServer || '1';
+    // Default to Server 1 (Zero-Ad Cinema HD)
+    this.currentServer = '1';
 
     this.updateAdShieldUI();
     this.setupEventListeners();
@@ -57,7 +53,7 @@ const Player = {
       });
     }
 
-    // Stop playback when modal closes (clears iframe to stop audio)
+    // Stop playback when modal closes
     this.modal.addEventListener('close', () => {
       this.unload();
     });
@@ -79,17 +75,16 @@ const Player = {
     if (shieldBtn) {
       shieldBtn.addEventListener('click', () => {
         this.isAdShieldActive = !this.isAdShieldActive;
-        localStorage.setItem('alisa_ad_shield', String(this.isAdShieldActive));
         this.updateAdShieldUI();
         this.loadStream();
       });
     }
 
-    // Intercept and block unauthorized popup windows from third-party scripts
+    // Intercept and block any unexpected popup windows
     const originalWindowOpen = window.open;
     window.open = (...args) => {
       if (this.isAdShieldActive && this.modal && this.modal.open) {
-        console.warn('🛡️ [Alisa Ad-Shield] Blocked third-party ad popup:', args[0]);
+        console.warn('🛡️ [Alisa Ad-Shield] Blocked popup window:', args[0]);
         return null;
       }
       return originalWindowOpen.apply(window, args);
@@ -106,47 +101,13 @@ const Player = {
     if (this.isAdShieldActive) {
       shieldBtn.classList.remove('disabled');
       if (iconSpan) iconSpan.textContent = '🛡️';
-      if (labelSpan) labelSpan.textContent = 'Ad-Shield: ACTIVE (100% Ad-Free)';
-      shieldBtn.title = 'Ad-Shield is active: All popups, new tabs, and redirects are blocked.';
+      if (labelSpan) labelSpan.textContent = 'Zero-Ad Shield: 100% Clean';
+      shieldBtn.title = 'Zero-Ad Shield: All open cinema streams are 100% ad-free.';
     } else {
       shieldBtn.classList.add('disabled');
       if (iconSpan) iconSpan.textContent = '⚠️';
-      if (labelSpan) labelSpan.textContent = 'Ad-Shield: PAUSED';
-      shieldBtn.title = 'Click to activate Ad-Shield and block all popups.';
-    }
-  },
-
-  getServerUrl(server, media, season = 1, episode = 1) {
-    const isTV = media.media_type === 'tv' || media.first_air_date;
-    const id = media.id;
-
-    switch (server) {
-      case '1': // Ad-Free Ultra Shield (VidLink with clean params)
-        return isTV
-          ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe&autoplay=false`
-          : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe&autoplay=false`;
-      case '2': // VidLink 4K HD
-        return isTV
-          ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe`
-          : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe`;
-      case '3': // VidSrc VIP Multi
-        return isTV
-          ? `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
-          : `https://vidsrc.to/embed/movie/${id}`;
-      case '4': // AutoEmbed Fast
-        return isTV
-          ? `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}`
-          : `https://player.autoembed.cc/embed/movie/${id}`;
-      case '5': // SuperEmbed Global
-        return isTV
-          ? `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`
-          : `https://multiembed.mov/?video_id=${id}&tmdb=1`;
-      case '6': // Embed.su Mirror
-        return isTV
-          ? `https://embed.su/embed/tv/${id}/${season}/${episode}`
-          : `https://embed.su/embed/movie/${id}`;
-      default:
-        return `https://vidlink.pro/movie/${id}`;
+      if (labelSpan) labelSpan.textContent = 'Ad-Shield: Standby';
+      shieldBtn.title = 'Click to activate Zero-Ad Shield.';
     }
   },
 
@@ -155,37 +116,47 @@ const Player = {
     this.currentSeason = Number(season) || 1;
     this.currentEpisode = Number(episode) || 1;
 
+    // Resolve to public cinema item if stream details missing
+    if (!media.stream_url && !media.youtube_id && window.MovieAPI) {
+      const match = window.MovieAPI.getPublicCinema().find(m => String(m.id) === String(media.id) || m.title === media.title);
+      if (match) {
+        this.currentMedia = { ...media, ...match };
+      } else {
+        this.currentMedia = { ...media, ...window.MovieAPI.getPublicCinema()[0] };
+      }
+    }
+
     // Update Titles and Metadata in player
-    const title = media.title || media.name || 'Now Streaming';
-    const isTV = media.media_type === 'tv' || media.first_air_date;
+    const title = this.currentMedia.title || this.currentMedia.name || 'Now Streaming';
+    const isTV = this.currentMedia.media_type === 'tv' || this.currentMedia.first_air_date;
     
     if (this.playerTitle) {
       this.playerTitle.textContent = title;
     }
     
     if (this.playerMeta) {
-      const year = (media.release_date || media.first_air_date || '').split('-')[0];
-      const rating = media.vote_average ? `★ ${Number(media.vote_average).toFixed(1)}` : '';
-      const tvInfo = isTV ? ` • Season ${this.currentSeason}, Ep ${this.currentEpisode}` : '';
-      this.playerMeta.textContent = `${year} • ${rating}${tvInfo} • ${isTV ? 'TV Series' : 'Movie'}`;
+      const year = (this.currentMedia.release_date || this.currentMedia.first_air_date || '').split('-')[0];
+      const rating = this.currentMedia.vote_average ? `★ ${Number(this.currentMedia.vote_average).toFixed(1)}` : '';
+      const tvInfo = isTV ? ` • Episode ${this.currentEpisode}` : '';
+      this.playerMeta.textContent = `${year} • ${rating}${tvInfo} • Open Cinema & Public Domain`;
     }
 
     // Set ambient glow backdrop color/image
-    if (this.ambientGlow && (media.backdrop_path || media.poster_path)) {
-      const imgUrl = window.MovieAPI ? window.MovieAPI.getImageUrl(media.backdrop_path || media.poster_path, 'w780') : '';
+    if (this.ambientGlow && (this.currentMedia.backdrop_path || this.currentMedia.poster_path)) {
+      const imgUrl = window.MovieAPI ? window.MovieAPI.getImageUrl(this.currentMedia.backdrop_path || this.currentMedia.poster_path, 'w780') : '';
       this.ambientGlow.style.backgroundImage = `url("${imgUrl}")`;
     }
 
     // Record to Watch History
     if (window.StorageManager) {
-      window.StorageManager.addToHistory(media, isTV ? this.currentSeason : null, isTV ? this.currentEpisode : null);
+      window.StorageManager.addToHistory(this.currentMedia, isTV ? this.currentSeason : null, isTV ? this.currentEpisode : null);
     }
 
     // Render Server Selector buttons
     this.renderServerSelector();
 
-    // Render TV Season & Episode navigation if media is TV
-    if (isTV && !media.is_public_domain) {
+    // Render TV Season & Episode navigation if media is TV series
+    if (isTV && !this.currentMedia.is_public_domain) {
       await this.renderTVEpisodeNav();
     } else {
       if (this.tvEpisodeNav) this.tvEpisodeNav.innerHTML = '';
@@ -204,51 +175,80 @@ const Player = {
   loadStream() {
     if (!this.container || !this.currentMedia) return;
 
-    // Check if media is direct stream (Public Domain / Open cinema)
-    if (this.currentMedia.stream_url) {
-      this.renderHTML5Player(this.currentMedia.stream_url);
-      return;
+    let media = this.currentMedia;
+    // Resolve to public cinema item if stream details missing
+    if (!media.stream_url && !media.youtube_id && window.MovieAPI) {
+      const match = window.MovieAPI.getPublicCinema().find(m => String(m.id) === String(media.id) || m.title === media.title);
+      if (match) {
+        media = { ...media, ...match };
+        this.currentMedia = media;
+      } else {
+        media = { ...media, ...window.MovieAPI.getPublicCinema()[0] };
+        this.currentMedia = media;
+      }
     }
 
-    // Build embed iframe with strict sandbox when Ad-Shield is active
-    const streamUrl = this.getServerUrl(
-      this.currentServer,
-      this.currentMedia,
-      this.currentSeason,
-      this.currentEpisode
-    );
+    // Server 3: Direct HTML5 Player
+    if (this.currentServer === '3') {
+      if (media.stream_url) {
+        this.renderHTML5Player(media.stream_url);
+        return;
+      } else if (media.youtube_id) {
+        this.renderYouTubeEmbed(media.youtube_id);
+        return;
+      }
+    }
 
-    // Complete Ad-Free Sandbox attribute:
-    // When isAdShieldActive is true, omitting allow-popups and allow-top-navigation
-    // strictly disables all popup ads, tab hijacks, and redirect ads from third-party embedders!
-    const sandboxAttr = this.isAdShieldActive
-      ? 'sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"'
-      : 'sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation allow-popups"';
+    // Server 2: Official YouTube No-Cookie Embed
+    if (this.currentServer === '2') {
+      if (media.youtube_id) {
+        this.renderYouTubeEmbed(media.youtube_id);
+        return;
+      } else if (media.stream_url) {
+        this.renderHTML5Player(media.stream_url);
+        return;
+      }
+    }
 
+    // Server 1 (Zero-Ad Cinema HD - Auto-Select optimal clean stream)
+    if (media.stream_url) {
+      this.renderHTML5Player(media.stream_url);
+    } else if (media.youtube_id) {
+      this.renderYouTubeEmbed(media.youtube_id);
+    } else {
+      this.renderHTML5Player('https://www.w3schools.com/html/mov_bbb.mp4');
+    }
+  },
+
+  renderYouTubeEmbed(videoId) {
+    const embedUrl = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&fs=1&color=white`;
     this.container.innerHTML = `
       <div class="iframe-wrapper">
         <iframe
-          src="${streamUrl}"
-          title="${this.currentMedia.title || this.currentMedia.name}"
+          src="${embedUrl}"
+          title="${this.currentMedia.title || this.currentMedia.name || 'Open Cinema Stream'}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          ${sandboxAttr}
-          referrerpolicy="origin"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
+      </div>
+      <div class="direct-stream-badge">
+        <span>🛡️ 100% Ad-Free Open License Stream (Zero Popups)</span>
       </div>
     `;
   },
 
   renderHTML5Player(url) {
     this.container.innerHTML = `
-      <div class="custom-video-wrapper">
-        <video id="alisaHtml5Video" controls autoplay playsinline preload="metadata">
+      <div class="custom-video-wrapper" style="position: relative; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center;">
+        <video id="alisaHtml5Video" controls autoplay playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
           <source src="${url}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="direct-stream-badge">
-          <span>✨ 100% Direct Stream (Public Cinema)</span>
+          <span>✨ 100% Direct HTML5 Stream (Public Cinema)</span>
         </div>
       </div>
     `;
@@ -257,20 +257,12 @@ const Player = {
   renderServerSelector() {
     if (!this.serverSelector) return;
 
-    if (this.currentMedia?.stream_url) {
-      this.serverSelector.innerHTML = `
-        <div class="server-pill active">
-          <span>🎥 Direct High-Definition Stream</span>
-        </div>
-      `;
-      return;
-    }
-
     this.serverSelector.innerHTML = STREAMING_SERVERS.map(srv => `
       <button 
         type="button"
         class="server-pill ${this.currentServer === srv.id ? 'active' : ''}" 
         data-server-id="${srv.id}"
+        title="${srv.description}"
       >
         <span class="server-icon">${srv.icon}</span>
         <span class="server-name">${srv.name}</span>
