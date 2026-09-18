@@ -17,7 +17,7 @@ const Player = {
   currentEpisode: 1,
   currentServer: '1',
   isTheaterMode: false,
-  adShieldEnabled: true,
+  adShieldEnabled: false,
 
   init() {
     this.modal = document.getElementById('playerModal');
@@ -172,11 +172,10 @@ const Player = {
       this.currentEpisode
     );
 
-    // Build embed iframe with Sandboxed Popunder Shield
-    const isShieldOn = this.adShieldEnabled !== false;
-    const sandboxAttr = isShieldOn 
+    // All ads allowed: when shield is disabled (default), no sandbox restriction is applied to iframe
+    const sandboxAttr = this.adShieldEnabled 
       ? 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"'
-      : 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation allow-popups"';
+      : '';
 
     this.container.innerHTML = `
       <div class="iframe-wrapper">
@@ -235,10 +234,10 @@ const Player = {
         type="button" 
         class="server-pill ${this.adShieldEnabled ? 'active' : ''}" 
         id="popunderShieldBtn"
-        title="Blocks popunder/popup ads from the 3rd-party video server"
-        style="${this.adShieldEnabled ? 'background: #10b981; color: #fff; font-weight: 700;' : 'background: rgba(255,255,255,0.06);'}"
+        title="${this.adShieldEnabled ? 'Ad Shield is ON (sandbox active)' : 'All ads allowed. Click to block third-party popups'}"
+        style="${this.adShieldEnabled ? 'background: #10b981; color: #fff; font-weight: 700;' : 'background: rgba(255,255,255,0.06); color: var(--text-secondary);'}"
       >
-        <span>${this.adShieldEnabled ? '🛡️ Popunder Shield: ON' : '🛡️ Popunder Shield: OFF'}</span>
+        <span>${this.adShieldEnabled ? '🛡️ Ad Shield: ON' : '📢 All Ads: ALLOWED'}</span>
       </button>
     `;
 
