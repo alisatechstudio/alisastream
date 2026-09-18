@@ -6,6 +6,11 @@
 const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/';
 const TMDB_API_BASE = 'https://api.themoviedb.org/3';
 
+// Worldwide MoviesDatabase RapidAPI Configuration
+const RAPIDAPI_BASE = 'https://moviesdatabase.p.rapidapi.com';
+const RAPIDAPI_HOST = 'moviesdatabase.p.rapidapi.com';
+const RAPIDAPI_KEY = '5b6e016880msha73fd6221f9a26ep16124fjsnfe065cf3f02f';
+
 // Curated Public Domain & Open Cinema Streams (100% Guaranteed Direct Video Playback)
 const PUBLIC_CINEMA_MOVIES = [
   {
@@ -241,6 +246,49 @@ const MovieAPI = {
     }
   },
 
+  // --- RAPIDAPI MOVIESDATABASE API ---
+  async requestRapidAPI(endpoint) {
+    try {
+      const response = await fetch(`${RAPIDAPI_BASE}${endpoint}`, {
+        headers: {
+          'x-rapidapi-host': RAPIDAPI_HOST,
+          'x-rapidapi-key': RAPIDAPI_KEY
+        }
+      });
+      if (!response.ok) {
+        throw new Error(`RapidAPI HTTP error ${response.status}`);
+      }
+      return await response.json();
+    } catch (err) {
+      console.warn(`RapidAPI request failed for ${endpoint}:`, err);
+      return null;
+    }
+  },
+
+  // GET https://moviesdatabase.p.rapidapi.com/titles/{id}/main_actors
+  async getRapidAPIMainActors(imdbId) {
+    if (!imdbId) return [];
+    const formattedId = imdbId.startsWith('tt') ? imdbId : `tt${imdbId}`;
+    const data = await this.requestRapidAPI(`/titles/${formattedId}/main_actors`);
+    return data?.results || [];
+  },
+
+  // GET https://moviesdatabase.p.rapidapi.com/titles/{id}/ratings
+  async getRapidAPIRatings(imdbId) {
+    if (!imdbId) return null;
+    const formattedId = imdbId.startsWith('tt') ? imdbId : `tt${imdbId}`;
+    const data = await this.requestRapidAPI(`/titles/${formattedId}/ratings`);
+    return data?.results || null;
+  },
+
+  // GET https://moviesdatabase.p.rapidapi.com/titles/{id}
+  async getRapidAPITitle(imdbId) {
+    if (!imdbId) return null;
+    const formattedId = imdbId.startsWith('tt') ? imdbId : `tt${imdbId}`;
+    const data = await this.requestRapidAPI(`/titles/${formattedId}`);
+    return data?.results || null;
+  },
+
   // --- TRENDING & SPOTLIGHT ---
   async getTrending(timeWindow = 'day') {
     const data = await this.requestTMDB(`/trending/all/${timeWindow}`);
@@ -425,13 +473,43 @@ const MovieAPI = {
         if (trailer) trailerKey = trailer.key;
       }
 
+      const imdbId = data.external_ids?.imdb_id || data.imdb_id;
+      let cast = data.credits?.cast?.slice(0, 10) || [];
+      let imdbRatingData = null;
+
+      // Enrich with RapidAPI MoviesDatabase when IMDb ID is available
+      if (imdbId) {
+        try {
+          const [rapidRatings, rapidActors] = await Promise.all([
+            this.getRapidAPIRatings(imdbId),
+            (!cast || cast.length === 0) ? this.getRapidAPIMainActors(imdbId) : Promise.resolve([])
+          ]);
+
+          if (rapidRatings) {
+            imdbRatingData = rapidRatings;
+          }
+
+          if (rapidActors && rapidActors.length > 0 && (!cast || cast.length === 0)) {
+            cast = rapidActors.map(a => ({
+              id: a._id || a.id,
+              name: a.primaryName?.nameText?.text || a.name || 'Actor',
+              character: 'Cast',
+              profile_path: a.primaryImage?.url || null
+            }));
+          }
+        } catch (err) {
+          console.warn('RapidAPI enrichment error:', err);
+        }
+      }
+
       return {
         ...data,
         media_type: mediaType,
         title: data.title || data.name,
         trailer_key: trailerKey,
-        imdb_id: data.external_ids?.imdb_id || data.imdb_id,
-        cast: data.credits?.cast?.slice(0, 10) || []
+        imdb_id: imdbId,
+        imdb_ratings: imdbRatingData,
+        cast: cast
       };
     }
 

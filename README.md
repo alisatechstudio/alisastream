@@ -160,7 +160,7 @@ Alisa Movies is fully equipped with everything required for **Google AdSense App
 
 ## 📜 Legal & API Attribution
 
-- Movie and TV metadata is powered by community databases: [The Movie Database (TMDB)](https://www.themoviedb.org/) and [TVMaze API](https://www.tvmaze.com/api).
+- Movie and TV metadata is powered by community databases: [The Movie Database (TMDB)](https://www.themoviedb.org/), [MoviesDatabase API on RapidAPI](https://rapidapi.com/SAdrian/api/moviesdatabase), and [TVMaze API](https://www.tvmaze.com/api).
 - Open movies are distributed under Creative Commons licenses by the [Blender Foundation](https://cloud.blender.org/open-projects/) and the [Internet Archive](https://archive.org/).
 - This project is an open-source demonstration designed for personal educational and portfolio use.
 
