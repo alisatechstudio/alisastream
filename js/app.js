@@ -10,13 +10,6 @@ const App = {
   carouselIndex: 0,
   carouselSlides: [],
   searchDebounceTimer: null,
-  dynamicState: {
-    page: 1,
-    isLoading: false,
-    fetchFn: null,
-    hasMore: true,
-    totalLoaded: 0
-  },
 
   async init() {
     this.applyUserPreferences();
@@ -25,7 +18,6 @@ const App = {
     this.setupSearch();
     this.setupFilterChips();
     this.setupRailNavigation();
-    this.setupDynamicPagination();
     this.setupSettingsModal();
     this.setupGlobalShortcuts();
     this.setupCookieConsent();
@@ -278,35 +270,25 @@ const App = {
   // --- HOME CONTENT RAILS ---
   async loadHomeRails() {
     this.refreshHistorySection();
-    this.refreshWatchlistSection();
 
-    // Render public cinema immediately (local fast)
+    // 1. Trending Rail
+    const trending = await window.MovieAPI.getTrending('day');
+    this.renderRail('trendingRail', trending);
+
+    // 2. Popular Movies Rail
+    const movies = await window.MovieAPI.getMovies('popular');
+    this.renderRail('popularMoviesRail', movies);
+
+    // 3. Popular TV Shows Rail
+    const tv = await window.MovieAPI.getTVShows('popular');
+    this.renderRail('popularTVRail', tv);
+
+    // 4. Public Domain / Open Cinema Rail (100% Guaranteed Direct Streaming)
     const publicCinema = window.MovieAPI.getPublicCinema();
     this.renderRail('publicCinemaRail', publicCinema);
 
-    // Concurrently fetch and render each rail progressively
-    const railsToLoad = [
-      { id: 'trendingRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getTrending('day', p)) },
-      { id: 'popularMoviesRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getMovies('popular', p)) },
-      { id: 'topRatedRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getMovies('top_rated', p)) },
-      { id: 'actionRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getByGenre(28, 'movie', p)) },
-      { id: 'scifiRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getByGenre(878, 'movie', p)) },
-      { id: 'popularTVRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getTVShows('popular', p)) },
-      { id: 'animeRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getWorldwide('anime', p)) },
-      { id: 'bollywoodRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getWorldwide('bollywood', p)) },
-      { id: 'kdramaRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getWorldwide('kdrama', p)) },
-      { id: 'horrorRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getByGenre(27, 'movie', p)) },
-      { id: 'comedyRail', fetcher: () => window.MovieAPI.getRailItems(p => window.MovieAPI.getByGenre(35, 'movie', p)) }
-    ];
-
-    railsToLoad.forEach(async ({ id, fetcher }) => {
-      try {
-        const items = await fetcher();
-        this.renderRail(id, items);
-      } catch (e) {
-        console.warn(`Rail ${id} failed to load:`, e);
-      }
-    });
+    // 5. Watchlist Rail
+    this.refreshWatchlistSection();
   },
 
   renderRail(containerId, items) {
@@ -537,37 +519,13 @@ const App = {
     // Switch to dynamic grid view
     switch (tab) {
       case 'movies':
-        this.showDynamicView('FEATURED FILMS', 'Popular Movies', p => window.MovieAPI.getMovies('popular', p));
+        this.showDynamicView('FEATURED FILMS', 'Popular Movies', () => window.MovieAPI.getMovies('popular'));
         break;
       case 'tv':
-        this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', p => window.MovieAPI.getTVShows('popular', p));
+        this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', () => window.MovieAPI.getTVShows('popular'));
         break;
       case 'worldwide':
-        this.showDynamicView('GLOBAL CINEMA', 'Worldwide Blockbusters', p => window.MovieAPI.getWorldwide('all', p));
-        break;
-      case 'top_rated':
-        this.showDynamicView('CRITICS CHOICE', 'Top Rated Masterpieces', p => window.MovieAPI.getMovies('top_rated', p));
-        break;
-      case 'action':
-        this.showDynamicView('ADRENALINE RUSH', 'Action & Adventure Blockbusters', p => window.MovieAPI.getByGenre(28, 'movie', p));
-        break;
-      case 'scifi':
-        this.showDynamicView('FUTURE VISIONS', 'Sci-Fi & Cyberpunk', p => window.MovieAPI.getByGenre(878, 'movie', p));
-        break;
-      case 'anime':
-        this.showDynamicView('JAPANESE ANIMATION', 'Anime & Animation Hits', p => window.MovieAPI.getWorldwide('anime', p));
-        break;
-      case 'bollywood':
-        this.showDynamicView('DESI BLOCKBUSTERS', 'Bollywood & South Asian Cinema', p => window.MovieAPI.getWorldwide('bollywood', p));
-        break;
-      case 'kdrama':
-        this.showDynamicView('HALLYU WAVE', 'K-Drama & Asian Wave', p => window.MovieAPI.getWorldwide('kdrama', p));
-        break;
-      case 'horror':
-        this.showDynamicView('DARK & CHILLING', 'Horror & Thriller Night', p => window.MovieAPI.getByGenre(27, 'movie', p));
-        break;
-      case 'comedy':
-        this.showDynamicView('LAUGH OUT LOUD', 'Comedy & Feel-Good Hits', p => window.MovieAPI.getByGenre(35, 'movie', p));
+        this.showDynamicView('GLOBAL CINEMA', 'Worldwide Blockbusters', () => window.MovieAPI.getWorldwide('all'));
         break;
       case 'public':
         this.showDynamicView('GUARANTEED DIRECT PLAY', 'Public Domain Cinema & Open Movies', () => window.MovieAPI.getPublicCinema());
@@ -576,56 +534,11 @@ const App = {
         this.showWatchlistView();
         break;
       case 'trending':
-        this.showDynamicView('GLOBAL CHARTS', 'Trending Now Worldwide', p => window.MovieAPI.getTrending('day', p));
+        this.showDynamicView('CHARTS', 'Trending Now Worldwide', () => window.MovieAPI.getTrending('day'));
         break;
       default:
         this.hideDynamicView();
     }
-  },
-
-  setupDynamicPagination() {
-    const loadMoreBtn = document.getElementById('dynamicLoadMoreBtn');
-    if (!loadMoreBtn) return;
-
-    loadMoreBtn.addEventListener('click', async () => {
-      if (this.dynamicState.isLoading || !this.dynamicState.hasMore || !this.dynamicState.fetchFn) return;
-
-      this.dynamicState.isLoading = true;
-      const btnText = document.getElementById('loadMoreBtnText');
-      const status = document.getElementById('dynamicLoadMoreStatus');
-      if (btnText) btnText.textContent = 'Loading titles... ⏳';
-
-      this.dynamicState.page++;
-      try {
-        const nextItems = await this.dynamicState.fetchFn(this.dynamicState.page);
-        const grid = document.getElementById('dynamicMediaGrid');
-
-        if (!nextItems || nextItems.length === 0) {
-          this.dynamicState.hasMore = false;
-          if (btnText) btnText.textContent = 'All Titles Loaded ✓';
-          loadMoreBtn.style.opacity = '0.6';
-          loadMoreBtn.style.cursor = 'default';
-          if (status) status.textContent = `Showing all ${this.dynamicState.totalLoaded} available titles.`;
-        } else {
-          // Append cards
-          const newCardsHTML = nextItems.map(item => this.createCardHTML(item)).join('');
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = newCardsHTML;
-          const children = Array.from(tempDiv.children);
-          children.forEach(child => grid.appendChild(child));
-          this.attachCardEventListeners(grid);
-
-          this.dynamicState.totalLoaded += nextItems.length;
-          if (btnText) btnText.textContent = 'Load More Movies 🍿';
-          if (status) status.textContent = `Showing ${this.dynamicState.totalLoaded} titles across ${this.dynamicState.page} pages. Click to load more.`;
-        }
-      } catch (err) {
-        console.error('Failed to load more:', err);
-        if (btnText) btnText.textContent = 'Retry Loading ⚠️';
-      } finally {
-        this.dynamicState.isLoading = false;
-      }
-    });
   },
 
   async showDynamicView(subtitle, title, fetchFn) {
@@ -635,10 +548,6 @@ const App = {
     const subEl = document.getElementById('dynamicViewSubtitle');
     const titleEl = document.getElementById('dynamicViewTitle');
     const grid = document.getElementById('dynamicMediaGrid');
-    const loadMoreWrapper = document.getElementById('dynamicLoadMoreWrapper');
-    const loadMoreBtn = document.getElementById('dynamicLoadMoreBtn');
-    const loadMoreBtnText = document.getElementById('loadMoreBtnText');
-    const loadMoreStatus = document.getElementById('dynamicLoadMoreStatus');
 
     if (!dynamicSection || !railsContainer || !grid) return;
 
@@ -648,53 +557,17 @@ const App = {
     if (subEl) subEl.textContent = subtitle;
     if (titleEl) titleEl.textContent = title;
 
-    // Reset dynamic pagination state
-    this.dynamicState.page = 1;
-    this.dynamicState.isLoading = false;
-    this.dynamicState.hasMore = true;
-    this.dynamicState.fetchFn = fetchFn;
-    this.dynamicState.totalLoaded = 0;
-
-    if (loadMoreWrapper) loadMoreWrapper.style.display = 'none';
-    if (loadMoreBtn) {
-      loadMoreBtn.style.opacity = '1';
-      loadMoreBtn.style.cursor = 'pointer';
-    }
-    if (loadMoreBtnText) loadMoreBtnText.textContent = 'Load More Movies 🍿';
-    if (loadMoreStatus) loadMoreStatus.textContent = '';
-
-    grid.innerHTML = Array.from({ length: 12 }, () => '<div class="skeleton-card"></div>').join('');
+    grid.innerHTML = Array.from({ length: 10 }, () => '<div class="skeleton-card"></div>').join('');
     window.scrollTo({ top: heroSpotlight?.offsetHeight || 300, behavior: 'smooth' });
 
-    // Fetch initial 2 pages (40 items) for rich immediate catalog display
-    try {
-      const [p1, p2] = await Promise.all([
-        fetchFn(1),
-        fetchFn(2).catch(() => [])
-      ]);
-      const initialItems = [...(p1 || []), ...(p2 || [])];
-
-      if (!initialItems || initialItems.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; padding: 3rem 1rem; text-align: center; color: var(--text-muted);">No movies or shows found.</p>`;
-        return;
-      }
-
-      this.dynamicState.page = 2;
-      this.dynamicState.totalLoaded = initialItems.length;
-
-      grid.innerHTML = initialItems.map(item => this.createCardHTML(item)).join('');
-      this.attachCardEventListeners(grid);
-
-      if (loadMoreWrapper && initialItems.length >= 15) {
-        loadMoreWrapper.style.display = 'block';
-        if (loadMoreStatus) {
-          loadMoreStatus.textContent = `Showing ${this.dynamicState.totalLoaded} titles across 2 pages. Click below to load more.`;
-        }
-      }
-    } catch (err) {
-      console.error('Error in showDynamicView:', err);
-      grid.innerHTML = `<p style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted);">Unable to load catalog right now. Please try again.</p>`;
+    const items = await fetchFn();
+    if (!items || items.length === 0) {
+      grid.innerHTML = `<p style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted);">No movies or shows found.</p>`;
+      return;
     }
+
+    grid.innerHTML = items.map(item => this.createCardHTML(item)).join('');
+    this.attachCardEventListeners(grid);
   },
 
   showWatchlistView() {
@@ -729,28 +602,28 @@ const App = {
         }
 
         if (genreId) {
-          this.showDynamicView('GENRE EXPLORATION', `${chip.textContent.trim()} Movies`, p => window.MovieAPI.getByGenre(genreId, 'movie', p));
+          this.showDynamicView('GENRE EXPLORATION', `${chip.textContent.trim()} Movies`, () => window.MovieAPI.getByGenre(genreId, 'movie'));
           return;
         }
 
         switch (filter) {
           case 'trending':
-            this.showDynamicView('GLOBAL CHARTS', 'Trending Worldwide', p => window.MovieAPI.getTrending('day', p));
+            this.showDynamicView('CHARTS', 'Trending Worldwide', () => window.MovieAPI.getTrending('day'));
             break;
           case 'top_rated':
-            this.showDynamicView('HIGHEST RATED', 'Top Rated Masterpieces', p => window.MovieAPI.getMovies('top_rated', p));
+            this.showDynamicView('HIGHEST RATED', 'Top Rated Masterpieces', () => window.MovieAPI.getMovies('top_rated'));
             break;
           case 'hollywood':
-            this.showDynamicView('US CINEMA', 'Hollywood Hits', p => window.MovieAPI.getWorldwide('hollywood', p));
+            this.showDynamicView('US CINEMA', 'Hollywood Hits', () => window.MovieAPI.getWorldwide('hollywood'));
             break;
           case 'bollywood':
-            this.showDynamicView('INDIAN CINEMA', 'Bollywood & South Asian', p => window.MovieAPI.getWorldwide('bollywood', p));
+            this.showDynamicView('INDIAN CINEMA', 'Bollywood & South Asian', () => window.MovieAPI.getWorldwide('bollywood'));
             break;
           case 'anime':
-            this.showDynamicView('JAPANESE ANIMATION', 'Anime Cinema & Series', p => window.MovieAPI.getWorldwide('anime', p));
+            this.showDynamicView('JAPANESE ANIMATION', 'Anime Cinema & Series', () => window.MovieAPI.getWorldwide('anime'));
             break;
           case 'kdrama':
-            this.showDynamicView('KOREAN WAVE', 'K-Drama & Korean Cinema', p => window.MovieAPI.getWorldwide('kdrama', p));
+            this.showDynamicView('KOREAN WAVE', 'K-Drama & Korean Cinema', () => window.MovieAPI.getWorldwide('kdrama'));
             break;
           case 'public':
             this.showDynamicView('GUARANTEED DIRECT STREAM', 'Public Domain Cinema', () => window.MovieAPI.getPublicCinema());
@@ -789,7 +662,7 @@ const App = {
         const query = input.value.trim();
         if (query.length > 0) {
           suggestions.classList.remove('active');
-          this.showDynamicView('SEARCH RESULTS', `Results for "${query}"`, p => window.MovieAPI.searchMulti(query, p));
+          this.showDynamicView('SEARCH RESULTS', `Results for "${query}"`, () => window.MovieAPI.searchMulti(query));
         }
       }
     });

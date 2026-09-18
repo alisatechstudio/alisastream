@@ -17,7 +17,6 @@ const Player = {
   currentEpisode: 1,
   currentServer: '1',
   isTheaterMode: false,
-  adShieldEnabled: false,
 
   init() {
     this.modal = document.getElementById('playerModal');
@@ -172,11 +171,6 @@ const Player = {
       this.currentEpisode
     );
 
-    // All ads allowed: when shield is disabled (default), no sandbox restriction is applied to iframe
-    const sandboxAttr = this.adShieldEnabled 
-      ? 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"'
-      : '';
-
     this.container.innerHTML = `
       <div class="iframe-wrapper">
         <iframe
@@ -184,7 +178,6 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          ${sandboxAttr}
           referrerpolicy="origin"
           id="streamingIframe"
         ></iframe>
@@ -218,7 +211,7 @@ const Player = {
       return;
     }
 
-    const serversHTML = STREAMING_SERVERS.map(srv => `
+    this.serverSelector.innerHTML = STREAMING_SERVERS.map(srv => `
       <button 
         type="button"
         class="server-pill ${this.currentServer === srv.id ? 'active' : ''}" 
@@ -229,31 +222,7 @@ const Player = {
       </button>
     `).join('');
 
-    const shieldHTML = `
-      <button 
-        type="button" 
-        class="server-pill ${this.adShieldEnabled ? 'active' : ''}" 
-        id="popunderShieldBtn"
-        title="${this.adShieldEnabled ? 'Ad Shield is ON (sandbox active)' : 'All ads allowed. Click to block third-party popups'}"
-        style="${this.adShieldEnabled ? 'background: #10b981; color: #fff; font-weight: 700;' : 'background: rgba(255,255,255,0.06); color: var(--text-secondary);'}"
-      >
-        <span>${this.adShieldEnabled ? '🛡️ Ad Shield: ON' : '📢 All Ads: ALLOWED'}</span>
-      </button>
-    `;
-
-    this.serverSelector.innerHTML = serversHTML + shieldHTML;
-
-    // Shield toggle listener
-    const shieldBtn = document.getElementById('popunderShieldBtn');
-    if (shieldBtn) {
-      shieldBtn.addEventListener('click', () => {
-        this.adShieldEnabled = !this.adShieldEnabled;
-        this.renderServerSelector();
-        this.loadStream();
-      });
-    }
-
-    this.serverSelector.querySelectorAll('.server-pill[data-server-id]').forEach(btn => {
+    this.serverSelector.querySelectorAll('.server-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         const srvId = btn.getAttribute('data-server-id');
         if (srvId && srvId !== this.currentServer) {
