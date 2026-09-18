@@ -122,6 +122,9 @@
               <button type="button" class="btn-secondary" id="heroTrailerBtn">
                 <span>🎬 Trailer</span>
               </button>
+              <button type="button" class="btn-secondary" id="heroExploreAllBtn">
+                <span>🌐 Fetch All Movies</span>
+              </button>
             </div>
           </div>
         </div>
@@ -136,6 +139,8 @@
         <button type="button" class="filter-chip active" data-filter="all">🌐 All Worldwide</button>
         <button type="button" class="filter-chip" data-filter="trending">🔥 Trending</button>
         <button type="button" class="filter-chip" data-filter="top_rated">⭐ Top Rated</button>
+        <button type="button" class="filter-chip" data-filter="now_playing">🎬 In Theaters</button>
+        <button type="button" class="filter-chip" data-filter="upcoming">🚀 Upcoming</button>
         <button type="button" class="filter-chip" data-filter="hollywood">🎬 Hollywood</button>
         <button type="button" class="filter-chip" data-filter="bollywood">🇮🇳 Bollywood</button>
         <button type="button" class="filter-chip" data-filter="anime">🎌 Anime</button>
@@ -169,7 +174,7 @@
     <!-- Content Sections Wrapper -->
     <div class="content-wrapper">
 
-      <!-- Dynamic View Container (Used for Search Results, Filter grids, Watchlist page) -->
+      <!-- Dynamic View Container (Used for Search Results, Filter grids, Watchlist page, All Movies Explorer) -->
       <section class="section-block" id="dynamicViewSection" style="display: none;">
         <div class="section-header">
           <div class="section-title-group">
@@ -177,6 +182,76 @@
             <h2 class="section-title" id="dynamicViewTitle">Search Results</h2>
           </div>
           <button type="button" class="section-link-btn" id="closeDynamicViewBtn">✕ Back to Home</button>
+        </div>
+
+        <!-- Catalog Explorer Filter & Sort Controls (Visible on Movies / Explore All) -->
+        <div class="catalog-toolbar" id="catalogToolbar" style="display: none;">
+          <div class="catalog-filters-group">
+            <div class="catalog-filter-item">
+              <label for="catalogCategorySelect" class="filter-label">Collection</label>
+              <select id="catalogCategorySelect" class="catalog-select" aria-label="Select movie category">
+                <option value="all">🌐 All Worldwide Discover</option>
+                <option value="popular">🔥 Popular Movies</option>
+                <option value="top_rated">⭐ Top Rated Masterpieces</option>
+                <option value="now_playing">🎬 In Theaters Now</option>
+                <option value="upcoming">🚀 Upcoming Releases</option>
+                <option value="rapidapi">📚 IMDb MoviesDatabase</option>
+                <option value="public">🎥 Open Cinema (Guaranteed Free)</option>
+              </select>
+            </div>
+
+            <div class="catalog-filter-item">
+              <label for="catalogGenreSelect" class="filter-label">Genre</label>
+              <select id="catalogGenreSelect" class="catalog-select" aria-label="Select genre">
+                <option value="">All Genres</option>
+                <option value="28">Action</option>
+                <option value="12">Adventure</option>
+                <option value="16">Animation</option>
+                <option value="35">Comedy</option>
+                <option value="80">Crime</option>
+                <option value="18">Drama</option>
+                <option value="14">Fantasy</option>
+                <option value="27">Horror</option>
+                <option value="9648">Mystery</option>
+                <option value="10749">Romance</option>
+                <option value="878">Sci-Fi</option>
+                <option value="53">Thriller</option>
+              </select>
+            </div>
+
+            <div class="catalog-filter-item">
+              <label for="catalogSortSelect" class="filter-label">Sort By</label>
+              <select id="catalogSortSelect" class="catalog-select" aria-label="Sort movies by">
+                <option value="popularity.desc">🔥 Most Popular</option>
+                <option value="vote_average.desc">⭐ Highest Rated</option>
+                <option value="primary_release_date.desc">📅 Release: New to Old</option>
+                <option value="primary_release_date.asc">🏛️ Release: Old to New</option>
+              </select>
+            </div>
+
+            <div class="catalog-filter-item">
+              <label for="catalogYearSelect" class="filter-label">Year</label>
+              <select id="catalogYearSelect" class="catalog-select" aria-label="Filter by release year">
+                <option value="">All Years</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2015">2015</option>
+                <option value="2010">2010</option>
+                <option value="2000">2000</option>
+                <option value="1990">1990s</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="catalog-meta-info">
+            <span class="catalog-count-pill" id="catalogCountPill">Showing 20 Movies</span>
+          </div>
         </div>
 
         <!-- Google AdSense In-Article Unit -->
@@ -196,6 +271,17 @@
         </div>
 
         <div class="media-grid" id="dynamicMediaGrid"></div>
+
+        <!-- Pagination & Infinite Batch Loading Controls -->
+        <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+          <button type="button" class="btn-load-more" id="loadMoreMoviesBtn" aria-label="Fetch next page of movies">
+            <span class="load-more-text">⬇ Fetch More Movies (+20)</span>
+            <span class="load-more-spinner" style="display: none;">⏳ Fetching Movies...</span>
+          </button>
+          <button type="button" class="btn-load-batch" id="loadBatchMoviesBtn" aria-label="Fetch next batch of 40 movies">
+            <span>⚡ Fetch Double Batch (+40)</span>
+          </button>
+        </div>
       </section>
 
       <!-- Standard Home Rails Container -->
@@ -239,12 +325,34 @@
           </div>
         </section>
 
+        <!-- Now Playing in Theaters Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">CINEMA RELEASES</span>
+              <h2 class="section-title">Now Playing in Theaters</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="now_playing">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="nowPlayingRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="nowPlayingRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="nowPlayingRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
         <!-- Popular Blockbuster Movies Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
               <span class="section-subtitle">FEATURED FILMS</span>
-              <h2 class="section-title">Popular Movies</h2>
+              <h2 class="section-title">Popular Movies Worldwide</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="movies">See All ▶</button>
           </div>
@@ -260,6 +368,51 @@
             <button type="button" class="rail-nav-btn next" data-target="popularMoviesRail" aria-label="Next">▶</button>
           </div>
         </section>
+
+        <!-- Top Rated Masterpieces Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">ALL-TIME CRITICS PICKS</span>
+              <h2 class="section-title">Top Rated Masterpieces</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="top_rated">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="topRatedRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="topRatedRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="topRatedRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
+        <!-- Upcoming Releases Rail -->
+        <section class="section-block">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-subtitle">COMING SOON</span>
+              <h2 class="section-title">Upcoming Blockbusters</h2>
+            </div>
+            <button type="button" class="section-link-btn" data-see-all="upcoming">See All ▶</button>
+          </div>
+          <div class="rail-container">
+            <button type="button" class="rail-nav-btn prev" data-target="upcomingRail" aria-label="Previous">◀</button>
+            <div class="rail-scroll" id="upcomingRail">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+            <button type="button" class="rail-nav-btn next" data-target="upcomingRail" aria-label="Next">▶</button>
+          </div>
+        </section>
+
 
         <!-- Google AdSense In-Feed Native Ad Unit -->
         <div class="ad-slot-wrapper" style="margin: 1.5rem auto 2.5rem auto;" aria-label="Sponsored In-Feed Content">

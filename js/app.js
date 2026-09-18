@@ -11,6 +11,19 @@ const App = {
   carouselSlides: [],
   searchDebounceTimer: null,
 
+  // All Movies Catalog Explorer & Pagination State
+  catalogState: {
+    active: false,
+    category: 'all',
+    genre: '',
+    sortBy: 'popularity.desc',
+    year: '',
+    page: 1,
+    items: [],
+    isLoading: false,
+    hasMore: true
+  },
+
   async init() {
     this.applyUserPreferences();
     this.setupModalFallbacks();
@@ -18,6 +31,8 @@ const App = {
     this.setupSearch();
     this.setupFilterChips();
     this.setupRailNavigation();
+    this.setupCatalogExplorerControls();
+    this.setupLoadMoreControls();
     this.setupSettingsModal();
     this.setupGlobalShortcuts();
     this.setupCookieConsent();
@@ -25,6 +40,14 @@ const App = {
     // Initialize Player module
     if (window.Player) {
       window.Player.init();
+    }
+
+    // Hero Explore All Movies button
+    const heroExploreBtn = document.getElementById('heroExploreAllBtn');
+    if (heroExploreBtn) {
+      heroExploreBtn.addEventListener('click', () => {
+        this.switchTab('movies');
+      });
     }
 
     // Load Initial Data
@@ -271,23 +294,41 @@ const App = {
   async loadHomeRails() {
     this.refreshHistorySection();
 
-    // 1. Trending Rail
-    const trending = await window.MovieAPI.getTrending('day');
-    this.renderRail('trendingRail', trending);
+    // 1. Trending Worldwide (Batch 40 titles)
+    window.MovieAPI.getTrending('day')
+      .then(items => this.renderRail('trendingRail', items))
+      .catch(e => console.warn('Trending rail error:', e));
 
-    // 2. Popular Movies Rail
-    const movies = await window.MovieAPI.getMovies('popular');
-    this.renderRail('popularMoviesRail', movies);
+    // 2. Now Playing in Theaters (Batch 40 titles)
+    window.MovieAPI.getBatchMovies('now_playing', 2)
+      .then(items => this.renderRail('nowPlayingRail', items))
+      .catch(e => console.warn('Now playing rail error:', e));
 
-    // 3. Popular TV Shows Rail
-    const tv = await window.MovieAPI.getTVShows('popular');
-    this.renderRail('popularTVRail', tv);
+    // 3. Popular Movies Worldwide (Batch 40 titles)
+    window.MovieAPI.getBatchMovies('popular', 2)
+      .then(items => this.renderRail('popularMoviesRail', items))
+      .catch(e => console.warn('Popular movies rail error:', e));
 
-    // 4. Public Domain / Open Cinema Rail (100% Guaranteed Direct Streaming)
+    // 4. Top Rated Masterpieces (Batch 40 titles)
+    window.MovieAPI.getBatchMovies('top_rated', 2)
+      .then(items => this.renderRail('topRatedRail', items))
+      .catch(e => console.warn('Top rated rail error:', e));
+
+    // 5. Upcoming Blockbusters (Batch 40 titles)
+    window.MovieAPI.getBatchMovies('upcoming', 2)
+      .then(items => this.renderRail('upcomingRail', items))
+      .catch(e => console.warn('Upcoming rail error:', e));
+
+    // 6. Popular TV Series (Batch 40 titles)
+    window.MovieAPI.getBatchTV('popular', 2)
+      .then(items => this.renderRail('popularTVRail', items))
+      .catch(e => console.warn('TV rail error:', e));
+
+    // 7. Public Cinema & Open Movies (100% Guaranteed Direct Streaming)
     const publicCinema = window.MovieAPI.getPublicCinema();
     this.renderRail('publicCinemaRail', publicCinema);
 
-    // 5. Watchlist Rail
+    // 8. Watchlist Rail
     this.refreshWatchlistSection();
   },
 
@@ -496,6 +537,181 @@ const App = {
     }
   },
 
+  // --- CATALOG EXPLORER & FILTER CONTROLS ---
+  setupCatalogExplorerControls() {
+    const catSelect = document.getElementById('catalogCategorySelect');
+    const genreSelect = document.getElementById('catalogGenreSelect');
+    const sortSelect = document.getElementById('catalogSortSelect');
+    const yearSelect = document.getElementById('catalogYearSelect');
+
+    const handleFilterChange = () => {
+      if (!this.catalogState.active) return;
+      this.catalogState.category = catSelect ? catSelect.value : 'all';
+      this.catalogState.genre = genreSelect ? genreSelect.value : '';
+      this.catalogState.sortBy = sortSelect ? sortSelect.value : 'popularity.desc';
+      this.catalogState.year = yearSelect ? yearSelect.value : '';
+      this.catalogState.page = 1;
+      this.catalogState.items = [];
+      this.catalogState.hasMore = true;
+      this.fetchAndRenderCatalogPage(false);
+    };
+
+    if (catSelect) catSelect.addEventListener('change', handleFilterChange);
+    if (genreSelect) genreSelect.addEventListener('change', handleFilterChange);
+    if (sortSelect) sortSelect.addEventListener('change', handleFilterChange);
+    if (yearSelect) yearSelect.addEventListener('change', handleFilterChange);
+  },
+
+  // --- PAGINATION & LOAD MORE BUTTONS ---
+  setupLoadMoreControls() {
+    const loadMoreBtn = document.getElementById('loadMoreMoviesBtn');
+    const loadBatchBtn = document.getElementById('loadBatchMoviesBtn');
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        this.fetchNextCatalogPages(1);
+      });
+    }
+
+    if (loadBatchBtn) {
+      loadBatchBtn.addEventListener('click', () => {
+        this.fetchNextCatalogPages(2);
+      });
+    }
+  },
+
+  // Open Full Movie Catalog Explorer
+  async openMovieCatalog(options = {}) {
+    this.catalogState.active = true;
+    this.catalogState.category = options.category || 'all';
+    this.catalogState.genre = options.genre || '';
+    this.catalogState.sortBy = options.sortBy || 'popularity.desc';
+    this.catalogState.year = options.year || '';
+    this.catalogState.page = 1;
+    this.catalogState.items = [];
+    this.catalogState.hasMore = true;
+
+    // Update select dropdowns to match
+    const catSelect = document.getElementById('catalogCategorySelect');
+    const genreSelect = document.getElementById('catalogGenreSelect');
+    const sortSelect = document.getElementById('catalogSortSelect');
+    const yearSelect = document.getElementById('catalogYearSelect');
+    const toolbar = document.getElementById('catalogToolbar');
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+
+    if (catSelect) catSelect.value = this.catalogState.category;
+    if (genreSelect) genreSelect.value = this.catalogState.genre;
+    if (sortSelect) sortSelect.value = this.catalogState.sortBy;
+    if (yearSelect) yearSelect.value = this.catalogState.year;
+
+    if (toolbar) toolbar.style.display = 'flex';
+    if (loadMoreContainer) loadMoreContainer.style.display = 'flex';
+
+    // Show dynamic section and hide home rails
+    const dynamicSection = document.getElementById('dynamicViewSection');
+    const railsContainer = document.getElementById('homeRailsContainer');
+    const heroSpotlight = document.getElementById('heroSpotlight');
+    const subEl = document.getElementById('dynamicViewSubtitle');
+    const titleEl = document.getElementById('dynamicViewTitle');
+
+    if (railsContainer) railsContainer.style.display = 'none';
+    if (dynamicSection) dynamicSection.style.display = 'block';
+
+    if (subEl) subEl.textContent = 'WORLDWIDE CINEMA EXPLORER';
+    if (titleEl) {
+      const titlesMap = {
+        all: 'All Worldwide Movies',
+        popular: 'Popular Movies Worldwide',
+        top_rated: 'Top Rated Masterpieces',
+        now_playing: 'Now Playing in Theaters',
+        upcoming: 'Upcoming Blockbusters',
+        rapidapi: 'IMDb MoviesDatabase Catalog',
+        public: 'Open Cinema Guaranteed Streams'
+      };
+      titleEl.textContent = titlesMap[this.catalogState.category] || 'Worldwide Movie Catalog';
+    }
+
+    window.scrollTo({ top: heroSpotlight?.offsetHeight || 300, behavior: 'smooth' });
+
+    await this.fetchAndRenderCatalogPage(false);
+  },
+
+  async fetchAndRenderCatalogPage(append = false) {
+    const grid = document.getElementById('dynamicMediaGrid');
+    const countPill = document.getElementById('catalogCountPill');
+    const loadMoreBtn = document.getElementById('loadMoreMoviesBtn');
+    if (!grid) return;
+
+    if (!append) {
+      grid.innerHTML = Array.from({ length: 12 }, () => '<div class="skeleton-card"></div>').join('');
+    }
+
+    this.catalogState.isLoading = true;
+
+    try {
+      const newItems = await window.MovieAPI.getAllMovies({
+        page: this.catalogState.page,
+        sortBy: this.catalogState.sortBy,
+        genre: this.catalogState.genre || null,
+        year: this.catalogState.year || null,
+        category: this.catalogState.category === 'all' ? null : this.catalogState.category
+      });
+
+      if (!newItems || newItems.length === 0) {
+        if (!append) {
+          grid.innerHTML = `<p style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted);">No movies match your filter criteria.</p>`;
+        }
+        this.catalogState.hasMore = false;
+        if (loadMoreBtn) loadMoreBtn.disabled = true;
+        return;
+      }
+
+      if (append) {
+        this.catalogState.items = [...this.catalogState.items, ...newItems];
+        const newHtml = newItems.map(item => this.createCardHTML(item)).join('');
+        grid.insertAdjacentHTML('beforeend', newHtml);
+      } else {
+        this.catalogState.items = newItems;
+        grid.innerHTML = newItems.map(item => this.createCardHTML(item)).join('');
+      }
+
+      this.attachCardEventListeners(grid);
+
+      if (countPill) {
+        countPill.textContent = `Showing ${this.catalogState.items.length} Movies • Page ${this.catalogState.page}`;
+      }
+
+      if (loadMoreBtn) {
+        loadMoreBtn.disabled = false;
+      }
+    } catch (err) {
+      console.warn('Error fetching catalog page:', err);
+    } finally {
+      this.catalogState.isLoading = false;
+    }
+  },
+
+  async fetchNextCatalogPages(pagesCount = 1) {
+    if (this.catalogState.isLoading || !this.catalogState.hasMore) return;
+
+    const loadMoreBtn = document.getElementById('loadMoreMoviesBtn');
+    const textSpan = loadMoreBtn?.querySelector('.load-more-text');
+    const spinnerSpan = loadMoreBtn?.querySelector('.load-more-spinner');
+
+    if (textSpan) textSpan.style.display = 'none';
+    if (spinnerSpan) spinnerSpan.style.display = 'inline';
+    if (loadMoreBtn) loadMoreBtn.disabled = true;
+
+    for (let p = 0; p < pagesCount; p++) {
+      this.catalogState.page += 1;
+      await this.fetchAndRenderCatalogPage(true);
+    }
+
+    if (textSpan) textSpan.style.display = 'inline';
+    if (spinnerSpan) spinnerSpan.style.display = 'none';
+    if (loadMoreBtn) loadMoreBtn.disabled = false;
+  },
+
   switchTab(tab) {
     this.currentTab = tab;
 
@@ -519,16 +735,28 @@ const App = {
     // Switch to dynamic grid view
     switch (tab) {
       case 'movies':
-        this.showDynamicView('FEATURED FILMS', 'Popular Movies', () => window.MovieAPI.getMovies('popular'));
+        this.openMovieCatalog({ category: 'all' });
+        break;
+      case 'now_playing':
+        this.openMovieCatalog({ category: 'now_playing' });
+        break;
+      case 'top_rated':
+        this.openMovieCatalog({ category: 'top_rated' });
+        break;
+      case 'upcoming':
+        this.openMovieCatalog({ category: 'upcoming' });
+        break;
+      case 'rapidapi':
+        this.openMovieCatalog({ category: 'rapidapi' });
         break;
       case 'tv':
-        this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', () => window.MovieAPI.getTVShows('popular'));
+        this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', () => window.MovieAPI.getBatchTV('popular', 2));
         break;
       case 'worldwide':
         this.showDynamicView('GLOBAL CINEMA', 'Worldwide Blockbusters', () => window.MovieAPI.getWorldwide('all'));
         break;
       case 'public':
-        this.showDynamicView('GUARANTEED DIRECT PLAY', 'Public Domain Cinema & Open Movies', () => window.MovieAPI.getPublicCinema());
+        this.openMovieCatalog({ category: 'public' });
         break;
       case 'watchlist':
         this.showWatchlistView();
@@ -542,6 +770,12 @@ const App = {
   },
 
   async showDynamicView(subtitle, title, fetchFn) {
+    this.catalogState.active = false;
+    const toolbar = document.getElementById('catalogToolbar');
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+    if (toolbar) toolbar.style.display = 'none';
+    if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+
     const dynamicSection = document.getElementById('dynamicViewSection');
     const railsContainer = document.getElementById('homeRailsContainer');
     const heroSpotlight = document.getElementById('heroSpotlight');
@@ -557,7 +791,7 @@ const App = {
     if (subEl) subEl.textContent = subtitle;
     if (titleEl) titleEl.textContent = title;
 
-    grid.innerHTML = Array.from({ length: 10 }, () => '<div class="skeleton-card"></div>').join('');
+    grid.innerHTML = Array.from({ length: 12 }, () => '<div class="skeleton-card"></div>').join('');
     window.scrollTo({ top: heroSpotlight?.offsetHeight || 300, behavior: 'smooth' });
 
     const items = await fetchFn();
@@ -577,8 +811,14 @@ const App = {
   },
 
   hideDynamicView() {
+    this.catalogState.active = false;
     const dynamicSection = document.getElementById('dynamicViewSection');
     const railsContainer = document.getElementById('homeRailsContainer');
+    const toolbar = document.getElementById('catalogToolbar');
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+
+    if (toolbar) toolbar.style.display = 'none';
+    if (loadMoreContainer) loadMoreContainer.style.display = 'none';
     if (dynamicSection) dynamicSection.style.display = 'none';
     if (railsContainer) railsContainer.style.display = 'block';
   },
@@ -601,8 +841,18 @@ const App = {
           return;
         }
 
+        if (filter === 'now_playing') {
+          this.openMovieCatalog({ category: 'now_playing' });
+          return;
+        }
+
+        if (filter === 'upcoming') {
+          this.openMovieCatalog({ category: 'upcoming' });
+          return;
+        }
+
         if (genreId) {
-          this.showDynamicView('GENRE EXPLORATION', `${chip.textContent.trim()} Movies`, () => window.MovieAPI.getByGenre(genreId, 'movie'));
+          this.openMovieCatalog({ genre: genreId });
           return;
         }
 
@@ -611,7 +861,7 @@ const App = {
             this.showDynamicView('CHARTS', 'Trending Worldwide', () => window.MovieAPI.getTrending('day'));
             break;
           case 'top_rated':
-            this.showDynamicView('HIGHEST RATED', 'Top Rated Masterpieces', () => window.MovieAPI.getMovies('top_rated'));
+            this.openMovieCatalog({ category: 'top_rated' });
             break;
           case 'hollywood':
             this.showDynamicView('US CINEMA', 'Hollywood Hits', () => window.MovieAPI.getWorldwide('hollywood'));
@@ -626,7 +876,7 @@ const App = {
             this.showDynamicView('KOREAN WAVE', 'K-Drama & Korean Cinema', () => window.MovieAPI.getWorldwide('kdrama'));
             break;
           case 'public':
-            this.showDynamicView('GUARANTEED DIRECT STREAM', 'Public Domain Cinema', () => window.MovieAPI.getPublicCinema());
+            this.openMovieCatalog({ category: 'public' });
             break;
         }
       });

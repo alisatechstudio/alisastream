@@ -307,6 +307,98 @@ const MovieAPI = {
     return FALLBACK_CATALOG.filter(m => m.media_type === 'movie');
   },
 
+  // Fetch all movies with dynamic filters (pagination, genre, year, sort)
+  async getAllMovies(options = {}) {
+    const {
+      page = 1,
+      sortBy = 'popularity.desc',
+      genre = null,
+      year = null,
+      category = null
+    } = options;
+
+    // Direct category requests
+    if (category && ['popular', 'top_rated', 'now_playing', 'upcoming'].includes(category)) {
+      return this.getMovies(category, page);
+    }
+
+    // RapidAPI MoviesDatabase titles list request
+    if (category === 'rapidapi') {
+      return this.getRapidAPITitlesList(page, 20);
+    }
+
+    // Dynamic discovery with TMDB
+    let params = {
+      page,
+      sort_by: sortBy,
+      include_adult: false
+    };
+
+    if (genre) params.with_genres = genre;
+    if (year) params.primary_release_year = year;
+
+    const data = await this.requestTMDB('/discover/movie', params);
+    if (data && data.results && data.results.length > 0) {
+      return data.results.map(m => ({ ...m, media_type: 'movie' }));
+    }
+
+    return this.getMovies('popular', page);
+  },
+
+  // Batch fetch multiple pages in parallel to return 40+ movies at once
+  async getBatchMovies(category = 'popular', pages = 2) {
+    try {
+      const pagePromises = [];
+      for (let p = 1; p <= pages; p++) {
+        pagePromises.push(this.getMovies(category, p));
+      }
+      const results = await Promise.all(pagePromises);
+      return results.flat();
+    } catch (e) {
+      console.warn('Batch movies fetch error:', e);
+      return this.getMovies(category, 1);
+    }
+  },
+
+  // Batch fetch multiple pages for TV Series
+  async getBatchTV(category = 'popular', pages = 2) {
+    try {
+      const pagePromises = [];
+      for (let p = 1; p <= pages; p++) {
+        pagePromises.push(this.getTVShows(category, p));
+      }
+      const results = await Promise.all(pagePromises);
+      return results.flat();
+    } catch (e) {
+      console.warn('Batch TV fetch error:', e);
+      return this.getTVShows(category, 1);
+    }
+  },
+
+  // RapidAPI titles list
+  async getRapidAPITitlesList(page = 1, limit = 20) {
+    try {
+      const data = await this.requestRapidAPI(`/titles?page=${page}&limit=${limit}`);
+      if (data && data.results) {
+        return data.results
+          .filter(i => i.primaryImage?.url)
+          .map(i => ({
+            id: i.id,
+            title: i.titleText?.text || 'Untitled',
+            poster_path: i.primaryImage?.url,
+            backdrop_path: i.primaryImage?.url,
+            release_date: i.releaseYear?.year ? `${i.releaseYear.year}-01-01` : '',
+            vote_average: 7.9,
+            media_type: 'movie',
+            overview: `${i.titleText?.text || 'Title'} (${i.releaseYear?.year || 'Classic'}) from the worldwide IMDb database.`
+          }));
+      }
+    } catch (e) {
+      console.warn('RapidAPI titles list fetch failed:', e);
+    }
+    return [];
+  },
+
   async getTVShows(category = 'popular', page = 1) {
     const data = await this.requestTMDB(`/tv/${category}`, { page });
     if (data && data.results) {
