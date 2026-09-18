@@ -1,27 +1,14 @@
 /**
- * Alisa Movies - Multi-Server Streaming Video Player (Ad-Free Edition)
- * Verified clean servers: Videasy, RiveStream, VidLink, and Official 4K Cinema
- * Fully compliant with Google AdSense policy: ZERO 3rd-party popup/popunder ads
+ * Alisa Movies - Multi-Server Streaming Video Player
+ * Supports VidLink, AutoEmbed, VidSrc, SuperEmbed, and Custom HTML5 Player
  */
 
-// Strict Global Protection: Block any 3rd-party script from calling window.open when player is active
-(function installAntiPopupShield() {
-  const originalOpen = window.open;
-  window.open = function(url, target, features) {
-    const isPlayerOpen = document.getElementById('playerModal')?.open;
-    if (isPlayerOpen) {
-      console.warn('[AdShield] Blocked 3rd-party popup/redirect attempt:', url);
-      return null;
-    }
-    return originalOpen.apply(this, arguments);
-  };
-})();
-
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (RiveStream Fast)', icon: '⚡', badge: '100% Clean' },
-  { id: '2', name: 'Server 2 (VidSrc Cloud)', icon: '🌐', badge: 'Ultra HD' },
-  { id: '3', name: 'Server 3 (SmashyStream HD)', icon: '🚀', badge: 'Multi-Sub' },
-  { id: '4', name: 'Server 4 (Official 4K Cinema)', icon: '🎬', badge: 'Verified' }
+  { id: '1', name: 'Server 1 (VidLink HD)', icon: '⚡' },
+  { id: '2', name: 'Server 2 (AutoEmbed Fast)', icon: '🚀' },
+  { id: '3', name: 'Server 3 (VidSrc Multi)', icon: '🌐' },
+  { id: '4', name: 'Server 4 (SuperEmbed Global)', icon: '✨' },
+  { id: '5', name: 'Server 5 (Embed.su Mirror)', icon: '🛡️' }
 ];
 
 const Player = {
@@ -89,31 +76,31 @@ const Player = {
   getServerUrl(server, media, season = 1, episode = 1) {
     const isTV = media.media_type === 'tv' || media.first_air_date;
     const id = media.id;
+    const imdb = media.imdb_id || '';
 
     switch (server) {
-      case '1': // RiveStream (Open-source, clean, no sandbox checks)
+      case '1': // VidLink HD
         return isTV
-          ? `https://rivestream.live/embed?type=tv&id=${id}&season=${season}&episode=${episode}`
-          : `https://rivestream.live/embed?type=movie&id=${id}`;
-
-      case '2': // VidSrc Cloud (High-speed streaming mirror)
+          ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe&autoplay=false`
+          : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe&autoplay=false`;
+      case '2': // AutoEmbed
         return isTV
-          ? `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`
-          : `https://vidsrc.me/embed/movie?tmdb=${id}`;
-
-      case '3': // SmashyStream (Multi-language subtitle mirror)
+          ? `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}`
+          : `https://player.autoembed.cc/embed/movie/${id}`;
+      case '3': // VidSrc
         return isTV
-          ? `https://embed.smashystream.com/playere.php?tmdb=${id}&season=${season}&episode=${episode}`
-          : `https://embed.smashystream.com/playere.php?tmdb=${id}`;
-
-      case '4': // Official 4K Cinema / Trailer (Google / YouTube infrastructure)
-        if (media.trailer_key) {
-          return `https://www.youtube-nocookie.com/embed/${media.trailer_key}?autoplay=1&rel=0&modestbranding=1`;
-        }
-        return `https://rivestream.live/embed?type=movie&id=${id}`;
-
+          ? `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+          : `https://vidsrc.to/embed/movie/${id}`;
+      case '4': // SuperEmbed
+        return isTV
+          ? `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`
+          : `https://multiembed.mov/?video_id=${id}&tmdb=1`;
+      case '5': // Embed.su
+        return isTV
+          ? `https://embed.su/embed/tv/${id}/${season}/${episode}`
+          : `https://embed.su/embed/movie/${id}`;
       default:
-        return `https://rivestream.live/embed?type=movie&id=${id}`;
+        return `https://vidlink.pro/movie/${id}`;
     }
   },
 
@@ -185,8 +172,12 @@ const Player = {
       this.currentEpisode
     );
 
-    // Clean Ad-Free Stream Embed
-    // No sandbox attribute so clean providers (Videasy, RiveStream) function without false sandbox detection
+    // Build embed iframe with Sandboxed Popunder Shield
+    const isShieldOn = this.adShieldEnabled !== false;
+    const sandboxAttr = isShieldOn 
+      ? 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"'
+      : 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation allow-popups"';
+
     this.container.innerHTML = `
       <div class="iframe-wrapper">
         <iframe
@@ -194,8 +185,8 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          referrerpolicy="no-referrer"
-          loading="lazy"
+          ${sandboxAttr}
+          referrerpolicy="origin"
           id="streamingIframe"
         ></iframe>
       </div>
@@ -210,7 +201,7 @@ const Player = {
           Your browser does not support the video tag.
         </video>
         <div class="direct-stream-badge">
-          <span>✨ 100% Ad-Free Direct Stream (Open Cinema)</span>
+          <span>✨ 100% Direct Stream (Public Cinema)</span>
         </div>
       </div>
     `;
@@ -221,8 +212,8 @@ const Player = {
 
     if (this.currentMedia?.stream_url) {
       this.serverSelector.innerHTML = `
-        <div class="server-pill active" style="background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #34d399; font-weight: 600;">
-          <span>🎥 100% Ad-Free Direct Stream</span>
+        <div class="server-pill active">
+          <span>🎥 Direct High-Definition Stream</span>
         </div>
       `;
       return;
@@ -240,17 +231,28 @@ const Player = {
     `).join('');
 
     const shieldHTML = `
-      <div 
-        class="server-pill active" 
-        id="popunderShieldBadge"
-        title="Only your authorized Google AdSense ads are shown. All third-party popunder/popup ads are strictly blocked."
-        style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; font-weight: 600; cursor: default;"
+      <button 
+        type="button" 
+        class="server-pill ${this.adShieldEnabled ? 'active' : ''}" 
+        id="popunderShieldBtn"
+        title="Blocks popunder/popup ads from the 3rd-party video server"
+        style="${this.adShieldEnabled ? 'background: #10b981; color: #fff; font-weight: 700;' : 'background: rgba(255,255,255,0.06);'}"
       >
-        <span>🛡️ Ad-Free Protection: Active</span>
-      </div>
+        <span>${this.adShieldEnabled ? '🛡️ Popunder Shield: ON' : '🛡️ Popunder Shield: OFF'}</span>
+      </button>
     `;
 
     this.serverSelector.innerHTML = serversHTML + shieldHTML;
+
+    // Shield toggle listener
+    const shieldBtn = document.getElementById('popunderShieldBtn');
+    if (shieldBtn) {
+      shieldBtn.addEventListener('click', () => {
+        this.adShieldEnabled = !this.adShieldEnabled;
+        this.renderServerSelector();
+        this.loadStream();
+      });
+    }
 
     this.serverSelector.querySelectorAll('.server-pill[data-server-id]').forEach(btn => {
       btn.addEventListener('click', () => {
