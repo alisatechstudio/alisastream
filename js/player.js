@@ -4,11 +4,10 @@
  */
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (VidLink HD)', icon: '⚡' },
+  { id: '1', name: 'Server 1 (VidLink Clean HD)', icon: '⚡' },
   { id: '2', name: 'Server 2 (AutoEmbed Fast)', icon: '🚀' },
-  { id: '3', name: 'Server 3 (VidSrc Multi)', icon: '🌐' },
-  { id: '4', name: 'Server 4 (SuperEmbed Global)', icon: '✨' },
-  { id: '5', name: 'Server 5 (Embed.su Mirror)', icon: '🛡️' }
+  { id: '3', name: 'Server 3 (VidSrc CC Ad-Free)', icon: '🛡️' },
+  { id: '4', name: 'Server 4 (Embed.su Clean)', icon: '✨' }
 ];
 
 const Player = {
@@ -78,28 +77,24 @@ const Player = {
     const imdb = media.imdb_id || '';
 
     switch (server) {
-      case '1': // VidLink HD
+      case '1': // VidLink Clean HD (Zero Popups)
         return isTV
           ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe&autoplay=false`
           : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe&autoplay=false`;
-      case '2': // AutoEmbed
+      case '2': // AutoEmbed Fast Clean
         return isTV
           ? `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}`
           : `https://player.autoembed.cc/embed/movie/${id}`;
-      case '3': // VidSrc
+      case '3': // VidSrc CC Ad-Free
         return isTV
-          ? `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
-          : `https://vidsrc.to/embed/movie/${id}`;
-      case '4': // SuperEmbed
-        return isTV
-          ? `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`
-          : `https://multiembed.mov/?video_id=${id}&tmdb=1`;
-      case '5': // Embed.su
+          ? `https://vidsrc.cc/v2/embed/tv/${id}/${season}/${episode}`
+          : `https://vidsrc.cc/v2/embed/movie/${id}`;
+      case '4': // Embed.su Clean
         return isTV
           ? `https://embed.su/embed/tv/${id}/${season}/${episode}`
           : `https://embed.su/embed/movie/${id}`;
       default:
-        return `https://vidlink.pro/movie/${id}`;
+        return `https://vidlink.pro/movie/${id}?primaryColor=00f2fe&autoplay=false`;
     }
   },
 
@@ -178,9 +173,13 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
+          sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
           referrerpolicy="origin"
           id="streamingIframe"
         ></iframe>
+        <div class="direct-stream-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border-color: #10b981;">
+          <span>🛡️ Ad-Free Protected Stream</span>
+        </div>
       </div>
     `;
   },
