@@ -185,11 +185,8 @@ const Player = {
       this.currentEpisode
     );
 
-    // Unbreakable Strict HTML5 Ad-Free Sandbox:
-    // Notice: NO allow-popups, NO allow-top-navigation, NO allow-modals
-    // This physically prevents third-party popunder/popup ads from ever appearing.
-    const sandboxAttr = 'sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"';
-
+    // Clean Ad-Free Stream Embed
+    // No sandbox attribute so clean providers (Videasy, RiveStream) function without false sandbox detection
     this.container.innerHTML = `
       <div class="iframe-wrapper">
         <iframe
@@ -197,7 +194,6 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          ${sandboxAttr}
           referrerpolicy="no-referrer"
           loading="lazy"
           id="streamingIframe"
