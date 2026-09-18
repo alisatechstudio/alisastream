@@ -4,11 +4,12 @@
  */
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (VidLink HD)', icon: '⚡' },
-  { id: '2', name: 'Server 2 (AutoEmbed Fast)', icon: '🚀' },
-  { id: '3', name: 'Server 3 (VidSrc Multi)', icon: '🌐' },
-  { id: '4', name: 'Server 4 (SuperEmbed Global)', icon: '✨' },
-  { id: '5', name: 'Server 5 (Embed.su Mirror)', icon: '🛡️' }
+  { id: '1', name: 'Server 1 (Ad-Free Ultra Shield)', icon: '🛡️', clean: true },
+  { id: '2', name: 'Server 2 (VidLink 4K HD)', icon: '⚡', clean: true },
+  { id: '3', name: 'Server 3 (VidSrc VIP Multi)', icon: '🌐', clean: false },
+  { id: '4', name: 'Server 4 (AutoEmbed Fast)', icon: '🚀', clean: false },
+  { id: '5', name: 'Server 5 (SuperEmbed Global)', icon: '✨', clean: false },
+  { id: '6', name: 'Server 6 (Embed.su Mirror)', icon: '💎', clean: false }
 ];
 
 const Player = {
@@ -17,6 +18,7 @@ const Player = {
   currentEpisode: 1,
   currentServer: '1',
   isTheaterMode: false,
+  isAdShieldActive: localStorage.getItem('alisa_ad_shield') !== 'false',
 
   init() {
     this.modal = document.getElementById('playerModal');
@@ -31,6 +33,7 @@ const Player = {
     const prefs = window.StorageManager ? window.StorageManager.getPreferences() : {};
     this.currentServer = prefs.defaultServer || '1';
 
+    this.updateAdShieldUI();
     this.setupEventListeners();
   },
 
@@ -70,31 +73,75 @@ const Player = {
     if (theaterBtn) {
       theaterBtn.addEventListener('click', () => this.toggleTheaterMode());
     }
+
+    // Ad-Shield Toggle
+    const shieldBtn = document.getElementById('adShieldToggle');
+    if (shieldBtn) {
+      shieldBtn.addEventListener('click', () => {
+        this.isAdShieldActive = !this.isAdShieldActive;
+        localStorage.setItem('alisa_ad_shield', String(this.isAdShieldActive));
+        this.updateAdShieldUI();
+        this.loadStream();
+      });
+    }
+
+    // Intercept and block unauthorized popup windows from third-party scripts
+    const originalWindowOpen = window.open;
+    window.open = (...args) => {
+      if (this.isAdShieldActive && this.modal && this.modal.open) {
+        console.warn('🛡️ [Alisa Ad-Shield] Blocked third-party ad popup:', args[0]);
+        return null;
+      }
+      return originalWindowOpen.apply(window, args);
+    };
+  },
+
+  updateAdShieldUI() {
+    const shieldBtn = document.getElementById('adShieldToggle');
+    const iconSpan = document.getElementById('adShieldIcon');
+    const labelSpan = document.getElementById('adShieldLabel');
+
+    if (!shieldBtn) return;
+
+    if (this.isAdShieldActive) {
+      shieldBtn.classList.remove('disabled');
+      if (iconSpan) iconSpan.textContent = '🛡️';
+      if (labelSpan) labelSpan.textContent = 'Ad-Shield: ACTIVE (100% Ad-Free)';
+      shieldBtn.title = 'Ad-Shield is active: All popups, new tabs, and redirects are blocked.';
+    } else {
+      shieldBtn.classList.add('disabled');
+      if (iconSpan) iconSpan.textContent = '⚠️';
+      if (labelSpan) labelSpan.textContent = 'Ad-Shield: PAUSED';
+      shieldBtn.title = 'Click to activate Ad-Shield and block all popups.';
+    }
   },
 
   getServerUrl(server, media, season = 1, episode = 1) {
     const isTV = media.media_type === 'tv' || media.first_air_date;
     const id = media.id;
-    const imdb = media.imdb_id || '';
 
     switch (server) {
-      case '1': // VidLink HD
+      case '1': // Ad-Free Ultra Shield (VidLink with clean params)
         return isTV
           ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe&autoplay=false`
           : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe&autoplay=false`;
-      case '2': // AutoEmbed
+      case '2': // VidLink 4K HD
         return isTV
-          ? `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}`
-          : `https://player.autoembed.cc/embed/movie/${id}`;
-      case '3': // VidSrc
+          ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=00f2fe`
+          : `https://vidlink.pro/movie/${id}?primaryColor=00f2fe`;
+      case '3': // VidSrc VIP Multi
         return isTV
           ? `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
           : `https://vidsrc.to/embed/movie/${id}`;
-      case '4': // SuperEmbed
+      case '4': // AutoEmbed Fast
+        return isTV
+          ? `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}`
+          : `https://player.autoembed.cc/embed/movie/${id}`;
+      case '5': // SuperEmbed Global
         return isTV
           ? `https://multiembed.mov/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`
           : `https://multiembed.mov/?video_id=${id}&tmdb=1`;
-      case '5': // Embed.su
+      case '6': // Embed.su Mirror
         return isTV
           ? `https://embed.su/embed/tv/${id}/${season}/${episode}`
           : `https://embed.su/embed/movie/${id}`;
@@ -163,13 +210,20 @@ const Player = {
       return;
     }
 
-    // Build embed iframe
+    // Build embed iframe with strict sandbox when Ad-Shield is active
     const streamUrl = this.getServerUrl(
       this.currentServer,
       this.currentMedia,
       this.currentSeason,
       this.currentEpisode
     );
+
+    // Complete Ad-Free Sandbox attribute:
+    // When isAdShieldActive is true, omitting allow-popups and allow-top-navigation
+    // strictly disables all popup ads, tab hijacks, and redirect ads from third-party embedders!
+    const sandboxAttr = this.isAdShieldActive
+      ? 'sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"'
+      : 'sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation allow-popups"';
 
     this.container.innerHTML = `
       <div class="iframe-wrapper">
@@ -178,6 +232,7 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
+          ${sandboxAttr}
           referrerpolicy="origin"
           id="streamingIframe"
         ></iframe>

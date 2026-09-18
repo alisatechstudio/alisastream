@@ -541,10 +541,16 @@
 
       <!-- Player Body -->
       <div class="modal-body">
-        <!-- Multi-Server Selector -->
+        <!-- Multi-Server Selector & Ad-Shield -->
         <div class="server-switcher-bar">
           <span class="server-label">Servers:</span>
           <div id="serverSelector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+          <div class="ad-shield-wrapper">
+            <button type="button" class="ad-shield-toggle" id="adShieldToggle" title="Toggle Popup & Redirect Blocker">
+              <span id="adShieldIcon">🛡️</span>
+              <span id="adShieldLabel">Ad-Shield: ACTIVE</span>
+            </button>
+          </div>
         </div>
 
         <!-- Video Player Display Box -->
