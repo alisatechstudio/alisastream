@@ -173,12 +173,11 @@ const Player = {
           title="${this.currentMedia.title || this.currentMedia.name}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
           referrerpolicy="origin"
           id="streamingIframe"
         ></iframe>
         <div class="direct-stream-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border-color: #10b981;">
-          <span>🛡️ Ad-Free Protected Stream</span>
+          <span>⚡ High-Definition Stream</span>
         </div>
       </div>
     `;
