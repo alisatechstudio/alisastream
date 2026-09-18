@@ -18,10 +18,10 @@
 })();
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (Videasy Clean)', icon: '🛡️', badge: '100% Ad-Free' },
-  { id: '2', name: 'Server 2 (RiveStream HD)', icon: '⚡', badge: 'Fast & Clean' },
-  { id: '3', name: 'Server 3 (VidLink Stream)', icon: '🚀', badge: 'Multi-Sub' },
-  { id: '4', name: 'Server 4 (Official 4K Cinema)', icon: '🎬', badge: 'Official Stream' }
+  { id: '1', name: 'Server 1 (RiveStream Fast)', icon: '⚡', badge: '100% Clean' },
+  { id: '2', name: 'Server 2 (VidSrc Cloud)', icon: '🌐', badge: 'Ultra HD' },
+  { id: '3', name: 'Server 3 (SmashyStream HD)', icon: '🚀', badge: 'Multi-Sub' },
+  { id: '4', name: 'Server 4 (Official 4K Cinema)', icon: '🎬', badge: 'Verified' }
 ];
 
 const Player = {
@@ -91,29 +91,29 @@ const Player = {
     const id = media.id;
 
     switch (server) {
-      case '1': // Videasy (Verified clean & ad-free)
-        return isTV
-          ? `https://player.videasy.net/tv/${id}/${season}/${episode}`
-          : `https://player.videasy.net/movie/${id}`;
-
-      case '2': // RiveStream (Open-source ad-free)
+      case '1': // RiveStream (Open-source, clean, no sandbox checks)
         return isTV
           ? `https://rivestream.live/embed?type=tv&id=${id}&season=${season}&episode=${episode}`
           : `https://rivestream.live/embed?type=movie&id=${id}`;
 
-      case '3': // VidLink HD
+      case '2': // VidSrc Cloud (High-speed streaming mirror)
         return isTV
-          ? `https://vidlink.pro/tv/${id}/${season}/${episode}?primaryColor=6366f1&autoplay=false`
-          : `https://vidlink.pro/movie/${id}?primaryColor=6366f1&autoplay=false`;
+          ? `https://vidsrc.me/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`
+          : `https://vidsrc.me/embed/movie?tmdb=${id}`;
+
+      case '3': // SmashyStream (Multi-language subtitle mirror)
+        return isTV
+          ? `https://embed.smashystream.com/playere.php?tmdb=${id}&season=${season}&episode=${episode}`
+          : `https://embed.smashystream.com/playere.php?tmdb=${id}`;
 
       case '4': // Official 4K Cinema / Trailer (Google / YouTube infrastructure)
         if (media.trailer_key) {
           return `https://www.youtube-nocookie.com/embed/${media.trailer_key}?autoplay=1&rel=0&modestbranding=1`;
         }
-        return `https://player.videasy.net/movie/${id}`;
+        return `https://rivestream.live/embed?type=movie&id=${id}`;
 
       default:
-        return `https://player.videasy.net/movie/${id}`;
+        return `https://rivestream.live/embed?type=movie&id=${id}`;
     }
   },
 
