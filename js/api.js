@@ -11,6 +11,10 @@ const RAPIDAPI_BASE = 'https://moviesdatabase.p.rapidapi.com';
 const RAPIDAPI_HOST = 'moviesdatabase.p.rapidapi.com';
 const RAPIDAPI_KEY = '5b6e016880msha73fd6221f9a26ep16124fjsnfe065cf3f02f';
 
+// OMDb (Open Movie Database) Official API Configuration
+const OMDB_API_BASE = 'https://www.omdbapi.com';
+const OMDB_API_KEY = '26328d78';
+
 // Curated Public Domain & Open Cinema Streams (100% Guaranteed Direct Video Playback)
 // Curated Public Domain & Open Cinema Streams (100% Guaranteed Direct Video Playback, Zero Ads, Zero Popups)
 const PUBLIC_CINEMA_MOVIES = [
@@ -552,6 +556,49 @@ const MovieAPI = {
     return data?.results || null;
   },
 
+  // --- OMDB API INTEGRATION (Ratings, Rotten Tomatoes, Metacritic, Crew) ---
+  async getOMDbByImdbId(imdbId) {
+    if (!imdbId) return null;
+    const cleanId = imdbId.startsWith('tt') ? imdbId : `tt${imdbId}`;
+    try {
+      const response = await fetch(`${OMDB_API_BASE}/?i=${encodeURIComponent(cleanId)}&apikey=${OMDB_API_KEY}`);
+      if (!response.ok) return null;
+      const data = await response.json();
+      return data.Response === 'True' ? data : null;
+    } catch (err) {
+      console.warn('OMDb fetch by IMDb ID failed:', err);
+      return null;
+    }
+  },
+
+  async getOMDbByTitle(title, year = null) {
+    if (!title) return null;
+    try {
+      let url = `${OMDB_API_BASE}/?t=${encodeURIComponent(title)}&apikey=${OMDB_API_KEY}`;
+      if (year) url += `&y=${encodeURIComponent(year)}`;
+      const response = await fetch(url);
+      if (!response.ok) return null;
+      const data = await response.json();
+      return data.Response === 'True' ? data : null;
+    } catch (err) {
+      console.warn('OMDb fetch by Title failed:', err);
+      return null;
+    }
+  },
+
+  async searchOMDb(query, page = 1) {
+    if (!query) return [];
+    try {
+      const response = await fetch(`${OMDB_API_BASE}/?s=${encodeURIComponent(query)}&page=${page}&apikey=${OMDB_API_KEY}`);
+      if (!response.ok) return [];
+      const data = await response.json();
+      return data.Response === 'True' && data.Search ? data.Search : [];
+    } catch (err) {
+      console.warn('OMDb search failed:', err);
+      return [];
+    }
+  },
+
   // --- TRENDING & SPOTLIGHT (100% Guaranteed Public Domain & Open Cinema Streams) ---
   async getTrending(timeWindow = 'day') {
     return PUBLIC_CINEMA_MOVIES;
@@ -717,16 +764,43 @@ const MovieAPI = {
   // --- DETAILS, CREDITS, VIDEOS ---
   async getDetails(id, mediaType = 'movie') {
     // Check if ID matches directly
-    const found = PUBLIC_CINEMA_MOVIES.find(m => String(m.id) === String(id));
-    if (found) return found;
+    let item = PUBLIC_CINEMA_MOVIES.find(m => String(m.id) === String(id)) ||
+               PUBLIC_CINEMA_MOVIES.find(m => m.title.toLowerCase() === String(id).toLowerCase());
 
-    // Check by title match or partial match
-    const titleMatch = PUBLIC_CINEMA_MOVIES.find(m => m.title.toLowerCase() === String(id).toLowerCase());
-    if (titleMatch) return titleMatch;
+    if (!item) {
+      const numericIndex = typeof id === 'number' ? Math.abs(id) % PUBLIC_CINEMA_MOVIES.length : 0;
+      item = PUBLIC_CINEMA_MOVIES[numericIndex] || PUBLIC_CINEMA_MOVIES[0];
+    }
 
-    // Numerical index or fallback to first item
-    const numericIndex = typeof id === 'number' ? Math.abs(id) % PUBLIC_CINEMA_MOVIES.length : 0;
-    return PUBLIC_CINEMA_MOVIES[numericIndex] || PUBLIC_CINEMA_MOVIES[0];
+    // Enrich with live OMDb data (Rotten Tomatoes, Metascore, IMDb votes, Director, Actors)
+    try {
+      const omdb = item.imdb_id
+        ? await this.getOMDbByImdbId(item.imdb_id)
+        : await this.getOMDbByTitle(item.title, item.release_date ? item.release_date.split('-')[0] : null);
+
+      if (omdb) {
+        return {
+          ...item,
+          omdb,
+          imdb_id: omdb.imdbID || item.imdb_id,
+          imdb_rating: omdb.imdbRating && omdb.imdbRating !== 'N/A' ? omdb.imdbRating : item.vote_average,
+          imdb_votes: omdb.imdbVotes && omdb.imdbVotes !== 'N/A' ? omdb.imdbVotes : null,
+          ratings: omdb.Ratings || [],
+          director: omdb.Director && omdb.Director !== 'N/A' ? omdb.Director : null,
+          writer: omdb.Writer && omdb.Writer !== 'N/A' ? omdb.Writer : null,
+          actors: omdb.Actors && omdb.Actors !== 'N/A' ? omdb.Actors : null,
+          awards: omdb.Awards && omdb.Awards !== 'N/A' ? omdb.Awards : null,
+          rated: omdb.Rated && omdb.Rated !== 'N/A' ? omdb.Rated : null,
+          box_office: omdb.BoxOffice && omdb.BoxOffice !== 'N/A' ? omdb.BoxOffice : null,
+          metascore: omdb.Metascore && omdb.Metascore !== 'N/A' ? omdb.Metascore : null,
+          overview: (omdb.Plot && omdb.Plot !== 'N/A' && omdb.Plot.length > (item.overview || '').length) ? omdb.Plot : item.overview
+        };
+      }
+    } catch (err) {
+      console.warn('OMDb detail enrichment error:', err);
+    }
+
+    return item;
   },
 
   // --- SEASONS & EPISODES FOR TV SHOWS ---

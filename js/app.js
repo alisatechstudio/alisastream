@@ -1016,6 +1016,45 @@ const App = {
       </div>
     `).join('');
 
+    // OMDb Ratings badges (Rotten Tomatoes, Metacritic, IMDb votes)
+    let omdbRatingsHTML = '';
+    if (media.ratings && media.ratings.length > 0) {
+      omdbRatingsHTML = `
+        <div class="omdb-ratings-row">
+          ${media.ratings.map(r => {
+            let icon = '⭐';
+            let cls = 'imdb';
+            if (r.Source && r.Source.includes('Rotten Tomatoes')) { icon = '🍅'; cls = 'rotten-tomatoes'; }
+            else if (r.Source && r.Source.includes('Metacritic')) { icon = 'Ⓜ️'; cls = 'metacritic'; }
+            return `<span class="omdb-badge ${cls}" title="${r.Source}">${icon} ${r.Source}: <strong>${r.Value}</strong></span>`;
+          }).join('')}
+          ${media.imdb_votes ? `<span class="omdb-badge" title="Total IMDb Votes">👥 ${media.imdb_votes} votes</span>` : ''}
+          ${media.rated ? `<span class="omdb-badge" title="Age Rating">🏷️ ${media.rated}</span>` : ''}
+        </div>
+      `;
+    }
+
+    // OMDb Crew details (Director, Writer, Lead Actors)
+    let omdbCrewHTML = '';
+    if (media.director || media.writer || media.actors) {
+      omdbCrewHTML = `
+        <div class="omdb-crew-grid">
+          ${media.director ? `<div class="omdb-crew-item"><strong>Director</strong><span>${media.director}</span></div>` : ''}
+          ${media.writer ? `<div class="omdb-crew-item"><strong>Writer</strong><span>${media.writer}</span></div>` : ''}
+          ${media.actors ? `<div class="omdb-crew-item" style="grid-column: 1 / -1;"><strong>Starring</strong><span>${media.actors}</span></div>` : ''}
+        </div>
+      `;
+    }
+
+    let omdbAwardsHTML = '';
+    if (media.awards) {
+      omdbAwardsHTML = `
+        <div class="omdb-awards-pill">
+          <span>🏆 ${media.awards}</span>
+        </div>
+      `;
+    }
+
     body.innerHTML = `
       <div class="detail-backdrop-banner" style="background-image: url('${backdrop}');">
         <div class="detail-backdrop-gradient"></div>
@@ -1033,8 +1072,11 @@ const App = {
             ${runtime ? `<span>${runtime}</span>` : ''}
             <span>${media.media_type === 'tv' ? 'TV Series' : 'Movie'}</span>
           </div>
+          ${omdbRatingsHTML}
           <div class="detail-genres">${genres}</div>
+          ${omdbAwardsHTML}
           <p class="detail-overview">${media.overview || 'No synopsis available for this title.'}</p>
+          ${omdbCrewHTML}
           <div class="hero-actions" style="margin-top: 1rem;">
             <button type="button" class="btn-primary" id="detailPlayNowBtn">
               <span>▶ Watch Now</span>

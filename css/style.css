@@ -2139,3 +2139,91 @@ dialog#trailerModal {
   z-index: 10;
 }
 
+/* ==========================================================================
+   OMDb RATINGS & METADATA STYLING
+   ========================================================================== */
+.omdb-ratings-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0.85rem 0 0.5rem 0;
+}
+
+.omdb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.omdb-badge strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.omdb-badge.rotten-tomatoes {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.omdb-badge.metacritic {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+}
+
+.omdb-badge.imdb {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #fde68a;
+}
+
+.omdb-crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+}
+
+.omdb-crew-item strong {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.omdb-crew-item span {
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.omdb-awards-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  color: #fef08a;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+
