@@ -149,11 +149,8 @@ Alisa Movies is fully equipped with everything required for **Google AdSense App
      <script data-cfasync='false' src='//wwr.giriudog.com/?tag=26b9f3a4'></script>
      ```
 
-4. **`ads.txt` File**:
-   - Open `ads.txt` in the root folder and replace `pub-0000000000000000` with your authorized AdSense Publisher ID.
-
-5. **Ad Unit Slots**:
-   - Two policy-compliant ad containers are pre-placed in `index.html` (Top Leaderboard & In-Feed Native Unit), styled with non-deceptive `ADVERTISEMENT` labels to prevent accidental clicks.
+4. **Ad Unit Placement**:
+   - The native in-feed ad container is placed between homepage movie rails in `index.html`.
 
 ---
 

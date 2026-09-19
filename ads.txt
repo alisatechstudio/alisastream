@@ -1,2 +1,0 @@
-# Google AdSense ads.txt for Alisa Movies
-google.com, pub-2862340185854650, DIRECT, f08c47fec0942fa0
