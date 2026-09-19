@@ -19,358 +19,1034 @@ const OMDB_API_KEY = '26328d78';
 // Curated Public Domain & Open Cinema Streams (100% Guaranteed Direct Video Playback, Zero Ads, Zero Popups)
 const PUBLIC_CINEMA_MOVIES = [
   {
-    id: 'open-1',
-    title: 'Tears of Steel',
-    release_date: '2012-09-26',
-    vote_average: 8.4,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://vjs.zencdn.net/v/oceans.mp4',
-    youtube_id: 'R6MlUcmgul8',
-    trailer_key: 'R6MlUcmgul8',
-    poster_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Set in a dystopian future where a group of warriors and scientists gather at the Oude Kerk in Amsterdam to stage a crucial event from the past in a desperate attempt to rescue the world from destructive robots.',
-    genres: [{ id: 878, name: 'Sci-Fi' }, { id: 28, name: 'Action' }, { id: 18, name: 'Drama' }],
-    runtime: 12
+    "id": "open-1",
+    "title": "Sintel: The Dragon Quest",
+    "release_date": "2010-09-27",
+    "vote_average": 8.8,
+    "youtube_id": "eRsGyueVLvQ",
+    "imdb_id": "tt1727588",
+    "stream_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80",
+    "overview": "A lonely young woman, Sintel, helps and bonds with a hurt baby dragon whom she names Scales. When the dragon is kidnapped by an adult beast, she embarks on a perilous and heart-wrenching quest across treacherous lands.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      }
+    ],
+    "runtime": 15,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "eRsGyueVLvQ"
   },
   {
-    id: 'open-2',
-    title: 'Sintel: The Dragon Quest',
-    release_date: '2010-09-27',
-    vote_average: 8.8,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://www.w3schools.com/html/mov_bbb.mp4',
-    youtube_id: 'eRsGyueVLvQ',
-    trailer_key: 'eRsGyueVLvQ',
-    poster_path: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80',
-    overview: 'A lonely young woman, Sintel, helps and bonds with a hurt baby dragon whom she names Scales. When the dragon is kidnapped by an adult beast, she embarks on a perilous and heart-wrenching quest across treacherous lands.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 14, name: 'Fantasy' }, { id: 12, name: 'Adventure' }],
-    runtime: 15
+    "id": "open-2",
+    "title": "Big Buck Bunny",
+    "release_date": "2008-04-10",
+    "vote_average": 8.1,
+    "youtube_id": "aqz-KE-bpKQ",
+    "imdb_id": "tt1254207",
+    "stream_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80",
+    "overview": "A large, gentle rabbit wakes up in his sunny forest home to encounter three bullying woodland rodents who take delight in tormenting peaceful creatures. The gentle giant decides to teach them an unforgettable lesson.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 10751,
+        "name": "Family"
+      }
+    ],
+    "runtime": 10,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "aqz-KE-bpKQ"
   },
   {
-    id: 'open-3',
-    title: 'Big Buck Bunny',
-    release_date: '2008-04-10',
-    vote_average: 8.1,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://www.w3schools.com/html/mov_bbb.mp4',
-    youtube_id: 'aqz-KE-bpKQ',
-    trailer_key: 'aqz-KE-bpKQ',
-    poster_path: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-    overview: 'A large, gentle rabbit wakes up in his sunny forest home to encounter three bullying woodland rodents who take delight in tormenting peaceful creatures. The gentle giant decides to teach them an unforgettable lesson.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 35, name: 'Comedy' }, { id: 10751, name: 'Family' }],
-    runtime: 10
+    "id": "open-3",
+    "title": "Elephants Dream",
+    "release_date": "2006-03-24",
+    "vote_average": 8,
+    "youtube_id": "TLkA0RELQ1g",
+    "imdb_id": "tt0825223",
+    "stream_url": "https://vjs.zencdn.net/v/oceans.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80",
+    "overview": "The worlds first open-movie 3D animated film. Proog and Emo explore the surreal, mechanical labyrinth of a giant, sentient machine that reflects their inner psychologies.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 878,
+        "name": "Sci-Fi"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      }
+    ],
+    "runtime": 11,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "TLkA0RELQ1g"
   },
   {
-    id: 'open-4',
-    title: 'Cosmos Laundromat',
-    release_date: '2015-08-10',
-    vote_average: 8.5,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://vjs.zencdn.net/v/oceans.mp4',
-    youtube_id: 'Y-rmzh0PI3c',
-    trailer_key: 'Y-rmzh0PI3c',
-    poster_path: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80',
-    overview: 'On a desolate island, a suicidal sheep named Franck meets a quirky salesman named Victor, who offers Franck the gift of a lifetime: a chance to experience an infinity of parallel lives.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 878, name: 'Sci-Fi' }, { id: 14, name: 'Fantasy' }],
-    runtime: 12
+    "id": "open-4",
+    "title": "Spring",
+    "release_date": "2019-04-04",
+    "vote_average": 8.9,
+    "youtube_id": "WhWc3b3KhnY",
+    "imdb_id": "tt9877478",
+    "stream_url": "https://vjs.zencdn.net/v/oceans.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80",
+    "overview": "Blender Open Movie poetic fantasy. A shepherd girl and her dog face ancient spirits in order to bring about the transition of seasons, rendered with cutting-edge open-source computer graphics.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      }
+    ],
+    "runtime": 8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "WhWc3b3KhnY"
   },
   {
-    id: 'open-5',
-    title: 'Night of the Living Dead',
-    release_date: '1968-10-01',
-    vote_average: 8.7,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'HmgkGg5k5a4',
-    trailer_key: 'HmgkGg5k5a4',
-    poster_path: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80',
-    overview: 'George A. Romero’s legendary horror masterpiece. When unexpected radiation reanimates unburied corpses, a desperate band of survivors barricades themselves inside an isolated rural farmhouse to survive the undead onslaught.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 53, name: 'Thriller' }],
-    runtime: 96
+    "id": "open-5",
+    "title": "Charge",
+    "release_date": "2022-12-15",
+    "vote_average": 8.8,
+    "youtube_id": "UXqq0ZvbOnk",
+    "imdb_id": null,
+    "stream_url": "https://vjs.zencdn.net/v/oceans.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80",
+    "overview": "An exhilarating cyberpunk sci-fi action film produced by Blender Studio. An old warrior battles security robots inside an abandoned high-tech hangar to recharge his dying cybernetic heart.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 878,
+        "name": "Sci-Fi"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      }
+    ],
+    "runtime": 5,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "UXqq0ZvbOnk"
   },
   {
-    id: 'open-6',
-    title: 'Charade',
-    release_date: '1963-12-05',
-    vote_average: 8.6,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'Q0x4sIbg11Y',
-    trailer_key: 'Q0x4sIbg11Y',
-    poster_path: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Starring Audrey Hepburn and Cary Grant. A stylish romantic mystery thriller often called "the best Hitchcock film Hitchcock never made." A widow in Paris is pursued by several men who want a fortune her murdered husband had stolen.',
-    genres: [{ id: 9648, name: 'Mystery' }, { id: 10749, name: 'Romance' }, { id: 35, name: 'Comedy' }, { id: 53, name: 'Thriller' }],
-    runtime: 113
+    "id": "open-6",
+    "title": "Sprite Fright",
+    "release_date": "2021-10-29",
+    "vote_average": 8.7,
+    "youtube_id": "_cMxraX_5RE",
+    "imdb_id": "tt15807908",
+    "stream_url": "https://vjs.zencdn.net/v/oceans.mp4",
+    "poster_path": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80",
+    "backdrop_path": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80",
+    "overview": "An 80s-inspired horror-comedy produced by Blender Studio. When a group of rowdy teenagers venture into the British wilderness, they get more nature than they bargained for from angry woodland sprites.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      }
+    ],
+    "runtime": 11,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "trailer_key": "_cMxraX_5RE"
   },
   {
-    id: 'open-7',
-    title: 'Nosferatu: A Symphony of Horror',
-    release_date: '1922-03-04',
-    vote_average: 8.5,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'FC6jFoYm3xs',
-    trailer_key: 'FC6jFoYm3xs',
-    poster_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-    overview: 'F.W. Murnau’s seminal silent masterpiece and the first Dracula adaptation. Vampire Count Orlok expresses interest in a new residence and real estate agent Hutter’s wife, bringing darkness and plague.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 14, name: 'Fantasy' }],
-    runtime: 94
+    "id": "open-7",
+    "title": "Night of the Living Dead",
+    "release_date": "1968-10-03",
+    "vote_average": 7.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/night-of-the-living-dead-1968",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0063350",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BZGMyZTA0MWEtZjczMS00ZDE5LTk1OTQtNmIxNGYzNDA2NDVhXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BZGMyZTA0MWEtZjczMS00ZDE5LTk1OTQtNmIxNGYzNDA2NDVhXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+    "overview": "A ragtag group of Pennsylvanians barricade themselves in an old farmhouse to remain safe from a horde of flesh-eating ghouls that are ravaging the Northeast of the United States.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ],
+    "runtime": 96,
+    "director": "George A. Romero",
+    "actors": "Duane Jones, Judith O&apos;Dea, Karl Hardman",
+    "imdb_votes": "152,503"
   },
   {
-    id: 'open-8',
-    title: 'The General',
-    release_date: '1926-12-22',
-    vote_average: 8.8,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'iHlBLnzfvP8',
-    trailer_key: 'iHlBLnzfvP8',
-    poster_path: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Buster Keaton’s undisputed comedic and action masterpiece. When Union spies steal his beloved locomotive with his sweetheart aboard, a determined railroad engineer wages a single-handed rescue mission.',
-    genres: [{ id: 35, name: 'Comedy' }, { id: 28, name: 'Action' }, { id: 12, name: 'Adventure' }],
-    runtime: 78
+    "id": "open-8",
+    "title": "Charade",
+    "release_date": "1963-12-04",
+    "vote_average": 7.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/Charade_1953",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0056923",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BM2FiMmFkNWItNzNmOS00MWQ3LWExNTUtZWJkOTBmNzg0ZWRjXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BM2FiMmFkNWItNzNmOS00MWQ3LWExNTUtZWJkOTBmNzg0ZWRjXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "Romance and intrigue ensue in Paris as a woman is pursued by several men who want to get their hands on a fortune her murdered husband had stolen. She soon loses trust in those who claim they want to help her.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      }
+    ],
+    "runtime": 113,
+    "director": "Stanley Donen",
+    "actors": "Cary Grant, Audrey Hepburn, Walter Matthau",
+    "imdb_votes": "92,692"
   },
   {
-    id: 'open-9',
-    title: 'Metropolis',
-    release_date: '1927-01-10',
-    vote_average: 8.9,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'on2H8qt5moA',
-    trailer_key: 'on2H8qt5moA',
-    poster_path: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Fritz Lang’s groundbreaking pioneer of science fiction cinema. In a futuristic dystopian mega-city sharply divided between working-class laborers and the city planning elites, the son of the master planner falls in love with a prophetess.',
-    genres: [{ id: 878, name: 'Sci-Fi' }, { id: 18, name: 'Drama' }],
-    runtime: 153
+    "id": "open-9",
+    "title": "Metropolis",
+    "release_date": "1927-03-12",
+    "vote_average": 8.2,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/Metropolis1927EnglishVersion",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0017136",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMjhjMGYyMjAtMzJkYy00NzhlLWIwY2MtMWQ2ODIxZDUyOGYyXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMjhjMGYyMjAtMzJkYy00NzhlLWIwY2MtMWQ2ODIxZDUyOGYyXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "In a futuristic city sharply divided between the working class and the city planners, the son of the city's mastermind falls in love with a working-class prophet who predicts the coming of a savior to mediate their differences.",
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 878,
+        "name": "Sci-Fi"
+      }
+    ],
+    "runtime": 153,
+    "director": "Fritz Lang",
+    "actors": "Brigitte Helm, Alfred Abel, Gustav Fröhlich",
+    "imdb_votes": "199,601"
   },
   {
-    id: 'open-10',
-    title: 'His Girl Friday',
-    release_date: '1940-01-18',
-    vote_average: 8.3,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'PjH83wJd8vU',
-    trailer_key: 'PjH83wJd8vU',
-    poster_path: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Directed by Howard Hawks and starring Cary Grant and Rosalind Russell. A newspaper editor uses every trick in the book to keep his top reporter ex-wife from remarrying and leaving the news business.',
-    genres: [{ id: 35, name: 'Comedy' }, { id: 10749, name: 'Romance' }, { id: 18, name: 'Drama' }],
-    runtime: 92
+    "id": "open-10",
+    "title": "His Girl Friday",
+    "release_date": "1940-01-17",
+    "vote_average": 7.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/his_girl_friday",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0032599",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMzRhMTQ1ZjEtYzM2MC00OThiLTk3NTEtNGRhNzcwNGM2YWQ4XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMzRhMTQ1ZjEtYzM2MC00OThiLTk3NTEtNGRhNzcwNGM2YWQ4XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "When a newspaper editor's ace reporter ex-wife is about to quit her job and remarry, he buys himself time to win her back by promising her an exclusive interview with a death row convict.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      }
+    ],
+    "runtime": 92,
+    "director": "Howard Hawks",
+    "actors": "Cary Grant, Rosalind Russell, Ralph Bellamy",
+    "imdb_votes": "67,176"
   },
   {
-    id: 'open-11',
-    title: 'The Cabinet of Dr. Caligari',
-    release_date: '1920-02-26',
-    vote_average: 8.4,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'AP3Q0pU2m_M',
-    trailer_key: 'AP3Q0pU2m_M',
-    poster_path: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-    overview: 'The definitive classic of German Expressionist cinema. Hypnotist Dr. Caligari uses a somnambulist to commit murders in a town, featuring striking crooked architectural sets and psychological twists.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 9648, name: 'Mystery' }, { id: 53, name: 'Thriller' }],
-    runtime: 77
+    "id": "open-11",
+    "title": "House on Haunted Hill",
+    "release_date": "1959-02-16",
+    "vote_average": 6.7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/house_on_haunted_hill",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0051744",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BOGMwMDk2YjYtYTc5YS00MDAxLThlNDEtNmM0YTgyMDMzZTRlXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BOGMwMDk2YjYtYTc5YS00MDAxLThlNDEtNmM0YTgyMDMzZTRlXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A millionaire offers $10,000 to five people who agree to be locked in a large, spooky, rented house overnight with him and his wife.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ],
+    "runtime": 75,
+    "director": "William Castle",
+    "actors": "Vincent Price, Carol Ohmart, Richard Long",
+    "imdb_votes": "32,673"
   },
   {
-    id: 'open-12',
-    title: 'A Trip to the Moon',
-    release_date: '1902-09-01',
-    vote_average: 8.7,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: '_FnVq3zLzWw',
-    trailer_key: '_FnVq3zLzWw',
-    poster_path: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Georges Méliès’ iconic cinematic triumph that established science fiction film. A group of adventurous astronomers travel to the Moon in a cannon-propelled capsule, exploring underground caverns and escaping Selenites.',
-    genres: [{ id: 878, name: 'Sci-Fi' }, { id: 12, name: 'Adventure' }, { id: 14, name: 'Fantasy' }],
-    runtime: 14
+    "id": "open-12",
+    "title": "The General",
+    "release_date": "1927-01-01",
+    "vote_average": 8.1,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/TheGeneral",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0017925",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMTVhM2Y1MDUtMDkxYi00Y2UxLWI2MTMtZjMzYTY4ODM4MGIzXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMTVhM2Y1MDUtMDkxYi00Y2UxLWI2MTMtZjMzYTY4ODM4MGIzXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "After being rejected by the Confederate military, not realizing it was due to his crucial civilian role, an engineer must single-handedly recapture his beloved locomotive after it is seized by Union spies and return it through ene...",
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "runtime": 78,
+    "director": "Clyde Bruckman, Buster Keaton",
+    "actors": "Buster Keaton, Marion Mack, Glen Cavender",
+    "imdb_votes": "104,099"
   },
   {
-    id: 'open-13',
-    title: 'House on Haunted Hill',
-    release_date: '1959-02-17',
-    vote_average: 8.2,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'z4X5tB5h8fE',
-    trailer_key: 'z4X5tB5h8fE',
-    poster_path: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Starring Vincent Price. An eccentric millionaire offers $10,000 to five guests if they can survive the night locked in a sinister haunted mansion filled with terror and macabre traps.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 9648, name: 'Mystery' }],
-    runtime: 75
+    "id": "open-13",
+    "title": "White Zombie",
+    "release_date": "1932-08-03",
+    "vote_average": 6.2,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/white-zombie",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0023694",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BNTBjZTBiZDgtYmNkYy00OGQ4LTkzMTItOTQ0OWUwZTYwODQ4XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BNTBjZTBiZDgtYmNkYy00OGQ4LTkzMTItOTQ0OWUwZTYwODQ4XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A young man turns to a witch doctor to lure the woman he loves away from her fiancé, but instead turns her into a zombie slave.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      }
+    ],
+    "runtime": 69,
+    "director": "Victor Halperin",
+    "actors": "Bela Lugosi, Madge Bellamy, Joseph Cawthorn",
+    "imdb_votes": "11,929"
   },
   {
-    id: 'open-14',
-    title: 'Carnival of Souls',
-    release_date: '1962-09-26',
-    vote_average: 8.3,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: '0gI2F4k9GjQ',
-    trailer_key: '0gI2F4k9GjQ',
-    poster_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1600&auto=format&fit=crop&q=80',
-    overview: 'A chilling cult classic psychological thriller. After surviving a traumatic car accident, a young church organist is drawn to a mysterious abandoned lakeside pavilion populated by apparitions.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 9648, name: 'Mystery' }, { id: 53, name: 'Thriller' }],
-    runtime: 78
+    "id": "open-14",
+    "title": "D.O.A.",
+    "release_date": "1950-04-20",
+    "vote_average": 7.2,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/doa-1949",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0042369",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BNDFjMmJjNjQtMDk3MS00ZjVkLWI4ZTItZGEzYTY2NTVkNTQzXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BNDFjMmJjNjQtMDk3MS00ZjVkLWI4ZTItZGEzYTY2NTVkNTQzXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "Frank Bigelow, told he's been poisoned and has only a few days to live, tries to find out who killed him and why.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 83,
+    "director": "Rudolph Maté",
+    "actors": "Edmond O'Brien, Pamela Britton, Luther Adler",
+    "imdb_votes": "13,762"
   },
   {
-    id: 'open-15',
-    title: 'The Little Shop of Horrors',
-    release_date: '1960-09-14',
-    vote_average: 8.0,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'o0Hn6Yf0J_A',
-    trailer_key: 'o0Hn6Yf0J_A',
-    poster_path: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Roger Corman’s legendary black comedy featuring early Jack Nicholson. A clumsy florist assistant cultivates a bizarre plant that develops a craving for human blood and begins talking.',
-    genres: [{ id: 35, name: 'Comedy' }, { id: 27, name: 'Horror' }],
-    runtime: 72
+    "id": "open-15",
+    "title": "The Stranger",
+    "release_date": "1946-07-31",
+    "vote_average": 7.3,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/the_stranger_1946",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0038991",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BOGViZjhjNWQtZjY2MS00OTExLThlNDUtYTIwZTgwODdhMDdhXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BOGViZjhjNWQtZjY2MS00OTExLThlNDUtYTIwZTgwODdhMDdhXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "An investigator from the War Crimes Commission travels to Connecticut to find an infamous Nazi.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 95,
+    "director": "Orson Welles",
+    "actors": "Edward G. Robinson, Loretta Young, Orson Welles",
+    "imdb_votes": "30,317"
   },
   {
-    id: 'open-16',
-    title: 'D.O.A. (Dead on Arrival)',
-    release_date: '1949-12-31',
-    vote_average: 8.4,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'V6_B3oR1pL0',
-    trailer_key: 'V6_B3oR1pL0',
-    poster_path: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1600&auto=format&fit=crop&q=80',
-    overview: 'A definitive Film Noir masterpiece. A doomed man walks into a police homicide department to report his own murder, having been fatally poisoned with luminous toxin, desperately searching for his killer.',
-    genres: [{ id: 80, name: 'Crime' }, { id: 18, name: 'Drama' }, { id: 9648, name: 'Mystery' }],
-    runtime: 83
+    "id": "open-16",
+    "title": "The Last Man on Earth",
+    "release_date": "1964-05-05",
+    "vote_average": 6.7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/last-man-on-earth",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0058700",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BNmYzYWQxNmQtMDg0ZS00MTQyLTk3YmEtNzA2NTQwMTJkYmZlXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BNmYzYWQxNmQtMDg0ZS00MTQyLTk3YmEtNzA2NTQwMTJkYmZlXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "When a disease turns all of humanity into the living dead, the last man on earth becomes a reluctant vampire hunter.",
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 878,
+        "name": "Sci-Fi"
+      }
+    ],
+    "runtime": 86,
+    "director": "Ubaldo Ragona, Sidney Salkow",
+    "actors": "Vincent Price, Franca Bettoia, Emma Danieli",
+    "imdb_votes": "23,253"
   },
   {
-    id: 'open-17',
-    title: 'The Stranger',
-    release_date: '1946-07-02',
-    vote_average: 8.5,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'tMhCsmbW3G8',
-    trailer_key: 'tMhCsmbW3G8',
-    poster_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Directed by and starring Orson Welles with Edward G. Robinson. A relentless war crimes investigator tracks a notorious fugitive who has created a respectable new identity as a small-town prep school teacher.',
-    genres: [{ id: 80, name: 'Crime' }, { id: 18, name: 'Drama' }, { id: 53, name: 'Thriller' }],
-    runtime: 95
+    "id": "open-17",
+    "title": "Scarlet Street",
+    "release_date": "1945-12-27",
+    "vote_average": 7.7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/scarlet-street",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0038057",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BODg1Y2Y2YjQtM2NjNS00NWIwLWE0ZTUtMzM2M2M1YWJjYTdlXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BODg1Y2Y2YjQtM2NjNS00NWIwLWE0ZTUtMzM2M2M1YWJjYTdlXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A man in mid-life crisis befriends a young woman, though her fiancé persuades her to con him out of the fortune they mistakenly assume he possesses.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 102,
+    "director": "Fritz Lang",
+    "actors": "Edward G. Robinson, Joan Bennett, Dan Duryea",
+    "imdb_votes": "21,037"
   },
   {
-    id: 'open-18',
-    title: 'Gulliver’s Travels',
-    release_date: '1939-12-22',
-    vote_average: 8.1,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'fW4oR575e98',
-    trailer_key: 'fW4oR575e98',
-    poster_path: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Fleischer Studios’ animated classic feature. Lemuel Gulliver washes ashore on the island of Lilliput, whose miniature inhabitants must navigate giant encounters and international misunderstandings.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 12, name: 'Adventure' }, { id: 10751, name: 'Family' }],
-    runtime: 76
+    "id": "open-18",
+    "title": "Detour",
+    "release_date": "1945-11-29",
+    "vote_average": 7.3,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/detour-1945",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0037638",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMjA5OTk2Nzk2N15BMl5BanBnXkFtZTcwNTI0OTQyMQ@@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMjA5OTk2Nzk2N15BMl5BanBnXkFtZTcwNTI0OTQyMQ@@._V1_SX300.jpg",
+    "overview": "While hitchhiking to Hollywood to see his singer girlfriend, a down-on-his-luck pianist accidentally finds himself entangled in murder, blackmail, and deception.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 68,
+    "director": "Edgar G. Ulmer",
+    "actors": "Tom Neal, Ann Savage, Claudia Drake",
+    "imdb_votes": null
   },
   {
-    id: 'open-19',
-    title: 'Spring',
-    release_date: '2019-04-04',
-    vote_average: 8.9,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://vjs.zencdn.net/v/oceans.mp4',
-    youtube_id: 'WhWc3b3KhnY',
-    trailer_key: 'WhWc3b3KhnY',
-    poster_path: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Blender Open Movie poetic fantasy. A shepherd girl and her dog face ancient spirits in order to bring about the transition of seasons, rendered with cutting-edge open-source computer graphics.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 14, name: 'Fantasy' }],
-    runtime: 8
+    "id": "open-19",
+    "title": "Cyrano de Bergerac",
+    "release_date": "1950-11-15",
+    "vote_average": 7.4,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/Cyrano_DeBergerac",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0042367",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BYTdkY2YyN2MtOTE3Zi00ZmI1LWE1ODgtMjVjOWMwZTZmZjQwXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BYTdkY2YyN2MtOTE3Zi00ZmI1LWE1ODgtMjVjOWMwZTZmZjQwXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "The charismatic swordsman-poet helps another woo the woman he loves.",
+    "genres": [
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      }
+    ],
+    "runtime": 113,
+    "director": "Michael Gordon",
+    "actors": "José Ferrer, Mala Powers, William Prince",
+    "imdb_votes": "4,668"
   },
   {
-    id: 'open-20',
-    title: 'Charge',
-    release_date: '2022-12-15',
-    vote_average: 8.8,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: 'https://vjs.zencdn.net/v/oceans.mp4',
-    youtube_id: '1kK_kY89a2s',
-    trailer_key: '1kK_kY89a2s',
-    poster_path: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1600&auto=format&fit=crop&q=80',
-    overview: 'An exhilarating cyberpunk sci-fi action film produced by Blender Studio. An old warrior battles security robots inside an abandoned high-tech hangar to recharge his dying cybernetic heart.',
-    genres: [{ id: 16, name: 'Animation' }, { id: 878, name: 'Sci-Fi' }, { id: 28, name: 'Action' }],
-    runtime: 5
+    "id": "open-20",
+    "title": "My Man Godfrey",
+    "release_date": "1936-09-05",
+    "vote_average": 7.9,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/MyManGodfrey1936",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0028010",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMTVlOTFjMzQtNGJmNy00ZTUwLTgwNWUtZWUyMzY2MGU3MjU4XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMTVlOTFjMzQtNGJmNy00ZTUwLTgwNWUtZWUyMzY2MGU3MjU4XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A scatterbrained socialite hires a vagrant as a family butler - but there's more to Godfrey than meets the eye.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      }
+    ],
+    "runtime": 94,
+    "director": "Gregory La Cava",
+    "actors": "William Powell, Carole Lombard, Alice Brady",
+    "imdb_votes": "27,078"
   },
   {
-    id: 'open-21',
-    title: 'Sherlock Holmes: Dressed to Kill',
-    release_date: '1946-06-07',
-    vote_average: 8.2,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'Z0VvF99t78U',
-    trailer_key: 'Z0VvF99t78U',
-    poster_path: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Starring Basil Rathbone as Sherlock Holmes and Nigel Bruce as Dr. Watson. Holmes races against a criminal gang trying to decipher three seemingly harmless music boxes containing stolen bank plates.',
-    genres: [{ id: 9648, name: 'Mystery' }, { id: 80, name: 'Crime' }, { id: 53, name: 'Thriller' }],
-    runtime: 72
+    "id": "open-21",
+    "title": "A Star Is Born",
+    "release_date": "1937-04-26",
+    "vote_average": 7.3,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/AStarIsBorn",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0029606",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMjFmNGE5NzItZTI1Mi00MzFkLTg1YTctNGUxZjlmMGZiNDMwXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMjFmNGE5NzItZTI1Mi00MzFkLTg1YTctNGUxZjlmMGZiNDMwXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "Young Esther Victoria Blodgett comes to Hollywood with dreams of stardom and achieves them only with the help of alcoholic leading man Norman Maine, whose best days are behind him.",
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      }
+    ],
+    "runtime": 111,
+    "director": "William A. Wellman, Jack Conway, Victor Fleming",
+    "actors": "Janet Gaynor, Fredric March, Adolphe Menjou",
+    "imdb_votes": "11,515"
   },
   {
-    id: 'open-22',
-    title: 'The Phantom of the Opera',
-    release_date: '1925-11-25',
-    vote_average: 8.4,
-    media_type: 'movie',
-    is_public_domain: true,
-    stream_url: null,
-    youtube_id: 'b0W1V_X718w',
-    trailer_key: 'b0W1V_X718w',
-    poster_path: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&auto=format&fit=crop&q=80',
-    backdrop_path: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1600&auto=format&fit=crop&q=80',
-    overview: 'Lon Chaney’s legendary "Man of a Thousand Faces" portrayal of the disfigured phantom who haunts the Paris Opera House, causing accidents to assist the career of his beloved singer.',
-    genres: [{ id: 27, name: 'Horror' }, { id: 18, name: 'Drama' }, { id: 10749, name: 'Romance' }],
-    runtime: 93
+    "id": "open-22",
+    "title": "Superman: The Mad Scientist",
+    "release_date": "1941-09-25",
+    "vote_average": 7.3,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/superman_1941",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0034247",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BZGFmZGU2YmUtZGI4OC00ZTQ3LTgxNTQtNmU0MGE4Yjg5YmNmXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BZGFmZGU2YmUtZGI4OC00ZTQ3LTgxNTQtNmU0MGE4Yjg5YmNmXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "The Man of Steel fights a mad scientist who is destroying Metropolis with an energy cannon.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 18,
+        "name": "Short"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      }
+    ],
+    "runtime": 10,
+    "director": "Dave Fleischer, Steve Muffati",
+    "actors": "Bud Collyer, Joan Alexander, Jackson Beck",
+    "imdb_votes": "3,835"
+  },
+  {
+    "id": "open-23",
+    "title": "Gulliver's Travels",
+    "release_date": "1939-12-21",
+    "vote_average": 6.6,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/gullivers-travels-1939",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0031397",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMzQxZjI3MTQtNWFjYy00MzY4LWJjYTctZDg4MmEwNGVjZmM2XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMzQxZjI3MTQtNWFjYy00MzY4LWJjYTctZDg4MmEwNGVjZmM2XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A doctor washes ashore on an island inhabited by little people.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "runtime": 76,
+    "director": "Dave Fleischer, Willard Bowsky, Orestes Calpini",
+    "actors": "Jessica Dragonette, Lanny Ross, Pinto Colvig",
+    "imdb_votes": "5,174"
+  },
+  {
+    "id": "open-24",
+    "title": "The Phantom of the Opera",
+    "release_date": "1925-11-14",
+    "vote_average": 7.5,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/the-phantom-of-the-opera-1925",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0016220",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMjVjYWMwZDYtZTllNC00ZGY1LWEwYzktOWVmODNlMThhMzZmXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMjVjYWMwZDYtZTllNC00ZGY1LWEwYzktOWVmODNlMThhMzZmXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A mad, disfigured composer seeks love with a lovely young opera singer.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 10402,
+        "name": "Music"
+      }
+    ],
+    "runtime": 93,
+    "director": "Rupert Julian, Lon Chaney, Ernst Laemmle",
+    "actors": "Lon Chaney, Mary Philbin, Norman Kerry",
+    "imdb_votes": "21,277"
+  },
+  {
+    "id": "open-25",
+    "title": "The Little Shop of Horrors",
+    "release_date": "1960-08-04",
+    "vote_average": 6.2,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/TheLittleShopOfHorrors1960",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0054033",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BMDY1YjQ3ZWItNDJkNC00YjBkLWI4MDAtYzc0MWM2Mjk1MDg1XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BMDY1YjQ3ZWItNDJkNC00YjBkLWI4MDAtYzc0MWM2Mjk1MDg1XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "A clumsy young man working at an impoverished flower shop discovers that the strange plant he has been nurturing has an insatiable appetite for blood, forcing him to kill to feed it.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      }
+    ],
+    "runtime": 73,
+    "director": "Roger Corman",
+    "actors": "Jonathan Haze, Jackie Joseph, Mel Welles",
+    "imdb_votes": "20,527"
+  },
+  {
+    "id": "open-26",
+    "title": "Carnival of Souls",
+    "release_date": "1962-11-01",
+    "vote_average": 7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/CarnivalOfSouls1962",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0055830",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BNWRmOWVmZmEtMWI0MC00MWQ3LWEwYWItOWI0MmIzYzk1MTVjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BNWRmOWVmZmEtMWI0MC00MWQ3LWEwYWItOWI0MmIzYzk1MTVjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "overview": "After a traumatic accident, a woman becomes drawn to a mysterious abandoned carnival.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ],
+    "runtime": 78,
+    "director": "Herk Harvey",
+    "actors": "Candace Hilligoss, Frances Feist, Sidney Berger",
+    "imdb_votes": "31,631"
+  },
+  {
+    "id": "open-27",
+    "title": "Dressed to Kill",
+    "release_date": "1946-06-06",
+    "vote_average": 6.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/dressed_to_kill",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0038494",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BYmEyOTZhNWQtNjM5Mi00YWEzLWE3ZWMtZWExYWY5MTI3MWU1XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BYmEyOTZhNWQtNjM5Mi00YWEzLWE3ZWMtZWExYWY5MTI3MWU1XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "overview": "A trio of music boxes contains the hidden secret to riches, and a group of criminals will kill for them. In Vibrant Color.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ],
+    "runtime": 71,
+    "director": "Roy William Neill",
+    "actors": "Basil Rathbone, Nigel Bruce, Patricia Morison",
+    "imdb_votes": "7,760"
+  },
+  {
+    "id": "open-28",
+    "title": "Terror by Night",
+    "release_date": "1946-01-31",
+    "vote_average": 6.7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/TerrorByNight1946",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0039017",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BYTEzMGFmNjYtYjIxYS00Mzg5LWFhOTAtNWE5Y2I2Nzg3YzhjXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BYTEzMGFmNjYtYjIxYS00Mzg5LWFhOTAtNWE5Y2I2Nzg3YzhjXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "When the fabled Star of Rhodesia diamond is stolen on a London to Edinburgh train and the son of its owner is murdered, Sherlock Holmes must discover which of his suspicious fellow passengers is responsible.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 60,
+    "director": "Roy William Neill",
+    "actors": "Basil Rathbone, Nigel Bruce, Alan Mowbray",
+    "imdb_votes": "7,630"
+  },
+  {
+    "id": "open-29",
+    "title": "Suddenly",
+    "release_date": "1954-09-16",
+    "vote_average": 6.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/suddenly",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0047542",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BZTRlOTM5ZjMtOTA4Yy00MGI4LWE4NmMtZjBlNmIyMzI0MGIzXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BZTRlOTM5ZjMtOTA4Yy00MGI4LWE4NmMtZjBlNmIyMzI0MGIzXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "In the city of Suddenly, three gangsters trap the Benson family in their own house, on the top of a hill nearby the railroad station, with the intention of killing the president of the USA.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 18,
+        "name": "Film-Noir"
+      }
+    ],
+    "runtime": 77,
+    "director": "Lewis Allen",
+    "actors": "Frank Sinatra, Sterling Hayden, James Gleason",
+    "imdb_votes": "7,583"
+  },
+  {
+    "id": "open-30",
+    "title": "Plan 9 from Outer Space",
+    "release_date": "1959-07-21",
+    "vote_average": 3.9,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/plan-9-from-outer-space",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0052077",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BZGM4Y2MwMzktODg3MS00ZjVkLTk2NGMtY2Y0M2Y2MWQ0ZDBiXkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BZGM4Y2MwMzktODg3MS00ZjVkLTk2NGMtY2Y0M2Y2MWQ0ZDBiXkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "Evil aliens attack Earth and set their terrible \"Plan 9\" into action. As the aliens resurrect the dead of the Earth, the lives of the living are in danger.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 878,
+        "name": "Sci-Fi"
+      }
+    ],
+    "runtime": 79,
+    "director": "Edward D. Wood Jr.",
+    "actors": "Gregory Walcott, Tom Keene, Mona McKinnon",
+    "imdb_votes": "41,824"
+  },
+  {
+    "id": "open-31",
+    "title": "Nosferatu: A Symphony of Horror",
+    "release_date": "1922-12-18",
+    "vote_average": 7.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/nosferatu-1922",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0013442",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BNDg1OTI1M2MtMTVlMS00ZjFhLTgyMTAtYjIzOWUwZTkyZWE5XkEyXkFqcGc@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BNDg1OTI1M2MtMTVlMS00ZjFhLTgyMTAtYjIzOWUwZTkyZWE5XkEyXkFqcGc@._V1_SX300.jpg",
+    "overview": "Vampire Count Orlok expresses interest in a new residence and real estate agent Hutter's wife.",
+    "genres": [
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      }
+    ],
+    "runtime": 94,
+    "director": "F.W. Murnau",
+    "actors": "Max Schreck, Alexander Granach, Gustav von Wangenheim",
+    "imdb_votes": "120,332"
+  },
+  {
+    "id": "open-32",
+    "title": "Steamboat Bill, Jr.",
+    "release_date": "1928-05-19",
+    "vote_average": 7.8,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/SteamboatBillJr",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0019421",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BOTg2MjUyMjYyOV5BMl5BanBnXkFtZTgwNjM0NDAwMjE@._V1_SX300.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BOTg2MjUyMjYyOV5BMl5BanBnXkFtZTgwNjM0NDAwMjE@._V1_SX300.jpg",
+    "overview": "The effete son of a cantankerous riverboat captain comes to join his father's crew.",
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "runtime": 70,
+    "director": "Charles Reisner, Buster Keaton",
+    "actors": "Buster Keaton, Tom McGuire, Ernest Torrence",
+    "imdb_votes": "16,421"
+  },
+  {
+    "id": "open-33",
+    "title": "The Jungle Book",
+    "release_date": "1942-04-02",
+    "vote_average": 6.7,
+    "media_type": "movie",
+    "is_public_domain": true,
+    "stream_url": "https://archive.org/embed/JungleBook",
+    "youtube_id": null,
+    "trailer_key": null,
+    "imdb_id": "tt0034928",
+    "poster_path": "https://m.media-amazon.com/images/M/MV5BYjRjZjcxOGUtODcxYS00ZmE3LTkzYjgtYTBiMTVmNWYyY2RmXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "backdrop_path": "https://m.media-amazon.com/images/M/MV5BYjRjZjcxOGUtODcxYS00ZmE3LTkzYjgtYTBiMTVmNWYyY2RmXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+    "overview": "A boy raised by wild animals tries to adapt to human village life.",
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 10751,
+        "name": "Family"
+      }
+    ],
+    "runtime": 108,
+    "director": "Zoltan Korda",
+    "actors": "Sabu, Joseph Calleia, John Qualen",
+    "imdb_votes": "5,125"
   }
 ];
+
 
 // Offline & Fallback Catalog (Ensures 100% operational UI in case of API outages)
 const FALLBACK_CATALOG = [
@@ -700,11 +1376,7 @@ const MovieAPI = {
   },
 
   async getTVShows(category = 'popular', page = 1) {
-    const data = await this.requestTMDB(`/tv/${category}`, { page });
-    if (data && data.results) {
-      return data.results.map(t => ({ ...t, media_type: 'tv', title: t.name }));
-    }
-    return FALLBACK_CATALOG.filter(t => t.media_type === 'tv');
+    return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 16 || g.id === 12 || g.id === 35));
   },
 
   // --- WORLDWIDE & CATEGORY DISCOVERY ---

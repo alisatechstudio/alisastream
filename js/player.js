@@ -6,7 +6,7 @@
 const STREAMING_SERVERS = [
   { id: '1', name: 'Server 1 (Zero-Ad Cinema HD)', icon: '🛡️', clean: true, description: '100% Ad-Free Open Cinema Stream' },
   { id: '2', name: 'Server 2 (YouTube No-Cookie 4K)', icon: '⚡', clean: true, description: 'Official Open License Master Stream' },
-  { id: '3', name: 'Server 3 (Direct HTML5 Player)', icon: '🎥', clean: true, description: 'Direct High-Bitrate Video Stream' }
+  { id: '3', name: 'Server 3 (Archive.org Public Domain)', icon: '🏛️', clean: true, description: 'Direct Public Domain Archive Stream' }
 ];
 
 const Player = {
@@ -188,9 +188,15 @@ const Player = {
       }
     }
 
-    // Server 3: Direct HTML5 Player
+    const isArchive = media.stream_url && media.stream_url.includes('archive.org/embed/');
+    const isDirectVideo = media.stream_url && (media.stream_url.endsWith('.mp4') || media.stream_url.endsWith('.webm'));
+
+    // Server 3: Direct Public Domain Archive or HTML5 Stream
     if (this.currentServer === '3') {
-      if (media.stream_url) {
+      if (isArchive) {
+        this.renderArchiveEmbed(media.stream_url);
+        return;
+      } else if (isDirectVideo) {
         this.renderHTML5Player(media.stream_url);
         return;
       } else if (media.youtube_id) {
@@ -199,10 +205,13 @@ const Player = {
       }
     }
 
-    // Server 2: Official YouTube No-Cookie Embed
+    // Server 2: Official YouTube No-Cookie Embed / Archive Fallback
     if (this.currentServer === '2') {
       if (media.youtube_id) {
         this.renderYouTubeEmbed(media.youtube_id);
+        return;
+      } else if (isArchive) {
+        this.renderArchiveEmbed(media.stream_url);
         return;
       } else if (media.stream_url) {
         this.renderHTML5Player(media.stream_url);
@@ -211,13 +220,34 @@ const Player = {
     }
 
     // Server 1 (Zero-Ad Cinema HD - Auto-Select optimal clean stream)
-    if (media.stream_url) {
-      this.renderHTML5Player(media.stream_url);
+    if (isArchive) {
+      this.renderArchiveEmbed(media.stream_url);
     } else if (media.youtube_id) {
       this.renderYouTubeEmbed(media.youtube_id);
+    } else if (media.stream_url) {
+      this.renderHTML5Player(media.stream_url);
     } else {
       this.renderHTML5Player('https://www.w3schools.com/html/mov_bbb.mp4');
     }
+  },
+
+  renderArchiveEmbed(url) {
+    this.container.innerHTML = `
+      <div class="iframe-wrapper">
+        <iframe
+          src="${url}"
+          title="${this.currentMedia.title || this.currentMedia.name || 'Archive.org Cinema Stream'}"
+          allow="accelerometer; autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
+          id="streamingIframe"
+        ></iframe>
+      </div>
+      <div class="direct-stream-badge">
+        <span>🏛️ 100% Public Domain Archive Stream (Zero Ads & Popups)</span>
+      </div>
+    `;
   },
 
   renderYouTubeEmbed(videoId) {
