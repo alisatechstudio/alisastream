@@ -499,6 +499,33 @@ const App = {
       });
     });
 
+    // Footer nav links
+    document.querySelectorAll('.footer-links [data-tab]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tab = link.getAttribute('data-tab');
+        if (tab) this.switchTab(tab);
+      });
+    });
+
+    // Footer genre buttons
+    document.querySelectorAll('.footer-links [data-filter]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const filter = btn.getAttribute('data-filter');
+        const genreMap = {
+          action: '28',
+          scifi: '878',
+          anime: '16',
+          comedy: '35',
+          horror: '27'
+        };
+        if (genreMap[filter]) {
+          this.openMovieCatalog({ genre: genreMap[filter] });
+        }
+      });
+    });
+
     // Brand click -> Home
     const brand = document.getElementById('brandHomeBtn');
     if (brand) {
@@ -617,18 +644,18 @@ const App = {
     if (railsContainer) railsContainer.style.display = 'none';
     if (dynamicSection) dynamicSection.style.display = 'block';
 
-    if (subEl) subEl.textContent = 'WORLDWIDE CINEMA EXPLORER';
+    if (subEl) subEl.textContent = 'EXPLORE COLLECTION';
     if (titleEl) {
       const titlesMap = {
-        all: 'All Worldwide Movies',
-        popular: 'Popular Movies Worldwide',
+        all: 'All Movies (2015–2026)',
+        popular: 'Popular Blockbusters',
         top_rated: 'Top Rated Masterpieces',
         now_playing: 'Now Playing in Theaters',
         upcoming: 'Upcoming Blockbusters',
-        rapidapi: 'IMDb MoviesDatabase Catalog',
-        public: 'Open Cinema Guaranteed Streams'
+        rapidapi: 'IMDb Top Movies',
+        public: 'Featured Spotlight Movies'
       };
-      titleEl.textContent = titlesMap[this.catalogState.category] || 'Worldwide Movie Catalog';
+      titleEl.textContent = titlesMap[this.catalogState.category] || 'Movie Catalog';
     }
 
     window.scrollTo({ top: heroSpotlight?.offsetHeight || 300, behavior: 'smooth' });

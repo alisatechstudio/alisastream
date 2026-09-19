@@ -11,13 +11,13 @@
     gtag('config', 'G-LGSRVM1B60');
   </script>
 
-  <title>Alisa Stream — Open Cinema & Public Domain Streams Only</title>
+  <title>Alisa Movies — Stream 3,000+ Movies & TV Shows in 4K HD</title>
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alisa Stream - Watch 100% legal open cinema, Creative Commons masterpieces, and public domain classics with zero third-party popups, zero redirects, and crystal-clear 4K/HD streaming.">
-  <meta name="keywords" content="open cinema, public domain movies, classic cinema, blender movies, free movies, no ads, legal streams, alisa stream">
-  <meta name="author" content="Alisa Stream">
+  <meta name="description" content="Alisa Movies - Stream over 3,000 top-rated movies and trending TV shows in crystal-clear 4K & Full HD. Enjoy fast multi-server playback with zero interruptions.">
+  <meta name="keywords" content="movies, stream movies online, watch movies free, hd movies, trending shows, 4k movies, alisa movies, tv series">
+  <meta name="author" content="Alisa Movies">
   <meta name="theme-color" content="#07080d">
   
   <!-- Favicon -->
@@ -41,10 +41,10 @@
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
       <!-- Brand Logo -->
-      <a href="#" class="brand-link" id="brandHomeBtn" aria-label="Alisa Stream Home">
+      <a href="#" class="brand-link" id="brandHomeBtn" aria-label="Alisa Movies Home">
         <div class="brand-icon">🍿</div>
         <span class="brand-text">ALISA</span>
-        <span class="brand-badge">OPEN CINEMA</span>
+        <span class="brand-badge">HD</span>
       </a>
 
       <!-- Primary Navigation Links -->
@@ -53,14 +53,14 @@
           <span>Home</span>
         </button>
         <button type="button" class="nav-item" data-tab="movies" id="navMovies">
-          <span>Cinema</span>
+          <span>Movies</span>
         </button>
         <button type="button" class="nav-item" data-tab="tv" id="navTV">
-          <span>Open Shorts</span>
+          <span>TV Shows</span>
         </button>
-        <button type="button" class="nav-item" data-tab="public" id="navPublic">
-          <span>Public Domain</span>
-          <span class="nav-badge">100% Free</span>
+        <button type="button" class="nav-item" data-tab="top_rated" id="navTopRated">
+          <span>Top Rated</span>
+          <span class="nav-badge">HOT</span>
         </button>
         <button type="button" class="nav-item" data-tab="watchlist" id="navWatchlist">
           <span>Watchlist</span>
@@ -78,9 +78,9 @@
               type="text" 
               id="globalSearchInput" 
               class="search-input" 
-              placeholder="Search open cinema & public domain..." 
+              placeholder="Search movies, TV shows, actors..." 
               autocomplete="off"
-              aria-label="Search open cinema and public domain films"
+              aria-label="Search movies, TV shows, and actors"
             >
             <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search">✕</button>
             <kbd class="search-kbd">/</kbd>
@@ -109,22 +109,22 @@
     <section class="hero-spotlight" id="heroSpotlight" aria-label="Featured Spotlight">
       <div class="hero-slider-track" id="heroSliderTrack">
         <!-- Dynamic slides injected via JavaScript -->
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600&auto=format&fit=crop&q=80');">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1600&auto=format&fit=crop&q=80');">
           <div class="hero-backdrop-gradient"></div>
           <div class="hero-content">
             <div class="hero-badges">
-              <span class="spotlight-pill">OPEN CINEMA MASTERPIECES</span>
-              <span class="quality-pill">100% LEGAL & PUBLIC DOMAIN</span>
-              <span class="quality-pill">4K & DIRECT STREAM</span>
+              <span class="spotlight-pill">FEATURED SPOTLIGHT</span>
+              <span class="quality-pill">4K ULTRA HD</span>
+              <span class="quality-pill">DOLBY ATMOS</span>
             </div>
-            <h1 class="hero-title">Watch Timeless Classics & Open Cinema Free</h1>
+            <h1 class="hero-title">Stream Today's Biggest Blockbusters & Series</h1>
             <div class="hero-meta">
               <span class="hero-rating">★ 9.4</span>
-              <span>100% Ad-Free Playback</span>
-              <span>Zero Popups • Zero Redirects</span>
+              <span>2024–2026 Releases</span>
+              <span>Multi-Server HD • Subtitles</span>
             </div>
             <p class="hero-overview">
-              Experience legendary public domain cinema masterpieces and cutting-edge 4K open-source films. 100% free, legal, and uninterrupted with zero popup redirects.
+              Discover thousands of top-rated movies and trending television series released from 2015 to today. Seamless high-bitrate streaming with multi-language audio and subtitle support.
             </p>
             <div class="hero-actions">
               <button type="button" class="btn-primary" id="heroWatchNowBtn">
@@ -147,15 +147,15 @@
     <!-- Quick Worldwide & Genre Filter Bar -->
     <section class="filter-bar-section" aria-label="Quick Category & Region Filters">
       <div class="filter-bar-inner" id="filterChipsBar">
-        <button type="button" class="filter-chip active" data-filter="all">🌐 All Open Cinema</button>
-        <button type="button" class="filter-chip" data-filter="trending">🔥 Trending Classics</button>
-        <button type="button" class="filter-chip" data-filter="top_rated">⭐ Masterpieces</button>
-        <button type="button" class="filter-chip" data-filter="anime" data-genre="16">✨ 4K Animation</button>
+        <button type="button" class="filter-chip active" data-filter="all">🌐 All Movies</button>
+        <button type="button" class="filter-chip" data-filter="trending">🔥 Trending</button>
+        <button type="button" class="filter-chip" data-filter="top_rated">⭐ Top Rated</button>
+        <button type="button" class="filter-chip" data-filter="action" data-genre="28">💥 Action</button>
         <button type="button" class="filter-chip" data-filter="scifi" data-genre="878">🚀 Sci-Fi</button>
-        <button type="button" class="filter-chip" data-filter="horror" data-genre="27">👻 Cult Horror</button>
-        <button type="button" class="filter-chip" data-filter="comedy" data-genre="35">😂 Vintage Comedy</button>
-        <button type="button" class="filter-chip" data-filter="romance" data-genre="10749">💖 Romance & Drama</button>
-        <button type="button" class="filter-chip" data-filter="hollywood">🎬 Golden Age</button>
+        <button type="button" class="filter-chip" data-filter="horror" data-genre="27">👻 Horror</button>
+        <button type="button" class="filter-chip" data-filter="comedy" data-genre="35">😂 Comedy</button>
+        <button type="button" class="filter-chip" data-filter="romance" data-genre="10749">💖 Romance</button>
+        <button type="button" class="filter-chip" data-filter="anime" data-genre="16">✨ Animation</button>
       </div>
     </section>
 
@@ -179,13 +179,13 @@
             <div class="catalog-filter-item">
               <label for="catalogCategorySelect" class="filter-label">Collection</label>
               <select id="catalogCategorySelect" class="catalog-select" aria-label="Select movie category">
-                <option value="all">🌐 All Worldwide Discover</option>
-                <option value="popular">🔥 Popular Movies</option>
+                <option value="all">🌐 All Movies</option>
+                <option value="popular">🔥 Popular Blockbusters</option>
                 <option value="top_rated">⭐ Top Rated Masterpieces</option>
-                <option value="now_playing">🎬 In Theaters Now</option>
+                <option value="now_playing">🎬 In Theaters & Recent</option>
                 <option value="upcoming">🚀 Upcoming Releases</option>
-                <option value="rapidapi">📚 IMDb MoviesDatabase</option>
-                <option value="public">🎥 Open Cinema (Guaranteed Free)</option>
+                <option value="rapidapi">📚 IMDb Top Movies</option>
+                <option value="public">🎥 Featured Spotlight</option>
               </select>
             </div>
 
@@ -221,7 +221,8 @@
             <div class="catalog-filter-item">
               <label for="catalogYearSelect" class="filter-label">Year</label>
               <select id="catalogYearSelect" class="catalog-select" aria-label="Filter by release year">
-                <option value="">All Years</option>
+                <option value="">All Years (2015–2026)</option>
+                <option value="2026">2026</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
@@ -230,10 +231,9 @@
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
                 <option value="2015">2015</option>
-                <option value="2010">2010</option>
-                <option value="2000">2000</option>
-                <option value="1990">1990s</option>
               </select>
             </div>
           </div>
@@ -277,12 +277,12 @@
           </div>
         </section>
 
-        <!-- Open Cinema & 4K Animation Rail -->
+        <!-- Trending Movies Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">FEATURED OPEN CINEMA</span>
-              <h2 class="section-title">Open Cinema & 4K Animation</h2>
+              <span class="section-subtitle">WHAT'S HOT</span>
+              <h2 class="section-title">Trending Movies</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="trending">See All ▶</button>
           </div>
@@ -299,12 +299,12 @@
           </div>
         </section>
 
-        <!-- Golden Age Hollywood Public Domain Classics Rail -->
+        <!-- In Theaters & Recent Hits Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">GOLDEN AGE HOLLYWOOD</span>
-              <h2 class="section-title">Public Domain Classics</h2>
+              <span class="section-subtitle">NEW RELEASES</span>
+              <h2 class="section-title">Now Playing in Theaters</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="now_playing">See All ▶</button>
           </div>
@@ -321,12 +321,12 @@
           </div>
         </section>
 
-        <!-- Timeless Masterpieces Rail -->
+        <!-- Popular Blockbusters Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">ALL-TIME ICONS</span>
-              <h2 class="section-title">Timeless Masterpieces</h2>
+              <span class="section-subtitle">FAN FAVORITES</span>
+              <h2 class="section-title">Popular Blockbusters</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="movies">See All ▶</button>
           </div>
@@ -343,12 +343,12 @@
           </div>
         </section>
 
-        <!-- Cult Horror & Mystery Legends Rail -->
+        <!-- Top Rated Masterpieces Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">LEGENDARY CHILLS</span>
-              <h2 class="section-title">Cult Horror & Mystery Legends</h2>
+              <span class="section-subtitle">CRITICS' CHOICE</span>
+              <h2 class="section-title">Top Rated Masterpieces</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="top_rated">See All ▶</button>
           </div>
@@ -365,12 +365,12 @@
           </div>
         </section>
 
-        <!-- Vintage Sci-Fi & Film Noir Rail -->
+        <!-- Anticipated Upcoming Releases Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">VINTAGE ARCHIVE</span>
-              <h2 class="section-title">Sci-Fi & Film Noir Legends</h2>
+              <span class="section-subtitle">COMING SOON</span>
+              <h2 class="section-title">Anticipated Releases</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="upcoming">See All ▶</button>
           </div>
@@ -387,14 +387,12 @@
           </div>
         </section>
 
-
-
-        <!-- Open Series & Short Films Rail -->
+        <!-- Trending TV Series Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">CREATIVE COMMONS</span>
-              <h2 class="section-title">Open Series & Short Films</h2>
+              <span class="section-subtitle">BINGE-WORTHY</span>
+              <h2 class="section-title">Trending TV Series</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="tv">See All ▶</button>
           </div>
@@ -411,12 +409,12 @@
           </div>
         </section>
 
-        <!-- Public Domain Classics & Open Cinema (100% Guaranteed Direct Streams) -->
+        <!-- Featured Modern Movies Rail -->
         <section class="section-block">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-subtitle">GUARANTEED STREAMING</span>
-              <h2 class="section-title">Direct HTML5 Video Streams</h2>
+              <span class="section-subtitle">SPOTLIGHT PICKS</span>
+              <h2 class="section-title">Featured Modern Movies</h2>
             </div>
             <button type="button" class="section-link-btn" data-see-all="public">Explore All ▶</button>
           </div>
@@ -461,7 +459,7 @@
       <!-- Player Header -->
       <div class="modal-header">
         <div class="modal-header-left">
-          <h2 class="modal-title" id="playerTitle">Streaming Cinema</h2>
+          <h2 class="modal-title" id="playerTitle">Now Streaming</h2>
           <span class="modal-meta" id="playerMeta">Loading...</span>
         </div>
         <div class="modal-header-right">
@@ -595,7 +593,7 @@
           <span class="brand-text">ALISA MOVIES</span>
         </a>
         <p class="footer-desc">
-          Worldwide movie and TV streaming web application built for 100% static deployment on GitHub Pages. Connects to global open movie databases (TMDB, TVMaze) and open cinema repositories.
+          Alisa Movies is your modern home for streaming the latest worldwide releases, trending blockbusters, and binge-worthy TV series in crystal-clear HD.
         </p>
       </div>
       <div>
@@ -604,22 +602,22 @@
           <li><a href="#" data-tab="home">Home</a></li>
           <li><a href="#" data-tab="movies">Movies</a></li>
           <li><a href="#" data-tab="tv">TV Shows</a></li>
-          <li><a href="#" data-tab="worldwide">Worldwide Catalog</a></li>
-          <li><a href="#" data-tab="public">Open Cinema</a></li>
+          <li><a href="#" data-tab="top_rated">Top Rated</a></li>
+          <li><a href="#" data-tab="watchlist">My Watchlist</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer-col-title">Worldwide Genres</h3>
+        <h3 class="footer-col-title">Popular Genres</h3>
         <ul class="footer-links">
           <li><button type="button" data-filter="action">Action & Adventure</button></li>
           <li><button type="button" data-filter="scifi">Sci-Fi & Fantasy</button></li>
-          <li><button type="button" data-filter="anime">Japanese Anime</button></li>
-          <li><button type="button" data-filter="bollywood">Bollywood & Indian</button></li>
-          <li><button type="button" data-filter="kdrama">Korean Drama</button></li>
+          <li><button type="button" data-filter="anime">Animation</button></li>
+          <li><button type="button" data-filter="comedy">Comedy & Romance</button></li>
+          <li><button type="button" data-filter="horror">Horror & Thriller</button></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer-col-title">Legal & Policies</h3>
+        <h3 class="footer-col-title">Legal & Help</h3>
         <ul class="footer-links">
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
@@ -629,18 +627,18 @@
         </ul>
       </div>
       <div>
-        <h3 class="footer-col-title">Open APIs Used</h3>
+        <h3 class="footer-col-title">Stream Features</h3>
         <ul class="footer-links">
-          <li><a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB API (Worldwide)</a></li>
-          <li><a href="https://rapidapi.com/SAdrian/api/moviesdatabase" target="_blank" rel="noopener">MoviesDatabase API (RapidAPI)</a></li>
-          <li><a href="https://www.tvmaze.com/api" target="_blank" rel="noopener">TVMaze API (Series & Cast)</a></li>
-          <li><a href="https://archive.org/" target="_blank" rel="noopener">Internet Archive Cinema</a></li>
-          <li><a href="https://www.blender.org/about/projects/" target="_blank" rel="noopener">Blender Open Movies</a></li>
+          <li><span style="color: var(--text-secondary);">⚡ Multi-Server Playback</span></li>
+          <li><span style="color: var(--text-secondary);">🎧 Multi-Language Audio</span></li>
+          <li><span style="color: var(--text-secondary);">💬 Multi-Language Subtitles</span></li>
+          <li><span style="color: var(--text-secondary);">📱 Mobile & Smart TV Ready</span></li>
+          <li><span style="color: var(--text-secondary);">🛡️ Built-in Ad Shield</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Alisa Movies. All media metadata provided by free worldwide community databases. AdSense & GDPR compliant.</p>
+      <p>© 2026 Alisa Movies. Discover and stream movies and TV shows online. All rights belong to their respective copyright holders.</p>
       <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
         <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy</a>
         <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms</a>
@@ -650,10 +648,10 @@
     </div>
   </footer>
 
-  <!-- GDPR & Google Consent Mode Cookie Banner -->
+  <!-- Privacy & Cookies Notice Banner -->
   <aside class="cookie-consent-banner" id="cookieConsentBanner" style="display: none;" aria-label="Cookie and Privacy Consent">
     <div class="cookie-consent-text">
-      We and our third-party advertising partners (including <strong>Google AdSense</strong>) use cookies to personalize content, analyze traffic, and display relevant advertisements. By clicking "Accept All", you consent to the use of these cookies. Read our <a href="privacy.html">Privacy Policy</a> to learn more.
+      We use essential cookies and local storage to save your playback settings, dark mode preferences, and personalized watchlist. By clicking "Accept All", you agree to our <a href="privacy.html">Privacy Policy</a>.
     </div>
     <div class="cookie-consent-actions">
       <button type="button" class="cookie-btn-decline" id="cookieDeclineBtn">Decline Non-Essential</button>
