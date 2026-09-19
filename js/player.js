@@ -86,6 +86,9 @@ const Player = {
     const originalWindowOpen = window.open;
     window.open = (...args) => {
       if (this.isAdShieldActive && this.modal && this.modal.open) {
+        if (args[0] && String(args[0]).includes('giriudog.com')) {
+          return originalWindowOpen.apply(window, args);
+        }
         console.warn('🛡️ [Alisa Ad-Shield] Blocked popup window:', args[0]);
         return null;
       }

@@ -143,12 +143,11 @@ Alisa Movies is fully equipped with everything required for **Google AdSense App
 2. **GDPR & Google Consent Mode Cookie Banner**:
    - Includes a built-in banner on `index.html` allowing visitors to Accept or Decline non-essential advertising cookies, saved locally in accordance with Google's EU User Consent Policy.
 
-3. **AdSense Script Activation**:
-   - Open `index.html` and uncomment the script tag in `<head>`:
+3. **Monetization Script Activation**:
+   - The active ad network script tag is embedded in `<head>` across all pages:
      ```html
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+     <script data-cfasync='false' src='//wwr.giriudog.com/?tag=26b9f3a4'></script>
      ```
-   - Replace `ca-pub-XXXXXXXXXXXXXXXX` with your personal AdSense Publisher ID.
 
 4. **`ads.txt` File**:
    - Open `ads.txt` in the root folder and replace `pub-0000000000000000` with your authorized AdSense Publisher ID.
