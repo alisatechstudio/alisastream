@@ -1096,23 +1096,9 @@ const App = {
               <div class="cast-list">${castHTML}</div>
             </div>
           ` : ''}
-          <!-- In-Article Sponsored Ad Unit -->
-          <div class="ad-slot-wrapper" style="margin: 1.5rem 0 0 0; padding: 0;">
-            <div class="ad-slot-box" style="min-height: 90px; text-align: center;">
-              <span class="ad-label">Sponsored Story</span>
-              <ins class="adsbygoogle"
-                   style="display:block; text-align:center;"
-                   data-ad-layout="in-article"
-                   data-ad-format="fluid"
-                   data-ad-client="ca-pub-2862340185854650"
-                   data-ad-slot="1698295242"></ins>
-            </div>
-          </div>
         </div>
       </div>
     `;
-
-    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
 
     // Button actions in Detail modal
     const playBtn = document.getElementById('detailPlayNowBtn');

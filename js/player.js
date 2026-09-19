@@ -4,9 +4,11 @@
  */
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (Zero-Ad Cinema HD)', icon: '🛡️', clean: true, description: '100% Ad-Free Open Cinema Stream' },
-  { id: '2', name: 'Server 2 (YouTube No-Cookie 4K)', icon: '⚡', clean: true, description: 'Official Open License Master Stream' },
-  { id: '3', name: 'Server 3 (Archive.org Public Domain)', icon: '🏛️', clean: true, description: 'Direct Public Domain Archive Stream' }
+  { id: '1', name: 'Server 1 (VidLink HD)', icon: '⚡', clean: true, description: 'Direct 4K/1080p Fast Stream (Multi-Language)' },
+  { id: '2', name: 'Server 2 (VidSrc Pro)', icon: '🚀', clean: true, description: 'Global High-Speed Stream Mirror' },
+  { id: '3', name: 'Server 3 (MultiEmbed)', icon: '🎥', clean: true, description: 'Alternative Multi-Source Stream' },
+  { id: '4', name: 'Server 4 (AutoEmbed VIP)', icon: '🛡️', clean: true, description: 'Auto-Switching Backup Mirror' },
+  { id: '5', name: 'Server 5 (Open Cinema)', icon: '🏛️', clean: true, description: 'Direct Open License Stream' }
 ];
 
 const Player = {
@@ -176,23 +178,14 @@ const Player = {
     if (!this.container || !this.currentMedia) return;
 
     let media = this.currentMedia;
-    // Resolve to public cinema item if stream details missing
-    if (!media.stream_url && !media.youtube_id && window.MovieAPI) {
-      const match = window.MovieAPI.getPublicCinema().find(m => String(m.id) === String(media.id) || m.title === media.title);
-      if (match) {
-        media = { ...media, ...match };
-        this.currentMedia = media;
-      } else {
-        media = { ...media, ...window.MovieAPI.getPublicCinema()[0] };
-        this.currentMedia = media;
-      }
-    }
+    const isTV = media.media_type === 'tv' || Boolean(media.first_air_date);
+    const tmdbId = media.tmdb_id || media.id;
 
     const isArchive = media.stream_url && media.stream_url.includes('archive.org/embed/');
     const isDirectVideo = media.stream_url && (media.stream_url.endsWith('.mp4') || media.stream_url.endsWith('.webm'));
 
-    // Server 3: Direct Public Domain Archive or HTML5 Stream
-    if (this.currentServer === '3') {
+    // Server 5: Open Cinema / Archive.org / Direct HTML5 Video
+    if (this.currentServer === '5') {
       if (isArchive) {
         this.renderArchiveEmbed(media.stream_url);
         return;
@@ -205,30 +198,63 @@ const Player = {
       }
     }
 
-    // Server 2: Official YouTube No-Cookie Embed / Archive Fallback
-    if (this.currentServer === '2') {
-      if (media.youtube_id) {
-        this.renderYouTubeEmbed(media.youtube_id);
-        return;
-      } else if (isArchive) {
-        this.renderArchiveEmbed(media.stream_url);
-        return;
-      } else if (media.stream_url) {
-        this.renderHTML5Player(media.stream_url);
-        return;
-      }
+    // Modern Commercial Full Movie Streaming (2015-2026):
+    let embedUrl = '';
+    if (this.currentServer === '1') {
+      // Server 1: VidLink HD Pro (Fastest, multi-language, multi-subtitles)
+      embedUrl = isTV
+        ? `https://vidlink.pro/tv/${tmdbId}/${this.currentSeason}/${this.currentEpisode}?primaryColor=e50914&secondaryColor=1f1f1f`
+        : `https://vidlink.pro/movie/${tmdbId}?primaryColor=e50914&secondaryColor=1f1f1f`;
+    } else if (this.currentServer === '2') {
+      // Server 2: VidSrc Pro
+      embedUrl = isTV
+        ? `https://vidsrc.to/embed/tv/${tmdbId}/${this.currentSeason}/${this.currentEpisode}`
+        : `https://vidsrc.to/embed/movie/${tmdbId}`;
+    } else if (this.currentServer === '3') {
+      // Server 3: MultiEmbed
+      embedUrl = isTV
+        ? `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1&s=${this.currentSeason}&e=${this.currentEpisode}`
+        : `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1`;
+    } else if (this.currentServer === '4') {
+      // Server 4: AutoEmbed VIP
+      embedUrl = isTV
+        ? `https://player.autoembed.cc/embed/tv/${tmdbId}/${this.currentSeason}/${this.currentEpisode}`
+        : `https://player.autoembed.cc/embed/movie/${tmdbId}`;
     }
 
-    // Server 1 (Zero-Ad Cinema HD - Auto-Select optimal clean stream)
+    if (embedUrl) {
+      this.renderThirdPartyEmbed(embedUrl);
+      return;
+    }
+
+    // Fallback if not matching server
     if (isArchive) {
       this.renderArchiveEmbed(media.stream_url);
     } else if (media.youtube_id) {
       this.renderYouTubeEmbed(media.youtube_id);
-    } else if (media.stream_url) {
-      this.renderHTML5Player(media.stream_url);
+    } else if (tmdbId) {
+      this.renderThirdPartyEmbed(`https://vidlink.pro/movie/${tmdbId}?primaryColor=e50914&secondaryColor=1f1f1f`);
     } else {
       this.renderHTML5Player('https://www.w3schools.com/html/mov_bbb.mp4');
     }
+  },
+
+  renderThirdPartyEmbed(url) {
+    this.container.innerHTML = `
+      <div class="iframe-wrapper">
+        <iframe
+          src="${url}"
+          title="${this.currentMedia.title || this.currentMedia.name || 'Full Movie Stream'}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+          allowfullscreen
+          referrerpolicy="no-referrer"
+          id="streamingIframe"
+        ></iframe>
+      </div>
+      <div class="direct-stream-badge">
+        <span>🎬 Full HD Movie Stream • Multi-Server Fast Playback</span>
+      </div>
+    `;
   },
 
   renderArchiveEmbed(url) {
