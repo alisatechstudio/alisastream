@@ -8741,28 +8741,64 @@ const MovieAPI = {
     }
   },
 
+  // --- ASYNC 3,000 FULL MOVIE LIBRARY ---
+  _catalog3000: null,
+  _loadingCatalog3000: null,
+
+  async getCatalog3000() {
+    if (this._catalog3000 && this._catalog3000.length > 0) {
+      return this._catalog3000;
+    }
+    if (this._loadingCatalog3000) {
+      return this._loadingCatalog3000;
+    }
+
+    this._loadingCatalog3000 = (async () => {
+      try {
+        const res = await fetch('data/movies_3000.json');
+        if (res.ok) {
+          const list = await res.json();
+          if (Array.isArray(list) && list.length > 0) {
+            this._catalog3000 = list;
+            return list;
+          }
+        }
+      } catch (err) {
+        console.warn('Could not load data/movies_3000.json, using static spotlight catalog:', err);
+      }
+      this._catalog3000 = PUBLIC_CINEMA_MOVIES;
+      return this._catalog3000;
+    })();
+
+    return this._loadingCatalog3000;
+  },
+
   // --- TRENDING & SPOTLIGHT (100% Guaranteed Public Domain & Open Cinema Streams) ---
   async getTrending(timeWindow = 'day') {
-    return PUBLIC_CINEMA_MOVIES;
+    const catalog = await this.getCatalog3000();
+    return catalog.slice(0, 40);
   },
 
   async getMovies(category = 'popular', page = 1) {
+    const catalog = await this.getCatalog3000();
+    let filtered = catalog;
     if (category === 'top_rated') {
-      return [...PUBLIC_CINEMA_MOVIES].sort((a, b) => b.vote_average - a.vote_average);
+      filtered = [...catalog].sort((a, b) => b.vote_average - a.vote_average);
+    } else if (category === 'animation') {
+      filtered = catalog.filter(m => m.genres && m.genres.some(g => g.name === 'Animation'));
+    } else if (category === 'horror') {
+      filtered = catalog.filter(m => m.genres && m.genres.some(g => g.name === 'Horror'));
+    } else if (category === 'scifi') {
+      filtered = catalog.filter(m => m.genres && m.genres.some(g => g.name === 'Sci-Fi'));
+    } else if (category === 'comedy') {
+      filtered = catalog.filter(m => m.genres && m.genres.some(g => g.name === 'Comedy'));
+    } else if (category === 'action') {
+      filtered = catalog.filter(m => m.genres && m.genres.some(g => g.name === 'Action' || g.name === 'Adventure'));
+    } else if (category === 'classics' || category === 'upcoming') {
+      filtered = catalog.filter(m => parseInt(m.release_date) < 1970);
     }
-    if (category === 'animation') {
-      return PUBLIC_CINEMA_MOVIES.filter(m => m.genres.some(g => g.name === 'Animation'));
-    }
-    if (category === 'horror') {
-      return PUBLIC_CINEMA_MOVIES.filter(m => m.genres.some(g => g.name === 'Horror'));
-    }
-    if (category === 'scifi') {
-      return PUBLIC_CINEMA_MOVIES.filter(m => m.genres.some(g => g.name === 'Sci-Fi'));
-    }
-    if (category === 'classics' || category === 'upcoming') {
-      return PUBLIC_CINEMA_MOVIES.filter(m => parseInt(m.release_date) < 1970);
-    }
-    return PUBLIC_CINEMA_MOVIES;
+    const start = (page - 1) * 24;
+    return filtered.slice(start, start + 24);
   },
 
   // Fetch all movies with dynamic filters (pagination, genre, year, sort)
@@ -8772,16 +8808,20 @@ const MovieAPI = {
       sortBy = 'popularity.desc',
       genre = null,
       year = null,
-      category = null
+      category = null,
+      pageSize = 30
     } = options;
 
-    let list = [...PUBLIC_CINEMA_MOVIES];
+    const catalog = await this.getCatalog3000();
+    let list = [...catalog];
 
     if (category && category !== 'all') {
-      if (category === 'top_rated') list = list.filter(m => m.vote_average >= 8.5);
-      if (category === 'horror') list = list.filter(m => m.genres.some(g => g.name === 'Horror'));
-      if (category === 'animation') list = list.filter(m => m.genres.some(g => g.name === 'Animation'));
-      if (category === 'scifi') list = list.filter(m => m.genres.some(g => g.name === 'Sci-Fi'));
+      if (category === 'top_rated') list = list.filter(m => m.vote_average >= 8.2);
+      if (category === 'horror') list = list.filter(m => m.genres && m.genres.some(g => g.name === 'Horror'));
+      if (category === 'animation') list = list.filter(m => m.genres && m.genres.some(g => g.name === 'Animation'));
+      if (category === 'scifi') list = list.filter(m => m.genres && m.genres.some(g => g.name === 'Sci-Fi'));
+      if (category === 'comedy') list = list.filter(m => m.genres && m.genres.some(g => g.name === 'Comedy'));
+      if (category === 'action') list = list.filter(m => m.genres && m.genres.some(g => g.name === 'Action' || g.name === 'Adventure'));
       if (category === 'classics' || category === 'now_playing' || category === 'upcoming') {
         list = list.filter(m => parseInt(m.release_date) < 1970);
       }
@@ -8789,7 +8829,7 @@ const MovieAPI = {
 
     if (genre) {
       const genreId = Number(genre);
-      list = list.filter(m => m.genres.some(g => g.id === genreId));
+      list = list.filter(m => m.genres && m.genres.some(g => g.id === genreId));
     }
 
     if (year) {
@@ -8802,6 +8842,13 @@ const MovieAPI = {
       list.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
     } else if (sortBy === 'primary_release_date.asc') {
       list.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+    } else if (sortBy === 'popularity.desc') {
+      list.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+    }
+
+    if (page && pageSize) {
+      const start = (page - 1) * pageSize;
+      return list.slice(start, start + pageSize);
     }
 
     return list;
@@ -8842,24 +8889,26 @@ const MovieAPI = {
   },
 
   async getTVShows(category = 'popular', page = 1) {
-    return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 16 || g.id === 12 || g.id === 35));
+    const catalog = await this.getCatalog3000();
+    return catalog.filter(m => m.genres?.some(g => g.id === 16 || g.id === 12 || g.id === 35)).slice(0, 30);
   },
 
   // --- WORLDWIDE & CATEGORY DISCOVERY ---
   async getWorldwide(regionCode = 'all', page = 1) {
+    const catalog = await this.getCatalog3000();
     switch (regionCode) {
       case 'anime':
-        return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 16));
+        return catalog.filter(m => m.genres?.some(g => g.id === 16));
       case 'hollywood':
-        return PUBLIC_CINEMA_MOVIES.filter(m => !m.genres?.some(g => g.id === 16));
+        return catalog.filter(m => !m.genres?.some(g => g.id === 16));
       case 'scifi':
-        return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 878));
+        return catalog.filter(m => m.genres?.some(g => g.id === 878));
       case 'horror':
-        return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 27));
+        return catalog.filter(m => m.genres?.some(g => g.id === 27));
       case 'comedy':
-        return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 35));
+        return catalog.filter(m => m.genres?.some(g => g.id === 35));
       case 'drama':
-        return PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === 18));
+        return catalog.filter(m => m.genres?.some(g => g.id === 18));
       default:
         return this.getTrending();
     }
@@ -8868,17 +8917,19 @@ const MovieAPI = {
   // --- GENRE DISCOVERY ---
   async getByGenre(genreId, type = 'movie', page = 1) {
     const gid = Number(genreId);
-    const filtered = PUBLIC_CINEMA_MOVIES.filter(m => m.genres?.some(g => g.id === gid));
-    return filtered.length > 0 ? filtered : PUBLIC_CINEMA_MOVIES;
+    const catalog = await this.getCatalog3000();
+    const filtered = catalog.filter(m => m.genres?.some(g => g.id === gid));
+    return filtered.length > 0 ? filtered : catalog.slice(0, 30);
   },
 
   // --- SEARCH (OPEN CINEMA & PUBLIC DOMAIN ONLY) ---
   async searchMulti(query, page = 1) {
     if (!query || query.trim() === '') return [];
     const q = query.toLowerCase().trim();
+    const catalog = await this.getCatalog3000();
 
     // 1. Direct match on title, overview, or genre
-    const matches = PUBLIC_CINEMA_MOVIES.filter(m =>
+    const matches = catalog.filter(m =>
       m.title.toLowerCase().includes(q) ||
       (m.overview || '').toLowerCase().includes(q) ||
       (m.genres && m.genres.some(g => g.name.toLowerCase().includes(q)))
@@ -8889,25 +8940,26 @@ const MovieAPI = {
     // 2. Word-by-word fuzzy match
     const words = q.split(/\s+/).filter(w => w.length > 2);
     if (words.length > 0) {
-      const fuzzy = PUBLIC_CINEMA_MOVIES.filter(m =>
+      const fuzzy = catalog.filter(m =>
         words.some(w => m.title.toLowerCase().includes(w) || (m.overview || '').toLowerCase().includes(w))
       );
       if (fuzzy.length > 0) return fuzzy;
     }
 
     // 3. Fallback recommendations
-    return PUBLIC_CINEMA_MOVIES.slice(0, 8);
+    return catalog.slice(0, 12);
   },
 
   // --- DETAILS, CREDITS, VIDEOS ---
   async getDetails(id, mediaType = 'movie') {
+    const catalog = await this.getCatalog3000();
     // Check if ID matches directly
-    let item = PUBLIC_CINEMA_MOVIES.find(m => String(m.id) === String(id)) ||
-               PUBLIC_CINEMA_MOVIES.find(m => m.title.toLowerCase() === String(id).toLowerCase());
+    let item = catalog.find(m => String(m.id) === String(id)) ||
+               catalog.find(m => m.title.toLowerCase() === String(id).toLowerCase());
 
     if (!item) {
-      const numericIndex = typeof id === 'number' ? Math.abs(id) % PUBLIC_CINEMA_MOVIES.length : 0;
-      item = PUBLIC_CINEMA_MOVIES[numericIndex] || PUBLIC_CINEMA_MOVIES[0];
+      item = PUBLIC_CINEMA_MOVIES.find(m => String(m.id) === String(id)) ||
+             PUBLIC_CINEMA_MOVIES[0];
     }
 
     // Enrich with live OMDb data (Rotten Tomatoes, Metascore, IMDb votes, Director, Actors)
@@ -8957,7 +9009,7 @@ const MovieAPI = {
 
   // --- PUBLIC DOMAIN MOVIES LIST ---
   getPublicCinema() {
-    return PUBLIC_CINEMA_MOVIES;
+    return this._catalog3000 || PUBLIC_CINEMA_MOVIES;
   }
 };
 
