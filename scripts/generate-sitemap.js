@@ -100,8 +100,8 @@ function generateSitemap() {
         if (poster) {
           xml += `    <image:image>\n`;
           xml += `      <image:loc>${escapeXml(poster)}</image:loc>\n`;
-          xml += `      <image:title>${escapeXml(title)}${releaseYear ? ` (${releaseYear})` : ''} Full Poster HD</image:title>\n`;
-          xml += `      <image:caption>${escapeXml(item.overview ? item.overview.slice(0, 200) : title)}</image:caption>\n`;
+          xml += `      <image:title>Watch Latest ${escapeXml(title)}${releaseYear ? ` (${releaseYear})` : ''} Free HD</image:title>\n`;
+          xml += `      <image:caption>Stream latest ${escapeXml(title)} 100% free in 4K HD on Alisa Movies.</image:caption>\n`;
           xml += `    </image:image>\n`;
         }
 

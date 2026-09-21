@@ -769,31 +769,31 @@ const App = {
     // Switch to dynamic grid view
     switch (tab) {
       case 'movies':
-        document.title = 'Watch Movies Online Free in HD — Alisa Movies Catalog';
+        document.title = 'Watch Latest Movies Online Free in HD — Alisa Movies';
         this.openMovieCatalog({ category: 'all' });
         break;
       case 'now_playing':
-        document.title = 'Now Playing & Recent Cinema Releases — Alisa Movies';
+        document.title = 'Latest Cinema Releases & In Theaters Free — Alisa Movies';
         this.openMovieCatalog({ category: 'now_playing' });
         break;
       case 'top_rated':
-        document.title = 'Top Rated IMDb Masterpieces & Movies — Alisa Movies';
+        document.title = 'Latest Top Rated Movies & Masterpieces Free — Alisa Movies';
         this.openMovieCatalog({ category: 'top_rated' });
         break;
       case 'upcoming':
-        document.title = 'Upcoming Movies & Anticipated Releases — Alisa Movies';
+        document.title = 'Latest Upcoming Movies & New Releases Free — Alisa Movies';
         this.openMovieCatalog({ category: 'upcoming' });
         break;
       case 'rapidapi':
-        document.title = 'IMDb Top Rated Movies & Series — Alisa Movies';
+        document.title = 'Latest IMDb Top Rated Movies Free — Alisa Movies';
         this.openMovieCatalog({ category: 'rapidapi' });
         break;
       case 'tv':
-        document.title = 'Stream TV Shows & Series Online Free in HD — Alisa Movies';
+        document.title = 'Stream Latest TV Shows & Series Online Free in HD — Alisa Movies';
         this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', () => window.MovieAPI.getBatchTV('popular', 2));
         break;
       case 'worldwide':
-        document.title = 'Global Cinema & Worldwide Hits — Alisa Movies';
+        document.title = 'Latest Worldwide Cinema & Global Blockbusters Free — Alisa Movies';
         this.showDynamicView('GLOBAL CINEMA', 'Worldwide Blockbusters', () => window.MovieAPI.getWorldwide('all'));
         break;
       case 'public':
@@ -801,11 +801,11 @@ const App = {
         this.openMovieCatalog({ category: 'public' });
         break;
       case 'watchlist':
-        document.title = 'My Saved Watchlist — Alisa Movies';
+        document.title = 'My Saved Free Movies Watchlist — Alisa Movies';
         this.showWatchlistView();
         break;
       case 'trending':
-        document.title = 'Trending Movies & Shows Worldwide — Alisa Movies';
+        document.title = 'Latest Trending Movies & Shows Free Online — Alisa Movies';
         this.showDynamicView('CHARTS', 'Trending Now Worldwide', () => window.MovieAPI.getTrending('day'));
         break;
       default:
@@ -1282,8 +1282,8 @@ const App = {
 
   // --- DYNAMIC SPA SEO & STRUCTURED DATA ENGINE ---
   defaultSEO: {
-    title: 'Alisa Movies — Watch 3,000+ Movies & TV Shows Free in 4K HD | AlisaStream',
-    description: 'Watch over 3,000 movies and trending TV shows online free in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). Fast multi-server streaming with zero buffering, multi-language audio, and subtitles.',
+    title: 'Alisa Movies — Watch Latest Movies & TV Shows Free Online in 4K HD | Free Streaming',
+    description: 'Watch the latest movies and trending TV shows 100% free online in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). Free movie streaming with zero subscription, latest cinema releases, and multi-language subtitles.',
     url: 'https://alisastream.site/',
     image: 'https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg'
   },
@@ -1295,8 +1295,8 @@ const App = {
     const typeLabel = type === 'tv' ? 'TV Series' : 'Movie';
     const yearStr = year ? ` (${year})` : '';
     const rating = media.vote_average ? Number(media.vote_average).toFixed(1) : '8.0';
-    const seoTitle = `Watch ${title}${yearStr} Full ${typeLabel} Online Free in HD | Alisa Movies`;
-    const seoDesc = media.overview ? `${media.overview.slice(0, 160)}... Stream ${title} free in 4K HD on Alisa Movies.` : `Stream ${title} online in crystal-clear 4K & 1080p HD with multi-language subtitles on Alisa Movies.`;
+    const seoTitle = `Watch ${title}${yearStr} Latest Full ${typeLabel} Free Online in HD | Alisa Movies`;
+    const seoDesc = media.overview ? `${media.overview.slice(0, 150)}... Watch latest ${title} free online in 4K HD on Alisa Movies with no subscription.` : `Watch latest ${title} online 100% free in crystal-clear 4K & 1080p HD with multi-language subtitles on Alisa Movies.`;
     const poster = window.MovieAPI.getImageUrl(media.poster_path, 'w780') || this.defaultSEO.image;
     const deepLink = `https://alisastream.site/#${type}/${media.id}`;
 
