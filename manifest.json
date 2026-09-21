@@ -1,0 +1,19 @@
+{
+  "name": "Alisa Movies — Stream Movies & TV Shows in 4K HD",
+  "short_name": "Alisa Movies",
+  "description": "Stream 3,000+ top-rated movies and trending TV shows in crystal-clear 4K and Full HD with multi-server playback.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07080d",
+  "theme_color": "#07080d",
+  "orientation": "any",
+  "categories": ["entertainment", "movies", "video"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

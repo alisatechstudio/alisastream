@@ -154,6 +154,37 @@ Alisa Movies is fully equipped with everything required for **Google AdSense App
 
 ---
 
+## 🚀 Advanced Google SEO & Search Engine Dominance
+
+Alisa Movies is fully equipped with an enterprise-grade SEO architecture designed to rank #1 in Google Search results for queries such as "Alisa Movies", "AlisaStream", "Watch free movies in 4K", and individual movie titles.
+
+### 1. Complete Crawler Directives & Sitemaps
+- **`robots.txt`**: Unrestricted crawl access for `Googlebot`, `Googlebot-Image`, `Googlebot-Video`, and `Bingbot`, pointing directly to the sitemap.
+- **`sitemap.xml`**: Comprehensive XML sitemap containing all 3,000+ movies and television series with `<priority>`, `<changefreq>`, `<lastmod>`, and Google Image sitemap tags (`<image:image>`).
+- **Dynamic Generator Script**: Re-generate the sitemap at any time:
+  ```bash
+  node scripts/generate-sitemap.js
+  ```
+
+### 2. Google Rich Results & Structured Data (Schema.org JSON-LD)
+- **`WebSite` Schema**: Integrated with `SearchAction` for Google Sitelinks Search Box directly in Google SERPs.
+- **`Organization` Schema**: Brand identity, logo, and Knowledge Graph entity definition.
+- **`ItemList` Schema**: Top blockbusters indexed for Google Carousel rich cards.
+- **`FAQPage` Schema**: Interactive FAQs indexed as rich accordion dropdowns in Google Search results.
+- **Dynamic `Movie` / `TVSeries` Schema**: Injected on-the-fly when browsing or deep-linking individual cinema titles.
+
+### 3. Dynamic SPA SEO Engine
+- Updates `document.title`, meta description, canonical link, Open Graph cards (`og:*`), and Twitter Cards (`twitter:*`) in real-time as users open movie modals or navigate categories.
+- Restores clean home SEO state upon closing modals.
+
+### 4. Submitting to Google Search Console
+1. Visit [Google Search Console](https://search.google.com/search-console).
+2. Add your property: `https://alisastream.site/` (URL prefix) or domain level.
+3. In the **Sitemaps** tab, enter: `sitemap.xml` and click **Submit**.
+4. Google will immediately discover and index all 3,000+ movie and series pages!
+
+---
+
 ## 📜 Legal & API Attribution
 
 - Movie and TV metadata is powered by community databases: [The Movie Database (TMDB)](https://www.themoviedb.org/), [MoviesDatabase API on RapidAPI](https://rapidapi.com/SAdrian/api/moviesdatabase), and [TVMaze API](https://www.tvmaze.com/api).

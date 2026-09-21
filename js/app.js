@@ -108,12 +108,18 @@ const App = {
       }
     });
 
-    // Close detail modal btn
+    // Close detail modal btn & close event
+    const detailModal = document.getElementById('detailModal');
+    if (detailModal) {
+      detailModal.addEventListener('close', () => {
+        this.resetDefaultSEO();
+      });
+    }
+
     const closeDetail = document.getElementById('closeDetailBtn');
     if (closeDetail) {
       closeDetail.addEventListener('click', () => {
-        const d = document.getElementById('detailModal');
-        if (d) d.close();
+        if (detailModal) detailModal.close();
       });
     }
 
@@ -755,6 +761,7 @@ const App = {
 
     if (tab === 'home') {
       this.hideDynamicView();
+      this.resetDefaultSEO();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -762,33 +769,43 @@ const App = {
     // Switch to dynamic grid view
     switch (tab) {
       case 'movies':
+        document.title = 'Watch Movies Online Free in HD — Alisa Movies Catalog';
         this.openMovieCatalog({ category: 'all' });
         break;
       case 'now_playing':
+        document.title = 'Now Playing & Recent Cinema Releases — Alisa Movies';
         this.openMovieCatalog({ category: 'now_playing' });
         break;
       case 'top_rated':
+        document.title = 'Top Rated IMDb Masterpieces & Movies — Alisa Movies';
         this.openMovieCatalog({ category: 'top_rated' });
         break;
       case 'upcoming':
+        document.title = 'Upcoming Movies & Anticipated Releases — Alisa Movies';
         this.openMovieCatalog({ category: 'upcoming' });
         break;
       case 'rapidapi':
+        document.title = 'IMDb Top Rated Movies & Series — Alisa Movies';
         this.openMovieCatalog({ category: 'rapidapi' });
         break;
       case 'tv':
+        document.title = 'Stream TV Shows & Series Online Free in HD — Alisa Movies';
         this.showDynamicView('SERIES & EPISODES', 'Top TV Shows', () => window.MovieAPI.getBatchTV('popular', 2));
         break;
       case 'worldwide':
+        document.title = 'Global Cinema & Worldwide Hits — Alisa Movies';
         this.showDynamicView('GLOBAL CINEMA', 'Worldwide Blockbusters', () => window.MovieAPI.getWorldwide('all'));
         break;
       case 'public':
+        document.title = 'Watch Free Streaming Cinema Online — Alisa Movies';
         this.openMovieCatalog({ category: 'public' });
         break;
       case 'watchlist':
+        document.title = 'My Saved Watchlist — Alisa Movies';
         this.showWatchlistView();
         break;
       case 'trending':
+        document.title = 'Trending Movies & Shows Worldwide — Alisa Movies';
         this.showDynamicView('CHARTS', 'Trending Now Worldwide', () => window.MovieAPI.getTrending('day'));
         break;
       default:
@@ -1025,6 +1042,9 @@ const App = {
       return;
     }
 
+    // Update dynamic SEO & Schema.org Structured Data
+    this.updateMediaSEO(media, type);
+
     const title = media.title || media.name;
     const backdrop = window.MovieAPI.getImageUrl(media.backdrop_path, 'w1280');
     const poster = window.MovieAPI.getImageUrl(media.poster_path, 'w500');
@@ -1258,6 +1278,118 @@ const App = {
       const query = decodeURIComponent(hash.replace('#search=', ''));
       this.showDynamicView('SEARCH RESULTS', `Results for "${query}"`, () => window.MovieAPI.searchMulti(query));
     }
+  },
+
+  // --- DYNAMIC SPA SEO & STRUCTURED DATA ENGINE ---
+  defaultSEO: {
+    title: 'Alisa Movies — Watch 3,000+ Movies & TV Shows Free in 4K HD | AlisaStream',
+    description: 'Watch over 3,000 movies and trending TV shows online free in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). Fast multi-server streaming with zero buffering, multi-language audio, and subtitles.',
+    url: 'https://alisastream.site/',
+    image: 'https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg'
+  },
+
+  updateMediaSEO(media, type = 'movie') {
+    if (!media) return;
+    const title = media.title || media.name || 'Title';
+    const year = (media.release_date || media.first_air_date || '').split('-')[0];
+    const typeLabel = type === 'tv' ? 'TV Series' : 'Movie';
+    const yearStr = year ? ` (${year})` : '';
+    const rating = media.vote_average ? Number(media.vote_average).toFixed(1) : '8.0';
+    const seoTitle = `Watch ${title}${yearStr} Full ${typeLabel} Online Free in HD | Alisa Movies`;
+    const seoDesc = media.overview ? `${media.overview.slice(0, 160)}... Stream ${title} free in 4K HD on Alisa Movies.` : `Stream ${title} online in crystal-clear 4K & 1080p HD with multi-language subtitles on Alisa Movies.`;
+    const poster = window.MovieAPI.getImageUrl(media.poster_path, 'w780') || this.defaultSEO.image;
+    const deepLink = `https://alisastream.site/#${type}/${media.id}`;
+
+    // Update document title & meta tags
+    document.title = seoTitle;
+    this.setMetaTag('name', 'description', seoDesc);
+    this.setMetaTag('property', 'og:title', seoTitle);
+    this.setMetaTag('property', 'og:description', seoDesc);
+    this.setMetaTag('property', 'og:url', deepLink);
+    this.setMetaTag('property', 'og:image', poster);
+    this.setMetaTag('name', 'twitter:title', seoTitle);
+    this.setMetaTag('name', 'twitter:description', seoDesc);
+    this.setMetaTag('name', 'twitter:image', poster);
+
+    // Dynamic Movie / TVSeries Schema.org injection
+    let schemaEl = document.getElementById('dynamicMediaSchema');
+    if (!schemaEl) {
+      schemaEl = document.createElement('script');
+      schemaEl.type = 'application/ld+json';
+      schemaEl.id = 'dynamicMediaSchema';
+      document.head.appendChild(schemaEl);
+    }
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": type === 'tv' ? "TVSeries" : "Movie",
+      "name": title,
+      "alternateName": media.original_title || media.original_name || title,
+      "description": media.overview || seoDesc,
+      "image": poster,
+      "datePublished": media.release_date || media.first_air_date,
+      "genre": (media.genres || []).map(g => g.name),
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": rating,
+        "bestRating": "10",
+        "ratingCount": media.vote_count || 100
+      },
+      "potentialAction": {
+        "@type": "WatchAction",
+        "target": deepLink
+      }
+    };
+
+    if (media.director) {
+      schemaData.director = {
+        "@type": "Person",
+        "name": media.director
+      };
+    }
+
+    if (media.cast && media.cast.length > 0) {
+      schemaData.actor = media.cast.slice(0, 5).map(c => ({
+        "@type": "Person",
+        "name": c.name
+      }));
+    }
+
+    schemaEl.textContent = JSON.stringify(schemaData, null, 2);
+
+    // Update URL hash without reload for deep linking
+    if (window.location.hash !== `#${type}/${media.id}`) {
+      history.replaceState(null, '', `#${type}/${media.id}`);
+    }
+  },
+
+  resetDefaultSEO() {
+    document.title = this.defaultSEO.title;
+    this.setMetaTag('name', 'description', this.defaultSEO.description);
+    this.setMetaTag('property', 'og:title', this.defaultSEO.title);
+    this.setMetaTag('property', 'og:description', this.defaultSEO.description);
+    this.setMetaTag('property', 'og:url', this.defaultSEO.url);
+    this.setMetaTag('property', 'og:image', this.defaultSEO.image);
+    this.setMetaTag('name', 'twitter:title', this.defaultSEO.title);
+    this.setMetaTag('name', 'twitter:description', this.defaultSEO.description);
+    this.setMetaTag('name', 'twitter:image', this.defaultSEO.image);
+
+    const schemaEl = document.getElementById('dynamicMediaSchema');
+    if (schemaEl) schemaEl.remove();
+
+    if (window.location.hash.startsWith('#movie/') || window.location.hash.startsWith('#tv/')) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  },
+
+  setMetaTag(attrType, attrName, content) {
+    let el = document.querySelector(`meta[${attrType}="${attrName}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attrType, attrName);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
   }
 };
 
