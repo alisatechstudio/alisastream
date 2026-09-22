@@ -597,44 +597,28 @@
           </div>
         </section>
 
-        <div class="ad-row">
-        <!-- 300x250 Medium Rectangle Sponsored Ad Showcase -->
-        <div class="ad-slot-wrapper banner-300-wrapper" aria-label="Sponsored Advertisement">
-          <div class="ad-slot-box" style="width: 320px; min-height: 250px; padding: 6px; margin: 0 auto;">
-            <span class="ad-label">Sponsored Spotlight</span>
-            <script>
-              atOptions = {
-                'key': '2aa226d52097fda994ed5b960bc16238',
-                'format': 'iframe',
-                'height': 250,
-                'width': 300,
-                'params': {}
-              };
-            </script>
-            <script src="https://windowthrilling.com/2aa226d52097fda994ed5b960bc16238/invoke.js"></script>
-          </div>
-        </div>
-        <!-- 160x300 Left Skyscraper Banner Ad -->
-        <aside class="skyscraper-ad skyscraper-left" id="skyscraperAdLeft" aria-label="Sponsored Advertisement">
-          <div class="skyscraper-inner">
-            <button type="button" class="skyscraper-close-btn" id="closeSkyscraperBtn" title="Close Advertisement"
-              aria-label="Close advertisement">✕</button>
-            <span class="ad-label" style="margin-bottom: 2px;">SPONSORED</span>
-            <div class="skyscraper-content">
-              <script>
-                atOptions = {
-                  'key': 'e53edc39c97ff45450fcd274eaccaadd',
-                  'format': 'iframe',
-                  'height': 300,
-                  'width': 160,
-                  'params': {}
-                };
-              </script>
-              <script src="https://windowthrilling.com/e53edc39c97ff45450fcd274eaccaadd/invoke.js"></script>
+        <div class="ad-row" role="complementary" aria-label="Sponsored advertisements">
+          <!-- 300x250 Medium Rectangle Sponsored Ad Showcase -->
+          <div class="ad-slot-wrapper banner-300-wrapper" aria-label="300x250 Medium Rectangle ad">
+            <div class="ad-slot-box ad-slot-box--rectangle">
+              <span class="ad-label">Sponsored Spotlight</span>
+              <div class="ad-invoke" data-ad-key="2aa226d52097fda994ed5b960bc16238"
+                   data-ad-format="iframe" data-ad-height="250" data-ad-width="300"></div>
             </div>
           </div>
-        </aside>
-      </div>
+          <!-- 160x300 Left Skyscraper Banner Ad -->
+          <aside class="skyscraper-ad skyscraper-left" id="skyscraperAdLeft" aria-label="Sponsored Advertisement">
+            <div class="skyscraper-inner">
+              <button type="button" class="skyscraper-close-btn" id="closeSkyscraperBtn"
+                title="Close Advertisement" aria-label="Close advertisement">✕</button>
+              <span class="ad-label">SPONSORED</span>
+              <div class="skyscraper-content">
+                <div class="ad-invoke" data-ad-key="e53edc39c97ff45450fcd274eaccaadd"
+                     data-ad-format="iframe" data-ad-height="300" data-ad-width="160"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
 
       <!-- Top Rated Masterpieces Rail -->
       <section class="section-block">

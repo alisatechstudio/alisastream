@@ -37,6 +37,7 @@ const App = {
     this.setupGlobalShortcuts();
     this.setupCookieConsent();
     this.setupAdAutoRefresh();
+    this.initDisplayBanners();
 
     // Initialize Player module
     if (window.Player) {
@@ -1403,6 +1404,68 @@ const App = {
   },
 
   /**
+   * INITIAL LOAD of the standard display banner ads.
+   * Reads config from data-* attributes on each .ad-invoke node and injects
+   * the vendor's atOptions config + invoke.js once. Safe to call repeatedly.
+   */
+  initDisplayBanners() {
+    const DISPLAY_ADS = [
+      {
+        name: '468x60 Player Banner',
+        selector: '.banner-468-wrapper .ad-invoke',
+        key: '3db033b8a3c04d2969f6ad108501229f',
+        width: 468,
+        height: 60
+      },
+      {
+        name: '160x300 Left Skyscraper',
+        selector: '#skyscraperAdLeft .ad-invoke',
+        key: 'e53edc39c97ff45450fcd274eaccaadd',
+        width: 160,
+        height: 300
+      },
+      {
+        name: '300x250 Medium Rectangle',
+        selector: '.banner-300-wrapper .ad-invoke',
+        key: '2aa226d52097fda994ed5b960bc16238',
+        width: 300,
+        height: 250
+      },
+      {
+        name: '728x90 Leaderboard',
+        selector: '.banner-728-wrapper .ad-invoke',
+        key: 'feb3fda8c8b027826f18640a3c80e6b1',
+        width: 728,
+        height: 90
+      }
+    ];
+
+    DISPLAY_ADS.forEach((ad) => {
+      const box = document.querySelector(ad.selector);
+      if (!box) return;
+
+      // Clean existing content
+      box.querySelectorAll('script, iframe').forEach(el => el.remove());
+
+      const configScript = document.createElement('script');
+      configScript.text = `
+        atOptions = {
+          'key' : '${ad.key}',
+          'format' : 'iframe',
+          'height' : ${ad.height},
+          'width' : ${ad.width},
+          'params' : {}
+        };
+      `;
+      box.appendChild(configScript);
+
+      const invokeScript = document.createElement('script');
+      invokeScript.src = `https://windowthrilling.com/${ad.key}/invoke.js`;
+      box.appendChild(invokeScript);
+    });
+  },
+
+  /**
    * Auto-refresh ALL banner ads (Native, Leaderboards, Skyscraper, Rectangles)
    * every 10 seconds for maximum impression yields.
    */
@@ -1415,28 +1478,28 @@ const App = {
     const DISPLAY_ADS = [
       {
         name: '468x60 Player Banner',
-        selector: '.banner-468-wrapper .ad-slot-box',
+        selector: '.banner-468-wrapper .ad-invoke, .banner-468-wrapper .ad-slot-box',
         key: '3db033b8a3c04d2969f6ad108501229f',
         width: 468,
         height: 60
       },
       {
         name: '160x300 Left Skyscraper',
-        selector: '#skyscraperAdLeft .skyscraper-content',
+        selector: '#skyscraperAdLeft .ad-invoke, #skyscraperAdLeft .skyscraper-content',
         key: 'e53edc39c97ff45450fcd274eaccaadd',
         width: 160,
         height: 300
       },
       {
         name: '300x250 Medium Rectangle',
-        selector: '.banner-300-wrapper .ad-slot-box',
+        selector: '.banner-300-wrapper .ad-invoke, .banner-300-wrapper .ad-slot-box',
         key: '2aa226d52097fda994ed5b960bc16238',
         width: 300,
         height: 250
       },
       {
         name: '728x90 Leaderboard',
-        selector: '.banner-728-wrapper .ad-slot-box',
+        selector: '.banner-728-wrapper .ad-invoke, .banner-728-wrapper .ad-slot-box',
         key: 'feb3fda8c8b027826f18640a3c80e6b1',
         width: 728,
         height: 90

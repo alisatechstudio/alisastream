@@ -1950,18 +1950,23 @@ dialog#trailerModal {
   display: block;
 }
 
+/* Ad row: keeps every flank + rectangle ad on a single line.
+   Scales down on smaller viewports so 320 + 160 + gap always fits. */
 .ad-row {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
   margin: 2.75rem auto;
   max-width: 100%;
+  padding: 0 1.5rem;
 }
 
-.ad-row .banner-300-wrapper {
+.ad-row .banner-300-wrapper,
+.ad-row .skyscraper-ad {
   margin: 0;
+  flex: 0 0 auto;
 }
 
 /* 300x250 Medium Rectangle Sponsored Spotlight */
@@ -1981,6 +1986,13 @@ dialog#trailerModal {
 .banner-300-wrapper iframe {
   max-width: 100%;
   display: block;
+}
+
+/* When the row is asked to stack (very narrow), allow wrapping gracefully */
+@media (max-width: 560px) {
+  .ad-row {
+    flex-wrap: wrap;
+  }
 }
 
 /* ==========================================================================
