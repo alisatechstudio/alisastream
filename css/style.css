@@ -1950,23 +1950,40 @@ dialog#trailerModal {
   display: block;
 }
 
-/* Ad row: keeps every flank + rectangle ad on a single line.
-   Scales down on smaller viewports so 320 + 160 + gap always fits. */
+/* ==========================================================================
+   AD ROW: 300x250 RECTANGLE & 160x300 SKYSCRAPER SIDE-BY-SIDE
+   ========================================================================== */
 .ad-row {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin: 2.75rem auto;
   max-width: 100%;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 5;
 }
 
-.ad-row .banner-300-wrapper,
+.ad-row .banner-300-wrapper {
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
+  width: auto;
+}
+
 .ad-row .skyscraper-ad {
   margin: 0;
   flex: 0 0 auto;
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  transform: none;
+  z-index: 1;
+  display: block;
 }
 
 /* 300x250 Medium Rectangle Sponsored Spotlight */
@@ -1977,60 +1994,45 @@ dialog#trailerModal {
   justify-content: center;
 }
 
-.banner-300-wrapper .ad-slot-box {
+.banner-300-wrapper .ad-slot-box,
+.ad-slot-box--rectangle {
   width: 320px;
   min-height: 275px;
   padding: 8px 10px;
 }
 
-.banner-300-wrapper iframe {
+.banner-300-wrapper iframe,
+.ad-slot-box--rectangle iframe {
   max-width: 100%;
   display: block;
 }
 
-/* When the row is asked to stack (very narrow), allow wrapping gracefully */
-@media (max-width: 560px) {
-  .ad-row {
-    flex-wrap: wrap;
-  }
-}
-
-/* ==========================================================================
-   SKYSCRAPER FLANK AD (160x300 Left)
-   Wide monitors (>=1460px): fixed in outer gutter without overlapping content
-   Standard screens (<1460px): clean inline sponsor showcase between rails
-   ========================================================================== */
-.skyscraper-flanks-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 3.5rem auto;
-  padding: 1rem 0;
-  width: 100%;
-}
-
+/* 160x300 Skyscraper Ad Card */
 .skyscraper-ad {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .skyscraper-inner {
-  width: 160px;
-  background: rgba(14, 17, 26, 0.94);
+  width: 174px;
+  min-height: 320px;
+  background: rgba(14, 17, 26, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   padding: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .skyscraper-inner:hover {
-  border-color: rgba(0, 242, 254, 0.35);
+  border-color: rgba(0, 242, 254, 0.3);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 242, 254, 0.08);
 }
 
 .skyscraper-close-btn {
@@ -2061,23 +2063,25 @@ dialog#trailerModal {
 
 .skyscraper-content {
   width: 160px;
+  min-height: 300px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* WIDE DESKTOP SCREENS: Fixed in the outer margin / gutter outside content */
-@media (min-width: 1460px) {
-  .skyscraper-ad {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 850;
-  }
+.skyscraper-content iframe {
+  max-width: 100%;
+  display: block;
+}
 
-  .skyscraper-left {
-    left: max(12px, calc(50% - 680px - 180px));
+/* Mobile & Narrow viewports: stack items cleanly */
+@media (max-width: 560px) {
+  .ad-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
   }
 }
 
