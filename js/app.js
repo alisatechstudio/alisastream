@@ -36,6 +36,7 @@ const App = {
     this.setupSettingsModal();
     this.setupGlobalShortcuts();
     this.setupCookieConsent();
+    this.setupAdAutoRefresh();
 
     // Initialize Player module
     if (window.Player) {
@@ -1390,6 +1391,94 @@ const App = {
       document.head.appendChild(el);
     }
     el.setAttribute('content', content);
+  },
+
+  /**
+   * Auto-refresh in-feed native banner ads every 10 seconds for maximum impressions
+   */
+  setupAdAutoRefresh() {
+    const REFRESH_INTERVAL_MS = 10000; // 10 seconds
+    const PLACEMENT_KEY = '36f7f150e59a605d87206f6a138759d3';
+    const CONTAINER_ID = `container-${PLACEMENT_KEY}`;
+    let refreshCycle = 0;
+
+    const refreshInFeedBanners = () => {
+      // Pause refreshing if user is in another tab/window
+      if (document.hidden) return;
+
+      const adWrappers = document.querySelectorAll('.ad-slot-wrapper.in-feed-ad, .in-feed-ad');
+      if (!adWrappers.length) return;
+
+      refreshCycle++;
+      let reloadedCount = 0;
+
+      // 1. Invoke native reload() on containers where Adsterra script already attached it
+      adWrappers.forEach((wrapper) => {
+        const container = wrapper.querySelector(`div[id^="container-"]`) || wrapper.querySelector('.ad-slot-box > div');
+        if (container && typeof container.reload === 'function') {
+          try {
+            // Visual micro-transition
+            container.style.transition = 'opacity 0.3s ease';
+            container.style.opacity = '0.75';
+            setTimeout(() => { container.style.opacity = '1'; }, 300);
+
+            container.reload();
+            reloadedCount++;
+          } catch (e) {
+            console.warn('[AdAutoRefresh] Container reload caught:', e);
+          }
+        }
+      });
+
+      // 2. Clear Adsterra internal placement duplicate array so multiple/refreshed requests are accepted
+      if (window['_0x196a1559e34586fdb'] && Array.isArray(window['_0x196a1559e34586fdb'])) {
+        window['_0x196a1559e34586fdb'] = [];
+      }
+
+      // 3. For any ad slot that is empty or didn't receive ads, re-inject the invoke script
+      adWrappers.forEach((wrapper, idx) => {
+        const box = wrapper.querySelector('.ad-slot-box');
+        if (!box) return;
+
+        let container = box.querySelector(`div[id^="container-"]`);
+        const hasContent = container && container.children.length > 0 && container.querySelector('a, img, iframe, div');
+
+        if (!hasContent || (container && typeof container.reload !== 'function')) {
+          if (!container) {
+            container = document.createElement('div');
+            container.id = CONTAINER_ID;
+            box.appendChild(container);
+          }
+
+          // Reset duplicate blocker key before injection
+          if (window['_0x196a1559e34586fdb']) {
+            window['_0x196a1559e34586fdb'] = [];
+          }
+
+          const existingScript = box.querySelector('script[src*="windowthrilling.com"]');
+          if (existingScript) existingScript.remove();
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.setAttribute('data-cfasync', 'false');
+          script.src = `https://windowthrilling.com/${PLACEMENT_KEY}/invoke.js?_t=${Date.now()}_${idx}`;
+          box.appendChild(script);
+          reloadedCount++;
+        }
+      });
+
+      console.log(`[AdAutoRefresh] In-feed native ads refreshed (${refreshCycle} cycles | ${reloadedCount} units | 10s interval)`);
+    };
+
+    // Run every 10 seconds
+    setInterval(refreshInFeedBanners, REFRESH_INTERVAL_MS);
+
+    // Refresh immediately when returning to tab from background
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        refreshInFeedBanners();
+      }
+    });
   }
 };
 

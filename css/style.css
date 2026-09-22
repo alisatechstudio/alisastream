@@ -1749,9 +1749,14 @@ dialog#trailerModal {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   position: relative;
-  padding: 0.5rem;
+  padding: 0.75rem;
+}
+
+.ad-slot-box > div[id^="container-"] {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .ad-label {
@@ -1761,6 +1766,8 @@ dialog#trailerModal {
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 0.35rem;
+  align-self: flex-start;
+  padding-left: 0.5rem;
 }
 
 .ad-placeholder-hint {
