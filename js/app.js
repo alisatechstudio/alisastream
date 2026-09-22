@@ -331,12 +331,7 @@ const App = {
       .then(items => this.renderRail('topRatedRail', items))
       .catch(e => console.warn('Top rated rail error:', e));
 
-    // 5. Upcoming Blockbusters (Batch 40 titles)
-    window.MovieAPI.getBatchMovies('upcoming', 2)
-      .then(items => this.renderRail('upcomingRail', items))
-      .catch(e => console.warn('Upcoming rail error:', e));
-
-    // 6. Popular TV Series (Batch 40 titles)
+    // 5. Popular TV Series (Batch 40 titles)
     window.MovieAPI.getBatchTV('popular', 2)
       .then(items => this.renderRail('popularTVRail', items))
       .catch(e => console.warn('TV rail error:', e));
