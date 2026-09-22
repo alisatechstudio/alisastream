@@ -1776,6 +1776,17 @@ dialog#trailerModal {
   text-align: center;
 }
 
+.banner-468-wrapper {
+  margin: 1.25rem auto 0.5rem auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-468-wrapper iframe {
+  max-width: 100%;
+}
+
 /* GDPR / Google Consent Mode Cookie Banner */
 .cookie-consent-banner {
   position: fixed;
