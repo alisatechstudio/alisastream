@@ -1319,46 +1319,6 @@ dialog#playerModal .banner-468-wrapper {
   box-shadow: 0 0 12px var(--accent-glow);
 }
 
-/* Ad-Free Shield Controls */
-.ad-shield-wrapper {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.ad-shield-toggle {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  font-family: var(--font-main);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.ad-shield-toggle:hover {
-  background: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
-}
-
-.ad-shield-toggle.disabled {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border-color: rgba(239, 68, 68, 0.4);
-}
-
-.ad-shield-status {
-  font-size: 0.74rem;
-  color: var(--text-muted);
-}
-
 /* TV Episode Selector */
 .tv-episode-container {
   background: var(--bg-card);

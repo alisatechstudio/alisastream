@@ -17,7 +17,6 @@ const Player = {
   currentEpisode: 1,
   currentServer: '1',
   isTheaterMode: false,
-  isAdShieldActive: true,
 
   init() {
     this.modal = document.getElementById('playerModal');
@@ -31,7 +30,6 @@ const Player = {
     // Default to Server 1 (Zero-Ad Cinema HD)
     this.currentServer = '1';
 
-    this.updateAdShieldUI();
     this.setupEventListeners();
   },
 
@@ -70,49 +68,6 @@ const Player = {
     const theaterBtn = document.getElementById('theaterModeBtn');
     if (theaterBtn) {
       theaterBtn.addEventListener('click', () => this.toggleTheaterMode());
-    }
-
-    // Ad-Shield Toggle
-    const shieldBtn = document.getElementById('adShieldToggle');
-    if (shieldBtn) {
-      shieldBtn.addEventListener('click', () => {
-        this.isAdShieldActive = !this.isAdShieldActive;
-        this.updateAdShieldUI();
-        this.loadStream();
-      });
-    }
-
-    // Intercept and block any unexpected popup windows
-    const originalWindowOpen = window.open;
-    window.open = (...args) => {
-      if (this.isAdShieldActive && this.modal && this.modal.open) {
-        if (args[0] && String(args[0]).includes('giriudog.com')) {
-          return originalWindowOpen.apply(window, args);
-        }
-        console.warn('🛡️ [Alisa Ad-Shield] Blocked popup window:', args[0]);
-        return null;
-      }
-      return originalWindowOpen.apply(window, args);
-    };
-  },
-
-  updateAdShieldUI() {
-    const shieldBtn = document.getElementById('adShieldToggle');
-    const iconSpan = document.getElementById('adShieldIcon');
-    const labelSpan = document.getElementById('adShieldLabel');
-
-    if (!shieldBtn) return;
-
-    if (this.isAdShieldActive) {
-      shieldBtn.classList.remove('disabled');
-      if (iconSpan) iconSpan.textContent = '🛡️';
-      if (labelSpan) labelSpan.textContent = 'Zero-Ad Shield: 100% Clean';
-      shieldBtn.title = 'Zero-Ad Shield: All open cinema streams are 100% ad-free.';
-    } else {
-      shieldBtn.classList.add('disabled');
-      if (iconSpan) iconSpan.textContent = '⚠️';
-      if (labelSpan) labelSpan.textContent = 'Ad-Shield: Standby';
-      shieldBtn.title = 'Click to activate Zero-Ad Shield.';
     }
   },
 
