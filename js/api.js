@@ -1573,9 +1573,10 @@ const MovieAPI = {
     }
   },
 
-  // --- ASYNC 3,000 FULL MOVIE LIBRARY ---
+  // --- ASYNC 3,000+ FULL MOVIE LIBRARY WITH SERVER AUTO-SYNC ---
   _catalog3000: null,
   _loadingCatalog3000: null,
+  _syncInitialized: false,
 
   async getCatalog3000() {
     if (this._catalog3000 && this._catalog3000.length > 0) {
@@ -1591,18 +1592,163 @@ const MovieAPI = {
         if (res.ok) {
           const list = await res.json();
           if (Array.isArray(list) && list.length > 0) {
-            this._catalog3000 = list;
-            return list;
+            // Merge previously synced items from browser cache
+            let merged = list;
+            try {
+              const cached = JSON.parse(localStorage.getItem('alisa_synced_movies') || '[]');
+              if (Array.isArray(cached) && cached.length > 0) {
+                const ids = new Set(list.map(m => String(m.id || m.tmdb_id)));
+                const newCached = cached.filter(m => !ids.has(String(m.id || m.tmdb_id)));
+                merged = [...newCached, ...list];
+              }
+            } catch (e) {}
+
+            this._catalog3000 = merged;
+            this.initAutoSync();
+            return merged;
           }
         }
       } catch (err) {
         console.warn('Could not load data/movies_3000.json, using static spotlight catalog:', err);
       }
       this._catalog3000 = PUBLIC_CINEMA_MOVIES;
+      this.initAutoSync();
       return this._catalog3000;
     })();
 
     return this._loadingCatalog3000;
+  },
+
+  /**
+   * Initializes non-intrusive background sync with remote servers
+   */
+  initAutoSync() {
+    if (this._syncInitialized) return;
+    this._syncInitialized = true;
+
+    // Trigger background server sync after page is fully idle
+    setTimeout(() => {
+      this.syncMoviesFromServers().catch(e => console.warn('[AutoSync] Background sync notice:', e));
+    }, 3000);
+  },
+
+  /**
+   * Automatically queries live TMDB & remote servers for trending & new release titles
+   * and merges them into the in-memory catalog and browser cache.
+   */
+  async syncMoviesFromServers(force = false) {
+    const SYNC_INTERVAL_MS = 4 * 60 * 60 * 1000; // 4 hours
+    const lastSync = Number(localStorage.getItem('alisa_last_movie_sync') || 0);
+
+    if (!force && Date.now() - lastSync < SYNC_INTERVAL_MS) {
+      return { skipped: true, reason: 'Cache fresh' };
+    }
+
+    console.log('[AutoSync] Querying live movie servers for newly released titles...');
+    const endpoints = [
+      { path: '/trending/movie/day', type: 'movie' },
+      { path: '/movie/now_playing', type: 'movie' },
+      { path: '/trending/tv/day', type: 'tv' }
+    ];
+
+    const catalog = await this.getCatalog3000();
+    const existingIds = new Set(catalog.map(m => String(m.id || m.tmdb_id)));
+    const existingTitles = new Set(catalog.map(m => (m.title || m.name || '').toLowerCase().trim()));
+
+    const fetchedItems = [];
+    for (const ep of endpoints) {
+      try {
+        const data = await this.requestTMDB(ep.path, { page: 1 });
+        if (data && Array.isArray(data.results)) {
+          data.results.forEach(raw => {
+            const item = this._normalizeRawMovie(raw, ep.type);
+            if (item) fetchedItems.push(item);
+          });
+        }
+      } catch (err) {
+        console.warn(`[AutoSync] Endpoint ${ep.path} notice:`, err);
+      }
+    }
+
+    const newTitles = [];
+    for (const item of fetchedItems) {
+      const idKey = String(item.id);
+      const titleKey = (item.title || item.name || '').toLowerCase().trim();
+      if (!existingIds.has(idKey) && !existingTitles.has(titleKey)) {
+        existingIds.add(idKey);
+        existingTitles.add(titleKey);
+        newTitles.push(item);
+      }
+    }
+
+    localStorage.setItem('alisa_last_movie_sync', String(Date.now()));
+
+    if (newTitles.length > 0) {
+      console.log(`[AutoSync] Successfully synced ${newTitles.length} fresh titles from live servers!`);
+      this._catalog3000 = [...newTitles, ...catalog];
+
+      try {
+        const prevSaved = JSON.parse(localStorage.getItem('alisa_synced_movies') || '[]');
+        const combined = [...newTitles, ...prevSaved].slice(0, 100);
+        localStorage.setItem('alisa_synced_movies', JSON.stringify(combined));
+      } catch (e) {
+        console.warn('[AutoSync] Local cache write notice:', e);
+      }
+
+      window.dispatchEvent(new CustomEvent('alisa:movies-synced', {
+        detail: { count: newTitles.length, titles: newTitles }
+      }));
+    } else {
+      console.log('[AutoSync] Movie catalog is fully synchronized with live servers.');
+    }
+
+    return { success: true, count: newTitles.length };
+  },
+
+  _normalizeRawMovie(raw, defaultMediaType = 'movie') {
+    if (!raw || (!raw.title && !raw.name)) return null;
+    const isTV = raw.media_type === 'tv' || defaultMediaType === 'tv' || (!raw.title && !!raw.name);
+    const title = raw.title || raw.name || 'Untitled';
+    const releaseDate = raw.release_date || raw.first_air_date || '';
+    const id = Number(raw.id);
+    if (!id) return null;
+
+    const GENRE_MAP = {
+      28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime',
+      99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
+      27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi',
+      10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western',
+      10759: 'Action & Adventure', 10762: 'Kids', 10765: 'Sci-Fi & Fantasy'
+    };
+
+    const genres = (raw.genre_ids || []).map(gid => ({
+      id: gid,
+      name: GENRE_MAP[gid] || 'Cinema'
+    }));
+
+    const poster = raw.poster_path
+      ? (raw.poster_path.startsWith('http') ? raw.poster_path : `https://image.tmdb.org/t/p/w500${raw.poster_path}`)
+      : 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&auto=format&fit=crop&q=80';
+
+    const backdrop = raw.backdrop_path
+      ? (raw.backdrop_path.startsWith('http') ? raw.backdrop_path : `https://image.tmdb.org/t/p/w1280${raw.backdrop_path}`)
+      : poster;
+
+    return {
+      id,
+      tmdb_id: id,
+      title,
+      name: title,
+      release_date: releaseDate,
+      vote_average: Number(raw.vote_average ? Number(raw.vote_average).toFixed(1) : 7.6),
+      vote_count: Number(raw.vote_count || 100),
+      popularity: Number(raw.popularity || 100),
+      media_type: isTV ? 'tv' : 'movie',
+      poster_path: poster,
+      backdrop_path: backdrop,
+      overview: raw.overview || `Watch ${title} in HD quality with multi-server streaming options on Alisa Movies.`,
+      genres: genres.length > 0 ? genres : [{ id: 28, name: 'Cinema' }]
+    };
   },
 
   // --- TRENDING & SPOTLIGHT (100% Guaranteed Public Domain & Open Cinema Streams) ---

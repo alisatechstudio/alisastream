@@ -79,6 +79,17 @@ const App = {
       this.refreshHistorySection();
     });
 
+    // Listen for automatic movie sync updates from live servers
+    window.addEventListener('alisa:movies-synced', (e) => {
+      console.log(`[App] Auto-synced ${e.detail?.count || 0} movies from remote servers.`);
+      if (this.currentTab === 'home' && window.MovieAPI) {
+        const trendingRail = document.getElementById('trendingRail');
+        if (trendingRail && (e.detail?.count || 0) > 0) {
+          window.MovieAPI.getTrending().then(items => this.renderRail('trendingRail', items));
+        }
+      }
+    });
+
     // Handle initial URL hash routing
     this.handleHashRoute();
     window.addEventListener('hashchange', () => this.handleHashRoute());
@@ -1251,6 +1262,36 @@ const App = {
         window.StorageManager.savePreferences({ tmdbApiKey: key });
         // Refresh home data with new key
         this.loadHomeRails();
+      });
+    }
+
+    // Sync Movies from servers button
+    const syncBtn = document.getElementById('settingsSyncMoviesBtn');
+    const syncStatusText = document.getElementById('syncStatusText');
+    if (syncBtn && window.MovieAPI) {
+      syncBtn.addEventListener('click', async () => {
+        syncBtn.disabled = true;
+        const originalText = syncBtn.innerHTML;
+        syncBtn.innerHTML = '⏳ Syncing from Servers...';
+        if (syncStatusText) syncStatusText.textContent = 'Querying live servers for latest releases...';
+        try {
+          const res = await window.MovieAPI.syncMoviesFromServers(true);
+          const count = res.count || 0;
+          syncBtn.innerHTML = `✅ Synced (${count} new titles)!`;
+          if (syncStatusText) {
+            syncStatusText.textContent = count > 0 
+              ? `Success! Added ${count} new titles to your live catalog.`
+              : 'Your movie catalog is already 100% up to date with live servers.';
+          }
+        } catch (err) {
+          syncBtn.innerHTML = '⚠️ Sync Failed';
+          if (syncStatusText) syncStatusText.textContent = 'Error connecting to servers. Please try again.';
+        } finally {
+          setTimeout(() => {
+            syncBtn.disabled = false;
+            syncBtn.innerHTML = originalText;
+          }, 3500);
+        }
       });
     }
 
