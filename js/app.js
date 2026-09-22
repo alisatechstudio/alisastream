@@ -51,20 +51,12 @@ const App = {
       });
     }
 
-    // Skyscraper Banner Close Buttons (Left & Right)
+    // Skyscraper Banner Close Button (Left)
     const closeSkyscraperBtn = document.getElementById('closeSkyscraperBtn');
     const skyscraperAd = document.getElementById('skyscraperAdLeft');
     if (closeSkyscraperBtn && skyscraperAd) {
       closeSkyscraperBtn.addEventListener('click', () => {
         skyscraperAd.style.display = 'none';
-      });
-    }
-
-    const closeSkyscraperRightBtn = document.getElementById('closeSkyscraperRightBtn');
-    const skyscraperAdRight = document.getElementById('skyscraperAdRight');
-    if (closeSkyscraperRightBtn && skyscraperAdRight) {
-      closeSkyscraperRightBtn.addEventListener('click', () => {
-        skyscraperAdRight.style.display = 'none';
       });
     }
 
@@ -1434,13 +1426,6 @@ const App = {
         key: 'e53edc39c97ff45450fcd274eaccaadd',
         width: 160,
         height: 300
-      },
-      {
-        name: '160x600 Right Skyscraper',
-        selector: '#skyscraperAdRight .skyscraper-content',
-        key: 'ce0b05fcc664aea286ce69f0fd680599',
-        width: 160,
-        height: 600
       },
       {
         name: '300x250 Medium Rectangle',

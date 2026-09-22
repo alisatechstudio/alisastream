@@ -1968,16 +1968,14 @@ dialog#trailerModal {
 }
 
 /* ==========================================================================
-   SKYSCRAPER FLANK ADS (160x300 Left & 160x600 Right)
-   Wide monitors (>=1460px): fixed in outer gutters without overlapping content
+   SKYSCRAPER FLANK AD (160x300 Left)
+   Wide monitors (>=1460px): fixed in outer gutter without overlapping content
    Standard screens (<1460px): clean inline sponsor showcase between rails
    ========================================================================== */
 .skyscraper-flanks-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 2.5rem;
-  flex-wrap: wrap;
   margin: 3.5rem auto;
   padding: 1rem 0;
   width: 100%;
@@ -2041,7 +2039,7 @@ dialog#trailerModal {
   justify-content: center;
 }
 
-/* WIDE DESKTOP SCREENS: Fixed in the outer margins / gutters outside content */
+/* WIDE DESKTOP SCREENS: Fixed in the outer margin / gutter outside content */
 @media (min-width: 1460px) {
   .skyscraper-ad {
     position: fixed;
@@ -2052,11 +2050,6 @@ dialog#trailerModal {
 
   .skyscraper-left {
     left: max(12px, calc(50% - 680px - 180px));
-  }
-
-  .skyscraper-right {
-    left: auto;
-    right: max(12px, calc(50% - 680px - 180px));
   }
 }
 
