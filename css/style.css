@@ -1787,6 +1787,76 @@ dialog#trailerModal {
   max-width: 100%;
 }
 
+/* 160x300 Skyscraper Banner Ad */
+.skyscraper-ad {
+  position: fixed;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 850;
+  transition: opacity 0.3s ease;
+}
+
+.skyscraper-inner {
+  width: 160px;
+  min-height: 300px;
+  background: rgba(14, 17, 26, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.skyscraper-close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-active);
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.skyscraper-close-btn:hover {
+  color: #fff;
+  border-color: var(--accent-primary);
+  background: rgba(0, 242, 254, 0.2);
+}
+
+.skyscraper-content {
+  width: 160px;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1280px) {
+  .skyscraper-ad {
+    position: static;
+    transform: none;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 /* GDPR / Google Consent Mode Cookie Banner */
 .cookie-consent-banner {
   position: fixed;

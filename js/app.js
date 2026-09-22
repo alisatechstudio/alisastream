@@ -51,6 +51,15 @@ const App = {
       });
     }
 
+    // Skyscraper Banner Close Button
+    const closeSkyscraperBtn = document.getElementById('closeSkyscraperBtn');
+    const skyscraperAd = document.getElementById('skyscraperAdLeft');
+    if (closeSkyscraperBtn && skyscraperAd) {
+      closeSkyscraperBtn.addEventListener('click', () => {
+        skyscraperAd.style.display = 'none';
+      });
+    }
+
     // Load Initial Data
     await this.loadHeroSpotlight();
     await this.loadHomeRails();
