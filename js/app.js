@@ -51,12 +51,20 @@ const App = {
       });
     }
 
-    // Skyscraper Banner Close Button
+    // Skyscraper Banner Close Buttons (Left & Right)
     const closeSkyscraperBtn = document.getElementById('closeSkyscraperBtn');
     const skyscraperAd = document.getElementById('skyscraperAdLeft');
     if (closeSkyscraperBtn && skyscraperAd) {
       closeSkyscraperBtn.addEventListener('click', () => {
         skyscraperAd.style.display = 'none';
+      });
+    }
+
+    const closeSkyscraperRightBtn = document.getElementById('closeSkyscraperRightBtn');
+    const skyscraperAdRight = document.getElementById('skyscraperAdRight');
+    if (closeSkyscraperRightBtn && skyscraperAdRight) {
+      closeSkyscraperRightBtn.addEventListener('click', () => {
+        skyscraperAdRight.style.display = 'none';
       });
     }
 

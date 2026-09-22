@@ -1857,6 +1857,29 @@ dialog#trailerModal {
   }
 }
 
+.skyscraper-right {
+  left: auto;
+  right: 12px;
+}
+
+.banner-300-wrapper {
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-728-wrapper {
+  margin: 2rem auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.banner-728-wrapper iframe {
+  max-width: 100%;
+}
+
 /* GDPR / Google Consent Mode Cookie Banner */
 .cookie-consent-banner {
   position: fixed;
