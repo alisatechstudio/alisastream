@@ -4,11 +4,11 @@
  */
 
 const STREAMING_SERVERS = [
-  { id: '1', name: 'Server 1 (VidLink HD)', icon: '⚡', clean: true, description: 'Direct 4K/1080p Fast Stream (Multi-Language)' },
-  { id: '2', name: 'Server 2 (VidSrc Pro)', icon: '🚀', clean: true, description: 'Global High-Speed Stream Mirror' },
-  { id: '3', name: 'Server 3 (MultiEmbed)', icon: '🎥', clean: true, description: 'Alternative Multi-Source Stream' },
-  { id: '4', name: 'Server 4 (AutoEmbed VIP)', icon: '🛡️', clean: true, description: 'Auto-Switching Backup Mirror' },
-  { id: '5', name: 'Server 5 (Open Cinema)', icon: '🏛️', clean: true, description: 'Direct Open License Stream' }
+  { id: '1', name: 'Server 1', icon: '⚡', clean: true, description: 'Server 1: Direct 4K/1080p Fast Stream (VidLink)' },
+  { id: '2', name: 'Server 2', icon: '🚀', clean: true, description: 'Server 2: Global High-Speed Mirror (VidSrc)' },
+  { id: '3', name: 'Server 3', icon: '🎥', clean: true, description: 'Server 3: Multi-Source Stream (MultiEmbed)' },
+  { id: '4', name: 'Server 4', icon: '🛡️', clean: true, description: 'Server 4: Auto-Switching Backup Mirror (AutoEmbed)' },
+  { id: '5', name: 'Server 5', icon: '🏛️', clean: true, description: 'Server 5: Direct Open License Stream (Public Cinema)' }
 ];
 
 const Player = {
