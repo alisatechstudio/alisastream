@@ -209,9 +209,6 @@ const Player = {
           id="streamingIframe"
         ></iframe>
       </div>
-      <div class="direct-stream-badge">
-        <span>🎬 Full HD Movie Stream • Multi-Server Fast Playback</span>
-      </div>
     `;
   },
 
@@ -227,9 +224,6 @@ const Player = {
           sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
-      </div>
-      <div class="direct-stream-badge">
-        <span>🏛️ 100% Public Domain Archive Stream (Zero Ads & Popups)</span>
       </div>
     `;
   },
@@ -248,9 +242,6 @@ const Player = {
           id="streamingIframe"
         ></iframe>
       </div>
-      <div class="direct-stream-badge">
-        <span>🛡️ 100% Ad-Free Open License Stream (Zero Popups)</span>
-      </div>
     `;
   },
 
@@ -261,9 +252,6 @@ const Player = {
           <source src="${url}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <div class="direct-stream-badge">
-          <span>✨ 100% Direct HTML5 Stream (Public Cinema)</span>
-        </div>
       </div>
     `;
   },
