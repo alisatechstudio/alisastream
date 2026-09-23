@@ -266,7 +266,6 @@ const Player = {
         data-server-id="${srv.id}"
         title="${srv.description}"
       >
-        <span class="server-icon">${srv.icon}</span>
         <span class="server-name">${srv.name}</span>
       </button>
     `).join('');
