@@ -597,27 +597,24 @@
           </div>
         </section>
 
-        <div class="ad-row" role="complementary" aria-label="Sponsored advertisements">
-          <!-- 300x250 Medium Rectangle Sponsored Ad Showcase -->
-          <div class="ad-slot-wrapper banner-300-wrapper" aria-label="300x250 Medium Rectangle ad">
-            <div class="ad-slot-box ad-slot-box--rectangle">
-              <span class="ad-label">Sponsored Spotlight</span>
-              <div class="ad-invoke" data-ad-key="2aa226d52097fda994ed5b960bc16238"
-                   data-ad-format="iframe" data-ad-height="250" data-ad-width="300"></div>
+        <!-- 468x60 Sponsored Banner Ad Unit on Index -->
+        <div class="ad-slot-wrapper banner-468-wrapper" aria-label="Sponsored Advertisement">
+          <div class="ad-slot-box" style="min-height: 60px; max-width: 468px; padding: 4px; margin: 0 auto;">
+            <span class="ad-label">Sponsored Advertisement</span>
+            <div class="ad-invoke" data-ad-key="3db033b8a3c04d2969f6ad108501229f"
+                 data-ad-format="iframe" data-ad-height="60" data-ad-width="468">
+              <script>
+                atOptions = {
+                  'key': '3db033b8a3c04d2969f6ad108501229f',
+                  'format': 'iframe',
+                  'height': 60,
+                  'width': 468,
+                  'params': {}
+                };
+              </script>
+              <script src="https://windowthrilling.com/3db033b8a3c04d2969f6ad108501229f/invoke.js"></script>
             </div>
           </div>
-          <!-- 160x300 Left Skyscraper Banner Ad -->
-          <aside class="skyscraper-ad skyscraper-left" id="skyscraperAdLeft" aria-label="Sponsored Advertisement">
-            <div class="skyscraper-inner">
-              <button type="button" class="skyscraper-close-btn" id="closeSkyscraperBtn"
-                title="Close Advertisement" aria-label="Close advertisement">✕</button>
-              <span class="ad-label">SPONSORED</span>
-              <div class="skyscraper-content">
-                <div class="ad-invoke" data-ad-key="e53edc39c97ff45450fcd274eaccaadd"
-                     data-ad-format="iframe" data-ad-height="300" data-ad-width="160"></div>
-              </div>
-            </div>
-          </aside>
         </div>
 
       <!-- Top Rated Masterpieces Rail -->
@@ -905,30 +902,60 @@
           <div id="serverSelector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- Video Player Display Box -->
-        <div class="player-frame-box" id="playerContainer">
-          <!-- Video iframe or HTML5 player injected dynamically -->
+        <!-- Video Player Stage Layout with Both Side Ads (160x300 Left Skyscraper & 300x250 Right Rectangle) -->
+        <div class="player-stage-layout">
+          <!-- Left Side Ad: 160x300 Skyscraper -->
+          <aside class="player-side-ad player-side-ad--left" id="skyscraperAdLeft" aria-label="Sponsored Advertisement">
+            <div class="player-side-ad-inner">
+              <button type="button" class="player-side-ad-close" id="closeSkyscraperBtn"
+                title="Close Advertisement" aria-label="Close advertisement">✕</button>
+              <span class="ad-label">SPONSORED</span>
+              <div class="ad-invoke" data-ad-key="e53edc39c97ff45450fcd274eaccaadd"
+                   data-ad-format="iframe" data-ad-height="300" data-ad-width="160">
+                <script>
+                  atOptions = {
+                    'key': 'e53edc39c97ff45450fcd274eaccaadd',
+                    'format': 'iframe',
+                    'height': 300,
+                    'width': 160,
+                    'params': {}
+                  };
+                </script>
+                <script src="https://windowthrilling.com/e53edc39c97ff45450fcd274eaccaadd/invoke.js"></script>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Video Player Display Box -->
+          <div class="player-frame-box" id="playerContainer">
+            <!-- Video iframe or HTML5 player injected dynamically -->
+          </div>
+
+          <!-- Right Side Ad: 300x250 Medium Rectangle -->
+          <aside class="player-side-ad player-side-ad--right" id="playerAdRight" aria-label="Sponsored Advertisement">
+            <div class="player-side-ad-inner">
+              <button type="button" class="player-side-ad-close" id="closePlayerAdRightBtn"
+                title="Close Advertisement" aria-label="Close advertisement">✕</button>
+              <span class="ad-label">SPONSORED</span>
+              <div class="ad-invoke" data-ad-key="2aa226d52097fda994ed5b960bc16238"
+                   data-ad-format="iframe" data-ad-height="250" data-ad-width="300">
+                <script>
+                  atOptions = {
+                    'key': '2aa226d52097fda994ed5b960bc16238',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                  };
+                </script>
+                <script src="https://windowthrilling.com/2aa226d52097fda994ed5b960bc16238/invoke.js"></script>
+              </div>
+            </div>
+          </aside>
         </div>
 
         <!-- TV Season & Episode Navigator (Only active for TV shows) -->
         <div class="tv-episode-container" id="tvEpisodeNav"></div>
-
-        <!-- 468x60 Sponsored Banner Ad Unit -->
-        <div class="ad-slot-wrapper banner-468-wrapper" aria-label="Sponsored Advertisement">
-          <div class="ad-slot-box" style="min-height: 60px; max-width: 468px; padding: 4px;">
-            <span class="ad-label">Advertisement</span>
-            <script>
-              atOptions = {
-                'key': '3db033b8a3c04d2969f6ad108501229f',
-                'format': 'iframe',
-                'height': 60,
-                'width': 468,
-                'params': {}
-              };
-            </script>
-            <script src="https://windowthrilling.com/3db033b8a3c04d2969f6ad108501229f/invoke.js"></script>
-          </div>
-        </div>
       </div>
     </div>
   </dialog>

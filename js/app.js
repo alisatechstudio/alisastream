@@ -61,6 +61,15 @@ const App = {
       });
     }
 
+    // Player Right Ad Close Button (300x250)
+    const closePlayerAdRightBtn = document.getElementById('closePlayerAdRightBtn');
+    const playerAdRight = document.getElementById('playerAdRight');
+    if (closePlayerAdRightBtn && playerAdRight) {
+      closePlayerAdRightBtn.addEventListener('click', () => {
+        playerAdRight.style.display = 'none';
+      });
+    }
+
     // Load Initial Data
     await this.loadHeroSpotlight();
     await this.loadHomeRails();
@@ -1447,22 +1456,22 @@ const App = {
   initDisplayBanners() {
     const DISPLAY_ADS = [
       {
-        name: '468x60 Player Banner',
+        name: '468x60 Index Banner',
         selector: '.banner-468-wrapper .ad-invoke',
         key: '3db033b8a3c04d2969f6ad108501229f',
         width: 468,
         height: 60
       },
       {
-        name: '160x300 Left Skyscraper',
-        selector: '#skyscraperAdLeft .ad-invoke',
+        name: '160x300 Left Skyscraper (Player)',
+        selector: '.player-side-ad--left .ad-invoke, #skyscraperAdLeft .ad-invoke',
         key: 'e53edc39c97ff45450fcd274eaccaadd',
         width: 160,
         height: 300
       },
       {
-        name: '300x250 Medium Rectangle',
-        selector: '.banner-300-wrapper .ad-invoke',
+        name: '300x250 Medium Rectangle (Player)',
+        selector: '.player-side-ad--right .ad-invoke, #playerAdRight .ad-invoke',
         key: '2aa226d52097fda994ed5b960bc16238',
         width: 300,
         height: 250
@@ -1513,22 +1522,22 @@ const App = {
     // All standard display banner slots
     const DISPLAY_ADS = [
       {
-        name: '468x60 Player Banner',
+        name: '468x60 Index Banner',
         selector: '.banner-468-wrapper .ad-invoke, .banner-468-wrapper .ad-slot-box',
         key: '3db033b8a3c04d2969f6ad108501229f',
         width: 468,
         height: 60
       },
       {
-        name: '160x300 Left Skyscraper',
-        selector: '#skyscraperAdLeft .ad-invoke, #skyscraperAdLeft .skyscraper-content',
+        name: '160x300 Left Skyscraper (Player)',
+        selector: '.player-side-ad--left .ad-invoke, .player-side-ad--left .player-side-ad-inner, #skyscraperAdLeft .ad-invoke',
         key: 'e53edc39c97ff45450fcd274eaccaadd',
         width: 160,
         height: 300
       },
       {
-        name: '300x250 Medium Rectangle',
-        selector: '.banner-300-wrapper .ad-invoke, .banner-300-wrapper .ad-slot-box',
+        name: '300x250 Medium Rectangle (Player)',
+        selector: '.player-side-ad--right .ad-invoke, .player-side-ad--right .player-side-ad-inner, #playerAdRight .ad-invoke',
         key: '2aa226d52097fda994ed5b960bc16238',
         width: 300,
         height: 250

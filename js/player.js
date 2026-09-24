@@ -125,6 +125,12 @@ const Player = {
     // Load player stream
     this.loadStream();
 
+    // Ensure player side ads are visible
+    const skyscraperAd = document.getElementById('skyscraperAdLeft');
+    if (skyscraperAd) skyscraperAd.style.display = '';
+    const playerAdRight = document.getElementById('playerAdRight');
+    if (playerAdRight) playerAdRight.style.display = '';
+
     // Open Modal
     if (this.modal && !this.modal.open) {
       this.modal.showModal();
