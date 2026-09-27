@@ -3,57 +3,200 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://alisastream.site/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/about.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/dmca.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/contact.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/privacy.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alisastream.site/terms.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#movies</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#tv</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#top_rated</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1421903</loc>
+    <lastmod>2026-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/imnkSt4PSQpxIuyiRpJCiLk3SZz.jpg</image:loc>
+      <image:title>Watch Latest Werwulf (2026) Free HD</image:title>
+      <image:caption>Stream latest Werwulf 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1774161</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/dMRqdo52pbh1XmdctxBtfQS1m3t.jpg</image:loc>
+      <image:title>Watch Latest UFC Fight Night 289: Rosas Jr. vs. Barcelos (2026) Free HD</image:title>
+      <image:caption>Stream latest UFC Fight Night 289: Rosas Jr. vs. Barcelos 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1242876</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/FhRosui9MSdxdyD3h0skOFhqED.jpg</image:loc>
+      <image:title>Watch Latest 500 Miles (2026) Free HD</image:title>
+      <image:caption>Stream latest 500 Miles 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1291366</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/qL654LNOfBu49e12jnnQIv6mny.jpg</image:loc>
+      <image:title>Watch Latest The Deputy (2026) Free HD</image:title>
+      <image:caption>Stream latest The Deputy 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1578079</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/7awkF93WM7v5hXKBeGfQeJ4z60f.jpg</image:loc>
+      <image:title>Watch Latest Dorothy (2026) Free HD</image:title>
+      <image:caption>Stream latest Dorothy 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/674</loc>
+    <lastmod>2005-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg</image:loc>
+      <image:title>Watch Latest Harry Potter and the Goblet of Fire (2005) Free HD</image:title>
+      <image:caption>Stream latest Harry Potter and the Goblet of Fire 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/19995</loc>
+    <lastmod>2009-12-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg</image:loc>
+      <image:title>Watch Latest Avatar (2009) Free HD</image:title>
+      <image:caption>Stream latest Avatar 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/316197</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/6OAuQOGqjYY1JXbkTlWz4Mm2Kmi.jpg</image:loc>
+      <image:title>Watch Latest Dive into You (2026) Free HD</image:title>
+      <image:caption>Stream latest Dive into You 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/280042</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/sDb5USp0nknvs3mHmyurgH8y3z6.jpg</image:loc>
+      <image:title>Watch Latest A Wild Last Boss Appeared! (2025) Free HD</image:title>
+      <image:caption>Stream latest A Wild Last Boss Appeared! 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/30983</loc>
+    <lastmod>1996-01-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/iHfA63x7rFaWbP2C832uCe2r0zy.jpg</image:loc>
+      <image:title>Watch Latest Detective Conan (1996) Free HD</image:title>
+      <image:caption>Stream latest Detective Conan 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/320296</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/hjeB5dW5QKdBtlzS3FZrqqDHXNi.jpg</image:loc>
+      <image:title>Watch Latest People&apos;s Lives (2026) Free HD</image:title>
+      <image:caption>Stream latest People&apos;s Lives 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/11890</loc>
+    <lastmod>1990-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/p1oXgtJ0q0wAcEp3tHA5DpiynxL.jpg</image:loc>
+      <image:title>Watch Latest Goede Tijden, Slechte Tijden (1990) Free HD</image:title>
+      <image:caption>Stream latest Goede Tijden, Slechte Tijden 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/1399</loc>
+    <lastmod>2011-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg</image:loc>
+      <image:title>Watch Latest Game of Thrones (2011) Free HD</image:title>
+      <image:caption>Stream latest Game of Thrones 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1384514</loc>
@@ -81,7 +224,7 @@
     <loc>https://alisastream.site/#movie/1314122</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/eFpTlgIDqnTeTHoHHuNvQjoi0Du.jpg</image:loc>
       <image:title>Watch Latest Bloody Tennis (2026) Free HD</image:title>
@@ -554,7 +697,7 @@
     <loc>https://alisastream.site/#movie/1751701</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/yzDuAQCY2n6zzOlBkn6JzhLhY3k.jpg</image:loc>
       <image:title>Watch Latest After Impact (2026) Free HD</image:title>
@@ -686,7 +829,7 @@
     <loc>https://alisastream.site/#movie/843352</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/5JJRTM1mMuqnK4BJojMljm5Xpgj.jpg</image:loc>
       <image:title>Watch Latest Legend of the White Dragon (2026) Free HD</image:title>
@@ -2974,7 +3117,7 @@
     <loc>https://alisastream.site/#movie/1228834</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/yopXjun3ICFfJci2ukcEzceZjUs.jpg</image:loc>
       <image:title>Watch Latest The Fix (2026) Free HD</image:title>
@@ -3128,7 +3271,7 @@
     <loc>https://alisastream.site/#movie/1291595</loc>
     <lastmod>2026-08-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg</image:loc>
       <image:title>Watch Latest Insidious: Out of the Further (2026) Free HD</image:title>
