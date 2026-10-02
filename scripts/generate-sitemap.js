@@ -21,6 +21,32 @@ function escapeXml(unsafe) {
     .replace(/'/g, '&apos;');
 }
 
+/**
+ * Ensures lastmod conforms strictly to W3C Datetime (YYYY-MM-DD),
+ * does not precede the Unix epoch (1970-01-01) which triggers Google Search Console "Invalid date",
+ * and does not point to future dates.
+ */
+function sanitizeLastmod(rawDate, fallbackDate) {
+  if (!rawDate || typeof rawDate !== 'string') return fallbackDate;
+  const match = rawDate.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return fallbackDate;
+
+  const year = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10);
+  const day = parseInt(match[3], 10);
+
+  if (month < 1 || month > 12 || day < 1 || day > 31) return fallbackDate;
+
+  const cleanDate = `${match[1]}-${match[2]}-${match[3]}`;
+  // Dates before 1970 trigger Google Search Console 'Invalid date' error
+  // Dates in the future are also invalid for lastmod
+  if (year < 1970 || cleanDate > fallbackDate) {
+    return fallbackDate;
+  }
+
+  return cleanDate;
+}
+
 function generateSitemap() {
   console.log('Generating sitemap for Alisa Movies...');
   const today = new Date().toISOString().split('T')[0];
@@ -79,7 +105,7 @@ function generateSitemap() {
 
         const loc = `${BASE_URL}/#${type}/${id}`;
         const releaseYear = (item.release_date || item.first_air_date || '').split('-')[0];
-        const lastmod = item.release_date || item.first_air_date || today;
+        const lastmod = sanitizeLastmod(item.release_date || item.first_air_date, today);
 
         // Determine priority based on popularity or rating
         let priority = '0.7';
