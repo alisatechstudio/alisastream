@@ -3,57 +3,222 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://alisastream.site/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/about.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/dmca.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/contact.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alisastream.site/privacy.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alisastream.site/terms.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#movies</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#tv</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alisastream.site/#top_rated</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1788735</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/smjL4kHnN2uZuMy4T30AJxUAWsk.jpg</image:loc>
+      <image:title>Watch Latest Family Guy Happy Hell-o-ween (2026) Free HD</image:title>
+      <image:caption>Stream latest Family Guy Happy Hell-o-ween 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1244523</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/uW5YMPxJUzT9bkafrCKHXjPTCoQ.jpg</image:loc>
+      <image:title>Watch Latest Beware Boiúna (2026) Free HD</image:title>
+      <image:caption>Stream latest Beware Boiúna 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1492198</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/2bz0HPE8OFOqnyvl8sCdVDIg1KX.jpg</image:loc>
+      <image:title>Watch Latest Artificial (2026) Free HD</image:title>
+      <image:caption>Stream latest Artificial 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1234139</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/uPNAz3mYu6MDh2kA0V6qT2m412T.jpg</image:loc>
+      <image:title>Watch Latest Jailer 2 (2026) Free HD</image:title>
+      <image:caption>Stream latest Jailer 2 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1285895</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/bcyXE0p4XmZUlcxvTDbvdG9lgsN.jpg</image:loc>
+      <image:title>Watch Latest Late Fame (2026) Free HD</image:title>
+      <image:caption>Stream latest Late Fame 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/204922</loc>
+    <lastmod>2014-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/1sSWpTupVixOanIpZdLGzsKvcZS.jpg</image:loc>
+      <image:title>Watch Latest Before I Go to Sleep (2014) Free HD</image:title>
+      <image:caption>Stream latest Before I Go to Sleep 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#movie/1341284</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/aclZUkfzUM20Jkd5a3Lw2owJ1KZ.jpg</image:loc>
+      <image:title>Watch Latest Missing Child Videotape (2025) Free HD</image:title>
+      <image:caption>Stream latest Missing Child Videotape 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/307106</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/pGqcErS76y8bcvZZSFUefdZOg2x.jpg</image:loc>
+      <image:title>Watch Latest Between Steps (2026) Free HD</image:title>
+      <image:caption>Stream latest Between Steps 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/297903</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3imj2VLU77bLOyJ4aPnEUlpJZDX.jpg</image:loc>
+      <image:title>Watch Latest PSYREN (2026) Free HD</image:title>
+      <image:caption>Stream latest PSYREN 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/316694</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/3EMDTHdIMRRKbNCjTkAGg1hMiCG.jpg</image:loc>
+      <image:title>Watch Latest So What&apos;s Wrong with Getting Reborn as a Goblin? (2026) Free HD</image:title>
+      <image:caption>Stream latest So What&apos;s Wrong with Getting Reborn as a Goblin? 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/313068</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/96ywNgKOgciVt33MFTaRLBg8Xnd.jpg</image:loc>
+      <image:title>Watch Latest Hello, I Am a Witch and My Crush Wants Me to Make a Love Potion! (2026) Free HD</image:title>
+      <image:caption>Stream latest Hello, I Am a Witch and My Crush Wants Me to Make a Love Potion! 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/289560</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/fEXauqIabKrMPQ2lVTHKdrkrR4Z.jpg</image:loc>
+      <image:title>Watch Latest CIA (2026) Free HD</image:title>
+      <image:caption>Stream latest CIA 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/277910</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/dnzBSFuqgLjP8pyuWEvnQpF322c.jpg</image:loc>
+      <image:title>Watch Latest King of Comedy (2026) Free HD</image:title>
+      <image:caption>Stream latest King of Comedy 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/256694</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/9CzcOB5J2ld2mIRMzHIwYGYx1Cn.jpg</image:loc>
+      <image:title>Watch Latest Adventure Time: Side Quests (2026) Free HD</image:title>
+      <image:caption>Stream latest Adventure Time: Side Quests 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/#tv/337277</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/yFRVyWWmNMJ72CqxRc2dZqW9TAE.jpg</image:loc>
+      <image:title>Watch Latest Magical Girl Raising Project: Restart (2026) Free HD</image:title>
+      <image:caption>Stream latest Magical Girl Raising Project: Restart 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1548708</loc>
@@ -180,7 +345,7 @@
     <loc>https://alisastream.site/#tv/335790</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/xD8bCXGlwC98mFq8mDyB15grUts.jpg</image:loc>
       <image:title>Watch Latest I&apos;m Dating a Dark Summoner (2026) Free HD</image:title>
@@ -673,7 +838,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1567605</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -805,7 +970,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/213375</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -915,7 +1080,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1137888</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1091,7 +1256,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/10536</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -1148,7 +1313,7 @@
     <loc>https://alisastream.site/#tv/301494</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/wAX4yijZppp0tUe8rQ3Pqq13VmB.jpg</image:loc>
       <image:title>Watch Latest The Old Story of Yu Hong (2026) Free HD</image:title>
@@ -1168,7 +1333,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/292741</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1223,7 +1388,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1255833</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1366,7 +1531,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1170608</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1520,7 +1685,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1421903</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1707,7 +1872,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1777750</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1905,7 +2070,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1266643</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1916,7 +2081,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1381071</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2081,7 +2246,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/940009</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2114,7 +2279,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1281331</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2136,7 +2301,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1765072</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2147,7 +2312,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/891621</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2499,7 +2664,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1153576</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2521,7 +2686,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1003596</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2554,7 +2719,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1400940</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2565,7 +2730,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1457866</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2587,7 +2752,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/791523</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2598,7 +2763,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1300968</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2609,7 +2774,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1400837</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2620,7 +2785,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1381273</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -2708,7 +2873,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/1294189</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -2829,7 +2994,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/389</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -2917,7 +3082,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/429</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -2939,7 +3104,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/14537</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -2950,7 +3115,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#movie/346</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -3478,7 +3643,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/2261</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -3555,7 +3720,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/94722</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -3797,7 +3962,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/#tv/502</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -33015,7 +33180,7 @@
     <loc>https://alisastream.site/#movie/914206</loc>
     <lastmod>2024-02-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://image.tmdb.org/t/p/w500/96Jb7yjDkzluBqQZ21j54CJdYeM.jpg</image:loc>
       <image:title>Watch Latest The Beast (2024) Free HD</image:title>
