@@ -83,7 +83,7 @@ function generateSitemap() {
 
   categories.forEach(c => {
     xml += `  <url>\n`;
-    xml += `    <loc>${escapeXml(`${BASE_URL}/#${c.slug}`)}</loc>\n`;
+    xml += `    <loc>${escapeXml(`${BASE_URL}/?category=${c.slug}`)}</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
     xml += `    <changefreq>${c.freq}</changefreq>\n`;
     xml += `    <priority>${c.priority}</priority>\n`;
@@ -103,7 +103,7 @@ function generateSitemap() {
         const id = item.id || item.tmdb_id;
         if (!id) return;
 
-        const loc = `${BASE_URL}/#${type}/${id}`;
+        const loc = `${BASE_URL}/?${type}=${id}`;
         const releaseYear = (item.release_date || item.first_air_date || '').split('-')[0];
         const lastmod = sanitizeLastmod(item.release_date || item.first_air_date, today);
 

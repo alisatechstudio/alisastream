@@ -80,9 +80,10 @@ const App = {
       }
     });
 
-    // Handle initial URL hash routing
-    this.handleHashRoute();
+    // Handle initial URL routing (Query parameters & URL hash fallback)
+    this.handleInitialRouting();
     window.addEventListener('hashchange', () => this.handleHashRoute());
+    window.addEventListener('popstate', () => this.handleInitialRouting());
   },
 
   // --- PREFERENCES & THEMING ---
@@ -383,6 +384,8 @@ const App = {
     const isPublic = item.is_public_domain;
     const inWatchlist = window.StorageManager.isInWatchlist(item.id);
 
+    const targetUrl = `/?${isTV ? 'tv' : 'movie'}=${item.id}`;
+
     return `
       <article class="media-card" data-id="${item.id}" data-type="${isTV ? 'tv' : 'movie'}">
         <div class="card-poster-wrapper">
@@ -396,7 +399,9 @@ const App = {
           </div>
         </div>
         <div class="card-info">
-          <h3 class="card-title" title="${title}">${title}</h3>
+          <h3 class="card-title" title="${title}">
+            <a href="${targetUrl}" class="card-title-link">${title}</a>
+          </h3>
           <div class="card-meta">
             <span>${year || 'Recent'}</span>
             <button 
@@ -415,11 +420,16 @@ const App = {
   },
 
   attachCardEventListeners(container) {
-    // Card click -> open detail or player
+    // Card click -> open detail modal
     container.querySelectorAll('.media-card').forEach(card => {
       card.addEventListener('click', (e) => {
         // Prevent if user clicked bookmark button
         if (e.target.closest('.card-bookmark-btn')) return;
+        // Allow native new-tab navigation on Ctrl+Click / Cmd+Click / Middle-click
+        if (e.ctrlKey || e.metaKey || e.button === 1) return;
+        if (e.target.closest('a')) {
+          e.preventDefault();
+        }
         const id = card.getAttribute('data-id');
         const type = card.getAttribute('data-type');
         this.openDetail(id, type);
@@ -785,8 +795,20 @@ const App = {
     if (tab === 'home') {
       this.hideDynamicView();
       this.resetDefaultSEO();
+      if (window.location.search) {
+        history.replaceState(null, '', window.location.pathname);
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
+    }
+
+    // Sync query parameter & canonical tag for categories
+    const categoryUrl = `https://alisastream.site/?category=${tab}`;
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) canonicalEl.setAttribute('href', categoryUrl);
+    this.setMetaTag('property', 'og:url', categoryUrl);
+    if (window.location.search !== `?category=${tab}`) {
+      history.replaceState(null, '', `?category=${tab}`);
     }
 
     // Switch to dynamic grid view
@@ -1314,7 +1336,44 @@ const App = {
     }
   },
 
-  // --- URL HASH ROUTING ---
+  // --- URL ROUTING ENGINE (Query Parameters & Hash Fallback) ---
+  handleInitialRouting() {
+    // 1. Check URL query parameters (Priority for Googlebot & Direct links)
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieParam = urlParams.get('movie');
+    const tvParam = urlParams.get('tv');
+    const searchParam = urlParams.get('search');
+    const catParam = urlParams.get('category') || urlParams.get('type') || urlParams.get('tab');
+
+    if (movieParam) {
+      this.openDetail(movieParam, 'movie');
+      return;
+    }
+    if (tvParam) {
+      this.openDetail(tvParam, 'tv');
+      return;
+    }
+    if (searchParam) {
+      this.showDynamicView('SEARCH RESULTS', `Results for "${searchParam}"`, () => window.MovieAPI.searchMulti(searchParam));
+      return;
+    }
+    if (catParam) {
+      if (catParam === 'watchlist') {
+        this.switchTab('watchlist');
+      } else if (catParam === 'movies' || catParam === 'movie') {
+        this.switchTab('movies');
+      } else if (catParam === 'tv' || catParam === 'series') {
+        this.switchTab('tv');
+      } else if (catParam === 'top_rated') {
+        this.switchTab('top_rated');
+      }
+      return;
+    }
+
+    // 2. Fallback to hash route for legacy external links
+    this.handleHashRoute();
+  },
+
   handleHashRoute() {
     const hash = window.location.hash;
     if (!hash) return;
@@ -1330,6 +1389,12 @@ const App = {
     } else if (hash.startsWith('#search=')) {
       const query = decodeURIComponent(hash.replace('#search=', ''));
       this.showDynamicView('SEARCH RESULTS', `Results for "${query}"`, () => window.MovieAPI.searchMulti(query));
+    } else if (hash === '#movies') {
+      this.switchTab('movies');
+    } else if (hash === '#tv') {
+      this.switchTab('tv');
+    } else if (hash === '#top_rated') {
+      this.switchTab('top_rated');
     }
   },
 
@@ -1351,7 +1416,7 @@ const App = {
     const seoTitle = `Watch ${title}${yearStr} Latest Full ${typeLabel} Free Online in HD | Alisa Movies`;
     const seoDesc = media.overview ? `${media.overview.slice(0, 150)}... Watch latest ${title} free online in 4K HD on Alisa Movies with no subscription.` : `Watch latest ${title} online 100% free in crystal-clear 4K & 1080p HD with multi-language subtitles on Alisa Movies.`;
     const poster = window.MovieAPI.getImageUrl(media.poster_path, 'w780') || this.defaultSEO.image;
-    const deepLink = `https://alisastream.site/#${type}/${media.id}`;
+    const deepLink = `https://alisastream.site/?${type}=${media.id}`;
 
     // Update document title & meta tags
     document.title = seoTitle;
@@ -1363,6 +1428,15 @@ const App = {
     this.setMetaTag('name', 'twitter:title', seoTitle);
     this.setMetaTag('name', 'twitter:description', seoDesc);
     this.setMetaTag('name', 'twitter:image', poster);
+
+    // Update canonical link element
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
+    }
+    canonicalEl.setAttribute('href', deepLink);
 
     // Dynamic Movie / TVSeries Schema.org injection
     let schemaEl = document.getElementById('dynamicMediaSchema');
@@ -1410,9 +1484,10 @@ const App = {
 
     schemaEl.textContent = JSON.stringify(schemaData, null, 2);
 
-    // Update URL hash without reload for deep linking
-    if (window.location.hash !== `#${type}/${media.id}`) {
-      history.replaceState(null, '', `#${type}/${media.id}`);
+    // Update URL query parameter without reload for deep linking & sharing
+    const expectedQuery = `?${type}=${media.id}`;
+    if (window.location.search !== expectedQuery) {
+      history.replaceState(null, '', `${window.location.pathname}${expectedQuery}`);
     }
   },
 
@@ -1427,9 +1502,20 @@ const App = {
     this.setMetaTag('name', 'twitter:description', this.defaultSEO.description);
     this.setMetaTag('name', 'twitter:image', this.defaultSEO.image);
 
+    // Reset canonical link
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) {
+      canonicalEl.setAttribute('href', this.defaultSEO.url);
+    }
+
     const schemaEl = document.getElementById('dynamicMediaSchema');
     if (schemaEl) schemaEl.remove();
 
+    // Clean URL query parameters and hash if closing detail view
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('movie') || urlParams.has('tv')) {
+      history.replaceState(null, '', window.location.pathname);
+    }
     if (window.location.hash.startsWith('#movie/') || window.location.hash.startsWith('#tv/')) {
       history.replaceState(null, '', window.location.pathname);
     }
