@@ -2,25 +2,36 @@
 <html lang="en" data-theme-accent="cyan">
 
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-50Y4X5F5R3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
+    // Google Consent Mode v2 initialization
+    try {
+      const storedConsent = localStorage.getItem('alisa_cookie_consent');
+      gtag('consent', 'default', {
+        'ad_storage': storedConsent === 'accepted' ? 'granted' : 'denied',
+        'ad_user_data': storedConsent === 'accepted' ? 'granted' : 'denied',
+        'ad_personalization': storedConsent === 'accepted' ? 'granted' : 'denied',
+        'analytics_storage': storedConsent === 'declined' ? 'denied' : 'granted'
+      });
+    } catch(e) {}
+
     gtag('config', 'G-50Y4X5F5R3');
   </script>
 
 
-  <title>Alisa Movies — Watch Latest Movies & TV Shows Free Online in 4K HD | Free Streaming</title>
+  <title>Alisa Movies — Watch Movies &amp; TV Shows Free Online in 4K HD | #1 Streaming Site</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Watch the latest movies and trending TV shows 100% free online in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). Free movie streaming with zero subscription, latest cinema releases, and multi-language subtitles.">
+    content="Watch latest movies and trending TV shows 100% free online in crystal-clear 4K &amp; 1080p HD on Alisa Movies (AlisaStream). #1 online movie watch website with zero sign-up, instant multi-server playback, and multi-language subtitles.">
   <meta name="keywords"
-    content="free movies, latest movies, watch latest movies free, free movies online, latest free movie streaming, stream latest tv shows free, watch free movies 4k, latest hd movies free, alisa movies, alisastream free movies, latest releases free stream, watch series free online, latest 2026 movies free">
+    content="watch movies online, watch free movies, free movie streaming sites, watch movies online free, watch latest movies free, best movie streaming site, free movies 4k, watch series free online, alisa movies, alisastream, stream hd movies free, free cinema 2026">
   <meta name="author" content="Alisa Movies">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -38,9 +49,9 @@
   <!-- Open Graph / Facebook / WhatsApp Social Graph -->
   <meta property="og:site_name" content="Alisa Movies">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Alisa Movies — Watch Latest Movies & TV Shows Free Online in 4K HD">
+  <meta property="og:title" content="Alisa Movies — Watch Movies &amp; TV Shows Free Online in 4K HD | #1 Streaming Site">
   <meta property="og:description"
-    content="Watch the latest movies and trending TV shows 100% free online in crystal-clear 4K & Full HD. Free multi-server playback with zero interruptions.">
+    content="Watch the latest movies and trending TV shows 100% free online in crystal-clear 4K &amp; Full HD. #1 online movie streaming site with zero sign-up and fast multi-server playback.">
   <meta property="og:url" content="https://alisastream.site/">
   <meta property="og:image" content="https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg">
   <meta property="og:image:width" content="1280">

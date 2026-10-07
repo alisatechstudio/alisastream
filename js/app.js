@@ -172,11 +172,27 @@ const App = {
 
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('alisa_cookie_consent', 'accepted');
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
       banner.style.display = 'none';
     });
 
     declineBtn.addEventListener('click', () => {
       localStorage.setItem('alisa_cookie_consent', 'declined');
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'granted'
+        });
+      }
       banner.style.display = 'none';
     });
   },
@@ -1319,8 +1335,8 @@ const App = {
 
   // --- DYNAMIC SPA SEO & STRUCTURED DATA ENGINE ---
   defaultSEO: {
-    title: 'Alisa Movies — Watch Latest Movies & TV Shows Free Online in 4K HD | Free Streaming',
-    description: 'Watch the latest movies and trending TV shows 100% free online in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). Free movie streaming with zero subscription, latest cinema releases, and multi-language subtitles.',
+    title: 'Alisa Movies — Watch Movies & TV Shows Free Online in 4K HD | #1 Streaming Site',
+    description: 'Watch latest movies and trending TV shows 100% free online in crystal-clear 4K & 1080p HD on Alisa Movies (AlisaStream). #1 online movie watch website with zero sign-up, instant multi-server playback, and multi-language subtitles.',
     url: 'https://alisastream.site/',
     image: 'https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg'
   },

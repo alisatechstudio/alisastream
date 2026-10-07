@@ -116,6 +116,7 @@ Alisa Movies/
 ├── dmca.html              # DMCA Copyright Policy & designated agent contact
 ├── about.html             # About Us transparency & educational mission page
 ├── contact.html           # Contact Us page with direct support form
+├── ads.txt                # Authorized Digital Sellers file for Google AdSense
 ├── .nojekyll              # Disables Jekyll processing on GitHub Pages
 ├── README.md              # Project documentation & features
 ├── css/
@@ -129,19 +130,25 @@ Alisa Movies/
 
 ---
 
-## 🛡️ 100% Ad-Free Cinema Experience
+## 🛡️ Google AdSense & Policy Compliance
 
-Alisa Movies is built to provide an uninterrupted, premium cinema streaming experience:
+Alisa Movies is fully configured in strict compliance with **Google AdSense Program & Publisher Policies**:
 
-1. **Zero Banner & Display Ads**:
-   - No intrusive header leaderboards, in-feed banners, or sidebar ads anywhere on the platform.
-2. **Built-in Ad & Popup Shield**:
+1. **`ads.txt` Verification**:
+   - Authorized digital sellers record located at `/ads.txt` declaring publisher ID:
+     ```text
+     google.com, pub-2862340185854650, DIRECT, f08c47fec0942fa0
+     ```
+2. **Google Consent Mode v2 & EU User Consent**:
+   - Integrated with Google Consent Mode v2 (`gtag('consent', ...)`) supporting `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage`.
+3. **Mandatory Publisher Legal Pages**:
+   - `privacy.html`: Includes Google AdSense disclosures, DoubleClick DART cookies, DAA/NAI opt-out links, GDPR & CCPA rights.
+   - `terms.html`: Acceptable use guidelines and non-hosting disclaimer.
+   - `dmca.html`: 17 U.S.C. § 512(c) statutory copyright notice process with designated agent.
+   - `about.html` & `contact.html`: Company transparency and direct visitor inquiry channels.
+4. **Built-in Ad & Popup Shield**:
    - `setupAdShield()` actively blocks unauthorized `window.open` requests, preventing popunders and rogue new tabs.
    - Sandbox security controls prevent external streaming mirrors from redirecting the top website.
-3. **Distraction-Free Video Player**:
-   - Expanded 16:9 widescreen cinema stage layout with ambient backdrop glow and theater mode.
-4. **Privacy Respecting**:
-   - Zero advertising cookies or tracking scripts. Local preferences stay securely inside your browser.
 
 ---
 
