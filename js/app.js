@@ -36,8 +36,7 @@ const App = {
     this.setupSettingsModal();
     this.setupGlobalShortcuts();
     this.setupCookieConsent();
-    this.setupAdAutoRefresh();
-    this.initDisplayBanners();
+    this.setupAdShield();
 
     // Initialize Player module
     if (window.Player) {
@@ -49,24 +48,6 @@ const App = {
     if (heroExploreBtn) {
       heroExploreBtn.addEventListener('click', () => {
         this.switchTab('movies');
-      });
-    }
-
-    // Skyscraper Banner Close Button (Left)
-    const closeSkyscraperBtn = document.getElementById('closeSkyscraperBtn');
-    const skyscraperAd = document.getElementById('skyscraperAdLeft');
-    if (closeSkyscraperBtn && skyscraperAd) {
-      closeSkyscraperBtn.addEventListener('click', () => {
-        skyscraperAd.style.display = 'none';
-      });
-    }
-
-    // Player Right Ad Close Button (300x250)
-    const closePlayerAdRightBtn = document.getElementById('closePlayerAdRightBtn');
-    const playerAdRight = document.getElementById('playerAdRight');
-    if (closePlayerAdRightBtn && playerAdRight) {
-      closePlayerAdRightBtn.addEventListener('click', () => {
-        playerAdRight.style.display = 'none';
       });
     }
 
@@ -1449,210 +1430,34 @@ const App = {
   },
 
   /**
-   * INITIAL LOAD of the standard display banner ads.
-   * Reads config from data-* attributes on each .ad-invoke node and injects
-   * the vendor's atOptions config + invoke.js once. Safe to call repeatedly.
+   * 100% Ad-Free Cinema Shield & Popup Blocker
+   * Intercepts unwanted popups, popunders, and rogue redirects from third-party mirrors.
    */
-  initDisplayBanners() {
-    const DISPLAY_ADS = [
-      {
-        name: '468x60 Index Banner',
-        selector: '.banner-468-wrapper .ad-invoke',
-        key: '3db033b8a3c04d2969f6ad108501229f',
-        width: 468,
-        height: 60
-      },
-      {
-        name: '160x300 Left Skyscraper (Player)',
-        selector: '.player-side-ad--left .ad-invoke, #skyscraperAdLeft .ad-invoke',
-        key: 'e53edc39c97ff45450fcd274eaccaadd',
-        width: 160,
-        height: 300
-      },
-      {
-        name: '300x250 Medium Rectangle (Player)',
-        selector: '.player-side-ad--right .ad-invoke, #playerAdRight .ad-invoke',
-        key: '2aa226d52097fda994ed5b960bc16238',
-        width: 300,
-        height: 250
-      },
-      {
-        name: '728x90 Leaderboard',
-        selector: '.banner-728-wrapper .ad-invoke',
-        key: 'feb3fda8c8b027826f18640a3c80e6b1',
-        width: 728,
-        height: 90
-      }
-    ];
-
-    DISPLAY_ADS.forEach((ad) => {
-      const box = document.querySelector(ad.selector);
-      if (!box) return;
-
-      // Clean existing content
-      box.querySelectorAll('script, iframe').forEach(el => el.remove());
-
-      const configScript = document.createElement('script');
-      configScript.text = `
-        atOptions = {
-          'key' : '${ad.key}',
-          'format' : 'iframe',
-          'height' : ${ad.height},
-          'width' : ${ad.width},
-          'params' : {}
-        };
-      `;
-      box.appendChild(configScript);
-
-      const invokeScript = document.createElement('script');
-      invokeScript.src = `https://windowthrilling.com/${ad.key}/invoke.js`;
-      box.appendChild(invokeScript);
-    });
-  },
-
-  /**
-   * Auto-refresh ALL banner ads (Native, Leaderboards, Skyscraper, Rectangles)
-   * every 10 seconds for maximum impression yields.
-   */
-  setupAdAutoRefresh() {
-    const REFRESH_INTERVAL_MS = 10000; // 10 seconds
-    const NATIVE_KEY = '36f7f150e59a605d87206f6a138759d3';
-    const NATIVE_CONTAINER_ID = `container-${NATIVE_KEY}`;
-
-    // All standard display banner slots
-    const DISPLAY_ADS = [
-      {
-        name: '468x60 Index Banner',
-        selector: '.banner-468-wrapper .ad-invoke, .banner-468-wrapper .ad-slot-box',
-        key: '3db033b8a3c04d2969f6ad108501229f',
-        width: 468,
-        height: 60
-      },
-      {
-        name: '160x300 Left Skyscraper (Player)',
-        selector: '.player-side-ad--left .ad-invoke, .player-side-ad--left .player-side-ad-inner, #skyscraperAdLeft .ad-invoke',
-        key: 'e53edc39c97ff45450fcd274eaccaadd',
-        width: 160,
-        height: 300
-      },
-      {
-        name: '300x250 Medium Rectangle (Player)',
-        selector: '.player-side-ad--right .ad-invoke, .player-side-ad--right .player-side-ad-inner, #playerAdRight .ad-invoke',
-        key: '2aa226d52097fda994ed5b960bc16238',
-        width: 300,
-        height: 250
-      },
-      {
-        name: '728x90 Leaderboard',
-        selector: '.banner-728-wrapper .ad-invoke, .banner-728-wrapper .ad-slot-box',
-        key: 'feb3fda8c8b027826f18640a3c80e6b1',
-        width: 728,
-        height: 90
-      }
-    ];
-
-    let refreshCycle = 0;
-
-    const reinjectIframeBanner = (box, ad) => {
-      box.querySelectorAll('script, iframe').forEach(el => el.remove());
-      
-      const configScript = document.createElement('script');
-      configScript.text = `
-        atOptions = {
-          'key' : '${ad.key}',
-          'format' : 'iframe',
-          'height' : ${ad.height},
-          'width' : ${ad.width},
-          'params' : {}
-        };
-      `;
-      box.appendChild(configScript);
-
-      const invokeScript = document.createElement('script');
-      invokeScript.src = `https://windowthrilling.com/${ad.key}/invoke.js?_t=${Date.now()}`;
-      box.appendChild(invokeScript);
-    };
-
-    const refreshAllBanners = () => {
-      // Pause refreshing if browser tab is hidden/inactive
-      if (document.hidden) return;
-
-      refreshCycle++;
-      let refreshedCount = 0;
-
-      // -------------------------------------------------------------
-      // 1. REFRESH NATIVE IN-FEED BANNER AD(S)
-      // -------------------------------------------------------------
-      const nativeWrappers = document.querySelectorAll('.ad-slot-wrapper.in-feed-ad, .in-feed-ad');
-      nativeWrappers.forEach((wrapper) => {
-        const container = wrapper.querySelector(`div[id^="container-"]`) || wrapper.querySelector('.ad-slot-box > div');
-        if (container && typeof container.reload === 'function') {
-          try {
-            container.style.transition = 'opacity 0.3s ease';
-            container.style.opacity = '0.75';
-            setTimeout(() => { container.style.opacity = '1'; }, 300);
-            container.reload();
-            refreshedCount++;
-          } catch (e) {
-            console.warn('[AdAutoRefresh] Native reload error:', e);
+  setupAdShield() {
+    // 1. Intercept rogue window.open calls (blocks popunders/new tab redirects)
+    try {
+      const originalOpen = window.open;
+      window.open = function(url, target, features) {
+        if (typeof url === 'string') {
+          const isInternal = url.startsWith('/') || url.startsWith(window.location.origin);
+          const isAllowed = url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('blob:');
+          if (isInternal || isAllowed) {
+            return originalOpen.call(window, url, target, features);
           }
         }
-      });
+        console.info('[AdShield] Blocked popup window/redirect:', url);
+        return null;
+      };
+    } catch (e) {
+      console.warn('[AdShield] window.open protection initialized with fallback', e);
+    }
 
-      // Clear Adsterra internal placement duplicate array so refreshed requests proceed
-      if (window['_0x196a1559e34586fdb'] && Array.isArray(window['_0x196a1559e34586fdb'])) {
-        window['_0x196a1559e34586fdb'] = [];
-      }
-
-      // -------------------------------------------------------------
-      // 2. REFRESH ALL DISPLAY BANNERS (468x60, 160x300, 160x600, 300x250, 728x90)
-      // -------------------------------------------------------------
-      DISPLAY_ADS.forEach((ad) => {
-        const box = document.querySelector(ad.selector);
-        if (!box) return;
-
-        const iframes = box.querySelectorAll('iframe');
-        if (iframes.length > 0) {
-          // Micro visual transition
-          box.style.transition = 'opacity 0.3s ease';
-          box.style.opacity = '0.75';
-          setTimeout(() => { box.style.opacity = '1'; }, 300);
-
-          iframes.forEach((iframe) => {
-            try {
-              const currentSrc = iframe.src || iframe.getAttribute('src');
-              if (currentSrc && currentSrc !== 'about:blank') {
-                const clean = currentSrc.replace(/([?&]_t=)[^&]+/, '');
-                const delim = clean.includes('?') ? '&' : '?';
-                iframe.src = clean + delim + '_t=' + Date.now();
-                refreshedCount++;
-              } else {
-                reinjectIframeBanner(box, ad);
-                refreshedCount++;
-              }
-            } catch (err) {
-              iframe.src = iframe.src;
-              refreshedCount++;
-            }
-          });
-        } else {
-          reinjectIframeBanner(box, ad);
-          refreshedCount++;
-        }
-      });
-
-      console.log(`[AdAutoRefresh] All banner ads refreshed (Cycle #${refreshCycle} | ${refreshedCount} units checked | 10s interval)`);
+    // 2. Remove any lingering ad units from cache or browser extensions
+    const purgeAdElements = () => {
+      document.querySelectorAll('.ad-slot-wrapper, .player-side-ad, [id*="AdLeft"], [id*="AdRight"], [id^="container-36f7f150"]').forEach(el => el.remove());
     };
-
-    // Run every 10 seconds (10,000 ms)
-    setInterval(refreshAllBanners, REFRESH_INTERVAL_MS);
-
-    // Refresh immediately when user switches back to active tab
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) {
-        refreshAllBanners();
-      }
-    });
+    purgeAdElements();
+    document.addEventListener('DOMContentLoaded', purgeAdElements);
   }
 };
 

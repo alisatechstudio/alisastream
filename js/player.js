@@ -125,11 +125,6 @@ const Player = {
     // Load player stream
     this.loadStream();
 
-    // Ensure player side ads are visible
-    const skyscraperAd = document.getElementById('skyscraperAdLeft');
-    if (skyscraperAd) skyscraperAd.style.display = '';
-    const playerAdRight = document.getElementById('playerAdRight');
-    if (playerAdRight) playerAdRight.style.display = '';
 
     // Open Modal
     if (this.modal && !this.modal.open) {
@@ -212,6 +207,7 @@ const Player = {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           allowfullscreen
           referrerpolicy="no-referrer"
+          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
       </div>

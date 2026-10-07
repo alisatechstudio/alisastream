@@ -110,47 +110,38 @@ Open `http://localhost:8080` in your web browser.
 
 ```
 Alisa Movies/
-├── index.html             # Main web app with AdSense slots, modals, and rails
-├── privacy.html           # Google AdSense, GDPR & CCPA compliant Privacy Policy
+├── index.html             # Main web app with cinema rails, modals, and player
+├── privacy.html           # GDPR & CCPA compliant Privacy Policy
 ├── terms.html             # Terms of Service & acceptable use agreement
 ├── dmca.html              # DMCA Copyright Policy & designated agent contact
 ├── about.html             # About Us transparency & educational mission page
 ├── contact.html           # Contact Us page with direct support form
-├── ads.txt                # Authorized Digital Sellers file for AdSense
 ├── .nojekyll              # Disables Jekyll processing on GitHub Pages
-├── README.md              # Project documentation & monetization guide
+├── README.md              # Project documentation & features
 ├── css/
-│   └── style.css          # Cinema dark design system, ad slots & cookie banner
+│   └── style.css          # Cinema dark design system & responsive layout
 └── js/
     ├── storage.js         # LocalStorage manager (Watchlist, History, Preferences)
     ├── api.js             # Worldwide API integration (TMDB, TVMaze, Open Cinema)
     ├── player.js          # Multi-server streaming player, episode switcher & HTML5 player
-    └── app.js             # UI controller, carousel, live search, and cookie consent
+    └── app.js             # UI controller, carousel, live search, and AdShield
 ```
 
 ---
 
-## 💰 Google AdSense Setup & Monetization Guide
+## 🛡️ 100% Ad-Free Cinema Experience
 
-Alisa Movies is fully equipped with everything required for **Google AdSense Approval & Policy Compliance**:
+Alisa Movies is built to provide an uninterrupted, premium cinema streaming experience:
 
-1. **Mandatory Policy Pages Included**:
-   - `privacy.html`: Discloses cookie usage, Google DoubleClick DART cookies, third-party ad networks, GDPR rights, and CCPA clauses.
-   - `terms.html`: Transparent terms of service and acceptable use disclaimer.
-   - `dmca.html`: Clear DMCA statement detailing that media is sourced via open public APIs (TMDB, TVMaze) with an official contact email for rights holders.
-   - `about.html` & `contact.html`: Company transparency and direct visitor contact form.
-
-2. **GDPR & Google Consent Mode Cookie Banner**:
-   - Includes a built-in banner on `index.html` allowing visitors to Accept or Decline non-essential advertising cookies, saved locally in accordance with Google's EU User Consent Policy.
-
-3. **Monetization Script Activation**:
-   - The active ad network script tag is embedded in `<head>` across all pages:
-     ```html
-     <script data-cfasync='false' src='//wwr.giriudog.com/?tag=26b9f3a4'></script>
-     ```
-
-4. **Ad Unit Placement**:
-   - The native in-feed ad container is placed between homepage movie rails in `index.html`.
+1. **Zero Banner & Display Ads**:
+   - No intrusive header leaderboards, in-feed banners, or sidebar ads anywhere on the platform.
+2. **Built-in Ad & Popup Shield**:
+   - `setupAdShield()` actively blocks unauthorized `window.open` requests, preventing popunders and rogue new tabs.
+   - Sandbox security controls prevent external streaming mirrors from redirecting the top website.
+3. **Distraction-Free Video Player**:
+   - Expanded 16:9 widescreen cinema stage layout with ambient backdrop glow and theater mode.
+4. **Privacy Respecting**:
+   - Zero advertising cookies or tracking scripts. Local preferences stay securely inside your browser.
 
 ---
 

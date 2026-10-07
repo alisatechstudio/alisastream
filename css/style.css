@@ -1280,14 +1280,6 @@ dialog#playerModal .tv-episode-container {
   margin: 0 auto;
 }
 
-dialog#playerModal .banner-468-wrapper {
-  margin: 0.4rem auto 0 auto;
-  width: 100%;
-  max-width: calc(min(72vh, calc(100vh - 210px)) * 16 / 9);
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-}
 
 .server-label {
   font-size: 0.82rem;
@@ -1475,8 +1467,7 @@ dialog.alisa-modal.theater-mode .player-frame-box {
 }
 
 dialog.alisa-modal.theater-mode .server-switcher-bar,
-dialog.alisa-modal.theater-mode .tv-episode-container,
-dialog.alisa-modal.theater-mode .banner-468-wrapper {
+dialog.alisa-modal.theater-mode .tv-episode-container {
   max-width: calc((100vh - 145px) * 16 / 9);
 }
 
@@ -1494,8 +1485,7 @@ dialog.alisa-modal.theater-mode .banner-468-wrapper {
   }
 
   dialog#playerModal .server-switcher-bar,
-  dialog#playerModal .tv-episode-container,
-  dialog#playerModal .banner-468-wrapper {
+  dialog#playerModal .tv-episode-container {
     max-width: 100%;
   }
 }
@@ -1854,284 +1844,27 @@ dialog#trailerModal {
 }
 
 /* ==========================================================================
-   GOOGLE ADSENSE COMPLIANT AD SLOTS & COOKIE CONSENT BANNER
-   ========================================================================== */
-
-/* Ad Containers (AdSense Policy Compliant) */
-.ad-slot-wrapper {
-  max-width: 1600px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 5;
-}
-
-.ad-slot-box {
-  width: 100%;
-  max-width: 970px;
-  min-height: 90px;
-  background: rgba(14, 17, 26, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 0.75rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.ad-slot-box:hover {
-  border-color: rgba(0, 242, 254, 0.3);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 242, 254, 0.08);
-}
-
-.ad-slot-box > div[id^="container-"] {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.ad-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.35rem;
-  align-self: flex-start;
-  padding-left: 0.5rem;
-}
-
-.ad-placeholder-hint {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* 468x60 Index Sponsored Banner Ad */
-.banner-468-wrapper {
-  margin: 2.5rem auto;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 5;
-}
-
-.banner-468-wrapper .ad-slot-box {
-  max-width: 488px;
-  min-height: 76px;
-  padding: 6px 10px;
-}
-
-.banner-468-wrapper iframe {
-  max-width: 100%;
-  display: block;
-}
-
-/* 728x90 Top Hero Leaderboard Banner Ad */
-.banner-728-wrapper {
-  margin: 1.5rem auto 2.5rem auto;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.banner-728-wrapper .ad-slot-box {
-  max-width: 748px;
-  min-height: 104px;
-  padding: 6px 10px;
-  width: 100%;
-}
-
-.banner-728-wrapper iframe {
-  max-width: 100%;
-  display: block;
-}
-
-/* ==========================================================================
-   VIDEO PLAYER STAGE & SIDE ADS (160x300 Left Skyscraper & 300x250 Right Rectangle)
+   VIDEO PLAYER CINEMA STAGE LAYOUT (100% Ad-Free, Precision 16:9 Viewport)
    ========================================================================== */
 .player-stage-layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
   width: 100%;
   margin: 0 auto;
 }
 
 .player-stage-layout .player-frame-box {
-  order: 2;
-  flex: 1 1 auto;
-  max-height: min(72vh, calc(100vh - 210px));
-  max-width: calc(min(72vh, calc(100vh - 210px)) * 16 / 9);
   width: 100%;
+  max-height: min(78vh, calc(100vh - 190px));
+  max-width: calc(min(78vh, calc(100vh - 190px)) * 16 / 9);
   margin: 0 auto;
 }
 
-.player-side-ad {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.player-side-ad--left {
-  order: 1;
-  width: 174px;
-}
-
-.player-side-ad--right {
-  order: 3;
-  width: 314px;
-}
-
-.player-side-ad-inner {
+dialog.alisa-modal.theater-mode .player-stage-layout .player-frame-box {
+  max-height: calc(100vh - 120px);
+  max-width: calc((100vh - 120px) * 16 / 9);
   width: 100%;
-  background: rgba(14, 17, 26, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  position: relative;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.player-side-ad-inner:hover {
-  border-color: rgba(0, 242, 254, 0.3);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 242, 254, 0.08);
-}
-
-.player-side-ad-inner iframe {
-  max-width: 100%;
-  display: block;
-  border: none;
-}
-
-.player-side-ad-close {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 22px;
-  height: 22px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-active);
-  border-radius: 50%;
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 15;
-  transition: all 0.2s ease;
-}
-
-.player-side-ad-close:hover {
-  color: #fff;
-  border-color: var(--accent-primary);
-  background: rgba(0, 242, 254, 0.25);
-  transform: scale(1.1);
-}
-
-/* Responsiveness for Side Ads in Player */
-@media (max-width: 1260px) {
-  .player-stage-layout {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .player-stage-layout .player-frame-box {
-    order: 1;
-    width: 100%;
-    max-width: calc(min(68vh, calc(100vh - 230px)) * 16 / 9);
-  }
-  .player-side-ad--left {
-    order: 2;
-  }
-  .player-side-ad--right {
-    order: 3;
-  }
-}
-
-@media (max-width: 540px) {
-  .player-side-ad--left,
-  .player-side-ad--right {
-    max-width: 100%;
-  }
-  .player-side-ad--right .player-side-ad-inner {
-    transform: scale(0.92);
-    transform-origin: center center;
-  }
-}
-
-/* In Theater Mode, tuck side ads away so video takes full screen */
-dialog.alisa-modal.theater-mode .player-stage-layout {
-  flex-direction: column;
-}
-dialog.alisa-modal.theater-mode .player-side-ad {
-  display: none;
-}
-
-/* Mobile & Narrow viewports: stack items cleanly */
-@media (max-width: 560px) {
-  .ad-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0 0.5rem;
-  }
-}
-
-/* TABLET & MOBILE RESPONSIVE SCALING FOR ADS */
-@media (max-width: 768px) {
-  .banner-728-wrapper .ad-slot-box {
-    transform: scale(0.9);
-    transform-origin: center center;
-    margin: -5px 0;
-  }
-}
-
-@media (max-width: 580px) {
-  .banner-728-wrapper .ad-slot-box {
-    transform: scale(0.68);
-    transform-origin: center center;
-    margin: -16px 0;
-  }
-  .banner-468-wrapper .ad-slot-box {
-    transform: scale(0.85);
-    transform-origin: center center;
-  }
-}
-
-@media (max-width: 420px) {
-  .banner-728-wrapper .ad-slot-box {
-    transform: scale(0.46);
-    transform-origin: center center;
-    margin: -26px 0;
-  }
-  .banner-468-wrapper .ad-slot-box {
-    transform: scale(0.72);
-    transform-origin: center center;
-    margin: -10px 0;
-  }
 }
 
 /* GDPR / Google Consent Mode Cookie Banner */
