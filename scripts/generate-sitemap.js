@@ -58,11 +58,11 @@ function generateSitemap() {
   // Core Static Pages
   const staticPages = [
     { url: `${BASE_URL}/`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/about.html`, priority: '0.8', changefreq: 'monthly', lastmod: today },
-    { url: `${BASE_URL}/dmca.html`, priority: '0.8', changefreq: 'monthly', lastmod: today },
-    { url: `${BASE_URL}/contact.html`, priority: '0.8', changefreq: 'monthly', lastmod: today },
-    { url: `${BASE_URL}/privacy.html`, priority: '0.7', changefreq: 'monthly', lastmod: today },
-    { url: `${BASE_URL}/terms.html`, priority: '0.7', changefreq: 'monthly', lastmod: today }
+    { url: `${BASE_URL}/about.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
+    { url: `${BASE_URL}/dmca.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
+    { url: `${BASE_URL}/contact.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
+    { url: `${BASE_URL}/privacy.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
+    { url: `${BASE_URL}/terms.html`, priority: '1.0', changefreq: 'daily', lastmod: today }
   ];
 
   staticPages.forEach(p => {
@@ -76,9 +76,9 @@ function generateSitemap() {
 
   // Category & Genre Sections
   const categories = [
-    { slug: 'movies', title: 'Movies Catalog', priority: '0.9', freq: 'daily' },
-    { slug: 'tv', title: 'TV Shows & Series', priority: '0.9', freq: 'daily' },
-    { slug: 'top_rated', title: 'Top Rated Cinema Masterpieces', priority: '0.9', freq: 'weekly' }
+    { slug: 'movies', title: 'Movies Catalog', priority: '1.0', freq: 'daily' },
+    { slug: 'tv', title: 'TV Shows & Series', priority: '1.0', freq: 'daily' },
+    { slug: 'top_rated', title: 'Top Rated Cinema Masterpieces', priority: '1.0', freq: 'daily' }
   ];
 
   categories.forEach(c => {
@@ -107,19 +107,11 @@ function generateSitemap() {
         const releaseYear = (item.release_date || item.first_air_date || '').split('-')[0];
         const lastmod = sanitizeLastmod(item.release_date || item.first_air_date, today);
 
-        // Determine priority based on popularity or rating
-        let priority = '0.7';
-        if (item.vote_average >= 8.0 || item.popularity > 200) {
-          priority = '0.9';
-        } else if (item.vote_average >= 7.0 || item.popularity > 50) {
-          priority = '0.8';
-        }
-
         xml += `  <url>\n`;
         xml += `    <loc>${escapeXml(loc)}</loc>\n`;
         xml += `    <lastmod>${escapeXml(lastmod)}</lastmod>\n`;
-        xml += `    <changefreq>weekly</changefreq>\n`;
-        xml += `    <priority>${priority}</priority>\n`;
+        xml += `    <changefreq>daily</changefreq>\n`;
+        xml += `    <priority>1.0</priority>\n`;
 
         // Image sitemap integration for Google Images index
         const poster = item.poster_path ? (item.poster_path.startsWith('http') ? item.poster_path : `https://image.tmdb.org/t/p/w780${item.poster_path}`) : null;
