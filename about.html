@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme-accent="cyan">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PPVZSLJ7');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50Y4X5F5R3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-50Y4X5F5R3');
-  </script>
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yriaaf45vl");
-  </script>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn about Alisa Movies (AlisaStream) — our mission to deliver free high-definition cinema discovery, 4K streaming technology, and global entertainment access.">
@@ -173,6 +145,60 @@
       .feature-box-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <!-- Analytics & Tag Management (Lazy-loaded on interaction/idle to save unused JS) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('js', new Date());
+    gtag('config', 'G-50Y4X5F5R3');
+
+    (function() {
+      let analyticsLoaded = false;
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PPVZSLJ7');
+
+        var gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-50Y4X5F5R3';
+        document.head.appendChild(gaScript);
+
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yriaaf45vl");
+
+        ['touchstart', 'scroll', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
+          window.removeEventListener(evt, loadAnalytics, { passive: true });
+        });
+      }
+
+      ['touchstart', 'scroll', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadAnalytics, { passive: true, once: true });
+      });
+
+      if (typeof window !== 'undefined') {
+        window.addEventListener('load', function() {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(function() {
+              setTimeout(loadAnalytics, 2500);
+            }, { timeout: 4000 });
+          } else {
+            setTimeout(loadAnalytics, 3500);
+          }
+        });
+      }
+    })();
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
