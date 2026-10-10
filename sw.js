@@ -5,11 +5,12 @@ const CACHE_NAME = 'alisa-assets-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
+  '/css/style.min.css',
   '/css/style.css',
-  '/js/storage.js',
-  '/js/api.js',
-  '/js/player.js',
-  '/js/app.js',
+  '/js/storage.min.js',
+  '/js/api.min.js',
+  '/js/player.min.js',
+  '/js/app.min.js',
   '/favicon.svg',
   '/favicon-32x32.png',
   '/icon-192.png'

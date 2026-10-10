@@ -165,10 +165,10 @@ const App = {
 
     const consent = localStorage.getItem('alisa_cookie_consent');
     if (!consent) {
-      // Display banner after short smooth delay
+      // Display banner smoothly after initial page load & interaction
       setTimeout(() => {
         banner.style.display = 'flex';
-      }, 1000);
+      }, 3500);
     }
 
     acceptBtn.addEventListener('click', () => {

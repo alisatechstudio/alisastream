@@ -1925,7 +1925,8 @@ dialog.alisa-modal.theater-mode .player-stage-layout .player-frame-box {
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
+  will-change: transform, opacity;
   width: calc(100% - 3rem);
   max-width: 780px;
   background: rgba(14, 17, 26, 0.95);
@@ -1940,16 +1941,16 @@ dialog.alisa-modal.theater-mode .player-stage-layout .player-frame-box {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  animation: slideUpConsent 0.4s ease forwards;
+  animation: slideUpConsent 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideUpConsent {
   from {
-    transform: translate(-50%, 100%);
+    transform: translate3d(-50%, 100%, 0);
     opacity: 0;
   }
   to {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
 }

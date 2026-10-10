@@ -15,8 +15,8 @@
   <link rel="preload" as="image" href="https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg" fetchpriority="high" media="(min-width: 769px)">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 
-  <!-- Core Design System & Cinematic Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Core Design System & Cinematic Stylesheet (Minified) -->
+  <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
@@ -294,26 +294,20 @@
         })(window, document, "clarity", "script", "yriaaf45vl");
 
         // Remove interaction listeners
-        ['touchstart', 'scroll', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
+        ['touchstart', 'pointerdown', 'scroll', 'keydown', 'click'].forEach(function(evt) {
           window.removeEventListener(evt, loadAnalytics, { passive: true });
         });
       }
 
-      // Attach interaction listeners (triggers immediately on mobile touch or scroll)
-      ['touchstart', 'scroll', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
+      // Attach interaction listeners (triggers immediately on real user touch or scroll)
+      ['touchstart', 'pointerdown', 'scroll', 'keydown', 'click'].forEach(function(evt) {
         window.addEventListener(evt, loadAnalytics, { passive: true, once: true });
       });
 
-      // Fallback timer: load after page load and idle
+      // Fallback timer: load after 8.5s if completely untouched
       if (typeof window !== 'undefined') {
         window.addEventListener('load', function() {
-          if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(function() {
-              setTimeout(loadAnalytics, 2500);
-            }, { timeout: 4000 });
-          } else {
-            setTimeout(loadAnalytics, 3500);
-          }
+          setTimeout(loadAnalytics, 8500);
         });
       }
     })();
@@ -1115,11 +1109,11 @@
     </div>
   </aside>
 
-  <!-- Scripts (Deferred for optimal Core Web Vitals) -->
-  <script defer src="js/storage.js"></script>
-  <script defer src="js/api.js"></script>
-  <script defer src="js/player.js"></script>
-  <script defer src="js/app.js"></script>
+  <!-- Scripts (Deferred & Minified for optimal Core Web Vitals) -->
+  <script defer src="js/storage.min.js"></script>
+  <script defer src="js/api.min.js"></script>
+  <script defer src="js/player.min.js"></script>
+  <script defer src="js/app.min.js"></script>
 </body>
 
 </html>
