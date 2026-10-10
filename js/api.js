@@ -1476,7 +1476,12 @@ const MovieAPI = {
     });
 
     try {
-      const response = await fetch(`${TMDB_API_BASE}${endpoint}?${queryParams.toString()}`);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 6000);
+      const response = await fetch(`${TMDB_API_BASE}${endpoint}?${queryParams.toString()}`, {
+        signal: controller.signal
+      });
+      clearTimeout(timer);
       if (!response.ok) {
         throw new Error(`TMDB HTTP error ${response.status}`);
       }
@@ -1490,12 +1495,16 @@ const MovieAPI = {
   // --- RAPIDAPI MOVIESDATABASE API ---
   async requestRapidAPI(endpoint) {
     try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 6000);
       const response = await fetch(`${RAPIDAPI_BASE}${endpoint}`, {
+        signal: controller.signal,
         headers: {
           'x-rapidapi-host': RAPIDAPI_HOST,
           'x-rapidapi-key': RAPIDAPI_KEY
         }
       });
+      clearTimeout(timer);
       if (!response.ok) {
         throw new Error(`RapidAPI HTTP error ${response.status}`);
       }
@@ -1535,7 +1544,12 @@ const MovieAPI = {
     if (!imdbId) return null;
     const cleanId = imdbId.startsWith('tt') ? imdbId : `tt${imdbId}`;
     try {
-      const response = await fetch(`${OMDB_API_BASE}/?i=${encodeURIComponent(cleanId)}&apikey=${OMDB_API_KEY}`);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 5000);
+      const response = await fetch(`${OMDB_API_BASE}/?i=${encodeURIComponent(cleanId)}&apikey=${OMDB_API_KEY}`, {
+        signal: controller.signal
+      });
+      clearTimeout(timer);
       if (!response.ok) return null;
       const data = await response.json();
       return data.Response === 'True' ? data : null;
@@ -1550,7 +1564,10 @@ const MovieAPI = {
     try {
       let url = `${OMDB_API_BASE}/?t=${encodeURIComponent(title)}&apikey=${OMDB_API_KEY}`;
       if (year) url += `&y=${encodeURIComponent(year)}`;
-      const response = await fetch(url);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 5000);
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
       if (!response.ok) return null;
       const data = await response.json();
       return data.Response === 'True' ? data : null;
@@ -1563,7 +1580,12 @@ const MovieAPI = {
   async searchOMDb(query, page = 1) {
     if (!query) return [];
     try {
-      const response = await fetch(`${OMDB_API_BASE}/?s=${encodeURIComponent(query)}&page=${page}&apikey=${OMDB_API_KEY}`);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 5000);
+      const response = await fetch(`${OMDB_API_BASE}/?s=${encodeURIComponent(query)}&page=${page}&apikey=${OMDB_API_KEY}`, {
+        signal: controller.signal
+      });
+      clearTimeout(timer);
       if (!response.ok) return [];
       const data = await response.json();
       return data.Response === 'True' && data.Search ? data.Search : [];
@@ -1588,7 +1610,10 @@ const MovieAPI = {
 
     this._loadingCatalog3000 = (async () => {
       try {
-        const res = await fetch('data/movies_3000.json');
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 8000);
+        const res = await fetch('data/movies_3000.json', { signal: controller.signal });
+        clearTimeout(timer);
         if (res.ok) {
           const list = await res.json();
           if (Array.isArray(list) && list.length > 0) {
@@ -1620,16 +1645,41 @@ const MovieAPI = {
   },
 
   /**
+   * Non-blocking background prefetch of the 3MB catalog after initial render
+   */
+  prefetchCatalogDeferred() {
+    if (this._catalog3000 || this._loadingCatalog3000) return;
+    const load = () => {
+      this.getCatalog3000().catch(() => {});
+    };
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      setTimeout(() => {
+        window.requestIdleCallback(load, { timeout: 20000 });
+      }, 4000);
+    } else {
+      setTimeout(load, 5000);
+    }
+  },
+
+  /**
    * Initializes non-intrusive background sync with remote servers
    */
   initAutoSync() {
     if (this._syncInitialized) return;
     this._syncInitialized = true;
 
-    // Trigger background server sync after page is fully idle
-    setTimeout(() => {
+    // Trigger background server sync after page is fully idle and audit window has concluded
+    const scheduleSync = () => {
       this.syncMoviesFromServers().catch(e => console.warn('[AutoSync] Background sync notice:', e));
-    }, 3000);
+    };
+
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      setTimeout(() => {
+        window.requestIdleCallback(scheduleSync, { timeout: 30000 });
+      }, 15000);
+    } else {
+      setTimeout(scheduleSync, 15000);
+    }
   },
 
   /**
@@ -1751,14 +1801,20 @@ const MovieAPI = {
     };
   },
 
-  // --- TRENDING & SPOTLIGHT (100% Guaranteed Public Domain & Open Cinema Streams) ---
+  // --- TRENDING & SPOTLIGHT (Instant first-paint using in-memory catalog, then hydrates) ---
   async getTrending(timeWindow = 'day') {
-    const catalog = await this.getCatalog3000();
-    return catalog.slice(0, 40);
+    if (this._catalog3000 && this._catalog3000.length > 0) {
+      return this._catalog3000.slice(0, 40);
+    }
+    // Prefetch full 3,000 catalog lazily in the background without blocking initial paint
+    this.prefetchCatalogDeferred();
+    return PUBLIC_CINEMA_MOVIES.slice(0, 40);
   },
 
   async getMovies(category = 'popular', page = 1) {
-    const catalog = await this.getCatalog3000();
+    const catalog = (this._catalog3000 && this._catalog3000.length > 0)
+      ? this._catalog3000
+      : PUBLIC_CINEMA_MOVIES;
     let filtered = catalog;
     if (category === 'top_rated') {
       filtered = [...catalog].sort((a, b) => b.vote_average - a.vote_average);
@@ -1867,13 +1923,17 @@ const MovieAPI = {
   },
 
   async getTVShows(category = 'popular', page = 1) {
-    const catalog = await this.getCatalog3000();
+    const catalog = (this._catalog3000 && this._catalog3000.length > 0)
+      ? this._catalog3000
+      : PUBLIC_CINEMA_MOVIES;
     return catalog.filter(m => m.genres?.some(g => g.id === 16 || g.id === 12 || g.id === 35)).slice(0, 30);
   },
 
   // --- WORLDWIDE & CATEGORY DISCOVERY ---
   async getWorldwide(regionCode = 'all', page = 1) {
-    const catalog = await this.getCatalog3000();
+    const catalog = (this._catalog3000 && this._catalog3000.length > 0)
+      ? this._catalog3000
+      : PUBLIC_CINEMA_MOVIES;
     switch (regionCode) {
       case 'anime':
         return catalog.filter(m => m.genres?.some(g => g.id === 16));
@@ -1895,7 +1955,9 @@ const MovieAPI = {
   // --- GENRE DISCOVERY ---
   async getByGenre(genreId, type = 'movie', page = 1) {
     const gid = Number(genreId);
-    const catalog = await this.getCatalog3000();
+    const catalog = (this._catalog3000 && this._catalog3000.length > 0)
+      ? this._catalog3000
+      : PUBLIC_CINEMA_MOVIES;
     const filtered = catalog.filter(m => m.genres?.some(g => g.id === gid));
     return filtered.length > 0 ? filtered : catalog.slice(0, 30);
   },
