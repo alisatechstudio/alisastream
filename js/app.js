@@ -377,7 +377,7 @@ const App = {
 
   createCardHTML(item) {
     const title = item.title || item.name;
-    const poster = window.MovieAPI.getImageUrl(item.poster_path, 'w500');
+    const poster = window.MovieAPI.getImageUrl(item.poster_path, 'w342');
     const year = (item.release_date || item.first_air_date || '').split('-')[0];
     const rating = item.vote_average ? Number(item.vote_average).toFixed(1) : '8.0';
     const isTV = item.media_type === 'tv' || item.first_air_date;
@@ -389,7 +389,7 @@ const App = {
     return `
       <article class="media-card" data-id="${item.id}" data-type="${isTV ? 'tv' : 'movie'}">
         <div class="card-poster-wrapper">
-          <img src="${poster}" alt="${title}" class="card-poster" loading="lazy" />
+          <img src="${poster}" alt="${title}" class="card-poster" loading="lazy" decoding="async" />
           <div class="card-badges">
             <span class="badge-rating">★ ${rating}</span>
             <span class="badge-type">${isPublic ? 'FREE STREAM' : (isTV ? 'TV' : 'MOVIE')}</span>

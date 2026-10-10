@@ -1645,20 +1645,28 @@ const MovieAPI = {
   },
 
   /**
-   * Non-blocking background prefetch of the 3MB catalog after initial render
+   * On-demand user-intent prefetch of the 3MB catalog (only on actual interaction)
    */
   prefetchCatalogDeferred() {
-    if (this._catalog3000 || this._loadingCatalog3000) return;
-    const load = () => {
-      this.getCatalog3000().catch(() => {});
-    };
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    if (this._catalog3000 || this._loadingCatalog3000 || this._prefetchHooked) return;
+    this._prefetchHooked = true;
+
+    const onUserInteraction = () => {
+      window.removeEventListener('scroll', onUserInteraction);
+      window.removeEventListener('touchstart', onUserInteraction);
+      window.removeEventListener('click', onUserInteraction);
+      window.removeEventListener('keydown', onUserInteraction);
       setTimeout(() => {
-        window.requestIdleCallback(load, { timeout: 20000 });
-      }, 4000);
-    } else {
-      setTimeout(load, 5000);
-    }
+        if (!this._catalog3000 && !this._loadingCatalog3000) {
+          this.getCatalog3000().catch(() => {});
+        }
+      }, 2500);
+    };
+
+    window.addEventListener('scroll', onUserInteraction, { passive: true, once: true });
+    window.addEventListener('touchstart', onUserInteraction, { passive: true, once: true });
+    window.addEventListener('click', onUserInteraction, { passive: true, once: true });
+    window.addEventListener('keydown', onUserInteraction, { passive: true, once: true });
   },
 
   /**
@@ -1676,9 +1684,9 @@ const MovieAPI = {
     if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
       setTimeout(() => {
         window.requestIdleCallback(scheduleSync, { timeout: 30000 });
-      }, 15000);
+      }, 25000);
     } else {
-      setTimeout(scheduleSync, 15000);
+      setTimeout(scheduleSync, 25000);
     }
   },
 

@@ -98,9 +98,11 @@
   <link rel="preconnect" href="https://image.tmdb.org">
   <link rel="dns-prefetch" href="https://image.tmdb.org">
   <link rel="preload" as="image" href="https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg" fetchpriority="high">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  </noscript>
 
   <!-- Core Design System & Cinematic Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -363,30 +365,29 @@
       <div class="hero-slider-track" id="heroSliderTrack">
         <!-- Dynamic slides injected via JavaScript -->
         <div class="hero-slide active"
-          style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1600&auto=format&fit=crop&q=80');">
+          style="background-image: url('https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg');" data-slide-index="0">
           <div class="hero-backdrop-gradient"></div>
           <div class="hero-content">
             <div class="hero-badges">
               <span class="spotlight-pill">FEATURED SPOTLIGHT</span>
               <span class="quality-pill">4K ULTRA HD</span>
-              <span class="quality-pill">DOLBY ATMOS</span>
+              <span class="quality-pill">MOVIE</span>
             </div>
-            <h1 class="hero-title">Stream Today's Biggest Blockbusters & Series</h1>
+            <h1 class="hero-title">Spider-Man: Brand New Day</h1>
             <div class="hero-meta">
-              <span class="hero-rating">★ 9.4</span>
-              <span>2024–2026 Releases</span>
-              <span>Multi-Server HD • Subtitles</span>
+              <span class="hero-rating">★ 7.8</span>
+              <span>2026</span>
+              <span>Worldwide Audio & Subs</span>
             </div>
             <p class="hero-overview">
-              Discover thousands of top-rated movies and trending television series released from 2015 to today.
-              Seamless high-bitrate streaming with multi-language audio and subtitle support.
+              Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control.
             </p>
             <div class="hero-actions">
-              <button type="button" class="btn-primary" id="heroWatchNowBtn">
+              <button type="button" class="btn-primary hero-play-btn" data-id="969681" data-type="movie">
                 <span>▶ Watch Now</span>
               </button>
-              <button type="button" class="btn-secondary" id="heroTrailerBtn">
-                <span>🎬 Trailer</span>
+              <button type="button" class="btn-secondary hero-info-btn" data-id="969681" data-type="movie">
+                <span>ℹ Details</span>
               </button>
               <button type="button" class="btn-secondary" id="heroExploreAllBtn">
                 <span>🌐 Explore Catalog</span>

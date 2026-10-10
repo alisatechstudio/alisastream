@@ -3,8 +3,7 @@
    Worldwide Movie & TV Streaming Experience for GitHub Pages
    ========================================================================== */
 
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+/* Typography loaded non-blockingly via index.html */
 
 :root {
   /* Dynamic Accent Color Theme (Default: Cyan Glow) */
