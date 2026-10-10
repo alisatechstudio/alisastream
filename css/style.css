@@ -24,8 +24,8 @@
   --border-active: rgba(0, 242, 254, 0.5);
   
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
   
   --star-gold: #fbbf24;
   --badge-hd: #10b981;
@@ -668,20 +668,34 @@ body.modal-open {
   right: 2rem;
   z-index: 5;
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .hero-dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-dot::after {
+  content: '';
+  display: block;
   width: 10px;
   height: 10px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.45);
   transition: var(--transition-smooth);
 }
 
-.hero-dot.active {
+.hero-dot.active::after {
   width: 28px;
   background: var(--accent-primary);
   box-shadow: 0 0 10px var(--accent-glow);
@@ -1027,7 +1041,12 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.card-meta span {
   color: var(--text-muted);
 }
 
@@ -1037,8 +1056,13 @@ body.modal-open {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 0.95rem;
-  padding: 4px;
+  font-size: 1rem;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -1854,8 +1878,13 @@ dialog#trailerModal {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.footer-bottom p {
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 /* ==========================================================================
