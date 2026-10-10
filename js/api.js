@@ -1460,10 +1460,14 @@ const MovieAPI = {
     return prefs.preferredLanguage || 'en-US';
   },
 
-  getImageUrl(path, size = 'w500') {
-    if (!path) return 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&auto=format&fit=crop&q=80';
+  getImageUrl(path, size = 'w342') {
+    if (!path) return 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=342&auto=format&fit=crop&q=80';
+    if (path.includes('image.tmdb.org/t/p/')) {
+      return path.replace(/\/t\/p\/w\d+\//, `/t/p/${size}/`);
+    }
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
-    return `${TMDB_IMAGE_BASE}${size}${path}`;
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `${TMDB_IMAGE_BASE}${size}${cleanPath}`;
   },
 
   async requestTMDB(endpoint, params = {}) {

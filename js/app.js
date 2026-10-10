@@ -233,7 +233,8 @@ const App = {
 
     track.innerHTML = this.carouselSlides.map((item, idx) => {
       const title = item.title || item.name;
-      const backdrop = window.MovieAPI.getImageUrl(item.backdrop_path, 'w1280');
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+      const backdrop = window.MovieAPI.getImageUrl(item.backdrop_path, isMobile ? 'w780' : 'w1280');
       const year = (item.release_date || item.first_air_date || '').split('-')[0];
       const rating = item.vote_average ? Number(item.vote_average).toFixed(1) : '8.5';
       const isTV = item.media_type === 'tv' || item.first_air_date;
@@ -325,41 +326,49 @@ const App = {
     });
   },
 
-  // --- HOME CONTENT RAILS ---
+  // --- HOME CONTENT RAILS (Progressive non-blocking rendering) ---
   async loadHomeRails() {
     this.refreshHistorySection();
 
-    // 1. Trending Worldwide (Batch 40 titles)
+    // 1. Trending Worldwide (Immediate above-the-fold rail)
     window.MovieAPI.getTrending('day')
       .then(items => this.renderRail('trendingRail', items))
       .catch(e => console.warn('Trending rail error:', e));
 
-    // 2. Now Playing in Theaters (Batch 40 titles)
-    window.MovieAPI.getBatchMovies('now_playing', 2)
-      .then(items => this.renderRail('nowPlayingRail', items))
-      .catch(e => console.warn('Now playing rail error:', e));
+    // 2. Incrementally render below-the-fold rails to eliminate forced reflow & keep main thread quiet
+    const renderRemaining = () => {
+      window.MovieAPI.getBatchMovies('now_playing', 1)
+        .then(items => this.renderRail('nowPlayingRail', items))
+        .catch(e => console.warn('Now playing rail error:', e));
 
-    // 3. Popular Movies Worldwide (Batch 40 titles)
-    window.MovieAPI.getBatchMovies('popular', 2)
-      .then(items => this.renderRail('popularMoviesRail', items))
-      .catch(e => console.warn('Popular movies rail error:', e));
+      setTimeout(() => {
+        window.MovieAPI.getBatchMovies('popular', 1)
+          .then(items => this.renderRail('popularMoviesRail', items))
+          .catch(e => console.warn('Popular movies rail error:', e));
+      }, 70);
 
-    // 4. Top Rated Masterpieces (Batch 40 titles)
-    window.MovieAPI.getBatchMovies('top_rated', 2)
-      .then(items => this.renderRail('topRatedRail', items))
-      .catch(e => console.warn('Top rated rail error:', e));
+      setTimeout(() => {
+        window.MovieAPI.getBatchMovies('top_rated', 1)
+          .then(items => this.renderRail('topRatedRail', items))
+          .catch(e => console.warn('Top rated rail error:', e));
+      }, 140);
 
-    // 5. Popular TV Series (Batch 40 titles)
-    window.MovieAPI.getBatchTV('popular', 2)
-      .then(items => this.renderRail('popularTVRail', items))
-      .catch(e => console.warn('TV rail error:', e));
+      setTimeout(() => {
+        window.MovieAPI.getBatchTV('popular', 1)
+          .then(items => this.renderRail('popularTVRail', items))
+          .catch(e => console.warn('TV rail error:', e));
 
-    // 7. Public Cinema & Open Movies (100% Guaranteed Direct Streaming)
-    const publicCinema = window.MovieAPI.getPublicCinema();
-    this.renderRail('publicCinemaRail', publicCinema);
+        const publicCinema = window.MovieAPI.getPublicCinema();
+        this.renderRail('publicCinemaRail', publicCinema);
+        this.refreshWatchlistSection();
+      }, 210);
+    };
 
-    // 8. Watchlist Rail
-    this.refreshWatchlistSection();
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      window.requestIdleCallback(renderRemaining, { timeout: 1200 });
+    } else {
+      setTimeout(renderRemaining, 80);
+    }
   },
 
   renderRail(containerId, items) {

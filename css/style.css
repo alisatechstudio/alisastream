@@ -483,6 +483,16 @@ body.modal-open {
   z-index: 2;
 }
 
+.hero-slide-initial {
+  background-image: url('https://image.tmdb.org/t/p/w1280/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg');
+}
+
+@media (max-width: 768px) {
+  .hero-slide-initial {
+    background-image: url('https://image.tmdb.org/t/p/w780/qeQJx07rK2xm8SD2sJxFKhE7gs0.jpg') !important;
+  }
+}
+
 .hero-backdrop-gradient {
   position: absolute;
   inset: 0;
