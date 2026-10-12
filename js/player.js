@@ -207,7 +207,6 @@ const Player = {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           allowfullscreen
           referrerpolicy="no-referrer"
-          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
       </div>
@@ -223,7 +222,6 @@ const Player = {
           allow="accelerometer; autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
-          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
       </div>
@@ -240,7 +238,6 @@ const Player = {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           referrerpolicy="strict-origin-when-cross-origin"
-          sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation"
           id="streamingIframe"
         ></iframe>
       </div>

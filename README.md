@@ -147,8 +147,7 @@ Alisa Movies is fully configured in strict compliance with **Google AdSense Prog
    - `dmca.html`: 17 U.S.C. § 512(c) statutory copyright notice process with designated agent.
    - `about.html` & `contact.html`: Company transparency and direct visitor inquiry channels.
 4. **Built-in Ad & Popup Shield**:
-   - `setupAdShield()` actively blocks unauthorized `window.open` requests, preventing popunders and rogue new tabs.
-   - Sandbox security controls prevent external streaming mirrors from redirecting the top website.
+   - `setupAdShield()` actively blocks unauthorized `window.open` requests, preventing popunders and rogue new tabs while maintaining full player compatibility across all streaming mirrors.
 
 ---
 
