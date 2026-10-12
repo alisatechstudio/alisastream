@@ -204,9 +204,9 @@ const Player = {
         <iframe
           src="${url}"
           title="${this.currentMedia.title || this.currentMedia.name || 'Full Movie Stream'}"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          referrerpolicy="no-referrer"
+          referrerpolicy="origin-when-cross-origin"
           id="streamingIframe"
         ></iframe>
       </div>
@@ -219,7 +219,7 @@ const Player = {
         <iframe
           src="${url}"
           title="${this.currentMedia.title || this.currentMedia.name || 'Archive.org Cinema Stream'}"
-          allow="accelerometer; autoplay; fullscreen; picture-in-picture"
+          allow="accelerometer; autoplay; picture-in-picture"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
           id="streamingIframe"

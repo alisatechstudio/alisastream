@@ -1,7 +1,7 @@
 // Service Worker for Alisa Movies (AlisaStream)
 // High-performance Stale-While-Revalidate caching for Core CSS and JS assets
 
-const CACHE_NAME = 'alisa-assets-v1';
+const CACHE_NAME = 'alisa-assets-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
