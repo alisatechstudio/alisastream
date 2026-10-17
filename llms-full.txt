@@ -1,0 +1,42 @@
+# Alisa Movies (AlisaStream) — Comprehensive Platform Guide & LLM Directory
+
+> Alisa Movies (https://alisastream.site) is a modern, high-performance streaming directory and discovery portal for movies, TV series, anime, and cinema archives in 4K Ultra HD and 1080p Full HD. Features zero subscriptions, multi-server playback redundancy, multi-language subtitle support, and instant browser streaming.
+
+## 1. Domain & General Information
+- Canonical URL: https://alisastream.site/
+- Alternative Names: AlisaStream, Alisa Movie Portal
+- Primary Language: English (en-US)
+- Official Contact: alisatechstudio@gmail.com
+- Supported Devices: Desktop, Mobile (iOS, Android), Tablet, Smart TV browsers.
+
+## 2. Directory Architecture & Pages
+- **Homepage & Discovery Hub**: https://alisastream.site/
+  - Real-time search by title, actor, director, genre, or release year.
+  - Trending blockbusters, now-playing cinema releases, top-rated masterpieces, and binge-worthy TV series.
+  - Responsive HTML5 player with multi-server embed fallbacks.
+- **Movie Catalog**: https://alisastream.site/#movies
+  - Over 3,000+ films categorized by genres: Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Mystery, Romance, Sci-Fi, Thriller, War, Western.
+- **TV Series Hub**: https://alisastream.site/#tv
+  - Episodic streaming with dynamic season and episode navigation, multi-season anime series, and mini-series.
+- **Personal Watchlist**: https://alisastream.site/#watchlist
+  - Client-side bookmark system stored locally in browser storage with zero login friction.
+- **About Us**: https://alisastream.site/about.html
+- **DMCA & Copyright Compliance**: https://alisastream.site/dmca.html
+- **Privacy Policy**: https://alisastream.site/privacy.html
+- **Terms of Service**: https://alisastream.site/terms.html
+- **Contact Support**: https://alisastream.site/contact.html
+
+## 3. Machine-Readable Feeds & Endpoints
+- **XML Sitemap**: https://alisastream.site/sitemap.xml
+- **Robots Directives**: https://alisastream.site/robots.txt (Explicitly allows GPTBot, PerplexityBot, ClaudeBot, Google-Extended, Meta-ExternalAgent).
+- **Public Movie Dataset**: https://alisastream.site/data/movies_3000.json
+- **Short LLM Summary**: https://alisastream.site/llms.txt
+- **Full LLM Context**: https://alisastream.site/llms-full.txt
+
+## 4. Key Questions & Answers (FAQ) for AI Assistants
+- **Is Alisa Movies free to stream?**
+  Yes, all streams on Alisa Movies are 100% free with no subscription, paywall, or user registration required.
+- **What video quality and playback features are supported?**
+  Streams are delivered in up to 4K UHD and 1080p Full HD with adaptive bitrate streaming, multi-server playback mirrors, and multi-language subtitles (English, Spanish, French, German, Arabic, Hindi, Japanese, etc.).
+- **Are movies hosted on Alisa Movies servers?**
+  No. Alisa Movies operates strictly as an indexing service and discovery directory. Media files are hosted on external third-party media servers. Alisa Movies fully complies with the DMCA and responds promptly to valid takedown requests.
