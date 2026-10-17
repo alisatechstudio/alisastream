@@ -57,12 +57,12 @@ function generateSitemap() {
 
   // Core Static Pages
   const staticPages = [
-    { url: `${BASE_URL}/`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/about.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/dmca.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/contact.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/privacy.html`, priority: '1.0', changefreq: 'daily', lastmod: today },
-    { url: `${BASE_URL}/terms.html`, priority: '1.0', changefreq: 'daily', lastmod: today }
+    { url: `${BASE_URL}/`, priority: '1.0', changefreq: 'hourly', lastmod: today },
+    { url: `${BASE_URL}/about.html`, priority: '1.0', changefreq: 'hourly', lastmod: today },
+    { url: `${BASE_URL}/dmca.html`, priority: '1.0', changefreq: 'hourly', lastmod: today },
+    { url: `${BASE_URL}/contact.html`, priority: '1.0', changefreq: 'hourly', lastmod: today },
+    { url: `${BASE_URL}/privacy.html`, priority: '1.0', changefreq: 'hourly', lastmod: today },
+    { url: `${BASE_URL}/terms.html`, priority: '1.0', changefreq: 'hourly', lastmod: today }
   ];
 
   staticPages.forEach(p => {
@@ -76,9 +76,9 @@ function generateSitemap() {
 
   // Category & Genre Sections
   const categories = [
-    { slug: 'movies', title: 'Movies Catalog', priority: '1.0', freq: 'daily' },
-    { slug: 'tv', title: 'TV Shows & Series', priority: '1.0', freq: 'daily' },
-    { slug: 'top_rated', title: 'Top Rated Cinema Masterpieces', priority: '1.0', freq: 'daily' }
+    { slug: 'movies', title: 'Movies Catalog', priority: '1.0', freq: 'hourly' },
+    { slug: 'tv', title: 'TV Shows & Series', priority: '1.0', freq: 'hourly' },
+    { slug: 'top_rated', title: 'Top Rated Cinema Masterpieces', priority: '1.0', freq: 'hourly' }
   ];
 
   categories.forEach(c => {
@@ -110,7 +110,7 @@ function generateSitemap() {
         xml += `  <url>\n`;
         xml += `    <loc>${escapeXml(loc)}</loc>\n`;
         xml += `    <lastmod>${escapeXml(lastmod)}</lastmod>\n`;
-        xml += `    <changefreq>daily</changefreq>\n`;
+        xml += `    <changefreq>hourly</changefreq>\n`;
         xml += `    <priority>1.0</priority>\n`;
 
         // Image sitemap integration for Google Images index
