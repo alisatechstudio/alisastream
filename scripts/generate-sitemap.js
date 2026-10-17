@@ -49,7 +49,7 @@ function sanitizeLastmod(rawDate, fallbackDate) {
 
 function generateSitemap() {
   console.log('Generating sitemap for Alisa Movies...');
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString();
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n`;
