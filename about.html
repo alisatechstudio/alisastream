@@ -146,11 +146,9 @@
     }
   </style>
 
-  <!-- Analytics & Tag Management (Lazy-loaded on interaction/idle to save unused JS) -->
+  <!-- Google Consent Mode v2 & GDPR Consent Manager -->
+  <script src="js/gdpr-consent.js"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-
     gtag('js', new Date());
     gtag('config', 'G-50Y4X5F5R3');
 
@@ -276,6 +274,7 @@
         <a href="dmca.html" style="color: var(--text-muted);">DMCA</a>
         <a href="about.html" style="color: var(--accent-primary);">About Us</a>
         <a href="contact.html" style="color: var(--text-muted);">Contact</a>
+        <a href="#cookie-settings" data-open-cookie-settings style="color: var(--text-muted);">Cookie Settings</a>
       </div>
     </div>
   </footer>

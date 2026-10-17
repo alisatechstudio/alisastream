@@ -247,22 +247,9 @@
   }
   </script>
 
-  <!-- Analytics & Tag Management (Lazy-loaded on interaction/idle to save 139 KiB unused JS) -->
+  <!-- Google Consent Mode v2 & GDPR Consent Manager -->
+  <script src="js/gdpr-consent.js"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-
-    // Initialize Consent Mode v2 immediately (queued in dataLayer without external requests)
-    try {
-      const storedConsent = localStorage.getItem('alisa_cookie_consent');
-      gtag('consent', 'default', {
-        'ad_storage': storedConsent === 'accepted' ? 'granted' : 'denied',
-        'ad_user_data': storedConsent === 'accepted' ? 'granted' : 'denied',
-        'ad_personalization': storedConsent === 'accepted' ? 'granted' : 'denied',
-        'analytics_storage': storedConsent === 'declined' ? 'denied' : 'granted'
-      });
-    } catch(e) {}
-
     gtag('js', new Date());
     gtag('config', 'G-50Y4X5F5R3');
 
@@ -1092,22 +1079,10 @@
         <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms</a>
         <a href="dmca.html" style="color: var(--text-secondary); text-decoration: none;">DMCA</a>
         <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+        <a href="#cookie-settings" data-open-cookie-settings style="color: var(--text-secondary); text-decoration: none;">Cookie Settings</a>
       </div>
     </div>
   </footer>
-
-  <!-- Privacy & Cookies Notice Banner -->
-  <aside class="cookie-consent-banner" id="cookieConsentBanner" style="display: none;"
-    aria-label="Cookie and Privacy Consent">
-    <div class="cookie-consent-text">
-      We use essential cookies and local storage to save your playback settings, dark mode preferences, and personalized
-      watchlist. By clicking "Accept All", you agree to our <a href="privacy.html">Privacy Policy</a>.
-    </div>
-    <div class="cookie-consent-actions">
-      <button type="button" class="cookie-btn-decline" id="cookieDeclineBtn">Decline Non-Essential</button>
-      <button type="button" class="cookie-btn-accept" id="cookieAcceptBtn">Accept All</button>
-    </div>
-  </aside>
 
   <!-- Scripts (Deferred & Minified for optimal Core Web Vitals) -->
   <script defer src="js/storage.min.js?v=2.1"></script>
