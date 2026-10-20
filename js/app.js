@@ -1545,17 +1545,25 @@ const App = {
    * Intercepts unwanted popups, popunders, and rogue redirects from third-party mirrors.
    */
   setupAdShield() {
-    // 1. Intercept rogue window.open calls (blocks popunders/new tab redirects)
+    // 1. Intercept rogue window.open calls (blocks third-party player popunders/redirects while allowing first-party & Monetag)
     try {
       const originalOpen = window.open;
       window.open = function(url, target, features) {
         if (typeof url === 'string') {
           const isInternal = url.startsWith('/') || url.startsWith(window.location.origin);
-          const isAllowed = url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('blob:');
+          const isAllowed = url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('blob:') || url.includes('5gvci.com') || url.includes('3nbf4.com');
           if (isInternal || isAllowed) {
             return originalOpen.call(window, url, target, features);
           }
         }
+        // Allow if triggered by authorized ad network scripts (Monetag MultiTag)
+        try {
+          const err = new Error();
+          if (err.stack && (err.stack.includes('5gvci') || err.stack.includes('3nbf4') || err.stack.includes('tag.min.js'))) {
+            return originalOpen.call(window, url, target, features);
+          }
+        } catch (_) {}
+
         console.info('[AdShield] Blocked popup window/redirect:', url);
         return null;
       };
