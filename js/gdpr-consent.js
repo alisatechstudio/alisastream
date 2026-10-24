@@ -278,13 +278,13 @@
       }
       .gdpr-banner-text {
         flex: 1;
-        font-size: 0.88rem;
-        line-height: 1.55;
+        font-size: 0.95rem;
+        line-height: 1.6;
         color: var(--gdpr-text-muted);
       }
       .gdpr-banner-text strong {
         color: var(--gdpr-text);
-        font-size: 0.98rem;
+        font-size: 1.05rem;
         display: block;
         margin-bottom: 4px;
       }
@@ -319,9 +319,11 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 9px 18px;
+        min-height: 48px;
+        min-width: 48px;
+        padding: 12px 22px;
         border-radius: 8px;
-        font-size: 0.86rem;
+        font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
         border: 1px solid transparent;
@@ -420,7 +422,13 @@
         color: var(--gdpr-text-muted);
         font-size: 1.4rem;
         cursor: pointer;
-        padding: 4px 8px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 6px;
         line-height: 1;
         transition: color 0.2s;
@@ -437,9 +445,9 @@
         gap: 16px;
       }
       .gdpr-modal-desc {
-        font-size: 0.85rem;
+        font-size: 0.92rem;
         color: var(--gdpr-text-muted);
-        line-height: 1.5;
+        line-height: 1.6;
         margin: 0;
       }
       .gdpr-category {
@@ -455,12 +463,12 @@
         margin-bottom: 8px;
       }
       .gdpr-category-name {
-        font-size: 0.95rem;
+        font-size: 1rem;
         font-weight: 600;
         color: var(--gdpr-text);
       }
       .gdpr-category-badge {
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.04em;
@@ -471,7 +479,7 @@
         border: 1px solid rgba(16, 185, 129, 0.3);
       }
       .gdpr-category-desc {
-        font-size: 0.82rem;
+        font-size: 0.88rem;
         color: var(--gdpr-text-muted);
         line-height: 1.5;
         margin: 0;
@@ -480,9 +488,13 @@
       /* Switch Toggle */
       .gdpr-switch {
         position: relative;
-        display: inline-block;
-        width: 44px;
-        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
       }
       .gdpr-switch input {
         opacity: 0;
@@ -492,7 +504,7 @@
       .gdpr-slider {
         position: absolute;
         cursor: pointer;
-        inset: 0;
+        inset: 12px 2px;
         background-color: #475569;
         transition: 0.25s ease;
         border-radius: 24px;

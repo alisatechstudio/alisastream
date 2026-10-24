@@ -607,7 +607,19 @@ const App = {
           nav.style.background = 'var(--bg-surface)';
           nav.style.padding = '1rem';
           nav.style.borderBottom = '1px solid var(--border-subtle)';
+          nav.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.8)';
+          nav.style.zIndex = '200';
+          nav.style.gap = '0.5rem';
         }
+      });
+
+      // Auto-close menu when a navigation item is tapped on mobile
+      nav.querySelectorAll('.nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            nav.style.display = 'none';
+          }
+        });
       });
     }
   },
