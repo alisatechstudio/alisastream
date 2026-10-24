@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-accent="cyan">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore films and TV series by genre on Alisa Movies — Action, Sci-Fi, Drama, Comedy, Horror, Anime, Romance, Mystery, and Documentaries in Full HD.">
+  <meta name="keywords" content="movie genres, watch action movies, free sci-fi movies, anime streaming, horror films, comedy movies online">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://alisastream.site/genres.html">
+  <link rel="manifest" href="manifest.json">
+  <title>Browse Movies & Series by Genre — Alisa Movies</title>
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="Alisa Movies">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Browse Movies & Series by Genre — Alisa Movies">
+  <meta property="og:description" content="Explore high-definition movies across all popular genres: Action, Sci-Fi, Anime, Comedy, Horror, Drama, and more.">
+  <meta property="og:url" content="https://alisastream.site/genres.html">
+  <meta property="og:image" content="https://image.tmdb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Browse Movies & Series by Genre — Alisa Movies">
+  <meta name="twitter:description" content="Explore thousands of free titles organized by cinematic genres.">
+  <meta name="twitter:image" content="https://image.tmdb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg">
+
+  <!-- Site Icons & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://alisastream.site/genres.html#webpage",
+        "url": "https://alisastream.site/genres.html",
+        "name": "Movie & TV Genres Directory — Alisa Movies",
+        "description": "Comprehensive genre directory for discovering free movies and television series.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://alisastream.site/#website",
+          "name": "Alisa Movies",
+          "url": "https://alisastream.site/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://alisastream.site/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Genres",
+            "item": "https://alisastream.site/genres.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    .genres-container {
+      max-width: 1200px;
+      margin: 2.5rem auto 5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .genres-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .genres-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .genres-hero p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .genre-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .genre-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .genre-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 242, 254, 0.15);
+    }
+    .genre-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .genre-icon {
+      font-size: 2.2rem;
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .genre-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+    .genre-desc {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .genre-highlights {
+      font-size: 0.85rem;
+      color: var(--accent-primary);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+    .genre-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
+      border: 1px solid var(--accent-primary);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      min-height: 48px;
+      transition: all 0.2s ease;
+    }
+    .genre-btn:hover {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #000;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--accent-primary);
+      transform: translateX(-4px);
+    }
+    @media (max-width: 768px) {
+      .genres-hero h1 { font-size: 2rem; }
+      .genre-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link" aria-label="Alisa Movies Home">
+        <div class="brand-icon">🍿</div>
+        <span class="brand-text">ALISA</span>
+        <span class="brand-badge">HD</span>
+      </a>
+      <nav class="main-nav" aria-label="Quick Nav">
+        <a href="index.html" class="nav-item"><span>Home</span></a>
+        <a href="trending.html" class="nav-item"><span>Trending</span></a>
+        <a href="top-rated.html" class="nav-item"><span>Top Rated</span></a>
+        <a href="genres.html" class="nav-item active"><span>Genres</span></a>
+        <a href="faq.html" class="nav-item"><span>FAQ</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="genres-container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="genres-hero">
+      <h1>Explore Cinematic Genres</h1>
+      <p>Discover thousands of free movies and television series curated across world-class genres in 4K and Full HD.</p>
+    </div>
+
+    <div class="genre-grid">
+      <!-- Action -->
+      <article class="genre-card" id="action">
+        <div class="genre-card-header">
+          <div class="genre-icon">💥</div>
+          <h2 class="genre-title">Action & Adventure</h2>
+        </div>
+        <p class="genre-desc">High-octane blockbusters, adrenaline-fueled car chases, martial arts spectacles, superhero epics, and daring global quests.</p>
+        <div class="genre-highlights">Featured: Spider-Man, John Wick, Top Gun, Mission Impossible</div>
+        <a href="index.html?genre=28" class="genre-btn">Explore Action Titles →</a>
+      </article>
+
+      <!-- Sci-Fi -->
+      <article class="genre-card" id="scifi">
+        <div class="genre-card-header">
+          <div class="genre-icon">🚀</div>
+          <h2 class="genre-title">Sci-Fi & Fantasy</h2>
+        </div>
+        <p class="genre-desc">Mind-bending time travel, intergalactic space exploration, mythical dragons, cybernetic futures, and alternate dimensions.</p>
+        <div class="genre-highlights">Featured: Interstellar, Dune, Avatar, The Matrix</div>
+        <a href="index.html?genre=878" class="genre-btn">Explore Sci-Fi Titles →</a>
+      </article>
+
+      <!-- Anime & Animation -->
+      <article class="genre-card" id="anime">
+        <div class="genre-card-header">
+          <div class="genre-icon">🎨</div>
+          <h2 class="genre-title">Animation & Anime</h2>
+        </div>
+        <p class="genre-desc">Studio Ghibli masterpieces, Japanese shonen anime sagas, Pixar classics, and groundbreaking animated feature films.</p>
+        <div class="genre-highlights">Featured: Spirited Away, Demon Slayer, Spider-Verse, Your Name</div>
+        <a href="index.html?genre=16" class="genre-btn">Explore Animation →</a>
+      </article>
+
+      <!-- Comedy -->
+      <article class="genre-card" id="comedy">
+        <div class="genre-card-header">
+          <div class="genre-icon">😂</div>
+          <h2 class="genre-title">Comedy & Romance</h2>
+        </div>
+        <p class="genre-desc">Laugh-out-loud satirical comedies, romantic feel-good stories, witty banter, and lighthearted family favorites.</p>
+        <div class="genre-highlights">Featured: Coyote vs. Acme, Deadpool, Barbie, Superbad</div>
+        <a href="index.html?genre=35" class="genre-btn">Explore Comedy Titles →</a>
+      </article>
+
+      <!-- Horror & Thriller -->
+      <article class="genre-card" id="horror">
+        <div class="genre-card-header">
+          <div class="genre-icon">👻</div>
+          <h2 class="genre-title">Horror & Thriller</h2>
+        </div>
+        <p class="genre-desc">Spine-chilling supernatural thrillers, psychological mysteries, slasher franchises, and suspenseful edge-of-your-seat tales.</p>
+        <div class="genre-highlights">Featured: The Conjuring, A Quiet Place, Hereditary, Sinister</div>
+        <a href="index.html?genre=27" class="genre-btn">Explore Horror Titles →</a>
+      </article>
+
+      <!-- Drama -->
+      <article class="genre-card" id="drama">
+        <div class="genre-card-header">
+          <div class="genre-icon">🎭</div>
+          <h2 class="genre-title">Drama & Award Winners</h2>
+        </div>
+        <p class="genre-desc">Academy Award-winning emotional narratives, biographical historical journeys, and powerful character-driven masterworks.</p>
+        <div class="genre-highlights">Featured: Oppenheimer, The Godfather, Shawshank Redemption</div>
+        <a href="index.html?genre=18" class="genre-btn">Explore Drama Titles →</a>
+      </article>
+
+      <!-- Mystery & Crime -->
+      <article class="genre-card" id="mystery">
+        <div class="genre-card-header">
+          <div class="genre-icon">🔍</div>
+          <h2 class="genre-title">Mystery & Crime</h2>
+        </div>
+        <p class="genre-desc">Intriguing whodunits, gritty detective noirs, organized crime syndicates, and cunning heist masterminds.</p>
+        <div class="genre-highlights">Featured: Knives Out, Se7en, The Dark Knight, Sherlock Holmes</div>
+        <a href="index.html?genre=9648" class="genre-btn">Explore Mystery Titles →</a>
+      </article>
+
+      <!-- Documentary -->
+      <article class="genre-card" id="documentary">
+        <div class="genre-card-header">
+          <div class="genre-icon">📜</div>
+          <h2 class="genre-title">Documentary & History</h2>
+        </div>
+        <p class="genre-desc">Eye-opening wildlife chronicles, historical retrospectives, investigative exposés, and real-world human stories.</p>
+        <div class="genre-highlights">Featured: Planet Earth, Our Planet, Apollo 11, Free Solo</div>
+        <a href="index.html?genre=99" class="genre-btn">Explore Documentaries →</a>
+      </article>
+
+      <!-- Family & Kids -->
+      <article class="genre-card" id="family">
+        <div class="genre-card-header">
+          <div class="genre-icon">👨‍👩‍👧</div>
+          <h2 class="genre-title">Family & Kids</h2>
+        </div>
+        <p class="genre-desc">Wholesome magical adventures, heartwarming bedtime favorites, and films that bring the whole household together.</p>
+        <div class="genre-highlights">Featured: The Lion King, Harry Potter, Inside Out, Moana</div>
+        <a href="index.html?genre=10751" class="genre-btn">Explore Family Titles →</a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="border: none;">
+      <p>© 2026 Alisa Movies. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="dmca.html">DMCA</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="sitemap.html">Sitemap</a>
+        <a href="#cookie-settings" data-open-cookie-settings>Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

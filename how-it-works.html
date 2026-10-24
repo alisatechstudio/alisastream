@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-accent="cyan">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover how Alisa Movies works — learn about our multi-server streaming architecture, TMDB metadata indexing, 4K video delivery, and privacy-first design.">
+  <meta name="keywords" content="how alisa movies works, streaming technology, tmdb movie api, multi-server video player, free movie search engine">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://alisastream.site/how-it-works.html">
+  <link rel="manifest" href="manifest.json">
+  <title>How It Works & Streaming Technology — Alisa Movies</title>
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="Alisa Movies">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How Alisa Movies Works — Streaming Technology & Architecture">
+  <meta property="og:description" content="An in-depth look at our free cinema discovery engine, multi-server redundancy, adaptive video streaming, and privacy protocols.">
+  <meta property="og:url" content="https://alisastream.site/how-it-works.html">
+  <meta property="og:image" content="https://image.tmdb.org/t/p/w1280/157336.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Alisa Movies Works — Streaming Technology">
+  <meta name="twitter:description" content="Understand the modern technology behind our free cinema streaming and metadata platform.">
+  <meta name="twitter:image" content="https://image.tmdb.org/t/p/w1280/157336.jpg">
+
+  <!-- Site Icons & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://alisastream.site/how-it-works.html#webpage",
+        "url": "https://alisastream.site/how-it-works.html",
+        "name": "How Alisa Movies Works — Technology & Architecture",
+        "description": "Technical and operational guide explaining how Alisa Movies indexes, searches, and streams movies in high definition.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://alisastream.site/#website",
+          "name": "Alisa Movies",
+          "url": "https://alisastream.site/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://alisastream.site/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "How It Works",
+            "item": "https://alisastream.site/how-it-works.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    .legal-container {
+      max-width: 900px;
+      margin: 2.5rem auto 5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .legal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .legal-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .legal-updated {
+      font-size: 0.95rem;
+      color: var(--accent-primary);
+      margin-bottom: 2rem;
+    }
+    .legal-content h2 {
+      font-size: 1.35rem;
+      color: #fff;
+      margin: 2.2rem 0 0.9rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.4rem;
+    }
+    .legal-content p, .legal-content li {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 1.1rem;
+    }
+    .tech-step-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .tech-step-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .tech-step-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-2px);
+    }
+    .tech-step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #000;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tech-step-content h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin: 0 0 0.5rem 0;
+    }
+    .tech-step-content p {
+      font-size: 0.98rem;
+      color: #94a3b8;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--accent-primary);
+      transform: translateX(-4px);
+    }
+    @media (max-width: 600px) {
+      .legal-card { padding: 1.5rem 1rem; }
+      .legal-title { font-size: 1.75rem; }
+      .tech-step-card { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link" aria-label="Alisa Movies Home">
+        <div class="brand-icon">🍿</div>
+        <span class="brand-text">ALISA</span>
+        <span class="brand-badge">HD</span>
+      </a>
+      <nav class="main-nav" aria-label="Quick Nav">
+        <a href="index.html" class="nav-item"><span>Home</span></a>
+        <a href="trending.html" class="nav-item"><span>Trending</span></a>
+        <a href="top-rated.html" class="nav-item"><span>Top Rated</span></a>
+        <a href="genres.html" class="nav-item"><span>Genres</span></a>
+        <a href="how-it-works.html" class="nav-item active"><span>How It Works</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal-container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <article class="legal-card">
+      <h1 class="legal-title">How Alisa Movies Works</h1>
+      <p class="legal-updated">Modern Architecture • Multi-Server Delivery • Edge Technology</p>
+
+      <div class="legal-content">
+        <p>
+          Alisa Movies is built from the ground up as a high-performance cinema search engine and media discovery platform. By combining modern static web architecture with automated metadata indexing and multi-server video embedding, we deliver a lightning-fast experience without bloated server overhead or intrusive logins.
+        </p>
+
+        <h2>The Architecture Behind AlisaStream</h2>
+
+        <div class="tech-step-grid">
+          <div class="tech-step-card">
+            <div class="tech-step-num">1</div>
+            <div class="tech-step-content">
+              <h3>Real-Time Metadata Aggregation</h3>
+              <p>
+                Our platform interfaces with global film databases—primarily The Movie Database (TMDB) and TVMaze. We index film synopses, theatrical release dates, verified IMDb/TMDB critic scores, high-resolution original backdrops, and cast filmographies dynamically.
+              </p>
+            </div>
+          </div>
+
+          <div class="tech-step-card">
+            <div class="tech-step-num">2</div>
+            <div class="tech-step-content">
+              <h3>Automated Catalog Sync Pipelines</h3>
+              <p>
+                Scheduled GitHub Actions synchronization routines run every few hours to discover newly premiered box office movies, popular television episodes, and cinema releases, refreshing our pre-indexed offline database with zero site downtime.
+              </p>
+            </div>
+          </div>
+
+          <div class="tech-step-card">
+            <div class="tech-step-num">3</div>
+            <div class="tech-step-content">
+              <h3>Intelligent Multi-Server Redundancy</h3>
+              <p>
+                Rather than relying on a single centralized media host that can suffer regional throttling or outages, every title is mapped to 5 independent streaming servers: VidLink HD, AutoEmbed Fast, VidSrc Multi-Audio, SuperEmbed Global, and Embed.su. Users can toggle mirrors with a single tap.
+              </p>
+            </div>
+          </div>
+
+          <div class="tech-step-card">
+            <div class="tech-step-num">4</div>
+            <div class="tech-step-content">
+              <h3>Adaptive Bitrate (HLS & DASH) Delivery</h3>
+              <p>
+                Our video delivery mirrors utilize modern HTTP Live Streaming (HLS) and Dynamic Adaptive Streaming over HTTP (DASH). The player automatically detects your bandwidth and adjusts resolution between 720p, 1080p, and 4K Ultra HD to eliminate buffering.
+              </p>
+            </div>
+          </div>
+
+          <div class="tech-step-card">
+            <div class="tech-step-num">5</div>
+            <div class="tech-step-content">
+              <h3>Zero-Knowledge Local Storage</h3>
+              <p>
+                We do not maintain user databases, email lists, or passwords. Your Watchlist, playback positions, and preferred servers are kept safely inside your own browser using W3C standard LocalStorage.
+              </p>
+            </div>
+          </div>
+
+          <div class="tech-step-card">
+            <div class="tech-step-num">6</div>
+            <div class="tech-step-content">
+              <h3>Global CDN & Edge Caching</h3>
+              <p>
+                Built using pure vanilla HTML5, CSS3, and modern JavaScript, Alisa Movies achieves near-instant page load times. Static assets are served via a global Content Delivery Network (CDN) with maximum performance scores on Google Core Web Vitals.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Ethical Indexing & DMCA Compliance</h2>
+        <p>
+          Alisa Movies functions strictly as an information directory and search indexing engine. We do not store, host, upload, or encode any copyrighted video media files onto our own servers. All streaming media displayed on the website is embedded from publicly available, third-party video sharing platforms. We strictly adhere to the Digital Millennium Copyright Act (DMCA). For more information, please visit our <a href="dmca.html" style="color: var(--accent-primary);">DMCA Policy</a> and <a href="disclaimer.html" style="color: var(--accent-primary);">Streaming Disclaimer</a>.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="border: none;">
+      <p>© 2026 Alisa Movies. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="dmca.html">DMCA</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="sitemap.html">Sitemap</a>
+        <a href="#cookie-settings" data-open-cookie-settings>Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

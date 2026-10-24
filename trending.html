@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-accent="cyan">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the latest trending movies and popular TV shows of 2026 on Alisa Movies — Stream worldwide blockbusters and charts in 4K and Full HD for free.">
+  <meta name="keywords" content="trending movies 2026, popular free movies, latest cinema blockbusters, stream trending shows, free movie charts">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://alisastream.site/trending.html">
+  <link rel="manifest" href="manifest.json">
+  <title>Trending Movies & TV Shows 2026 — Alisa Movies</title>
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="Alisa Movies">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Trending Movies & TV Shows 2026 — Alisa Movies">
+  <meta property="og:description" content="Watch the hottest worldwide releases, box office champions, and trending streaming hits in 4K Ultra HD.">
+  <meta property="og:url" content="https://alisastream.site/trending.html">
+  <meta property="og:image" content="https://image.tmdb.org/t/p/w1280/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Trending Movies 2026 — Alisa Movies">
+  <meta name="twitter:description" content="Stream the top trending films worldwide with multi-language subtitles and zero fees.">
+  <meta name="twitter:image" content="https://image.tmdb.org/t/p/w1280/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg">
+
+  <!-- Site Icons & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://alisastream.site/trending.html#webpage",
+        "url": "https://alisastream.site/trending.html",
+        "name": "Trending Movies & Series 2026 — Alisa Movies",
+        "description": "Featured worldwide trending movies and popular TV series charts.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://alisastream.site/#website",
+          "name": "Alisa Movies",
+          "url": "https://alisastream.site/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://alisastream.site/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Trending",
+            "item": "https://alisastream.site/trending.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    .showcase-container {
+      max-width: 1200px;
+      margin: 2.5rem auto 5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .showcase-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .showcase-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .showcase-hero p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+    .showcase-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .showcase-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 242, 254, 0.2);
+    }
+    .showcase-poster {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      background: #111;
+      display: block;
+    }
+    .showcase-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .showcase-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+    }
+    .showcase-rating {
+      color: #fbbf24;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .showcase-year {
+      color: #94a3b8;
+    }
+    .showcase-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.6rem 0;
+      line-height: 1.3;
+    }
+    .showcase-overview {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .showcase-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .showcase-btn:hover {
+      filter: brightness(1.15);
+      transform: scale(1.02);
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--accent-primary);
+      transform: translateX(-4px);
+    }
+    @media (max-width: 768px) {
+      .showcase-hero h1 { font-size: 2rem; }
+      .showcase-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-mesh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link" aria-label="Alisa Movies Home">
+        <div class="brand-icon">🍿</div>
+        <span class="brand-text">ALISA</span>
+        <span class="brand-badge">HD</span>
+      </a>
+      <nav class="main-nav" aria-label="Quick Nav">
+        <a href="index.html" class="nav-item"><span>Home</span></a>
+        <a href="trending.html" class="nav-item active"><span>Trending</span></a>
+        <a href="top-rated.html" class="nav-item"><span>Top Rated</span></a>
+        <a href="genres.html" class="nav-item"><span>Genres</span></a>
+        <a href="faq.html" class="nav-item"><span>FAQ</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="showcase-container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="showcase-hero">
+      <h1>Trending Movies & Series (2026)</h1>
+      <p>The most watched, talked about, and celebrated cinematic releases streaming worldwide right now in 4K & Full HD.</p>
+    </div>
+
+    <div class="showcase-grid">
+      <!-- 1. Spider-Man: Brand New Day -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg" alt="Spider-Man: Brand New Day Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 7.8</span>
+              <span class="showcase-year">2026 • Action</span>
+            </div>
+            <h2 class="showcase-title">Spider-Man: Brand New Day</h2>
+            <p class="showcase-overview">Peter Parker balances life in a world that forgot him, discovering a powerful new threat in New York City.</p>
+          </div>
+          <a href="index.html?movie=969681" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+
+      <!-- 2. Coyote vs. Acme -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg" alt="Coyote vs. Acme Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 8.2</span>
+              <span class="showcase-year">2026 • Comedy</span>
+            </div>
+            <h2 class="showcase-title">Coyote vs. Acme</h2>
+            <p class="showcase-overview">Wile E. Coyote takes Acme Corporation to court when their products continuously fail in his pursuit of the Road Runner.</p>
+          </div>
+          <a href="index.html?movie=1204680" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+
+      <!-- 3. Dune: Part Two -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 8.2</span>
+              <span class="showcase-year">2024 • Sci-Fi</span>
+            </div>
+            <h2 class="showcase-title">Dune: Part Two</h2>
+            <p class="showcase-overview">Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
+          </div>
+          <a href="index.html?movie=693134" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+
+      <!-- 4. Deadpool & Wolverine -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg" alt="Deadpool & Wolverine Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 7.7</span>
+              <span class="showcase-year">2024 • Action</span>
+            </div>
+            <h2 class="showcase-title">Deadpool & Wolverine</h2>
+            <p class="showcase-overview">A listless Wade Wilson toils away in civilian life before teaming up with Wolverine on a mission that will alter MCU history.</p>
+          </div>
+          <a href="index.html?movie=533535" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+
+      <!-- 5. Gladiator II -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg" alt="Gladiator II Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 7.5</span>
+              <span class="showcase-year">2024 • Epic</span>
+            </div>
+            <h2 class="showcase-title">Gladiator II</h2>
+            <p class="showcase-overview">Years after witnessing the death of Maximus, Lucius enters the Colosseum after his home is conquered by tyrannical Roman emperors.</p>
+          </div>
+          <a href="index.html?movie=558449" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+
+      <!-- 6. Moana 2 -->
+      <article class="showcase-card">
+        <img src="https://image.tmdb.org/t/p/w500/4YZpsylJgnMyapVnRnh9p1pfn6J.jpg" alt="Moana 2 Poster" class="showcase-poster" loading="lazy">
+        <div class="showcase-body">
+          <div>
+            <div class="showcase-meta">
+              <span class="showcase-rating">★ 7.0</span>
+              <span class="showcase-year">2024 • Animation</span>
+            </div>
+            <h2 class="showcase-title">Moana 2</h2>
+            <p class="showcase-overview">After receiving an unexpected call from her wayfinding ancestors, Moana journeys to the far seas of Oceania on an unprecedented quest.</p>
+          </div>
+          <a href="index.html?movie=1241982" class="showcase-btn">▶ Watch Free in HD</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="border: none;">
+      <p>© 2026 Alisa Movies. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="dmca.html">DMCA</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="sitemap.html">Sitemap</a>
+        <a href="#cookie-settings" data-open-cookie-settings>Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -541,9 +541,12 @@ const App = {
   // --- NAVIGATION TABS ---
   setupNavigation() {
     document.querySelectorAll('.nav-item').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
         const tab = btn.getAttribute('data-tab');
-        this.switchTab(tab);
+        if (tab && ['home', 'movies', 'tv', 'watchlist'].includes(tab)) {
+          e.preventDefault();
+          this.switchTab(tab);
+        }
       });
     });
 
@@ -1365,6 +1368,7 @@ const App = {
     const tvParam = urlParams.get('tv');
     const searchParam = urlParams.get('search');
     const catParam = urlParams.get('category') || urlParams.get('type') || urlParams.get('tab');
+    const genreParam = urlParams.get('genre');
 
     if (movieParam) {
       this.openDetail(movieParam, 'movie');
@@ -1376,6 +1380,10 @@ const App = {
     }
     if (searchParam) {
       this.showDynamicView('SEARCH RESULTS', `Results for "${searchParam}"`, () => window.MovieAPI.searchMulti(searchParam));
+      return;
+    }
+    if (genreParam) {
+      this.openMovieCatalog({ genre: genreParam });
       return;
     }
     if (catParam) {
