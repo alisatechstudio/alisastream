@@ -1,13 +1,465 @@
 [
   {
+    "id": 1780005,
+    "tmdb_id": 1780005,
+    "title": "Surviving Hurricane Otis",
+    "name": "Surviving Hurricane Otis",
+    "release_date": "2026-10-23",
+    "vote_average": 6.2,
+    "vote_count": 3,
+    "popularity": 38.7524,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/chZa8Jd9kSDj11bekGjwwotFPEw.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/cpNMIRCrDl0sxDL1tHBzfWi0UZC.jpg",
+    "overview": "Two estranged brothers struggle to survive Hurricane Otis in Acapulco, where their bond and courage turn adversity into hope.",
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 1453407,
+    "tmdb_id": 1453407,
+    "title": "Gajab Raat",
+    "name": "Gajab Raat",
+    "release_date": "2026-10-23",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 24.265,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/e4N7M52cBbyi24xLga8yI6yt1u1.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/cdcW8GeAyBLPVBhTbOoTlBywNtp.jpg",
+    "overview": "A corrupt, troubled cop's night spirals out of control when a reluctant act of mercy toward an injured girl pulls him into a deadly web of crime.",
+    "genres": [
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 80,
+        "name": "Crime"
+      }
+    ]
+  },
+  {
+    "id": 1290418,
+    "tmdb_id": 1290418,
+    "title": "The Cycle",
+    "name": "The Cycle",
+    "release_date": "2026-09-24",
+    "vote_average": 7.8,
+    "vote_count": 5,
+    "popularity": 13.064,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/n5gSNf55KWfDc9hqP4H1KCCSutE.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/uRIItK2ahR1ewVSBICiBFQrAVB2.jpg",
+    "overview": "A daughter unravels her father's dark past after his body, missing for 36 years, is found at a horrific crime scene.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ]
+  },
+  {
+    "id": 1371730,
+    "tmdb_id": 1371730,
+    "title": "Love Language",
+    "name": "Love Language",
+    "release_date": "2026-10-23",
+    "vote_average": 10,
+    "vote_count": 1,
+    "popularity": 7.7879,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/sCQde3BSMpDgA1qpE0zzboFdwl0.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/2reWDfgqvrUmA05y6UCKb2UXNvP.jpg",
+    "overview": "Following a failed engagement, Lou discovers she has a talent for writing other people’s wedding vows. Word spreads across Chicago’s wedding scene and Lou’s services are in high demand. She even has a new admirer in Dash. But everything changes when she’s asked to write vows for Olivia, who’s marrying Warren, Lou’s old college flame.",
+    "genres": [
+      {
+        "id": 10749,
+        "name": "Romance"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ]
+  },
+  {
+    "id": 1657630,
+    "tmdb_id": 1657630,
+    "title": "The Awakening",
+    "name": "The Awakening",
+    "release_date": "2026-10-29",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 24.8799,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/7pUGiRg9Gq1JqmmNSJLLSonOKum.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/75MLVCmQ4QougShkx3OlUbJbuSK.jpg",
+    "overview": "An elite military unit on a mission in the South American jungle encounters a deadly supernatural force revealing an ancient presence that continues to claim anyone who dares enter its domain.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 10752,
+        "name": "War"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ]
+  },
+  {
+    "id": 1375156,
+    "tmdb_id": 1375156,
+    "title": "Udta Teer",
+    "name": "Udta Teer",
+    "release_date": "2026-10-23",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 15.3552,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/tvICKypVlW7Iio4KVs7NousbSKi.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/ncVecUcDZe1EOWtHaU2f8BFvbx4.jpg",
+    "overview": "An amnesiac Pakistani spy wakes up believing he is a patriotic Indian counter-terrorism officer.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      }
+    ]
+  },
+  {
+    "id": 1406492,
+    "tmdb_id": 1406492,
+    "title": "La Venganza del Charro Negro",
+    "name": "La Venganza del Charro Negro",
+    "release_date": "2026-10-22",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 35.5979,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/tLshatfzePSxL77SddT64HUPjVG.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/gEQtqCN5e3joMJiYmiFH69i78d6.jpg",
+    "overview": "The return of Leo San Juan and all the legends.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 10751,
+        "name": "Family"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      }
+    ]
+  },
+  {
+    "id": 1727317,
+    "tmdb_id": 1727317,
+    "title": "The Exit State",
+    "name": "The Exit State",
+    "release_date": "2026-10-13",
+    "vote_average": 4.5,
+    "vote_count": 2,
+    "popularity": 6.066,
+    "media_type": "movie",
+    "poster_path": "https://image.tmdb.org/t/p/w500/80oQCwA8SJrjBiFarxzkEXZxxDT.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/9mRvuRKCmF4af1JlaN8vOvV8wzb.jpg",
+    "overview": "In the not-too-distant future, a group of American citizens attempt to flee the country to escape an authoritarian regime, but their path to freedom quickly becomes a dystopian nightmare.",
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ]
+  },
+  {
+    "id": 335535,
+    "tmdb_id": 335535,
+    "title": "Fading Grandeur",
+    "name": "Fading Grandeur",
+    "release_date": "2026-10-23",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 16.1184,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/4AUgc7JhcLQHNzoa1l0jwxBdK0.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/fyuUkmbcTqH0NEgywaLlsYL720K.jpg",
+    "overview": "Desperate to sell his crumbling mansion, a fallen marquis tries to make a quick deal with a charming yet mysterious millionaire who has her own agenda.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 1667,
+    "tmdb_id": 1667,
+    "title": "Saturday Night Live",
+    "name": "Saturday Night Live",
+    "release_date": "1975-10-11",
+    "vote_average": 6.9,
+    "vote_count": 542,
+    "popularity": 161.0461,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/s1cZBqbMwAF3w8S3Yo0j5nr2Yuo.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/sSAX59Kf01lBRkBW4UcIL4kIoIm.jpg",
+    "overview": "A late-night live television sketch comedy and variety show created by Lorne Michaels. The show's comedy sketches, which parody contemporary culture and politics, are performed by a large and varying cast of repertory and newer cast members. Each episode is hosted by a celebrity guest, who usually delivers an opening monologue and performs in sketches with the cast, and features performances by a musical guest.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 10763,
+        "name": "News"
+      }
+    ]
+  },
+  {
+    "id": 306163,
+    "tmdb_id": 306163,
+    "title": "R91",
+    "name": "R91",
+    "release_date": "2026-10-23",
+    "vote_average": 7.5,
+    "vote_count": 100,
+    "popularity": 13.8364,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/1So6roM8Sc6SHKSoioWsxpia2ZY.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/xhh2EG39ROotuI7185jH5a6Lvww.jpg",
+    "overview": "The aircraft carrier *Charles de Gaulle* has just set sail for a strategic mission in the Eastern Mediterranean, a region where the situation is volatile. Shortly after departure, however, a female crew member is found dead and another is reported missing. Despite the danger, the operation continues, and a military investigator is urgently dispatched on board. When a new victim is discovered, the *Charles*—a veritable floating city of 1,800 men and 240 women—turns into a trap where a killer, mounting tensions, and unfolding events threaten the crew and perhaps even the country itself.",
+    "genres": [
+      {
+        "id": 9648,
+        "name": "Mystery"
+      },
+      {
+        "id": 80,
+        "name": "Crime"
+      }
+    ]
+  },
+  {
+    "id": 307585,
+    "tmdb_id": 307585,
+    "title": "Please Excuse My Younger Brothers",
+    "name": "Please Excuse My Younger Brothers",
+    "release_date": "2026-07-04",
+    "vote_average": 8.4,
+    "vote_count": 16,
+    "popularity": 11.7517,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/x280gtjgwPxsVFqYmMEKXPjFgBr.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/YZQGBP5nXPG3JjLoccdA13Oeea.jpg",
+    "overview": "High school sophomore Ito was excited for a new dad when her mom remarried, but she may have gained more than she bargained for when she found four younger stepbrothers waiting at home. There’s blunt but secretly caring Gen, calm Raku, reclusive Syu, and cheerful little Rui. Now, Ito must go from the quiet of being an only child to learning how to be the eldest sister of a lively household.",
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ]
+  },
+  {
+    "id": 279089,
+    "tmdb_id": 279089,
+    "title": "Possession",
+    "name": "Possession",
+    "release_date": "2026-08-06",
+    "vote_average": 5.9,
+    "vote_count": 10,
+    "popularity": 14.4243,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/qVvUs2KFhT3h36dvcVRtzaicl7n.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/rG2dLnqy03ktjpFaW3ojHuHUHD1.jpg",
+    "overview": "Claudia, a bi-racial lawyer, journeys to Jamaica's haunted Connaught plantation to fight an inheritance claim. Uncovering dark historical secrets intertwined with modern injustices intensifies her nightmare.",
+    "genres": [
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ]
+  },
+  {
+    "id": 1411,
+    "tmdb_id": 1411,
+    "title": "Person of Interest",
+    "name": "Person of Interest",
+    "release_date": "2011-09-22",
+    "vote_average": 8.1,
+    "vote_count": 2201,
+    "popularity": 5730.6245,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/f8aIvYk5h7Z8EP3dinCmVgQFYow.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/efeMgQn6iRALsOqDa2cqlf6Pw5O.jpg",
+    "overview": "John Reese, former CIA paramilitary operative, is presumed dead and teams up with reclusive billionaire Finch to prevent violent crimes in New York City by initiating their own type of justice. With the special training that Reese has had in Covert Operations and Finch's genius software inventing mind, the two are a perfect match for the job that they have to complete. With the help of surveillance equipment, they work \"outside the law\" and get the right criminal behind bars. ",
+    "genres": [
+      {
+        "id": 10759,
+        "name": "Action & Adventure"
+      },
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 10765,
+        "name": "Sci-Fi & Fantasy"
+      }
+    ]
+  },
+  {
+    "id": 1426,
+    "tmdb_id": 1426,
+    "title": "Luther",
+    "name": "Luther",
+    "release_date": "2010-05-04",
+    "vote_average": 7.9,
+    "vote_count": 1270,
+    "popularity": 2360.6517,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/hDxOMX8zzH1FiqKWVBzNaYGBkle.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/A2qdFRq9oJDC5E7fbgSS4POUMDF.jpg",
+    "overview": "A dark psychological crime drama starring Idris Elba as Luther, a man struggling with his own terrible demons, who might be as dangerous as the depraved murderers he hunts.",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ]
+  },
+  {
+    "id": 70528,
+    "tmdb_id": 70528,
+    "title": "Chicago Typewriter",
+    "name": "Chicago Typewriter",
+    "release_date": "2017-04-07",
+    "vote_average": 8,
+    "vote_count": 48,
+    "popularity": 1019.3386,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/1FLgKAjoa4dY3z31nTjZj3Dgr6q.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/f44Ykw0MnAcFvBeYhmdKekcX35J.jpg",
+    "overview": "Writers that lived under Japanese rule in the 1930's are reincarnated into a bestselling writer who is in a slump, a mysterious ghostwriter and an anti-fan of the bestselling writer.",
+    "genres": [
+      {
+        "id": 10765,
+        "name": "Sci-Fi & Fantasy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 874,
+    "tmdb_id": 874,
+    "title": "One Life to Live",
+    "name": "One Life to Live",
+    "release_date": "1968-07-15",
+    "vote_average": 7.3,
+    "vote_count": 19,
+    "popularity": 166.0156,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/rolhu6G57XutH95hcsgMPDTtviw.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/yj5yy34CBMFRGbR0tpIvimYuLWS.jpg",
+    "overview": "One Life to Live is an American soap opera broadcast on television for more than 43 years on the ABC network, from July 15, 1968, to January 13, 2012, and on the internet as a web series on Hulu and iTunes via The Online Network since April 29, 2013. Created by Agnes Nixon, the series was the first daytime drama to primarily feature ethnically and socioeconomically diverse characters and consistently emphasize social issues. One Life to Live was expanded from 30 minutes to 45 minutes on July 26, 1976, and then to an hour on January 16, 1978.",
+    "genres": [
+      {
+        "id": 10766,
+        "name": "Soap"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 9856,
+    "tmdb_id": 9856,
+    "title": "Lush Life",
+    "name": "Lush Life",
+    "release_date": "1996-09-09",
+    "vote_average": 7.5,
+    "vote_count": 4,
+    "popularity": 306.6289,
+    "media_type": "tv",
+    "poster_path": "https://image.tmdb.org/t/p/w500/pLxaeQS7V7DX23HO9EdntDpCqLg.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w1280/yjHr1X28GHK4lNoi90dl5buclyd.jpg",
+    "overview": "Lush Life is an American sitcom that aired in September 1996 on Fox. The series stars Lori Petty and Karyn Parsons as roommates who shared a studio apartment for financial reasons.",
+    "genres": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ]
+  },
+  {
     "id": 1590718,
     "tmdb_id": 1590718,
     "title": "Dhoomakethu",
     "name": "Dhoomakethu",
     "release_date": "2026-09-25",
-    "vote_average": 7.5,
+    "vote_average": 5.8,
     "vote_count": 100,
-    "popularity": 4.1089,
+    "popularity": 9.1937,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/kZCKwhUx7r9HRDqpGbavdMtd8f5.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/gbc7jpkQBnjvLGhipwvUyB3L0tg.jpg",
@@ -31,7 +483,7 @@
     "release_date": "2026-05-29",
     "vote_average": 5,
     "vote_count": 2,
-    "popularity": 3.6656,
+    "popularity": 16.9954,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/wFpn1nQZCv2GJninCDSDoz3GEc5.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/l2B2WTUqgePLN6kh9uLCYy63Pyk.jpg",
@@ -53,9 +505,9 @@
     "title": "YAGA",
     "name": "YAGA",
     "release_date": "2026-10-23",
-    "vote_average": 7.5,
+    "vote_average": 6.8,
     "vote_count": 2,
-    "popularity": 12.8337,
+    "popularity": 51.9348,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/2kxIViR7g3e08ZHLlvNFFJkgJtI.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/owhTL4n2r9ryfxyYlhHKt97ogVk.jpg",
@@ -99,7 +551,7 @@
     "release_date": "2026-10-23",
     "vote_average": 8,
     "vote_count": 1,
-    "popularity": 5.0679,
+    "popularity": 10.6699,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/9BjupD1YuUnCnzAhWoIsYPJtH8n.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/bGveCIHFN2FZrn4OcXsHZiQrrgr.jpg",
@@ -169,9 +621,9 @@
     "title": "Tigers Sniff the Rose",
     "name": "Tigers Sniff the Rose",
     "release_date": "2026-10-23",
-    "vote_average": 7.5,
+    "vote_average": 8,
     "vote_count": 100,
-    "popularity": 8.5236,
+    "popularity": 14.199,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/dLyAOtj1lvhOD0Ka3lxJc8OMlei.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/ccG6WAuf2XBC808HFaeIjvk2hXW.jpg",
@@ -335,7 +787,7 @@
     "release_date": "2024-09-26",
     "vote_average": 7.3,
     "vote_count": 302,
-    "popularity": 43.6195,
+    "popularity": 53.7775,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/cUpIceeJJoRqUHSCzh6jRSmlpkA.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/q8BwtVM3t0SOtB1nZsXpOKZp8IM.jpg",
@@ -357,9 +809,9 @@
     "title": "Did Someone Happen to Mention Me?",
     "name": "Did Someone Happen to Mention Me?",
     "release_date": "2026-10-22",
-    "vote_average": 8,
+    "vote_average": 8.5,
     "vote_count": 100,
-    "popularity": 13.8268,
+    "popularity": 16.392,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/fDwpR6oVx1TsxvelEQQIXnb3zYx.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/7ctEWkqGMkvo5GMtOejZndTL5Ta.jpg",
@@ -451,7 +903,7 @@
     "release_date": "2019-03-27",
     "vote_average": 8,
     "vote_count": 1076,
-    "popularity": 3682.2016,
+    "popularity": 4108.9446,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/wa3ZQE9kLnqwN3vQ0NNjg1NPsCa.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/mKikck71CvVISUSTLk29fwRbH4y.jpg",
@@ -563,7 +1015,7 @@
     "release_date": "1980-05-09",
     "vote_average": 6.4,
     "vote_count": 3525,
-    "popularity": 55.674,
+    "popularity": 57.2735,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/uGGpnWHOmWTARVN9wbC1nPxNgps.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/edVRp9npNwQwJtD05KyZlzp1J2p.jpg",
@@ -603,7 +1055,7 @@
     "release_date": "2001-10-05",
     "vote_average": 7.5,
     "vote_count": 6934,
-    "popularity": 49.0813,
+    "popularity": 49.7608,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/bUeiwBQdupBLQthMCHKV7zv56uv.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/nuO8o9ltxhI7AZQxePavEZ4TyHa.jpg",
@@ -659,7 +1111,7 @@
     "release_date": "2022-06-30",
     "vote_average": 8,
     "vote_count": 1247,
-    "popularity": 139.7205,
+    "popularity": 157.4266,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/xyFAzP7RKK8cARCSalIZ9A9T0jV.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/eqLwFXX0R7U0crdgQcj0Rxjb9uc.jpg",
@@ -811,7 +1263,7 @@
     "release_date": "1997-09-08",
     "vote_average": 6.5,
     "vote_count": 390,
-    "popularity": 1064.1339,
+    "popularity": 1384.9736,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/weS8htxS2j0EQ6jorK3WOR1dZpH.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/xCMs3IxaGqKSc5cwngRUlhmjbwl.jpg",
@@ -917,7 +1369,7 @@
     "title": "Phony",
     "name": "Phony",
     "release_date": "2026-10-20",
-    "vote_average": 7.3,
+    "vote_average": 7.2,
     "vote_count": 1,
     "popularity": 36.4515,
     "media_type": "tv",
@@ -967,7 +1419,7 @@
     "release_date": "2021-01-08",
     "vote_average": 7.7,
     "vote_count": 2692,
-    "popularity": 43.2701,
+    "popularity": 124.0241,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/h6Z2oogE4mJk2uffdtIlLhb0EHx.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/aY7zv2pfk9H0QxaaL3PBjvalbKQ.jpg",
@@ -1329,9 +1781,9 @@
     "title": "Crawlers",
     "name": "Crawlers",
     "release_date": "2026-09-24",
-    "vote_average": 5.7,
+    "vote_average": 6,
     "vote_count": 8,
-    "popularity": 50.8973,
+    "popularity": 52.6235,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/lNXeEpg4yLSRwXwOeR5lbPgwbqL.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/wqEFo8ZPOO0zefg08XWQbyRoBgO.jpg",
@@ -2103,7 +2555,7 @@
     "release_date": "2022-11-13",
     "vote_average": 8.3,
     "vote_count": 2824,
-    "popularity": 236.8102,
+    "popularity": 259.6778,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/rOYLWCdAifpUtPlTf1WHxyaxeMt.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
@@ -2169,7 +2621,7 @@
     "title": "Where the Mask Ends",
     "name": "Where the Mask Ends",
     "release_date": "2026-10-16",
-    "vote_average": 7.2,
+    "vote_average": 8.2,
     "vote_count": 1,
     "popularity": 107.2749,
     "media_type": "tv",
@@ -2949,9 +3401,9 @@
     "title": "Wicker",
     "name": "Wicker",
     "release_date": "2026-10-21",
-    "vote_average": 6.3,
+    "vote_average": 6.5,
     "vote_count": 100,
-    "popularity": 36.1389,
+    "popularity": 43.9651,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/eOYkNDalgt1v6UGjw3AoFR5qo9D.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/xVh1ypMoVkMf5IB7y3hnRplJ14c.jpg",
@@ -4109,7 +4561,7 @@
     "title": "Reporting Live",
     "name": "Reporting Live",
     "release_date": "2026-10-09",
-    "vote_average": 7.1,
+    "vote_average": 7,
     "vote_count": 100,
     "popularity": 134.1965,
     "media_type": "movie",
@@ -5117,7 +5569,7 @@
     "title": "Matchbox the Movie",
     "name": "Matchbox the Movie",
     "release_date": "2026-10-05",
-    "vote_average": 7.8,
+    "vote_average": 7.7,
     "vote_count": 1,
     "popularity": 408.7678,
     "media_type": "movie",
@@ -5169,7 +5621,7 @@
     "title": "Carrie",
     "name": "Carrie",
     "release_date": "2026-10-07",
-    "vote_average": 8.4,
+    "vote_average": 8.3,
     "vote_count": 4,
     "popularity": 326.3646,
     "media_type": "tv",
@@ -5553,7 +6005,7 @@
     "title": "Jailer 2",
     "name": "Jailer 2",
     "release_date": "2026-10-15",
-    "vote_average": 8,
+    "vote_average": 8.1,
     "vote_count": 100,
     "popularity": 115.3574,
     "media_type": "movie",
@@ -5895,7 +6347,7 @@
     "release_date": "1993-10-09",
     "vote_average": 7.9,
     "vote_count": 10665,
-    "popularity": 108.7278,
+    "popularity": 110.5637,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/dSfrsjhqC6lYe7LYDYnzWeXZmEl.jpg",
@@ -6317,7 +6769,7 @@
     "title": "Resident Dead",
     "name": "Resident Dead",
     "release_date": "2026-09-04",
-    "vote_average": 6,
+    "vote_average": 5.9,
     "vote_count": 3,
     "popularity": 234.6443,
     "media_type": "movie",
@@ -7103,7 +7555,7 @@
     "release_date": "2023-10-22",
     "vote_average": 8.7,
     "vote_count": 652,
-    "popularity": 144.0868,
+    "popularity": 158.854,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/sJZcy8QsOPuRPiCfoCWVB3r9Ohg.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/gffVOVZ2Y9cmVIZ26Gt9ByMGCYH.jpg",
@@ -8255,7 +8707,7 @@
     "release_date": "2026-09-16",
     "vote_average": 6.7,
     "vote_count": 34,
-    "popularity": 78.7788,
+    "popularity": 81.0926,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/8i5iZV50CoEtmDCFM7RSxCkpE8h.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/zLeq2fbHU6UdA7mhsYnIULORTgq.jpg",
@@ -10281,7 +10733,7 @@
     "title": "JoJo's Bizarre Adventure",
     "name": "JoJo's Bizarre Adventure",
     "release_date": "2012-10-06",
-    "vote_average": 8.5,
+    "vote_average": 8.6,
     "vote_count": 1656,
     "popularity": 258.9176,
     "media_type": "tv",
@@ -10541,7 +10993,7 @@
     "title": "La bola negra",
     "name": "La bola negra",
     "release_date": "2026-09-25",
-    "vote_average": 8.3,
+    "vote_average": 8.2,
     "vote_count": 100,
     "popularity": 86.2839,
     "media_type": "movie",
@@ -10565,7 +11017,7 @@
     "title": "You Can See Everything",
     "name": "You Can See Everything",
     "release_date": "2026-10-16",
-    "vote_average": 8.8,
+    "vote_average": 9.2,
     "vote_count": 100,
     "popularity": 172.0381,
     "media_type": "movie",
@@ -11361,7 +11813,7 @@
     "title": "Street Fighter",
     "name": "Street Fighter",
     "release_date": "2026-10-14",
-    "vote_average": 6.3,
+    "vote_average": 6.4,
     "vote_count": 100,
     "popularity": 394.7423,
     "media_type": "movie",
@@ -11457,7 +11909,7 @@
     "title": "Sense and Sensibility",
     "name": "Sense and Sensibility",
     "release_date": "2026-09-21",
-    "vote_average": 7.3,
+    "vote_average": 7.2,
     "vote_count": 100,
     "popularity": 202.0517,
     "media_type": "movie",
@@ -11481,9 +11933,9 @@
     "title": "Clayface",
     "name": "Clayface",
     "release_date": "2026-10-21",
-    "vote_average": 7.4,
+    "vote_average": 7.6,
     "vote_count": 100,
-    "popularity": 195.3481,
+    "popularity": 240.8093,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/pwWR1DRjoFxwdH0jI2elBdXTF1F.jpg",
@@ -11561,9 +12013,9 @@
     "title": "Wildwood",
     "name": "Wildwood",
     "release_date": "2026-10-21",
-    "vote_average": 8.9,
+    "vote_average": 8.4,
     "vote_count": 100,
-    "popularity": 57.8859,
+    "popularity": 75.5267,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/snFM00mpNAfUzUtkdEW0uDEvXA0.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/sl5NJ1vtyhP9Vr88bB4blULsJYp.jpg",
@@ -12813,7 +13265,7 @@
     "title": "MobLand",
     "name": "MobLand",
     "release_date": "2025-03-30",
-    "vote_average": 8.5,
+    "vote_average": 8.6,
     "vote_count": 877,
     "popularity": 316.9988,
     "media_type": "tv",
@@ -14027,7 +14479,7 @@
     "release_date": "2005-03-27",
     "vote_average": 8.2,
     "vote_count": 11055,
-    "popularity": 6342.2317,
+    "popularity": 9717.4016,
     "media_type": "tv",
     "poster_path": "https://image.tmdb.org/t/p/w500/hjJkrLXhWvGHpLeLBDFznpBTY1S.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/jP0Rhj9OTPDAwQlHQwOLFDdeE8t.jpg",
@@ -15037,7 +15489,7 @@
     "tmdb_id": 1058424,
     "title": "Hope",
     "release_date": "2026-07-15",
-    "vote_average": 6.9,
+    "vote_average": 6.8,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/1n37BJchWHLiSYQkuFxe5KjB951.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/hrCTKrc3Tz2wbPOt5rcrlAhqF11.jpg",
@@ -15056,7 +15508,7 @@
         "name": "Action"
       }
     ],
-    "popularity": 458.5083,
+    "popularity": 478.334,
     "vote_count": 76
   },
   {
@@ -16439,7 +16891,7 @@
     "tmdb_id": 1110034,
     "title": "Kraken",
     "release_date": "2026-02-06",
-    "vote_average": 6.3,
+    "vote_average": 6.2,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/xdZ8k5s8DTwWyPBMIcflrYLgcAK.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/oV472EbPedkc5QzqolGc7sCgCnn.jpg",
@@ -20451,7 +20903,7 @@
         "name": "Comedy"
       }
     ],
-    "popularity": 160.9291,
+    "popularity": 168.0343,
     "vote_count": 61
   },
   {
@@ -22378,7 +22830,7 @@
     "tmdb_id": 1567937,
     "title": "V",
     "release_date": "2026-08-19",
-    "vote_average": 6.3,
+    "vote_average": 6.9,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/rNqQQ3hFknhKpy8OTyGfzk7FY20.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/c1hrosrq2q56Afn7aZHJZqA1Dn6.jpg",
@@ -28509,7 +28961,7 @@
         "name": "Music"
       }
     ],
-    "popularity": 19.9923,
+    "popularity": 88.9907,
     "vote_count": 2312
   },
   {
@@ -28763,7 +29215,7 @@
     "tmdb_id": 1232449,
     "title": "Young Hearts",
     "release_date": "2024-10-26",
-    "vote_average": 6.3,
+    "vote_average": 6.2,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/iGCtYxfuvXfy0BD5m6p7vKuPOxS.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/3HaqAPZ0C8n6Hd5T86U53yJlBAN.jpg",
@@ -30280,7 +30732,7 @@
     "tmdb_id": 1477104,
     "title": "Shaun the Sheep: The Beast of Mossy Bottom",
     "release_date": "2026-09-17",
-    "vote_average": 7.4,
+    "vote_average": 7.5,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/mMOptSPBVGUA9GHgnpsC35GzZ7e.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/izLG3cxbG89nK75OHyd1zvjR7n8.jpg",
@@ -30307,7 +30759,7 @@
         "name": "Horror"
       }
     ],
-    "popularity": 15.179,
+    "popularity": 27.8759,
     "vote_count": 5
   },
   {
@@ -36533,7 +36985,7 @@
         "name": "Thriller"
       }
     ],
-    "popularity": 12.1222,
+    "popularity": 12.3865,
     "vote_count": 194
   },
   {
@@ -68456,7 +68908,7 @@
         "name": "Family"
       }
     ],
-    "popularity": 84.6688,
+    "popularity": 89.1834,
     "vote_count": 12
   },
   {
@@ -76909,7 +77361,7 @@
     "tmdb_id": 1476614,
     "title": "All of a Sudden",
     "release_date": "2026-06-19",
-    "vote_average": 7.9,
+    "vote_average": 8,
     "media_type": "movie",
     "poster_path": "https://image.tmdb.org/t/p/w500/kFD1vl6FPt8heIIgFiAyIbZqrYh.jpg",
     "backdrop_path": "https://image.tmdb.org/t/p/w1280/4R5XUxgNwDfhEhCf6LigGPK0k3O.jpg",
@@ -76920,7 +77372,7 @@
         "name": "Drama"
       }
     ],
-    "popularity": 5.0712,
+    "popularity": 9.0264,
     "vote_count": 50
   },
   {
