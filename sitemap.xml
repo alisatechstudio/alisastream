@@ -3,57 +3,178 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://alisastream.site/</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/about.html</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/dmca.html</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/contact.html</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/privacy.html</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/terms.html</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/?category=movies</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/?category=tv</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alisastream.site/?category=top_rated</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?movie=1515692</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg</image:loc>
+      <image:title>Watch Latest Baththa (2026) Free HD</image:title>
+      <image:caption>Stream latest Baththa 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?movie=1480856</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/duZIrDULyk3PBIxoUmKXm3uqlBv.jpg</image:loc>
+      <image:title>Watch Latest Hanging by a Wire (2026) Free HD</image:title>
+      <image:caption>Stream latest Hanging by a Wire 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?movie=1541477</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/4Gw8ukw5aAUP1uzNtYZ0CNTUy5A.jpg</image:loc>
+      <image:title>Watch Latest You, Me, Us (2026) Free HD</image:title>
+      <image:caption>Stream latest You, Me, Us 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?movie=1089598</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/zIzru6pQiHi9FNWZ4W3Gx2a9uor.jpg</image:loc>
+      <image:title>Watch Latest Dunhuang Warriors (2026) Free HD</image:title>
+      <image:caption>Stream latest Dunhuang Warriors 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?movie=1538731</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/gZQmPbQ9jo44jj9h4OSb61j14RD.jpg</image:loc>
+      <image:title>Watch Latest Permis de détruire (2026) Free HD</image:title>
+      <image:caption>Stream latest Permis de détruire 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=313699</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/s1A6UOu8IOmw0kJXohlitMRiwQb.jpg</image:loc>
+      <image:title>Watch Latest Balaraw: Blood Island (2026) Free HD</image:title>
+      <image:caption>Stream latest Balaraw: Blood Island 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=126027</loc>
+    <lastmod>2021-10-07</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/8yBQYa6AdvMY5H9CiAv0HkvF3UE.jpg</image:loc>
+      <image:title>Watch Latest Ghosts (2021) Free HD</image:title>
+      <image:caption>Stream latest Ghosts 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=302074</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/iNOXveSqB5tUTmGKxp5flQuQ72f.jpg</image:loc>
+      <image:title>Watch Latest R.J. Decker (2026) Free HD</image:title>
+      <image:caption>Stream latest R.J. Decker 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=218038</loc>
+    <lastmod>2023-07-16</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/aut8zs5YypvT5chQUuFhActLkHF.jpg</image:loc>
+      <image:title>Watch Latest Vivant (2023) Free HD</image:title>
+      <image:caption>Stream latest Vivant 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=338689</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/wxmOGnyZ1ZxIbYOxkG4TLNQ6L26.jpg</image:loc>
+      <image:title>Watch Latest The Fall of El Mayo (2026) Free HD</image:title>
+      <image:caption>Stream latest The Fall of El Mayo 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alisastream.site/?tv=259909</loc>
+    <lastmod>2025-07-13</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://image.tmdb.org/t/p/w500/o2Oyi3boT100bY5kCP4MBiTeetO.jpg</image:loc>
+      <image:title>Watch Latest Dexter: Resurrection (2025) Free HD</image:title>
+      <image:caption>Stream latest Dexter: Resurrection 100% free in 4K HD on Alisa Movies.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1596275</loc>
@@ -376,7 +497,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1792914</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -541,7 +662,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1657630</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -673,7 +794,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=874</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -937,7 +1058,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1198746</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1102,7 +1223,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1117898</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1146,7 +1267,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=15325</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1410,7 +1531,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1286656</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1531,7 +1652,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1440769</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1542,7 +1663,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=656908</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1850,7 +1971,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1147572</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -1993,7 +2114,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1538497</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -2774,7 +2895,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1599230</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -2796,7 +2917,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1297467</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -3170,7 +3291,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1492198</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -3929,7 +4050,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1567605</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4171,7 +4292,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1137888</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4347,7 +4468,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=10536</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4424,7 +4545,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=292741</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4622,7 +4743,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1170608</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4776,7 +4897,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1421903</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -4963,7 +5084,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1777750</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5161,7 +5282,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1266643</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5172,7 +5293,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1381071</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5337,7 +5458,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=940009</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5403,7 +5524,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=891621</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5777,7 +5898,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1003596</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5821,7 +5942,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1457866</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5854,7 +5975,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1300968</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5876,7 +5997,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1381273</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -5964,7 +6085,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=1294189</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6085,7 +6206,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=389</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6173,7 +6294,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=429</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6195,7 +6316,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=14537</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6206,7 +6327,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?movie=346</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6734,7 +6855,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=2261</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -6811,7 +6932,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=94722</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -7053,7 +7174,7 @@
   </url>
   <url>
     <loc>https://alisastream.site/?tv=502</loc>
-    <lastmod>2026-10-28T10:04:04.755Z</lastmod>
+    <lastmod>2026-10-29T10:28:23.623Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
