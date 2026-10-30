@@ -2840,3 +2840,111 @@ dialog.alisa-modal.theater-mode .player-stage-layout .player-frame-box {
 
 
 
+
+
+/* ==========================================================================
+   STICKY FLOATING BOTTOM BANNER AD (320x50)
+   ========================================================================== */
+.sticky-bottom-ad {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1200;
+  pointer-events: none;
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sticky-bottom-ad.is-hidden {
+  display: none !important;
+}
+
+.sticky-bottom-ad-inner {
+  position: relative;
+  width: 320px;
+  background: rgba(10, 12, 18, 0.96);
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: none;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.75);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  animation: slideUpAd 0.35s ease-out forwards;
+}
+
+@keyframes slideUpAd {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sticky-ad-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 8px;
+  background: rgba(5, 7, 11, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-sizing: border-box;
+}
+
+.sticky-ad-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+  line-height: 1;
+  user-select: none;
+}
+
+.sticky-ad-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticky-ad-close:hover {
+  background: rgba(225, 29, 72, 0.25);
+  color: #fb7185;
+}
+
+.sticky-ad-content {
+  width: 320px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.sticky-ad-content iframe {
+  display: block !important;
+  margin: 0 auto !important;
+  border: 0 !important;
+}
