@@ -1,6 +1,6 @@
 /**
  * GDPR & EU ePrivacy Directive Compliant Cookie Consent Manager
- * Fully integrated with Google Consent Mode v2 (Analytics & AdSense)
+ * Fully integrated with Google Consent Mode v2 (Analytics & Marketing)
  * Supports English, German (DSGVO), and Bengali.
  */
 (function() {
@@ -38,7 +38,7 @@
       analyticsTitle: 'Analytics & Performance Cookies',
       analyticsDesc: 'Help us understand how visitors interact with our website, monitor performance, and improve user experience via aggregated, anonymous statistics (Google Analytics).',
       marketingTitle: 'Marketing & Advertising Cookies',
-      marketingDesc: 'Used by advertising partners (including Google AdSense) to deliver relevant, personalized advertisements based on your browsing interests and measure ad effectiveness.',
+      marketingDesc: 'Used by advertising partners to deliver relevant, personalized advertisements based on your browsing interests and measure ad effectiveness.',
       badgeTooltip: 'Cookie Settings',
       toastSaved: 'Cookie preferences saved successfully.'
     },
@@ -57,7 +57,7 @@
       analyticsTitle: 'Analyse- & Statistik-Cookies',
       analyticsDesc: 'Ermöglichen es uns, die Website-Nutzung anonymisiert zu analysieren, um Leistung und Inhalt zu optimieren (z. B. Google Analytics).',
       marketingTitle: 'Marketing- & Werbe-Cookies',
-      marketingDesc: 'Werden von Werbepartnern (einschließlich Google AdSense) verwendet, um personalisierte Anzeigen bereitzustellen und den Werbeerfolg zu messen.',
+      marketingDesc: 'Werden von Werbepartnern verwendet, um personalisierte Anzeigen bereitzustellen und den Werbeerfolg zu messen.',
       badgeTooltip: 'Cookie-Einstellungen',
       toastSaved: 'Cookie-Einstellungen erfolgreich gespeichert.'
     },
@@ -76,7 +76,7 @@
       analyticsTitle: 'অ্যানালিটিক্স ও পারফরম্যান্স কুকিজ',
       analyticsDesc: 'ব্যবহারকারীরা কীভাবে সাইটটি ব্যবহার করছেন তা বেনামে বিশ্লেষণ করে সাইটের মান উন্নত করতে সাহায্য করে (Google Analytics)।',
       marketingTitle: 'বিজ্ঞাপন ও মার্কেটিং কুকিজ',
-      marketingDesc: 'Google AdSense এবং বিজ্ঞাপন পার্টনারদের মাধ্যমে প্রাসঙ্গিক বিজ্ঞাপন প্রদর্শনের জন্য ব্যবহৃত হয়।',
+      marketingDesc: 'বিজ্ঞাপন পার্টনারদের মাধ্যমে প্রাসঙ্গিক বিজ্ঞাপন প্রদর্শনের জন্য ব্যবহৃত হয়।',
       badgeTooltip: 'কুকি সেটিংস',
       toastSaved: 'আপনার কুকি পছন্দ সফলভাবে সংরক্ষিত হয়েছে।'
     }

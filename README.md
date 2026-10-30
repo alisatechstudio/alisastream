@@ -116,7 +116,7 @@ Alisa Movies/
 ├── dmca.html              # DMCA Copyright Policy & designated agent contact
 ├── about.html             # About Us transparency & educational mission page
 ├── contact.html           # Contact Us page with direct support form
-├── ads.txt                # Authorized Digital Sellers file for Google AdSense
+├── ads.txt                # Authorized Digital Sellers file
 ├── .nojekyll              # Disables Jekyll processing on GitHub Pages
 ├── README.md              # Project documentation & features
 ├── css/
@@ -130,19 +130,10 @@ Alisa Movies/
 
 ---
 
-## 🛡️ Google AdSense & Policy Compliance
-
-Alisa Movies is fully configured in strict compliance with **Google AdSense Program & Publisher Policies**:
-
-1. **`ads.txt` Verification**:
-   - Authorized digital sellers record located at `/ads.txt` declaring publisher ID:
-     ```text
-     google.com, pub-2862340185854650, DIRECT, f08c47fec0942fa0
-     ```
-2. **Google Consent Mode v2 & EU User Consent**:
+## 🛡️ Google Consent Mode v2 & EU User Consent
    - Integrated with Google Consent Mode v2 (`gtag('consent', ...)`) supporting `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage`.
 3. **Mandatory Publisher Legal Pages**:
-   - `privacy.html`: Includes Google AdSense disclosures, DoubleClick DART cookies, DAA/NAI opt-out links, GDPR & CCPA rights.
+   - `privacy.html`: Includes GDPR & CCPA rights.
    - `terms.html`: Acceptable use guidelines and non-hosting disclaimer.
    - `dmca.html`: 17 U.S.C. § 512(c) statutory copyright notice process with designated agent.
    - `about.html` & `contact.html`: Company transparency and direct visitor inquiry channels.
